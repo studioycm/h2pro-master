@@ -5330,51 +5330,93 @@ section > h2 {
             .grid.grid-3 {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: repeat(2, 300px);
                 align-content: stretch;
                 justify-content: start;
                 align-items: start;
                 justify-items: center;
-                gap: 100px 30px;
+                gap: 30px 30px;
             }
             
             .card.icon-card {
+                position: relative;
                 display: flex;
                 flex-grow: 1;
                 flex-direction: column;
                 align-items: normal;
-                padding: 0 20px;
+                padding: 30px 30px 50px;
                 flex-wrap: nowrap;
                 align-content: stretch;
                 justify-content: flex-start;
-                gap: 10px;
+                gap: 20px;
+                border-radius: 20px;
+                overflow: hidden;
+                background-color: transparent;
+                transition: background-color 0.2s ease-in-out;
             }
             
-            .card_title {
+            .card.icon-card:hover {
+                z-index: 9;
+                background-color: #F8FAFA;
+                box-shadow: 0px 44px 64px -60px rgba(0, 0, 0, 0.55);
+            }
+            
+            .card .card_title {
                 color: var(--Black, #2a2e32);
                 text-align: center;
                 align-self: normal;
-                margin: 13px -20px 0 0;
+                margin: 0;
                 font: 600 26px/140% Geologica, sans-serif;
             }
             
+                      
             .card .card_content {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+                max-width: 100%;
                 overflow: hidden;
+                max-height: 100px;
                 color: var(--Black, #2a2e32);
                 text-align: center;
                 text-overflow: ellipsis;
-                max-height: 100px;
-                white-space: unset;
-                align-self: normal;
-                margin: 0;
                 font: 400 18px/140% Geologica, sans-serif;
+                transition: max-height 0.4s ease-in-out;
             }
             
+            .card:hover .card_content {
+                max-height: 500px;
+                display: block;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: unset;
+                line-clamp: unset;
+                overflow: visible;
+            
+            }
+            
+            .card:hover .card_title,
+            .card:hover .card_content {
+                text-align: left;
+            }
+
             .card_image {
                 text-align: center;
             }
             
             .card .card_image img {
-                margin: 0 auto;
+                position: relative;
+                left: 50%;
+                translate: -50% 0;
+                transition: left 0.3s ease, 
+                            translate 0.5s ease-in-out, 
+                            filter 0.2s ease-in-out;
+            }
+
+            .card:hover .card_image img {
+                left: 0;
+                translate: 0 0;
+                filter: hue-rotate(-90deg);
             }
 
             
