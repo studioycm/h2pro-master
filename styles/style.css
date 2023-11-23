@@ -2721,7 +2721,6 @@ section > h2 {
             .div-142 {
                 flex-direction: column;
                 align-items: stretch;
-                gap: 0px;
             }
             }
             .column-13 {
@@ -5697,3 +5696,93 @@ section > h2 {
                 align-items: start;
                 padding: 220px 80px 200px;
             }
+
+            .slides {
+                display: flex;
+                justify-content: flex-start;
+                gap: 20px;
+                padding: 50px 20px;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-content: stretch;
+                align-items: stretch;
+              }
+              
+              .slide-card {
+                flex-direction: column;
+                position: relative;
+                display: flex;
+                min-height: 80vh;
+                flex-grow: 1;
+                flex-shrink: 0;
+                flex-basis: 540px;
+                align-items: flex-start;
+                padding: 50px 8px 40px 38px;
+                border-radius: 30px;
+                overflow: hidden;
+                box-shadow: 0px 40px 30px -30px rgba(0, 0, 0, 0.5);
+                flex-wrap: nowrap;
+                align-content: flex-start;
+                justify-content: space-between;
+              }
+              @media (max-width: 991px) {
+                .slide-card {
+                  max-width: 100%;
+                  padding-left: 20px;
+                }
+              }
+              .slide-card__bg-img {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+              }
+              .slide-card__title {
+                position: relative;
+                color: #fff;
+                align-self: stretch;
+                margin-top: 417px;
+                font: 700 40px/46px Geologica, sans-serif;
+              }
+              @media (max-width: 991px) {
+                .slide-card__title {
+                  max-width: 100%;
+                  margin-top: 40px;
+                }
+              }
+              .slide-card__description {
+                position: relative;
+                color: #fff;
+                letter-spacing: -0.27px;
+                align-self: stretch;
+                margin-top: 8px;
+                font: 400 18px/22px Geologica, sans-serif;
+              }
+              @media (max-width: 991px) {
+                .slide-card__description {
+                  max-width: 100%;
+                }
+              }
+              .slide-card__bottom {
+                position: relative;
+                display: flex;
+                margin-top: 18px;
+                width: 115px;
+                max-width: 100%;
+                gap: 8px;
+              }
+              .slide-card__link {
+                color: #fff;
+                font: 400 18px/16px Geologica, sans-serif;
+              }
+              .slide-card__link::after {
+                aspect-ratio: 1.33;
+                object-fit: contain;
+                object-position: center;
+                width: 16px;
+                background-image: url("./images/more-arrow.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                max-width: 100%;
+              }
