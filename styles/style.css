@@ -5118,7 +5118,7 @@ section > h2 {
             
             .div-23 {
                 flex-grow: 1;
-                flex-basis: 83%;
+                flex-basis: 85%;
                 flex-direction: column;
                 margin: auto 0;
                 align-items: flex-start;
@@ -5177,6 +5177,13 @@ section > h2 {
                 justify-content: flex-start;
             }
             
+            .sections > .section {
+                min-height: 100vh;
+            }
+            
+            .sections > .section.footer {
+                min-height: unset;
+            }
 
             .header {
                 position: fixed;
