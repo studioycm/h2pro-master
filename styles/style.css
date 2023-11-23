@@ -5777,6 +5777,9 @@ section > h2 {
                 font: 400 18px/16px Geologica, sans-serif;
               }
               .slide-card__link::after {
+                display: inline-block;
+                position: relative;
+                content: "";
                 aspect-ratio: 1.33;
                 object-fit: contain;
                 object-position: center;
