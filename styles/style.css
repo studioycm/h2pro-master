@@ -5177,23 +5177,6 @@ section > h2 {
                 justify-content: flex-start;
             }
             
-            .div-2.section {
-                display: flex;
-                flex-direction: column;
-                overflow: hidden;
-                align-self: stretch;
-                position: relative;
-                display: flex;
-                min-height: 100vh;
-                width: 100%;
-                align-items: center;
-                padding: 0px 0 30px;
-                }
-                @media (max-width: 991px) {
-                    .div-2.section {
-                    max-width: 100%;
-                }
-                }
 
             .header {
                 position: fixed;
@@ -5340,9 +5323,43 @@ section > h2 {
 
             
             svg#h2pro-mission_svg {
-                translate: 0px -150px;
+                translate: 0px 0px;
             }
 
+            .section-01 {
+                flex-direction: column;
+                align-self: stretch;
+                position: relative;
+                display: flex;
+                min-height: 100vh;
+                width: 100%;
+                align-items: center;
+                padding: 0px 0 30px;
+            }
+            
+            .div-29 {
+                gap: 20px;
+                display: flex;
+                margin: 200px auto 0;
+                max-width: 1690px;
+                align-items: flex-start;
+                justify-content: center;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-content: flex-start;
+            }
+            
+            .section-02 {
+                align-items: center;
+                flex-direction: column;
+                align-self: stretch;
+                position: relative;
+                display: flex;
+                min-height: 100vh;
+                padding: 100px 20px 100px;
+                width: 100%;
+                max-width: 100%;
+            }
 
             button#drop-arrow {
                 background-image: url('../images/drop-arrow.svg');
@@ -5357,11 +5374,7 @@ section > h2 {
             button#drop-arrow:hover {
                 background-image: url('../images/drop-arrow-hover.svg');
             }
-            .section-02 {
-                align-self: center;
-                width: 100%;
-                max-width: 1601px;
-            }
+            
             .section-03 {
                 flex-direction: column;
                 align-self: stretch;
