@@ -5632,7 +5632,7 @@ section > h2 {
             
             .section-06 img.img-22 {
                 display: block;
-                position: relative;
+                position: absolute;
                 top: 0;
                 left: 0;
                 aspect-ratio: 1.68;
@@ -5643,21 +5643,28 @@ section > h2 {
                 overflow: visible;
             }
 
-            .section-06 img.img-22[data-opacity="1"] {
+            .section-06 img.img-22[data-opacity="100"] {
                 opacity: 1;
                 z-index: 4;
+                translate: 200% 0;
             }
-            .section-06 img.img-22[data-opacity="0.75"] {
+            .section-06 img.img-22[data-opacity="75"] {
                 opacity: 0.75;
                 z-index: 3;
+                left: 20%;
+                translate: 225% 0;
             }
-            .section-06 img.img-22[data-opacity="0.50"] {
+            .section-06 img.img-22[data-opacity="50"] {
                 opacity: 0.5;
                 z-index: 2;
+                left: 40%;
+                translate: 250% 0;
             }
-            .section-06 img.img-22[data-opacity="0.25"] {
+            .section-06 img.img-22[data-opacity="25"] {
                 opacity: 0.25;
                 z-index: 1;
+                left: 60%;
+                translate: 275% 0;
             }
 
             /* .section-06 img.img-22[data-x="0"] {
