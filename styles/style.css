@@ -828,7 +828,7 @@ section > h2 {
             .div-6 > div {
                 min-width: max-content;
             }
-            .div-7 {
+            /* .div-7 {
             color: #fff;
             align-self: center;
             margin: auto 0;
@@ -912,7 +912,7 @@ section > h2 {
             width: 24px;
             overflow: hidden;
             max-width: 100%;
-            }
+            } */
             .div-17 {
             color: #1d380c;
             white-space: nowrap;
@@ -5168,7 +5168,26 @@ section > h2 {
                 fill: #006ff2;
             }
 
+            #nav-menu .nav-menu-inner div {
+                font: 300 22px Geologica, sans-serif;
+                color: #fff
+            }
 
+            #nav-menu .nav-menu-inner > div {
+                align-self: center;
+                display: flex;
+                gap: 3px;
+                margin: auto 0;
+            }
+
+            #nav-menu .nav-menu-inner > div > img {
+                aspect-ratio: 1;
+                object-fit: contain;
+                object-position: center;
+                width: 24px;
+                overflow: hidden;
+                max-width: 100%;
+            }
 
 
             
@@ -5783,9 +5802,9 @@ section > h2 {
                 position: relative;
                 display: flex;
                 margin-top: 18px;
-                width: 115px;
+                width: 100%;
                 max-width: 100%;
-                gap: 8px;
+                gap: 20px;
               }
               .slide-card__link {
                 color: #fff;
@@ -5798,8 +5817,9 @@ section > h2 {
                 aspect-ratio: 1.33;
                 object-fit: contain;
                 object-position: center;
-                width: 16px;
-                background-image: url("./images/more-arrow.svg");
+                width: 18px;
+                margin-left: 5px;
+                background-image: url("../images/more-arrow.svg");
                 background-repeat: no-repeat;
                 background-size: contain;
                 max-width: 100%;
