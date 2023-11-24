@@ -5617,6 +5617,7 @@ section > h2 {
             }
             
             .section-06 .column-12 {
+                position: relative;
                 display: flex;
                 overflow: hidden;
                 flex-direction: row;
@@ -5630,12 +5631,48 @@ section > h2 {
             }
             
             .section-06 img.img-22 {
+                display: block;
+                position: relative;
+                top: 0;
+                left: 0;
                 aspect-ratio: 1.68;
-                object-fit: cover;
+                object-fit: contain;
                 object-position: center;
-                width: 100%;
+                max-width: 400px;
+                height: 100%;
                 overflow: visible;
             }
+
+            .section-06 img.img-22[data-opacity="1"] {
+                opacity: 1;
+                z-index: 4;
+            }
+            .section-06 img.img-22[data-opacity="0.75"] {
+                opacity: 0.75;
+                z-index: 3;
+            }
+            .section-06 img.img-22[data-opacity="0.50"] {
+                opacity: 0.5;
+                z-index: 2;
+            }
+            .section-06 img.img-22[data-opacity="0.25"] {
+                opacity: 0.25;
+                z-index: 1;
+            }
+
+            /* .section-06 img.img-22[data-x="0"] {
+                translate: 0 0;
+            }
+            .section-06 img.img-22[data-x="70"] {
+                translate: -30% 0;
+            }
+            .section-06 img.img-22[data-x="140"] {
+                translate: -60% 0;
+            }
+            .section-06 img.img-22[data-x="210"] {
+                translate: -90% 0;
+            } */
+
 
             .section-07 {
                 align-self: center;
