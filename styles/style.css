@@ -5156,6 +5156,21 @@ section > h2 {
                 display: block;
                 z-index: 9;
             }
+
+            .logo #logo_svg .svg-char.color-green {
+                fill: #5fb847;
+            }
+            .logo #logo_svg .svg-char.color-white {
+                fill: #fff;
+            }
+            .logo.dark#logo_svg .svg-char.color-white
+            .logo#logo_svg .svg-char.color-blue {
+                fill: #006ff2;
+            }
+
+
+
+
             
             .div-3.hero-inner {
                 position: relative;
