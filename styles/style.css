@@ -5050,20 +5050,7 @@ section > h2 {
             }
             }
 
-            .div-21-2 {
-                position: relative;
-                align-self: start;
-                display: flex;
-                margin-top: 0;
-                width: 100%;
-                max-width: 100%;
-                align-items: center;
-                justify-content: center;
-                gap: 20px;
-                flex-direction: row;
-                align-content: center;
-                flex-wrap: nowrap;
-            }
+            
             
                        
             .div-21 {
@@ -5129,17 +5116,30 @@ section > h2 {
                 display: block;
             }
             
-            .section-bg-img {
+            
+            /* #0 header */
+            
+            
+
+            .header {
+                position: fixed;
                 top: 0;
                 left: 0;
-                position: absolute;
-                height: 100%;
+                z-index: 999;
+                flex: 1;
+                flex-basis: 100%;
+                align-self: stretch;
+                display: block;
                 width: 100%;
-                object-fit: cover;
-                object-position: center;
+                max-width: 100%;
+                margin: 0 auto;
             }
             
-            .div-4.header-inner {
+            .header.bg-on {
+                background-image: linear-gradient(180deg, rgb(0 100 160 / 70%) 0%, transparent 100%);
+            }
+
+            .header-inner {
                 position: relative;
                 display: flex;
                 align-items: center;
@@ -5150,7 +5150,14 @@ section > h2 {
                 margin: 0 auto;
                 padding: 20px 20px 30px;
             }
-            
+
+            .logo {
+                /* padding: 18px 20px 10px; */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+            }
 
             .logo svg#logo_svg {
                 display: block;
@@ -5191,6 +5198,60 @@ section > h2 {
 
 
             
+            
+            /* #0 sections */
+
+            #sections {
+                background-color: #fff;
+                display: flex;
+                flex-direction: column;
+                align-content: stretch;
+                align-items: stretch;
+                justify-content: flex-start;
+            }
+
+            #sections .section-wrap {
+                position: relative;
+                width: 100%;
+                max-width: 100%;
+                min-height: 100vh;
+            }
+
+            #sections .section-wrap .section {
+                position: relative;
+                width: 100%;
+                max-width: 100%;
+                /* overflow: hidden; */
+                min-height: 100vh;
+            }
+            
+            .section-bg-img {
+                top: 0;
+                left: 0;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .footer {
+                min-height: unset;
+            }
+
+           /* #1 section-01 "High Efficiency Production of Green Hydrogen" + bg video */
+                      
+            .section-01 {
+                flex-direction: column;
+                align-self: stretch;
+                position: relative;
+                display: flex;
+                min-height: 100vh;
+                width: 100%;
+                align-items: center;
+                padding: 0px 0 30px;
+            }
+            
             .div-3.hero-inner {
                 position: relative;
                 display: flex;
@@ -5200,61 +5261,83 @@ section > h2 {
                 flex-direction: column;
                 padding: 40px 20px 0px;
             }
-            
-            .div.sections {
-                background-color: #fff;
+            .div-21-2 {
+                position: relative;
+                align-self: start;
                 display: flex;
-                flex-direction: column;
-                align-content: stretch;
-                align-items: stretch;
-                justify-content: flex-start;
-            }
-            
-            .sections > .section {
-                min-height: 100vh;
-            }
-            
-            .sections > .section.footer {
-                min-height: unset;
-            }
-
-            .header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                z-index: 999;
-                flex: 1;
-                flex-basis: 100%;
-                align-self: stretch;
-                display: block;
+                margin-top: 0;
                 width: 100%;
                 max-width: 100%;
-                margin: 0 auto;
-            }
-            
-            .header.bg-on {
-                background-image: linear-gradient(180deg, rgb(0 100 160 / 70%) 0%, transparent 100%);
-            }
-
-            .logo {
-                /* padding: 18px 20px 10px; */
-                display: flex;
                 align-items: center;
                 justify-content: center;
-
+                gap: 20px;
+                flex-direction: row;
+                align-content: center;
+                flex-wrap: nowrap;
+            }
+            button#drop-arrow {
+                background-image: url('../images/drop-arrow-hover.svg');
+                background-image: url('../images/drop-arrow.svg');
+                background-repeat: no-repeat;
+                position: relative;
+                display: inline-block;
+                width: 85px;
+                height: 95px;
+                transition: all 0.6s ease-in-out;
+                z-index: 9;
             }
             
-            .logo.logo-bg {
-                background: linear-gradient( 270deg, rgb(222 222 222 / 34%) 0%, rgb(149 184 203 / 34%) 100% );
-                backdrop-filter: blur(44px);
-                border-radius: 0px 40px 40px 40px;
-                overflow: hidden;
+            button#drop-arrow:hover {
+                background-image: url('../images/drop-arrow-hover.svg');
             }
 
+            #drop {
+                position: absolute;
+                top: auto;
+                bottom: 50px;
+                left: 50%;
+                translate: -50% 0;
+                z-index: 999;
+                width: 45px;
+                height: 45px;
+                margin: 0;
+                padding: 0;
+                rotate: 45deg;
+                border-radius: 0 30px 30px 30px;
+                background-color: rgb(106, 182, 24);
+                z-index: 1;
+            }
+
+            /* #2 section-02 "H2Pro Mission" + drop anim */
+
+            .section-02 {
+                align-items: center;
+                flex-direction: column;
+                align-self: stretch;
+                position: relative;
+                display: flex;
+                min-height: 100vh;
+                padding: 0;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .div-29 {
+                gap: 20px;
+                display: flex;
+                margin: 200px auto 0;
+                max-width: 1690px;
+                align-items: flex-start;
+                justify-content: space-between;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-content: flex-start;
+            }
+            
             .column-1 {
                 display: flex;
                 line-height: normal;
-                width: 62%;
+                width: max-content;
                 margin-left: 0px;
                 justify-content: flex-start;
                 align-content: stretch;
@@ -5267,157 +5350,11 @@ section > h2 {
                 }
             }
 
-            .grid.grid-3 {
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                grid-template-rows: repeat(2, 300px);
-                align-content: stretch;
-                justify-content: start;
-                align-items: start;
-                justify-items: center;
-                gap: 30px 30px;
-            }
-            
-            .card.icon-card {
-                position: relative;
-                display: flex;
-                flex-grow: 1;
-                flex-direction: column;
-                align-items: normal;
-                padding: 30px 30px 50px;
-                flex-wrap: nowrap;
-                align-content: stretch;
-                justify-content: flex-start;
-                gap: 20px;
-                border-radius: 20px;
-                height: auto;
-                overflow: hidden;
-                background-color: transparent;
-                transition: all 0.3s ease-in-out;
-                box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-            }
-            
-            .card.icon-card:hover {
-                z-index: 9;
-                background-color: #F8FAFA;
-                box-shadow: 0px 44px 64px -60px rgba(0, 0, 0, 0.55);
-            }
-            
-            .card .card_title {
-                color: var(--Black, #2a2e32);
-                text-align: center;
-                align-self: normal;
-                margin: 0;
-                font: 600 26px/140% Geologica, sans-serif;
-            }
-            
-                      
-            .card .card_content {
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 3;
-                line-clamp: 3;
-                max-width: 100%;
-                overflow: hidden;
-                max-height: 100px;
-                color: var(--Black, #2a2e32);
-                text-align: center;
-                text-overflow: ellipsis;
-                font: 400 18px/140% Geologica, sans-serif;
-                transition: max-height 0.3s ease-in-out;
-            }
-            
-            .card:hover .card_content {
-                max-height: 500px;
-                display: block;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: unset;
-                line-clamp: unset;
-                overflow: visible;
-            
-            }
-            
-            .card:hover .card_title,
-            .card:hover .card_content {
-                text-align: left;
-            }
-
-            .card_image {
-                text-align: center;
-            }
-            
-            .card .card_image img {
-                position: relative;
-                left: 50%;
-                translate: -50% 0;
-                transition: left 0.3s ease, 
-                            translate 0.5s ease-in-out, 
-                            filter 0.2s ease-in-out;
-            }
-
-            .card:hover .card_image img {
-                left: 0;
-                translate: 0 0;
-                filter: hue-rotate(-90deg);
-            }
-
-            
-
-            
             svg#h2pro-mission_svg {
                 translate: 0px 0px;
             }
-
-            .section-01 {
-                flex-direction: column;
-                align-self: stretch;
-                position: relative;
-                display: flex;
-                min-height: 100vh;
-                width: 100%;
-                align-items: center;
-                padding: 0px 0 30px;
-            }
-            
-            .div-29 {
-                gap: 20px;
-                display: flex;
-                margin: 200px auto 0;
-                max-width: 1690px;
-                align-items: flex-start;
-                justify-content: center;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                align-content: flex-start;
-            }
-            
-            .section-02 {
-                align-items: center;
-                flex-direction: column;
-                align-self: stretch;
-                position: relative;
-                display: flex;
-                min-height: 100vh;
-                padding: 100px 20px 100px;
-                width: 100%;
-                max-width: 100%;
-            }
-
-            button#drop-arrow {
-                background-image: url('../images/drop-arrow-hover.svg');
-                background-image: url('../images/drop-arrow.svg');
-                background-repeat: no-repeat;
-                position: relative;
-                display: inline-block;
-                width: 85px;
-                height: 95px;
-                transition: all 0.6s ease-in-out;
-            }
-            
-            button#drop-arrow:hover {
-                background-image: url('../images/drop-arrow-hover.svg');
-            }
-            
+            /* #3 section-03 "energy efficiency graph" + interactive graph */
+                       
             .section-03 {
                 flex-direction: column;
                 align-self: stretch;
@@ -5433,6 +5370,8 @@ section > h2 {
                 max-width: 1740px;
             }
             
+            /* #4 section-04 "MEET THE E-TAC ELECTROLYZER" + bg image anim + video */
+
             .section-04 {
                 flex-direction: column;
                 align-self: center;
@@ -5569,6 +5508,8 @@ section > h2 {
                 }
             }
             
+            /* #5 section-05 "E-TAC Benefits" + icons grid */
+
             .section-05 {
                 align-self: center;
                 max-width: 1500px;
@@ -5581,6 +5522,102 @@ section > h2 {
                 align-items: center;
                 padding: 100px 20px 300px;
             }
+
+            .grid.grid-3 {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: repeat(2, 300px);
+                align-content: stretch;
+                justify-content: start;
+                align-items: start;
+                justify-items: center;
+                gap: 30px 30px;
+            }
+            
+            .card.icon-card {
+                position: relative;
+                display: flex;
+                flex-grow: 1;
+                flex-direction: column;
+                align-items: normal;
+                padding: 30px 30px 50px;
+                flex-wrap: nowrap;
+                align-content: stretch;
+                justify-content: flex-start;
+                gap: 20px;
+                border-radius: 20px;
+                height: auto;
+                overflow: hidden;
+                background-color: transparent;
+                transition: all 0.3s ease-in-out;
+                box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+            }
+            
+            .card.icon-card:hover {
+                z-index: 9;
+                background-color: #F8FAFA;
+                box-shadow: 0px 44px 64px -60px rgba(0, 0, 0, 0.55);
+            }
+            
+            .card .card_title {
+                color: var(--Black, #2a2e32);
+                text-align: center;
+                align-self: normal;
+                margin: 0;
+                font: 600 26px/140% Geologica, sans-serif;
+            }
+            
+                      
+            .card .card_content {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+                max-width: 100%;
+                overflow: hidden;
+                max-height: 100px;
+                color: var(--Black, #2a2e32);
+                text-align: center;
+                text-overflow: ellipsis;
+                font: 400 18px/140% Geologica, sans-serif;
+                transition: max-height 0.3s ease-in-out;
+            }
+            
+            .card:hover .card_content {
+                max-height: 500px;
+                display: block;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: unset;
+                line-clamp: unset;
+                overflow: visible;
+            
+            }
+            
+            .card:hover .card_title,
+            .card:hover .card_content {
+                text-align: left;
+            }
+
+            .card_image {
+                text-align: center;
+            }
+            
+            .card .card_image img {
+                position: relative;
+                left: 50%;
+                translate: -50% 0;
+                transition: left 0.3s ease, 
+                            translate 0.5s ease-in-out, 
+                            filter 0.2s ease-in-out;
+            }
+
+            .card:hover .card_image img {
+                left: 0;
+                translate: 0 0;
+                filter: hue-rotate(-90deg);
+            }
+            
+            /* #6 section-06 "Made for Utility Scale" + cell pack anim */
 
             .section-06 {
                 flex-direction: column;
