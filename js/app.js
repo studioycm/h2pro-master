@@ -96,8 +96,21 @@ headerTL
     backgroundImage: "linear-gradient(270deg, rgba(149, 149, 149, 0.34) 0%, rgba(128, 128, 128, 0.54) 40%)"
 }, '<');
 
-let section2MidHeight = document.querySelector('#section-02').offsetHeight / 2;
-let drop = gsap.to('#drop', {
+let webinarSticker = gsap.to('#webinar-sticker', {
+    scrollTrigger: {
+        id: 'webinar-sticker',
+        trigger: '#section-01',
+        start: () => '60% center',
+        end: () => '90% center',
+        toggleActions: 'play none reverse none',
+        // scrub: 3,
+        markers: true
+    },
+    xPercent: -85,
+    duration: 1
+});
+
+const drop1TL = gsap.timeline({
     scrollTrigger: {
         id: 'drop',
         trigger: '#section-02',
@@ -106,8 +119,16 @@ let drop = gsap.to('#drop', {
         toggleActions: 'play reverse play stop',
         scrub: 1,
         // markers: true
-    },
-    zIndex: 1,
+    }
+});
+
+let section2MidHeight = document.querySelector('#section-02').offsetHeight / 2;
+drop1TL
+.to('#drop', {
+    opacity: 1,
+    duration: 0.5
+})
+.to('#drop', {
     x: -285,
     y: section2MidHeight + 165,
     rotate: 0,
