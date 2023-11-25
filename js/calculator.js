@@ -166,66 +166,7 @@ function updateBarsAndLabels() {
   }
 
 
-  // if ((calcDeveloperConventional / etacMaxValue) * 100 < 60) {
-  //   if (!valueConvetional.parentElement.classList.contains("active")) {
-  //     valueConvetional.parentElement.classList.add("active");
-  //   }
-  // } else {
-  //   if (valueConvetional.parentElement.classList.contains("active")) {
-  //     valueConvetional.parentElement.classList.remove("active");
-  //   }
-  // }
-
-  // if ((calcDeveloperEtac / etacMaxValue) * 100 < 60) {
-  //   if (!valueEtac.parentElement.classList.contains("active")) {
-  //     valueEtac.parentElement.classList.add("active");
-  //   }
-  // } else {
-  //   if (valueEtac.parentElement.classList.contains("active")) {
-  //     valueEtac.parentElement.classList.remove("active");
-  //   }
-  // }
-
-  // if ((calcDeveloperProfits / profitMaxValue) * 100 < 60) {
-  //   if (!valueProfits.parentElement.classList.contains("active")) {
-  //     valueProfits.parentElement.classList.add("active");
-  //   }
-  // } else {
-  //   if (valueProfits.parentElement.classList.contains("active")) {
-  //     valueProfits.parentElement.classList.remove("active");
-  //   }
-  // }
-
-  //  if ((calcConsumerConventional / (conventionalMaxValueConsumer * 2)) * 100 < 30) {
-  //   if (!valueConvetionalConsumer.parentElement.classList.contains("active")) {
-  //     valueConvetionalConsumer.parentElement.classList.add("active");
-  //   }
-  // } else {
-  //   if (valueConvetionalConsumer.parentElement.classList.contains("active")) {
-  //     valueConvetionalConsumer.parentElement.classList.remove("active");
-  //   }
-  // }
-
-  // if ((calcConsumerEtac / (conventionalMaxValueConsumer * 2)) * 100 < 30) {
-  //   if (!valueEtacConsumer.parentElement.classList.contains("active")) {
-  //     valueEtacConsumer.parentElement.classList.add("active");
-  //   }
-  // } else {
-  //   if (valueEtacConsumer.parentElement.classList.contains("active")) {
-  //     valueEtacConsumer.parentElement.classList.remove("active");
-  //   }
-  // }
-
-  // if ((calcConsumerProfits / (profitMaxValueConsumer * 2)) * 100 < 30) {
-  //   if (!valueProfitsConsumer.parentElement.classList.contains("active")) {
-  //     valueProfitsConsumer.parentElement.classList.add("active");
-  //   }
-  // } else {
-  //   if (valueProfitsConsumer.parentElement.classList.contains("active")) {
-  //     valueProfitsConsumer.parentElement.classList.remove("active");
-  //   }
-  // }
-  
+ 
   
 }
 

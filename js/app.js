@@ -34,6 +34,49 @@ let sliderTween = gsap.to(slides, {
     }
 });
 
+const graphInputs = document.querySelectorAll('#graph-section input[type="range"]');
+const section3TL = gsap.timeline({
+    scrollTrigger: {
+        trigger: '#section-03',
+        start: '300px center',
+        end: '+=600',
+        toggleActions: 'play none none none',
+        scrub: 1,
+        markers: true,
+        onEnter: () => {     
+            graphInputs.forEach(input => {
+                // set input value to the step that is nearst to half of max - min values 
+                let step = input.max / 2;
+                let value = Math.round(step / input.step) * input.step;
+                input.setAttribute('value', value);
+                input.dispatchEvent(new Event('input'));
+            });
+        },
+        onLeave: () => {     
+            graphInputs.forEach(input => {
+                input.setAttribute('value', input.max);
+                input.dispatchEvent(new Event('input'));
+            });
+        },
+        onEnterBack: () => {     
+            graphInputs.forEach(input => {
+                // set input value to the step that is nearst to half of max - min values 
+                let step = input.max / 2;
+                let value = Math.round(step / input.step) * input.step;
+                input.setAttribute('value', value);
+                input.dispatchEvent(new Event('input'));
+            });
+        },
+        onLeaveBack: () => {     
+            graphInputs.forEach(input => {
+                // set input value to the step that is nearst to half of max - min values 
+                input.setAttribute('value', input.min);
+                input.dispatchEvent(new Event('input'));
+            });
+        },
+    }
+});
+
 const headerTL = gsap.timeline({
     scrollTrigger: {
         trigger: '#section-02',
@@ -52,6 +95,7 @@ headerTL
 .to('#nav-menu', {
     backgroundImage: "linear-gradient(270deg, rgba(149, 149, 149, 0.34) 0%, rgba(128, 128, 128, 0.54) 40%)"
 }, '<');
+
 let section2MidHeight = document.querySelector('#section-02').offsetHeight / 2;
 let drop = gsap.to('#drop', {
     scrollTrigger: {
@@ -61,14 +105,13 @@ let drop = gsap.to('#drop', {
         end: () => (section2MidHeight + 165) + ' center',
         toggleActions: 'play reverse play stop',
         scrub: 1,
-        markers: true,
-        // pin: true,
-        // pinSpacing: false
+        // markers: true
     },
+    zIndex: 1,
     x: -285,
     y: section2MidHeight + 165,
     rotate: 0,
-    duration: 3
+    duration: 4
 });
 
 const section6TL = gsap.timeline({
@@ -87,3 +130,4 @@ section6TL
     stagger: 0.3,
     duration: 1
 });
+
