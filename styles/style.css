@@ -5290,9 +5290,11 @@ section > h2 {
                 justify-content: flex-start;
                 gap: 20px;
                 border-radius: 20px;
+                height: auto;
                 overflow: hidden;
                 background-color: transparent;
-                transition: background-color 0.2s ease-in-out;
+                transition: all 0.3s ease-in-out;
+                box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
             }
             
             .card.icon-card:hover {
@@ -5322,7 +5324,7 @@ section > h2 {
                 text-align: center;
                 text-overflow: ellipsis;
                 font: 400 18px/140% Geologica, sans-serif;
-                transition: max-height 0.4s ease-in-out;
+                transition: max-height 0.3s ease-in-out;
             }
             
             .card:hover .card_content {
@@ -5646,25 +5648,25 @@ section > h2 {
             .section-06 img.img-22[data-opacity="100"] {
                 opacity: 1;
                 z-index: 4;
-                translate: 200% 0;
+                /* translate: 200% 0; */
             }
             .section-06 img.img-22[data-opacity="75"] {
                 opacity: 0.75;
                 z-index: 3;
                 left: 20%;
-                translate: 225% 0;
+                /* translate: 250% 0; */
             }
             .section-06 img.img-22[data-opacity="50"] {
                 opacity: 0.5;
                 z-index: 2;
                 left: 40%;
-                translate: 250% 0;
+                /* translate: 350% 0; */
             }
             .section-06 img.img-22[data-opacity="25"] {
                 opacity: 0.25;
                 z-index: 1;
                 left: 60%;
-                translate: 275% 0;
+                /* translate: 500% 0; */
             }
 
             /* .section-06 img.img-22[data-x="0"] {
