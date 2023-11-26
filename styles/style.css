@@ -5474,7 +5474,11 @@ section > h2 {
             }
             #section-05 .grid.grid-3 {
                 max-width: 1500px;
+                margin: 0 auto 100px;
             }
+
+            
+
             .card.icon-card {
                 position: relative;
                 display: flex;
@@ -5543,7 +5547,17 @@ section > h2 {
                 text-align: center;
             }
             
-            .card .card_image img {
+            .grid.animated-icons .card_image {
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-content: center;
+                justify-content: flex-start;
+                align-items: stretch;
+            }
+
+            .grid:not(.animated-icons) .card .card_image img {
                 position: relative;
                 left: 50%;
                 translate: -50% 0;
@@ -5552,12 +5566,43 @@ section > h2 {
                             filter 0.2s ease-in-out;
             }
 
-            .card:hover .card_image img {
+            
+            .grid:not(.animated-icons) .card:hover .card_image img {
                 left: 0;
                 translate: 0 0;
                 filter: hue-rotate(-90deg);
             }
+
+            .grid.animated-icons .card .card_image img.img-svg {
+                position: absolute;
+                left: 50%;
+                translate: -50% 0;
+                opacity: 0;
+                transition: left 0.3s ease, 
+                            translate 0.8s ease-in-out, 
+                            filter 0.2s ease-in-out,
+                            opacity 0.3s ease-in-out;
+            }
+
+            .animated-icons .card:hover .card_image img.img-svg {
+                left: 0;
+                translate: 0 0;
+                filter: hue-rotate(-90deg);
+                opacity: 1;
+            }
             
+            .animated-icons .card .card_image img.img-gif {
+                position: relative;
+                left: 50%;
+                translate: -50% 0;
+                opacity: 1;
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            .animated-icons .card:hover .card_image img.img-gif {
+                opacity: 0;
+            }
+
             /* #6 section-06 "Made for Utility Scale" + cell pack anim */
 
             .section-06 {
