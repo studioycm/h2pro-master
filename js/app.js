@@ -27,7 +27,7 @@ let sliderTween = gsap.to(slides, {
     scrollTrigger: {
         trigger: "#section-07",
         pin: true,
-        scrub: 1,
+        scrub: 3,
         // snap: 1 / (slides.length),
         // base vertical scrolling on how wide the container is so it feels more natural.
         start: () => "top top",
@@ -38,12 +38,13 @@ let sliderTween = gsap.to(slides, {
 const graphInputs = document.querySelectorAll('#graph-section input[type="range"]');
 const section3TL = gsap.timeline({
     scrollTrigger: {
+        id: 'graph',
         trigger: '#section-03',
-        start: '300px center',
+        start: 'top top',
         end: '+=600',
         toggleActions: 'play none none none',
         scrub: 1,
-        markers: true,
+        // markers: true,
         onEnter: () => {     
             graphInputs.forEach(input => {
                 // set input value to the step that is nearst to half of max - min values 
@@ -105,35 +106,62 @@ let webinarSticker = gsap.to('#webinar-sticker', {
         end: () => '90% center',
         toggleActions: 'play none reverse none',
         // scrub: 3,
-        markers: true
+        // markers: true
     },
     xPercent: -85,
     duration: 1
 });
+const section2Height = document.querySelector('#section-02').offsetHeight;
+const section2MidHeight = (section2Height / 2) + 105;
+const section3GraphEnd = document.querySelector('#section-03').offsetHeight - 360;
+
 
 const drop1TL = gsap.timeline({
     scrollTrigger: {
         id: 'drop',
         trigger: '#section-02',
         start: () => 'top 90%',
-        end: () => (section2MidHeight + 165) + ' center',
-        toggleActions: 'play reverse play stop',
-        scrub: 1,
+        end: () => section2MidHeight + ' center',
+        toggleActions: 'play none revers restart',
+        scrub: 2,
         // markers: true
     }
 });
 
-let section2MidHeight = document.querySelector('#section-02').offsetHeight / 2;
 drop1TL
 .to('#drop', {
     opacity: 1,
     duration: 0.5
 })
 .to('#drop', {
-    x: -285,
-    y: section2MidHeight + 165,
+    x: -282,
+    y: section2MidHeight + 60,
     rotate: 0,
-    duration: 4
+    duration: 3
+});
+
+const drop2TL = gsap.timeline({
+    scrollTrigger: {
+        id: 'drop-2',
+        trigger: '#section-03',
+        start: () => 'top bottom',
+        end: () => (section3GraphEnd + 120) + ' bottom',
+        toggleActions: 'play none reverse restart',
+        scrub: 1,
+        markers: true
+    }
+});
+
+drop2TL
+.to('#drop', {
+    x: 200,
+    y: section2Height + section3GraphEnd,
+    rotate: 45,
+    duration: 3
+})
+.to('#drop', {
+    opacity: 0,
+    duration: 0.3
 });
 
 const section6TL = gsap.timeline({

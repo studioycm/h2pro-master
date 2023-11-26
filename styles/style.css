@@ -1009,20 +1009,6 @@ section > h2 {
             }
             }
             
-            .div-29 {
-                gap: 20px;
-                display: flex;
-                margin-top: 180px;
-            }
-            
-                @media (max-width: 991px) {
-                .div-29 {
-                    margin-top: 120px;
-                    flex-direction: column;
-                    align-items: stretch;
-                    gap: 0px;
-                }
-                }
             
             .div-30 {
             display: flex;
@@ -2488,7 +2474,6 @@ section > h2 {
             .div-136 {
             align-self: stretch;
             display: flex;
-            margin-right: -20px;
             width: 100%;
             align-items: center;
             justify-content: space-between;
@@ -5259,7 +5244,7 @@ section > h2 {
                 position: relative;
                 display: flex;
                 min-height: 100vh;
-                padding: 0;
+                padding: 300px 0 100px;
                 width: 100%;
                 max-width: 100%;
             }
@@ -5267,7 +5252,7 @@ section > h2 {
             .div-29 {
                 gap: 20px;
                 display: flex;
-                margin: 200px auto 0;
+                margin: 0px auto;
                 max-width: 1690px;
                 align-items: stretch;
                 justify-content: space-between;
@@ -5831,19 +5816,39 @@ section > h2 {
                 flex-direction: column;
                 position: relative;
                 display: flex;
-                min-height: 80vh;
+                min-height: 60vh;
                 flex-grow: 1;
                 flex-shrink: 0;
-                flex-basis: 540px;
+                flex-basis: 460px;
                 align-items: flex-start;
-                padding: 50px 8px 40px 38px;
+                padding: 250px 10px 50px 40px;
                 border-radius: 30px;
                 overflow: hidden;
                 box-shadow: 0px 40px 30px -30px rgba(0, 0, 0, 0.5);
                 flex-wrap: nowrap;
                 align-content: flex-start;
-                justify-content: space-between;
-              }
+                justify-content: flex-end;
+            }
+            .slide-card::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                background-image: linear-gradient(1deg, #00000085 40%, transparent 70%);
+                z-index: 1;
+            }
+            .slide-card > div {
+                z-index: 2;
+            }
+            
+            
               @media (max-width: 991px) {
                 .slide-card {
                   max-width: 100%;
@@ -5861,9 +5866,9 @@ section > h2 {
                 position: relative;
                 color: #fff;
                 align-self: stretch;
-                margin-top: 417px;
+                margin-top: 0;
                 font: 700 40px/46px Geologica, sans-serif;
-              }
+            }
               @media (max-width: 991px) {
                 .slide-card__title {
                   max-width: 100%;
