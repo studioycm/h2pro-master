@@ -5452,7 +5452,6 @@ section > h2 {
 
             .section-05 {
                 align-self: center;
-                max-width: 1500px;
                 flex-direction: column;
                 overflow: hidden;
                 position: relative;
@@ -5473,7 +5472,9 @@ section > h2 {
                 justify-items: center;
                 gap: 30px 30px;
             }
-            
+            #section-05 .grid.grid-3 {
+                max-width: 1500px;
+            }
             .card.icon-card {
                 position: relative;
                 display: flex;
