@@ -122,7 +122,7 @@ const drop1TL = gsap.timeline({
         trigger: '#section-02',
         start: () => 'top 90%',
         end: () => section2MidHeight + ' center',
-        toggleActions: 'play none revers restart',
+        toggleActions: 'play none reverse restart',
         scrub: 2,
         // markers: true
     }
@@ -148,7 +148,7 @@ const drop2TL = gsap.timeline({
         end: () => (section3GraphEnd + 120) + ' bottom',
         toggleActions: 'play none reverse restart',
         scrub: 1,
-        markers: true
+        // markers: true
     }
 });
 
