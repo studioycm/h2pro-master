@@ -23,13 +23,14 @@ gsap.set("#drop", {
 
 let sliderTween = gsap.to(slides, {
     xPercent: -100 * (slides.length - 1),
-    ease: "none",
+    ease: "inOut",
     scrollTrigger: {
         trigger: "#section-07",
         pin: true,
         scrub: 1,
-        snap: 1 / (slides.length - 1),
+        // snap: 1 / (slides.length),
         // base vertical scrolling on how wide the container is so it feels more natural.
+        start: () => "top top",
         end: () => "+=" + slider.offsetWidth
     }
 });

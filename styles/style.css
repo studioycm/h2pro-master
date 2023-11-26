@@ -2578,7 +2578,7 @@ section > h2 {
             }
             .div-141 {
             align-self: stretch;
-            max-width: 900px;
+            max-width: 1040px;
             }
             @media (max-width: 991px) {
             .div-141 {
@@ -5674,7 +5674,9 @@ section > h2 {
                 translate: -90% 0;
             } */
 
-
+            .section-wrap-07 {
+                margin-top: 0px; 
+            }
             .section-07 {
                 align-self: center;
                 display: flex;
@@ -5682,7 +5684,7 @@ section > h2 {
                 width: 100%;
                 max-width: 100%;
                 flex-direction: column;
-                padding: 0 0px 100px 100px;
+                padding: 100px 0px 100px 100px;
             }
 
 
