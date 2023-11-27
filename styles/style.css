@@ -5570,7 +5570,7 @@ section > h2 {
             .grid:not(.animated-icons) .card:hover .card_image img {
                 left: 0;
                 translate: 0 0;
-                filter: hue-rotate(-90deg);
+                filter: hue-rotate(-110deg) brightness(1.1);
             }
 
             .grid.animated-icons .card .card_image img.img-svg {
@@ -5587,7 +5587,7 @@ section > h2 {
             .animated-icons .card:hover .card_image img.img-svg {
                 left: 0;
                 translate: 0 0;
-                filter: hue-rotate(-90deg);
+                filter: hue-rotate(-110deg) brightness(1.1);
                 opacity: 1;
             }
             
