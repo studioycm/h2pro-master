@@ -5584,14 +5584,14 @@ section > h2 {
                             opacity 0.3s ease-in-out;
             }
 
-            .animated-icons .card:hover .card_image img.img-svg {
+            .grid.animated-icons .card:hover .card_image img.img-svg {
                 left: 0;
                 translate: 0 0;
                 filter: hue-rotate(-110deg) brightness(1.25);
                 opacity: 1;
             }
             
-            .animated-icons .card .card_image img.img-gif {
+            .grid.animated-icons .card .card_image img.img-gif {
                 position: relative;
                 left: 50%;
                 translate: -50% 0;
@@ -5599,13 +5599,21 @@ section > h2 {
                 transition: opacity 0.3s ease-in-out;
             }
 
-            .animated-icons .card:hover .card_image img.img-gif {
+            .grid.animated-icons .card:hover .card_image img.img-gif {
                 opacity: 0;
             }
 
-            .card_image img:not(.img-gif) {
-                width: 400px;
+            .grid .card .card_image img, 
+            .grid .card .card_image img.img-svg,
+            .grid .card .card_image img.img-gif {
+                width: 150px;
+                max-width: 150px;
+                height: auto;
             }
+            .grid .card .card_image img.img-gif {
+                padding: 22px;
+            }
+        
 
             /* #6 section-06 "Made for Utility Scale" + cell pack anim */
 
