@@ -104,7 +104,7 @@ let webinarSticker = gsap.to('#webinar-sticker', {
         trigger: '#section-01',
         start: () => '60% center',
         end: () => '90% center',
-        toggleActions: 'play none reverse none',
+        toggleActions: 'play complete reverse reverse',
         // scrub: 3,
         // markers: true
     },
@@ -169,7 +169,7 @@ const section6TL = gsap.timeline({
         trigger: '#section-06',
         start: '300px 100%',
         end: '80% bottom',
-        toggleActions: 'play reverse play reverse',
+        toggleActions: 'play none reverse restart',
         scrub: 3
     }
 });
