@@ -5570,7 +5570,7 @@ section > h2 {
             .grid:not(.animated-icons) .card:hover .card_image img {
                 left: 0;
                 translate: 0 0;
-                filter: hue-rotate(-110deg) brightness(1.1);
+                filter: hue-rotate(-110deg) brightness(1.25);
             }
 
             .grid.animated-icons .card .card_image img.img-svg {
@@ -5587,7 +5587,7 @@ section > h2 {
             .animated-icons .card:hover .card_image img.img-svg {
                 left: 0;
                 translate: 0 0;
-                filter: hue-rotate(-110deg) brightness(1.1);
+                filter: hue-rotate(-110deg) brightness(1.25);
                 opacity: 1;
             }
             
@@ -5601,6 +5601,10 @@ section > h2 {
 
             .animated-icons .card:hover .card_image img.img-gif {
                 opacity: 0;
+            }
+
+            .card_image img:not(.img-gif) {
+                width: 400px;
             }
 
             /* #6 section-06 "Made for Utility Scale" + cell pack anim */
