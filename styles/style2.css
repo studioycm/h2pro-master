@@ -663,8 +663,8 @@ section > h2 {
   min-height: unset;
 }
 
-      
-    
+
+  
 .definitions-graph-item-desc-first {
   color: #363b40;
   text-align: center;
@@ -741,7 +741,7 @@ section > h2 {
             .div-97,
             .div-99,
             .div-134,
-            .div-140,
+            .img-24,
             .div-147,
             .div-153,
             .div-180,
@@ -770,7 +770,7 @@ section > h2 {
                 position: absolute;
                 height: 100%;
                 width: 100%;
-                object-fit: cover;
+                object-fit: unset;
                 object-position: center;
             }
             
@@ -932,9 +932,9 @@ section > h2 {
                 background: linear-gradient( 79deg, #39aa4b -20.68%, #72be44 30.9%, #8bdf58 81.41% ), rgba(0, 255, 224, 1);
                 align-self: start;
                 display: flex;
-                margin: 0;
+                margin-top: 149px;
                 width: auto;
-                height: 70px;
+                height: 69px;
                 padding: 10px 30px;
                 flex-direction: row;
                 color: #1D380C;
@@ -950,14 +950,14 @@ section > h2 {
             }
             @media (max-width: 991px) {
             .div-18 {
-                margin-top: 0px;
+                margin-top: 40px;
             }
             }
             .div-19 {
             color: #fff;
             align-self: stretch;
-            margin: 0;
-            font: 700 96px/100% Geologica, sans-serif;
+            margin: 32px -20px 0 0;
+            font: 700 96px/120% Geologica, sans-serif;
             }
             @media (max-width: 991px) {
             .div-19 {
@@ -968,9 +968,9 @@ section > h2 {
             .div-20 {
             color: #fff;
             align-self: stretch;
-            margin: 0px;
+            margin-right: -20px;
             white-space: nowrap;
-            font: 400 40px/100% Geologica, sans-serif;
+            font: 400 40px/200% Geologica, sans-serif;
             }
             @media (max-width: 991px) {
             .div-20 {
@@ -5082,7 +5082,7 @@ section > h2 {
 
            /* #1 section-01 "High Efficiency Production of Green Hydrogen" + bg video */
                       
-            #sections .section-wrap .section-01 {
+           #sections .section-wrap .section-01 {
                 flex-direction: column;
                 align-self: stretch;
                 position: relative;
@@ -5099,9 +5099,8 @@ section > h2 {
                 width: 1740px;
                 max-width: 100%;
                 margin: 0 auto;
-                gap: 30px;
                 flex-direction: column;
-                padding: 150px 20px 0px;
+                padding: 40px 20px 0px;
             }
             .div-21 {
                 position: relative;
@@ -5338,7 +5337,7 @@ section > h2 {
                 display: flex;
                 width: 100%;
                 align-items: center;
-                padding: 220px 20px 120px;
+                padding: 120px 20px 120px;
             }
             
             .graph-section {
@@ -5740,164 +5739,34 @@ section > h2 {
                 /* translate: 500% 0; */
             }
 
-            
+            /* .section-06 img.img-22[data-x="0"] {
+                translate: 0 0;
+            }
+            .section-06 img.img-22[data-x="70"] {
+                translate: -30% 0;
+            }
+            .section-06 img.img-22[data-x="140"] {
+                translate: -60% 0;
+            }
+            .section-06 img.img-22[data-x="210"] {
+                translate: -90% 0;
+            } */
+
             #sections .section-wrap.section-wrap-07 {
                 margin-top: 0px; 
             }
             #sections .section-wrap .section-07 {
                 align-self: center;
                 display: flex;
+                margin-top: 181px;
                 width: 100%;
                 max-width: 100%;
                 flex-direction: column;
-                padding: 200px 0px 100px 100px;
-                margin: 100px 0px 200px;
+                padding: 100px 0px 100px 100px;
                 align-items: stretch;
                 align-content: stretch;
             }
 
-            .slider-controls {
-                display: flex;
-                width: 40%;
-                flex-grow: 0;
-                flex-basis: 40%;
-                flex-direction: column;
-                margin: auto 0;
-            }
-
-            .slider-container {
-                align-self: stretch;
-                width: 54%;
-                flex-grow: 0;
-                flex-basis: 54%;
-                overflow: hidden;
-                border-radius: 30px 0 0 50px;
-            }
-            .slides {
-                display: flex;
-                justify-content: flex-start;
-                gap: 0px;
-                padding: 0px 0px 50px;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                align-content: stretch;
-                align-items: stretch;
-              }
-              .slide-card-wrap {
-                position: relative;
-                min-height: 60vh;
-                flex-grow: 1;
-                flex-shrink: 0;
-                flex-basis: 460px;
-                width: 460px;
-                padding-right: 50px;
-                
-            }
-            .slide-card-wrap:last-child {
-                /* padding-right: 0px;
-                flex-basis: 410px;
-                width: 410px; */
-            }
-              .slide-card {
-                flex-direction: column;
-                position: relative;
-                display: flex;
-                width: 100%;
-                height: 100%;
-                align-items: flex-start;
-                padding: 250px 10px 50px 40px;
-                border-radius: 30px;
-                overflow: hidden;
-                flex-wrap: nowrap;
-                align-content: flex-start;
-                justify-content: flex-end;
-                box-shadow: 0px 40px 30px -30px rgba(0, 0, 0, 0.5);
-            }
-            .slide-card::before {
-                content: "";
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                height: 100%;
-                width: 100%;
-                margin: 0;
-                padding: 0;
-                background-image: linear-gradient(1deg, #00000085 40%, transparent 70%);
-                z-index: 1;
-            }
-            .slide-card > div {
-                z-index: 2;
-            }
-            
-            
-              @media (max-width: 991px) {
-                .slide-card {
-                  max-width: 100%;
-                  padding-left: 20px;
-                }
-              }
-              .slide-card__bg-img {
-                position: absolute;
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-                object-position: center;
-              }
-              .slide-card__title {
-                position: relative;
-                color: #fff;
-                align-self: stretch;
-                margin-top: 0;
-                font: 700 40px/46px Geologica, sans-serif;
-            }
-              @media (max-width: 991px) {
-                .slide-card__title {
-                  max-width: 100%;
-                  margin-top: 40px;
-                }
-              }
-              .slide-card__description {
-                position: relative;
-                color: #fff;
-                letter-spacing: -0.27px;
-                align-self: stretch;
-                margin-top: 8px;
-                font: 400 18px/22px Geologica, sans-serif;
-              }
-              @media (max-width: 991px) {
-                .slide-card__description {
-                  max-width: 100%;
-                }
-              }
-              .slide-card__bottom {
-                position: relative;
-                display: flex;
-                margin-top: 18px;
-                width: 100%;
-                max-width: 100%;
-                gap: 20px;
-              }
-              .slide-card__link {
-                color: #fff;
-                font: 400 18px/16px Geologica, sans-serif;
-              }
-              .slide-card__link::after {
-                display: inline-block;
-                position: relative;
-                content: "";
-                aspect-ratio: 1.33;
-                object-fit: contain;
-                object-position: center;
-                width: 18px;
-                margin-left: 5px;
-                background-image: url("../images/more-arrow.svg");
-                background-repeat: no-repeat;
-                background-size: contain;
-                max-width: 100%;
-              }
 
             #sections .section-wrap .section-08 {
                 padding: 100px 20px 100px;
@@ -6023,7 +5892,119 @@ section > h2 {
                 position: relative;
                 width: 100%;
                 align-items: start;
-                padding: 50px 0 0;
+                padding: 0;
             }
 
+            .slides {
+                display: flex;
+                justify-content: flex-start;
+                gap: 20px;
+                padding: 0px 20px 50px;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-content: stretch;
+                align-items: stretch;
+              }
+              
+              .slide-card {
+                flex-direction: column;
+                position: relative;
+                display: flex;
+                min-height: 60vh;
+                flex-grow: 1;
+                flex-shrink: 0;
+                flex-basis: 460px;
+                align-items: flex-start;
+                padding: 250px 10px 50px 40px;
+                border-radius: 30px;
+                overflow: hidden;
+                box-shadow: 0px 40px 30px -30px rgba(0, 0, 0, 0.5);
+                flex-wrap: nowrap;
+                align-content: flex-start;
+                justify-content: flex-end;
+            }
+            .slide-card::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                background-image: linear-gradient(1deg, #00000085 40%, transparent 70%);
+                z-index: 1;
+            }
+            .slide-card > div {
+                z-index: 2;
+            }
             
+            
+              @media (max-width: 991px) {
+                .slide-card {
+                  max-width: 100%;
+                  padding-left: 20px;
+                }
+              }
+              .slide-card__bg-img {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+              }
+              .slide-card__title {
+                position: relative;
+                color: #fff;
+                align-self: stretch;
+                margin-top: 0;
+                font: 700 40px/46px Geologica, sans-serif;
+            }
+              @media (max-width: 991px) {
+                .slide-card__title {
+                  max-width: 100%;
+                  margin-top: 40px;
+                }
+              }
+              .slide-card__description {
+                position: relative;
+                color: #fff;
+                letter-spacing: -0.27px;
+                align-self: stretch;
+                margin-top: 8px;
+                font: 400 18px/22px Geologica, sans-serif;
+              }
+              @media (max-width: 991px) {
+                .slide-card__description {
+                  max-width: 100%;
+                }
+              }
+              .slide-card__bottom {
+                position: relative;
+                display: flex;
+                margin-top: 18px;
+                width: 100%;
+                max-width: 100%;
+                gap: 20px;
+              }
+              .slide-card__link {
+                color: #fff;
+                font: 400 18px/16px Geologica, sans-serif;
+              }
+              .slide-card__link::after {
+                display: inline-block;
+                position: relative;
+                content: "";
+                aspect-ratio: 1.33;
+                object-fit: contain;
+                object-position: center;
+                width: 18px;
+                margin-left: 5px;
+                background-image: url("../images/more-arrow.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                max-width: 100%;
+              }

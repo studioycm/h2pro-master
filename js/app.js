@@ -3,7 +3,7 @@ const sectionsContainer = document.querySelector('#sections');
 const sectionWraps = gsap.utils.toArray(".section-wrap");
 const sections = gsap.utils.toArray(".section-wrap .section");
 const slider = document.querySelector('#slides');
-const slides = gsap.utils.toArray("#slides .slide-card");
+const slides = gsap.utils.toArray("#slides .slide-card-wrap");
 const sliderSection = document.querySelector('#section-07');
 
 // set logo charecter color-white class
@@ -23,12 +23,12 @@ gsap.set("#drop", {
 
 let sliderTween = gsap.to(slides, {
     xPercent: -100 * (slides.length - 1),
-    ease: "inOut",
+    ease: "none",
     scrollTrigger: {
         trigger: "#section-07",
         pin: true,
-        scrub: 3,
-        // snap: 1 / (slides.length),
+        scrub: 1,
+        snap: 1 / slides.length,
         // base vertical scrolling on how wide the container is so it feels more natural.
         start: () => "top top",
         end: () => "+=" + slider.offsetWidth
