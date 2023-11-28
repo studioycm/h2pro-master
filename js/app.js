@@ -184,18 +184,18 @@ function init() {
         stagger: 0.3,
         duration: 1
     });
-
+    
     const sliderTween = gsap.to(slides, {
-        xPercent: -100 * (slides.length - 1),
+        xPercent: -100 * (slides.length - 2),
         ease: "none",
         scrollTrigger: {
             trigger: "#section-07",
             pin: true,
             scrub: 1,
-            // snap: 1 / slides.length,
+            snap: 1 / (slides.length -2),
             // base vertical scrolling on how wide the container is so it feels more natural.
             start: () => "top top",
-            end: () => "+=" + slider.offsetWidth
+            end: () => "+=" + (slider.offsetWidth / 2)
         }
     });
 }
