@@ -5892,7 +5892,7 @@ section > h2 {
               }
 
             #sections .section-wrap .section-08 {
-                padding: 100px 20px 100px;
+                padding: 100px 20px 300px;
                 align-self: center;
                 display: flex;
                 width: 100%;
@@ -5982,7 +5982,7 @@ section > h2 {
                 position: relative;
                 width: 100%;
                 align-items: start;
-                padding: 50px 0 0;
+                padding: 50px 0px 200px;
             }
             
             #sections .section-wrap .section-10 {

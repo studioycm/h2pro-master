@@ -210,7 +210,7 @@ function init() {
                 id: 'section-' + (i + 1),
                 trigger: wrap,
                 start: () => "top 20%",
-                end: () => "bottom 70%",
+                end: () => "+=" + (wrap.offsetHeight),
                 toggleActions: 'play reverse play reverse',
                 // scrub: 2,
                 // pin: section,
@@ -222,7 +222,7 @@ function init() {
         animatedElements.forEach(el => {
             tl.from(el, {
                 y: () => el.offsetHeight,
-                opacity: 0,
+                opacity: () => 0,
                 autoAlpha: 0,
                 visibility: 'hidden',
                 duration: 0.3,
