@@ -223,6 +223,7 @@ function init() {
             tl.from(el, {
                 y: () => el.offsetHeight,
                 opacity: 0,
+                autoAlpha: 0,
                 visibility: 'hidden',
                 duration: 0.3,
                 stagger: 0.1,
