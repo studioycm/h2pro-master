@@ -15,8 +15,8 @@ function init() {
     gsap.registerPlugin(ScrollTrigger);
     const navMenu = document.querySelector('#nav-menu');
     const sectionsContainer = document.querySelector('#sections');
-    const sectionWraps = gsap.utils.toArray(".section-wrap");
-    const sections = gsap.utils.toArray(".section-wrap .section");
+    const sectionWraps = gsap.utils.toArray("#sections .section-wrap");
+    const sections = gsap.utils.toArray("#sections .section-wrap .section");
     const slider = document.querySelector('#slides');
     const slides = gsap.utils.toArray("#slides .slide-card-wrap");
     const sliderSection = document.querySelector('#section-07');
@@ -197,6 +197,47 @@ function init() {
             start: () => "top top",
             end: () => "+=" + (slider.offsetWidth / 2)
         }
+    });
+
+    // set timeline for section-wrap with scrollTrigger so each section will be pinned to the top of the screen when it's in view, 
+    // and unpinned when all animated elements finished animating + 1 second then scroll to the next section
+    sectionWraps.forEach((wrap, i) => {
+        // if (i === 0) return;
+        const section = wrap.querySelector('.section');
+        const animatedElements = gsap.utils.toArray(section.querySelectorAll('.animated'));
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                id: 'section-' + (i + 1),
+                trigger: wrap,
+                start: () => "top 20%",
+                end: () => "bottom 70%",
+                toggleActions: 'play reverse play reverse',
+                // scrub: 2,
+                // pin: section,
+                // pinSpacing: false,
+                markers: true
+            }
+        });
+        
+        animatedElements.forEach(el => {
+            tl.from(el, {
+                y: () => el.offsetHeight,
+                opacity: 0,
+                visibility: 'hidden',
+                duration: 0.3,
+                stagger: 0.1,
+                ease: "power1.inOut"
+            }).to(el, {
+                autoAlpha: 1,
+                opacity: 1,
+                visibility: 'visible'
+                }, '<');
+        });
+        // tl
+        // .to(window, {
+        //     scrollTo: () => sectionWraps[i + 1].querySelector('.section'),
+        //     duration: 1
+        // }, '+=10');
     });
 }
 
