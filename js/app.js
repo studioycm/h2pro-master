@@ -215,7 +215,7 @@ function init() {
                 // scrub: 2,
                 // pin: section,
                 // pinSpacing: false,
-                markers: true
+                // markers: true
             }
         });
         

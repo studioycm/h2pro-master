@@ -1021,7 +1021,7 @@ section > h2 {
 
             .div-32 {
                 display: flex;
-                margin-top: 0;
+                margin-top: 185px;
                 flex-direction: column;
                 padding: 0 20px;
             }
@@ -1036,8 +1036,8 @@ section > h2 {
             
             .div-33 {
             color: var(--Black, #2a2e32);
-            margin-right: -20px;
-            font: 700 60px/140% Geologica, sans-serif;
+            margin-right: 0px;
+            font: 700 60px/120% Geologica, sans-serif;
             }
             @media (max-width: 991px) {
             .div-33 {
@@ -1050,8 +1050,8 @@ section > h2 {
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin: 6px -20px 0 0;
-            font: 700 60px/140% Geologica, sans-serif;
+            margin: 6px 0px 0px;
+            font: 700 60px/120% Geologica, sans-serif;
             }
             @media (max-width: 991px) {
             .div-34 {
@@ -5307,7 +5307,7 @@ section > h2 {
                 line-height: normal;
                 width: 40%;
                 margin-left: 20px;
-                justify-content: center;
+                justify-content: flex-start;
             }
             @media (max-width: 991px) {
                 .column-2 {
