@@ -184,6 +184,9 @@ function init() {
         stagger: 0.3,
         duration: 1
     });
+    const sliderNext = document.querySelector('#slider-next');
+    const sliderPrev = document.querySelector('#slider-prev');
+
     const section7TL = gsap.timeline({
         scrollTrigger: {
             trigger: '#section-07',
@@ -193,7 +196,27 @@ function init() {
             toggleActions: 'play pause resume reverse',
             // base vertical scrolling on how wide the container is so it feels more natural.
             start: () => "top top",
-            end: () => "+=" + (slider.offsetWidth / 2)
+            end: () => "+=" + (slider.offsetWidth / 2),
+            // on enter remove disable attribute from the slider prev button
+            onEnter: () => {
+                sliderPrev.removeAttribute('disabled');
+                sliderPrev.classList.remove('button-disabled');
+            },
+            // on leave add disable attribute to the slider next button
+            onLeave: () => {
+                sliderNext.setAttribute('disabled', 'disabled');
+                sliderNext.classList.add('button-disabled');
+            },
+            // on enter back remove disable attribute from the slider next button
+            onEnterBack: () => {
+                sliderNext.removeAttribute('disabled');
+                sliderNext.classList.remove('button-disabled');
+            },
+            // on leave back add disable attribute to the slider prev button
+            onLeaveBack: () => {
+                sliderPrev.setAttribute('disabled', 'disabled');
+                sliderPrev.classList.add('button-disabled');
+            }
         }
     });
     const slideAnim = section7TL.to(slides, {
@@ -204,14 +227,14 @@ function init() {
     
     document.querySelector('#slider-next').addEventListener('click', () => {
         // scroll down one step with lenis
-        window.scrollBy(0, 100);
+        window.scrollBy(0, 50);
         
         
     });
     // reverse the slidAnim when the slider control button #slider-prev is clicked
     document.querySelector('#slider-prev').addEventListener('click', () => {
         // scroll up one step 
-        window.scrollBy(0, -100);
+        window.scrollBy(0, -50);
     });
 
     // const sliderTween = gsap.to(slides, {

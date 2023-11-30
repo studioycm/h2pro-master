@@ -5742,7 +5742,7 @@ section > h2 {
                 width: 100%;
                 max-width: 100%;
                 flex-direction: column;
-                padding: 200px 0px 100px 100px;
+                padding: 150px 0px 100px 100px;
                 margin: 100px 0px 200px;
                 align-items: stretch;
                 align-content: stretch;
@@ -5755,8 +5755,19 @@ section > h2 {
                 flex-basis: 40%;
                 flex-direction: column;
                 margin: auto 0;
+                gap: 20px;
             }
-
+            .slider-controls-buttons {
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-content: center;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 20px;
+                padding: 20px 15px;
+            }
             .slider-button {
                 position: relative;
                 display: flex;
@@ -5764,27 +5775,14 @@ section > h2 {
                 justify-content: center;
                 width: 45px;
                 height: 45px;
-                
+                opacity: 1;
             }
-            .slider-button::before {
-                display: block;
-                color: #000;
-                height: 20px;
-                width: 20px;
-                margin: 0;
-                padding: 0;
-                /* background-image: url("../images/slider-arrow.svg"); */
-                z-index: 1;
+            .button-disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
             }
-            .slider-prev::before {
-                /* left carrot arrow as before pesudo element content */
-                content: "\2039";
-                
-            }
-            .slider-next::before {
-                /* right carrot arrow as before pesudo element content */
-                content: "\203A";
-                
+            .slider-button:not(.button-disabled):hover .arrow-color {
+                fill: #1c55b7;
             }
             .drop-shape {
                 border-radius: 0px 30px 30px 30px;
