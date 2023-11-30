@@ -184,25 +184,54 @@ function init() {
         stagger: 0.3,
         duration: 1
     });
-    
-    const sliderTween = gsap.to(slides, {
-        xPercent: -100 * (slides.length - 2),
-        ease: "none",
+    const section7TL = gsap.timeline({
         scrollTrigger: {
-            trigger: "#section-07",
+            trigger: '#section-07',
             pin: true,
             scrub: 1,
             snap: 1 / (slides.length -2),
+            toggleActions: 'play pause resume reverse',
             // base vertical scrolling on how wide the container is so it feels more natural.
             start: () => "top top",
             end: () => "+=" + (slider.offsetWidth / 2)
         }
     });
+    const slideAnim = section7TL.to(slides, {
+        xPercent: -100 * (slides.length - 2),
+        ease: "none"
+    });
+    
+    
+    document.querySelector('#slider-next').addEventListener('click', () => {
+        // scroll down one step with lenis
+        window.scrollBy(0, 100);
+        
+        
+    });
+    // reverse the slidAnim when the slider control button #slider-prev is clicked
+    document.querySelector('#slider-prev').addEventListener('click', () => {
+        // scroll up one step 
+        window.scrollBy(0, -100);
+    });
+
+    // const sliderTween = gsap.to(slides, {
+    //     xPercent: -100 * (slides.length - 2),
+    //     ease: "none",
+    //     scrollTrigger: {
+    //         trigger: "#section-07",
+    //         pin: true,
+    //         scrub: 1,
+    //         snap: 1 / (slides.length -2),
+    //         // base vertical scrolling on how wide the container is so it feels more natural.
+    //         start: () => "top top",
+    //         end: () => "+=" + (slider.offsetWidth / 2)
+    //     }
+    // });
 
     // set timeline for section-wrap with scrollTrigger so each section will be pinned to the top of the screen when it's in view, 
     // and unpinned when all animated elements finished animating + 1 second then scroll to the next section
     sectionWraps.forEach((wrap, i) => {
-        // if (i === 0) return;
+        if (i === 0) return;
         const section = wrap.querySelector('.section');
         const animatedElements = gsap.utils.toArray(section.querySelectorAll('.animated'));
         const tl = gsap.timeline({
@@ -239,6 +268,9 @@ function init() {
         //     scrollTo: () => sectionWraps[i + 1].querySelector('.section'),
         //     duration: 1
         // }, '+=10');
+        
+        // cliPath: "path('m -0 -0 l 22.5 0 c 22.5 0 22.5 22.5 22.5 22.5 c 0 22.5 -22.5 22.5 -22.5 22.5 c -22.5 0 -22.5 -22.5 -22.5 -22.5 z')"
+        // cliPath: "path('m -0 -0 l 1200 0 c 1200 0 1200 1200 1200 1200 c 0 1200 -1200 1200 -1200 1200 c -1200 0 -1200 -1200 -1200 -1200 z')"
     });
 }
 
