@@ -237,20 +237,7 @@ function init() {
         window.scrollBy(0, -50);
     });
 
-    // const sliderTween = gsap.to(slides, {
-    //     xPercent: -100 * (slides.length - 2),
-    //     ease: "none",
-    //     scrollTrigger: {
-    //         trigger: "#section-07",
-    //         pin: true,
-    //         scrub: 1,
-    //         snap: 1 / (slides.length -2),
-    //         // base vertical scrolling on how wide the container is so it feels more natural.
-    //         start: () => "top top",
-    //         end: () => "+=" + (slider.offsetWidth / 2)
-    //     }
-    // });
-
+    
     // set timeline for section-wrap with scrollTrigger so each section will be pinned to the top of the screen when it's in view, 
     // and unpinned when all animated elements finished animating + 1 second then scroll to the next section
     sectionWraps.forEach((wrap, i) => {
@@ -278,8 +265,8 @@ function init() {
                 autoAlpha: 0,
                 visibility: 'hidden',
                 duration: 0.3,
-                stagger: 0.1,
-                ease: "power1.inOut"
+                stagger: 0.15,
+                ease: "power1.in"
             }).to(el, {
                 autoAlpha: 1,
                 opacity: 1,
