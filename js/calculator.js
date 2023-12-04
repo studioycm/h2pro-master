@@ -141,13 +141,13 @@ function updateBarsAndLabels() {
 
  
   let calc = (calcDeveloperConventional / etacMaxValue) * 100;
-  console.log("conventional less then 30:" + calc);
+  // console.log("conventional less then 30:" + calc);
  
   // move the bar label above or below top of the bar for all three bars based on the height of the lowest bar
   // if developerGraph have class "active" then set maxBarHeight to max between developer etac and developer profit, else set maxBarHeight to max between consumer conventional and consumer profit
   const maxBarHeight = developerGraph.classList.contains("active") ? Math.max(etacHeightPercentage, profitHeightPercentage) : Math.max(conventionalHeightPercentageConsumer, profitHeightPercentageConsumer);
   const minBarHeight = developerGraph.classList.contains("active") ? Math.min(conventionalHeightPercentage, profitHeightPercentage) : Math.min(etacHeightPercentageConsumer, profitHeightPercentageConsumer);
-  console.log("minBarHeight = " + minBarHeight);
+  // console.log("minBarHeight = " + minBarHeight);
   if (minBarHeight < barLabelPositionTrigger ) {
     
     document.querySelectorAll(".definitions-graph > .active .bar-label").forEach(el => {

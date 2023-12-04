@@ -3651,10 +3651,9 @@ section > h2 {
                 overflow: hidden;
                 position: relative;
                 display: flex;
-                min-height: 1300px;
                 flex-grow: 1;
                 align-items: center;
-                padding: 300px 20px;
+                padding: 100px 20px;
             }
             @media (max-width: 991px) {
             .div-204 {
@@ -3663,17 +3662,17 @@ section > h2 {
             }
             }
             .img-51 {
-            aspect-ratio: 1;
-            object-fit: contain;
-            object-position: center;
-            width: 699px;
-            overflow: hidden;
-            margin-bottom: -59px;
-            max-width: 100%;
+                aspect-ratio: 1;
+                object-fit: contain;
+                object-position: center;
+                width: 700px;
+                overflow: hidden;
+                margin-bottom: 0;
+                max-width: 100%;
             }
             @media (max-width: 991px) {
             .img-51 {
-                margin-bottom: 10px;
+                
             }
             }
             .div-205 {
@@ -3740,13 +3739,13 @@ section > h2 {
             .div-209 {
             color: var(--Black, #2a2e32);
             text-align: center;
-            margin-right: 0;
+            margin-bottom: 40px;
             white-space: nowrap;
-            font: 700 60px/117% Geologica, sans-serif;
+            font: 700 60px/120% Geologica, sans-serif;
             }
             @media (max-width: 991px) {
             .div-209 {
-                margin-right: 0;
+                margin-bottom: 30px;
                 font-size: 40px;
                 white-space: initial;
             }
@@ -4058,7 +4057,7 @@ section > h2 {
             }
             .div-226 {
             display: flex;
-            margin-top: 153px;
+            margin-top: 0px;
             flex-direction: column;
             }
             @media (max-width: 991px) {
@@ -4189,14 +4188,13 @@ section > h2 {
             color: var(--Black, #2a2e32);
             text-align: center;
             align-self: center;
-            margin-top: 104px;
+            margin: 0px;
             white-space: nowrap;
-            font: 700 60px/117% Geologica, sans-serif;
+            font: 700 60px/120% Geologica, sans-serif;
             }
             @media (max-width: 991px) {
             .div-233 {
                 font-size: 40px;
-                margin-top: 40px;
                 white-space: initial;
             }
             }
@@ -5004,11 +5002,17 @@ section > h2 {
 
             #sections {
                 background-color: #fff;
-                display: flex;
-                flex-direction: column;
+                display: block;
+                /* flex-direction: column;
                 align-content: stretch;
                 align-items: stretch;
-                justify-content: flex-start;
+                justify-content: flex-start; */
+            }
+
+            #sections .wraps-part {
+                position: relative;
+                background-color: #fff;
+                display: block;
             }
 
             #sections .section-wrap {
@@ -5017,9 +5021,19 @@ section > h2 {
                 width: 100%;
                 max-width: 100%;
                 min-height: 100vh;
+                max-height: 100vh;
                 background-color: #fff;
+                overflow: hidden;
             }
-
+            #sections .spacing-section {
+                position: relative;
+                width: 100%;
+                max-width: 100%;
+                min-height: 100vh;
+                max-height: 100vh;
+                background-color: #fff;
+                overflow: hidden;
+            }
             #sections .section-wrap .section {
                 position: relative;
                 /* width: 100%; */
@@ -5065,12 +5079,20 @@ section > h2 {
             }
 
             .footer {
+                align-self: center;
+                display: flex;
+                width: 100%;
+                max-width: 100%;
+                flex-direction: column;
+                padding: 100px 40px 0px;
+                z-index: 2;
                 min-height: unset;
-                padding: 0 40px;
             }
 
            /* #1 section-01 "High Efficiency Production of Green Hydrogen" + bg video */
-                      
+            #sections #section-wrap-01 {
+                clip-path: path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z');
+            }          
             #sections .section-wrap .section-01 {
                 flex-direction: column;
                 align-self: stretch;
@@ -5244,16 +5266,14 @@ section > h2 {
 
             #drop {
                 position: absolute;
-                top: auto;
-                bottom: 50px;
-                left: 50%;
-                translate: -50% 0;
+                top: 300px;
+                bottom: auto;
+                left: 66%;
                 z-index: 999;
                 width: 45px;
                 height: 45px;
                 margin: 0;
                 padding: 0;
-                rotate: 45deg;
                 opacity: 0;
                 border-radius: 0 30px 30px 30px;
                 background-color: rgb(106, 182, 24);
@@ -5268,7 +5288,7 @@ section > h2 {
                 position: relative;
                 display: flex;
                 min-height: 100vh;
-                padding: 300px 0 100px;
+                padding: 0px 0px 0px;
                 width: 100%;
                 max-width: 100%;
             }
@@ -5326,7 +5346,7 @@ section > h2 {
                 display: flex;
                 width: 100%;
                 align-items: center;
-                padding: 220px 20px 220px;
+                padding: 110px 20px 110px;
             }
             
             .graph-section {
@@ -5489,15 +5509,15 @@ section > h2 {
             .grid.grid-3 {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
-                grid-template-rows: repeat(2, 300px);
+                grid-template-rows: repeat(2, 250px);
                 align-content: stretch;
                 justify-content: start;
                 align-items: start;
                 justify-items: center;
-                gap: 20px 20px;
+                gap: 0px 20px;
             }
             #section-05 .grid.grid-3 {
-                max-width: 1500px;
+                max-width: 1600px;
                 margin: 0 auto 100px;
             }
 
@@ -5540,15 +5560,15 @@ section > h2 {
             .card .card_content {
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
-                -webkit-line-clamp: 3;
-                line-clamp: 3;
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
                 max-width: 100%;
                 overflow: hidden;
-                max-height: 100px;
+                max-height: 50px;
                 color: var(--Black, #2a2e32);
                 text-align: center;
                 text-overflow: ellipsis;
-                font: 400 18px/140% Geologica, sans-serif;
+                font: 300 16px/135% Geologica, sans-serif;
                 transition: max-height 0.3s ease-in-out;
             }
             
@@ -5634,8 +5654,8 @@ section > h2 {
             .grid .card .card_image img, 
             .grid .card .card_image img.img-svg,
             .grid .card .card_image img.img-gif {
-                width: 125px;
-                max-width: 125px;
+                width: 100px;
+                max-width: 100px;
                 height: auto;
             }
             .grid .card .card_image img.img-gif {
@@ -5733,8 +5753,8 @@ section > h2 {
             }
 
             
-            #sections .section-wrap.section-wrap-07 {
-                margin-top: 0px; 
+            #sections .section-wrap#section-wrap-07 {
+                max-height: unset;
             }
             #sections .section-wrap .section-07 {
                 align-self: center;
@@ -5743,7 +5763,7 @@ section > h2 {
                 max-width: 100%;
                 flex-direction: column;
                 padding: 150px 0px 100px 100px;
-                margin: 100px 0px 200px;
+                margin: 0;
                 align-items: stretch;
                 align-content: stretch;
             }
@@ -5931,8 +5951,8 @@ section > h2 {
                 max-width: 100%;
               }
 
-            #sections .section-wrap .section-08 {
-                padding: 100px 20px 300px;
+              #sections .section-wrap .section-08 {
+                padding: 100px 20px 0px;
                 align-self: center;
                 display: flex;
                 width: 100%;
@@ -5959,14 +5979,15 @@ section > h2 {
                 color: var(--Black, #2a2e32);
                 text-align: center;
                 align-self: center;
-                margin-top: 40px;
-                max-width: 650px;
-                font: 400 22px/150% Geologica, sans-serif;
+                margin-top: 20px;
+                width: 100%;
+                max-width: unset;
+                font: 400 20px/140% Geologica, sans-serif;
             }
             
             .div-157 {
                 display: flex;
-                width: 700px;
+                width: 750px;
                 max-width: 100%;
                 flex-direction: column;
             }
@@ -5975,10 +5996,10 @@ section > h2 {
                 aspect-ratio: auto;
                 object-fit: contain;
                 object-position: center;
-                width: auto;
-                max-width: 200px;
+                width: 150px;
+                max-width: 150px;
                 height: auto;
-                flex: 0 1 200px;
+                flex: 0 1 150px;
                 display: block;
                 margin: 0;
                 padding: 0;
@@ -5989,29 +6010,38 @@ section > h2 {
             .div-170 {
                 align-self: center;
                 display: flex;
-                margin-top: 80px;
+                margin-top: 20px;
                 flex-direction: row;
                 flex-wrap: wrap;
                 align-content: center;
                 justify-content: space-between;
                 align-items: center;
-                gap: 50px;
+                gap: 20px 100px;
                 width: 100%;
-                max-width: 1400px;
+                max-width: 1200px;
             }
 
-            .inner-section {
+            #sections .section-wrap .section-08 .inner-section {
                 position: relative;
                 display: flex;
                 max-width: 1740px;
                 width: 100%;
-                margin: 0 auto;
+                margin: 0 auto 80px;
                 flex-direction: column;
-                padding: 50px 20px;
+                padding: 0;
                 justify-content: space-between;
                 gap: 20px;
                 align-content: center;
                 align-items: center;
+            }
+
+            .div-171,
+            .div-189 {
+                color: var(--Black, #2a2e32);
+                text-align: center;
+                align-self: center;
+                margin: 0;
+                font: 700 60px/110% Geologica, sans-serif;
             }
 
             #sections .section-wrap .section-09 {
@@ -6030,11 +6060,13 @@ section > h2 {
                 margin: 0px auto;
                 width: 100%;
                 max-width: 1740px;
-                padding: 100px 0px 100px;
+                padding: 20px 0px 0px;
+                min-height: unset;
             }
             
             .section-10 img.img {
                 object-fit: contain;
+                object-position: top;
             }
             
             #sections .section-wrap .section-11 {
@@ -6043,7 +6075,7 @@ section > h2 {
                 display: flex;
                 width: 100%;
                 flex-direction: column;
-                padding: 200px 20px 300px;
+                padding: 100px 20px 0px;
             }
             #sections .section-wrap .section-12 {
                 align-self: center;
@@ -6051,17 +6083,6 @@ section > h2 {
                 width: 100%;
                 max-width: 100%;
                 flex-direction: column;
-                padding: 200px 20px 300px;
-            }
-            
-            #sections .section-wrap .section-13 {
-                align-self: center;
-                display: flex;
-                width: 100%;
-                max-width: 100%;
-                flex-direction: column;
                 padding: 100px 20px 0px;
             }
-            
-
             

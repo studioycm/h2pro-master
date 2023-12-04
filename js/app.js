@@ -14,19 +14,24 @@ function init() {
 
     gsap.registerPlugin(ScrollTrigger);
     const navMenu = document.querySelector('#nav-menu');
-    const sectionsContainer = document.querySelector('#sections');
+    const sectionsPart01 = document.querySelector('#wraps-part-01');
+    const sectionsPart02 = document.querySelector('#wraps-part-02');
     const sectionWraps = gsap.utils.toArray("#sections .section-wrap");
+    const sectionWraps01 = gsap.utils.toArray("#sections #wraps-part-01 .section-wrap");
+    const sectionWraps02 = gsap.utils.toArray("#sections #wraps-part-02 .section-wrap");
     const sections = gsap.utils.toArray("#sections .section-wrap .section");
     const slider = document.querySelector('#slides');
     const slides = gsap.utils.toArray("#slides .slide-card-wrap");
     const sliderSection = document.querySelector('#section-07');
     const graphInputs = document.querySelectorAll('#graph-section input[type="range"]');
-    const section2Height = document.querySelector('#section-02').offsetHeight;
-    const section2MidHeight = (section2Height / 2) + 105;
+    const section2Height = document.querySelector('#section-wrap-02').offsetHeight;
     const section3GraphEnd = document.querySelector('#section-03').offsetHeight - 360;
     // section 3 ".definitions-graph-developer .definitions-graph-item" last element distance from left side of parent ".definitions-graph-developer"
     const section3GraphItemLast = document.querySelector('.definitions-graph-developer .definitions-graph-item:last-child').offsetLeft - document.querySelector('.definitions-graph-developer').offsetLeft;
-
+    const section7 = document.querySelector('#section-wrap-07');
+    const dropEl = document.querySelector('#drop');
+    const section1 = document.querySelector('#section-wrap-01');
+    const unionSvg = document.querySelector('#section-02 .column-1');
     // set logo charecter color-white class
     gsap.set("#logo_svg .color-white", {
         fill: "#fff"
@@ -42,15 +47,18 @@ function init() {
         // opacity: 0
         backgroundColor: "#006ff2"
     });
+    gsap.set("#section-wrap-07", {
+        marginBottom: slider.offsetWidth - section7.offsetHeight
+    });
 
     const headerTL = gsap.timeline({
         scrollTrigger: {
-            trigger: '#section-02',
+            trigger: '#section-wrap-01',
             // markers: true,
-            start: 'top 100px',
+            start: '10px top',
             end: '+=300',
             toggleActions: 'play none none reverse',
-            scrub: 1
+            //scrub: 1
         }
     });
 
@@ -62,13 +70,100 @@ function init() {
         backgroundImage: "linear-gradient(270deg, rgba(149, 149, 149, 0.34) 0%, rgba(128, 128, 128, 0.54) 40%)"
     }, '<');
 
-    let webinarSticker = gsap.to('#webinar-sticker', {
+
+    const sections01TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'sections-01',
+            trigger: sectionsPart01,
+            start: () => "top top",
+            end: () => (sectionsPart01.offsetHeight) + " bottom", // "+=" + (wrap.offsetHeight),
+            toggleActions: 'play complete reverse reset',
+            scrub: 1,
+            // pin: true,
+            // pinSpacing: false,
+            
+            snap: {
+                snapTo: 1 / (sectionWraps01.length - 1),
+                duration: 2,// {min: 0.5, max: 1},
+                delay: 0.5,
+                ease: "none"                    
+            },
+            markers: {
+                startColor: "green",
+                endColor: "red",
+                fontSize: "14px",
+                indent: 20,
+                fontWeight: "bold"
+            },
+            onEnter: () => {
+                console.log('onEnter sections');
+            },
+            onLeave: () => {
+                console.log('onLeave sections');
+            },
+            onSnapComplete: () => {
+                console.log('onSnapComplete sections');
+
+            }
+        }
+    });
+    
+    // set timeline for section-wrap with scrollTrigger so each section will be pinned to the top of the screen when it's in view, 
+    // and unpinned when all animated elements finished animating + 1 second then scroll to the next section
+    sectionWraps.forEach((wrap, i) => {
+
+        // if (i === 0) return;
+        
+        const section = wrap.querySelector('.section');
+        const animatedElements = gsap.utils.toArray(section.querySelectorAll('.animated'));
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                id: 'section-' + (i + 1) + '-items',
+                trigger: wrap,
+                start: () => "10px center",
+                end: () => "bottom bottom", // + (wrap.offsetHeight),
+                toggleActions: 'play complete none reset',
+                //preventOverlaps: true,
+                // scrub: 2,
+                // pin: section,
+                // pinSpacing: false,
+                markers: {
+                    startColor: "blue",
+                    endColor: "purple",
+                    fontSize: "12px",
+                    indent: 40,
+                    fontWeight: "normal"
+                },
+            }
+        });
+
+        animatedElements.forEach(el => {
+            tl.from(el, {
+                y: () => el.offsetHeight,
+                opacity: () => 0,
+                autoAlpha: 0,
+                visibility: 'hidden',
+                duration: 0.2,
+                // stagger: 0.1,
+                // ease: "power3.in"
+            }).to(el, {
+                y: () => 0,
+                autoAlpha: 1,
+                opacity: () => 1,
+                visibility: 'visible',
+                ease: "none"
+            });
+        });
+        
+    });
+
+    const webinarSticker = gsap.to('#webinar-sticker', {
         scrollTrigger: {
             id: 'webinar-sticker',
             trigger: '#section-01',
-            start: () => '60% center',
-            end: () => '90% center',
-            toggleActions: 'play complete reverse reverse',
+            start: () => 'top top',
+            end: () => 'bottom bottom',
+            toggleActions: 'play complete reverse reset',
             // scrub: 3,
             // markers: true
         },
@@ -76,63 +171,69 @@ function init() {
         duration: 1
     });
 
-
-
-    const drop1TL = gsap.timeline({
+    const section1TL = gsap.timeline({
         scrollTrigger: {
-            id: 'drop',
-            trigger: '#section-02',
-            start: () => 'top 90%',
-            end: () => section2MidHeight + ' center',
-            toggleActions: 'play complete reverse restart',
-            scrub: 2,
-            // markers: true
+            id: 'section-01-out',
+            trigger: '#section-wrap-01',
+            start: () => '10px top',
+            end: () => 'bottom top',
+            toggleActions: 'play complete reverse reset',
+            // scrub: 3,
+            markers: true
         }
     });
-
-    drop1TL
-    .to('#drop', {
-        opacity: 1,
+    section1TL.fromTo('#section-wrap-01', {
+        clipPath: "path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')"
+    }, {
+        clipPath: "path('m " + dropEl.offsetLeft + " 300 l 22.5 0 c 22.5 0 22.5 22.5 22.5 22.5 c 0 22.5 -22.5 22.5 -22.5 22.5 c -22.5 0 -22.5 -22.5 -22.5 -22.5 z')",
+        duration: 1,
+    })
+    .to('#section-wrap-01', {
+        opacity: 0,
         duration: 0.3
     })
     .to('#drop', {
-        x: () => -282,
-        y: () => section2MidHeight + 60,
-        rotate: 0,
-        duration: 3
-    }, '0.3');
+        opacity: 1,
+        duration: 0.3
+    }, '-=0.3')
+    .to('#drop', {
+        x: () => - (dropEl.offsetLeft - (unionSvg.offsetWidth / 2 ) + unionSvg.offsetLeft - 265),
+        y: () => (section2Height / 2) + (section1.offsetHeight - 255 - dropEl.offsetHeight),
+        duration: 2.5
+    });
 
+    
     const drop2TL = gsap.timeline({
         scrollTrigger: {
             id: 'drop-2',
-            trigger: '#section-03',
-            start: () => 'top bottom',
-            end: () => '+=' + (section3GraphEnd + 120),
-            // toggleActions: 'play complete reverse complete',
-            scrub: 2,
-            // markers: true
+            trigger: '#section-wrap-02',
+            start: () => '50px top',
+            end: () => 'bottom 50px',
+            toggleActions: 'play complete reverse reset',
+            // scrub: 2,
+            markers: true
         }
     });
 
     drop2TL
     .to('#drop', {
-        x: () => section3GraphItemLast + 200,
-        y: () => section2Height + section3GraphEnd,
+        x: () => section3GraphItemLast - 30,
+        y: () => (section2Height / 2) + (section1.offsetHeight - 320 - dropEl.offsetHeight) + (section2Height / 2) + section3GraphEnd,
         duration: 3
-    })
+    }, '1')
     .to('#drop', {
         opacity: 0,
         duration: 0.3
-    }, '2.7');
+    }, '-=0.3');
 
     const section3TL = gsap.timeline({
         scrollTrigger: {
             id: 'graph',
-            trigger: '#section-03',
-            start: 'top top',
+            trigger: '#section-wrap-03',
+            start: 'top 1px',
             end: '+=600',
             toggleActions: 'play none none none',
-            scrub: 1,
+            // scrub: 1,
             // markers: true,
             onEnter: () => {     
                 graphInputs.forEach(input => {
@@ -173,7 +274,7 @@ function init() {
             trigger: '#section-06',
             start: '300px 100%',
             end: '80% bottom',
-            toggleActions: 'play none reverse restart',
+            toggleActions: 'play none reverse reset',
             scrub: 3
         }
     });
@@ -189,14 +290,15 @@ function init() {
 
     const section7TL = gsap.timeline({
         scrollTrigger: {
-            trigger: '#section-07',
-            pin: true,
+            trigger: '#section-wrap-07',
+            pin: '#section-07',
             scrub: 1,
             snap: 1 / (slides.length -2),
-            toggleActions: 'play pause resume reverse',
+            // preventOverlaps: true,
+            toggleActions: 'play none none reverse',
             // base vertical scrolling on how wide the container is so it feels more natural.
             start: () => "top top",
-            end: () => "+=" + (slider.offsetWidth / 2),
+            end: () => "+=" + (slider.offsetWidth / 2 ),
             // on enter remove disable attribute from the slider prev button
             onEnter: () => {
                 sliderPrev.removeAttribute('disabled');
@@ -219,7 +321,7 @@ function init() {
             }
         }
     });
-    const slideAnim = section7TL.to(slides, {
+    section7TL.to(slides, {
         xPercent: -100 * (slides.length - 2),
         ease: "none"
     });
@@ -237,51 +339,43 @@ function init() {
         window.scrollBy(0, -50);
     });
 
-    
-    // set timeline for section-wrap with scrollTrigger so each section will be pinned to the top of the screen when it's in view, 
-    // and unpinned when all animated elements finished animating + 1 second then scroll to the next section
-    sectionWraps.forEach((wrap, i) => {
-        if (i === 0) return;
-        const section = wrap.querySelector('.section');
-        const animatedElements = gsap.utils.toArray(section.querySelectorAll('.animated'));
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                id: 'section-' + (i + 1),
-                trigger: wrap,
-                start: () => "top 20%",
-                end: () => "+=" + (wrap.offsetHeight),
-                toggleActions: 'play reverse play reverse',
-                // scrub: 2,
-                // pin: section,
-                // pinSpacing: false,
-                // markers: true
+    const sections02TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'sections-01',
+            trigger: sectionsPart02,
+            start: () => "top top",
+            end: () => "bottom bottom", // "+=" + (wrap.offsetHeight),
+            toggleActions: 'play complete reverse reset',
+            scrub: 1,
+            // pin: true,
+            // pinSpacing: false,
+            
+            snap: {
+                snapTo: 1 / (sectionWraps02.length - 1),
+                duration: 2,// {min: 0.5, max: 1},
+                delay: 0.5,
+                ease: "none"                    
+            },
+            markers: {
+                startColor: "green",
+                endColor: "red",
+                fontSize: "14px",
+                indent: 20,
+                fontWeight: "bold"
+            },
+            onEnter: () => {
+                console.log('onEnter sections');
+            },
+            onLeave: () => {
+                console.log('onLeave sections');
+            },
+            onSnapComplete: () => {
+                console.log('onSnapComplete sections');
+
             }
-        });
-        
-        animatedElements.forEach(el => {
-            tl.from(el, {
-                y: () => el.offsetHeight,
-                opacity: () => 0,
-                autoAlpha: 0,
-                visibility: 'hidden',
-                duration: 0.3,
-                stagger: 0.15,
-                ease: "power1.in"
-            }).to(el, {
-                autoAlpha: 1,
-                opacity: 1,
-                visibility: 'visible'
-                }, '<');
-        });
-        // tl
-        // .to(window, {
-        //     scrollTo: () => sectionWraps[i + 1].querySelector('.section'),
-        //     duration: 1
-        // }, '+=10');
-        
-        // cliPath: "path('m -0 -0 l 22.5 0 c 22.5 0 22.5 22.5 22.5 22.5 c 0 22.5 -22.5 22.5 -22.5 22.5 c -22.5 0 -22.5 -22.5 -22.5 -22.5 z')"
-        // cliPath: "path('m -0 -0 l 1200 0 c 1200 0 1200 1200 1200 1200 c 0 1200 -1200 1200 -1200 1200 c -1200 0 -1200 -1200 -1200 -1200 z')"
+        }
     });
+    
 }
 
 // init() on page load 
