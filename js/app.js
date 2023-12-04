@@ -48,7 +48,7 @@ function init() {
         backgroundColor: "#006ff2"
     });
     gsap.set("#section-wrap-07", {
-        marginBottom: slider.offsetWidth - section7.offsetHeight
+        // marginBottom: slider.offsetWidth - section7.offsetHeight
     });
 
     const headerTL = gsap.timeline({
@@ -118,11 +118,11 @@ function init() {
         const animatedElements = gsap.utils.toArray(section.querySelectorAll('.animated'));
         const tl = gsap.timeline({
             scrollTrigger: {
-                id: 'section-' + (i + 1) + '-items',
+                id: wrap.id + '-items',
                 trigger: wrap,
-                start: () => "10px center",
+                start: () => "top 250px",
                 end: () => "bottom bottom", // + (wrap.offsetHeight),
-                toggleActions: 'play complete none reset',
+                toggleActions: 'play complete none reverse',
                 //preventOverlaps: true,
                 // scrub: 2,
                 // pin: section,
@@ -143,7 +143,7 @@ function init() {
                 opacity: () => 0,
                 autoAlpha: 0,
                 visibility: 'hidden',
-                duration: 0.2,
+                duration: 0.3,
                 // stagger: 0.1,
                 // ease: "power3.in"
             }).to(el, {
@@ -151,8 +151,8 @@ function init() {
                 autoAlpha: 1,
                 opacity: () => 1,
                 visibility: 'visible',
-                ease: "none"
-            });
+                ease: "power3.in"
+            }, '-=0.1');
         });
         
     });
@@ -291,14 +291,14 @@ function init() {
     const section7TL = gsap.timeline({
         scrollTrigger: {
             trigger: '#section-wrap-07',
-            pin: '#section-07',
+            pin: '#section-wrap-07',
             scrub: 1,
             snap: 1 / (slides.length -2),
             // preventOverlaps: true,
             toggleActions: 'play none none reverse',
             // base vertical scrolling on how wide the container is so it feels more natural.
             start: () => "top top",
-            end: () => "+=" + (slider.offsetWidth / 2 ),
+            end: () => "+=" + (slider.offsetWidth ),
             // on enter remove disable attribute from the slider prev button
             onEnter: () => {
                 sliderPrev.removeAttribute('disabled');
@@ -341,9 +341,9 @@ function init() {
 
     const sections02TL = gsap.timeline({
         scrollTrigger: {
-            id: 'sections-01',
+            id: 'sections-02',
             trigger: sectionsPart02,
-            start: () => "top top",
+            start: () => "top bottom",
             end: () => "bottom bottom", // "+=" + (wrap.offsetHeight),
             toggleActions: 'play complete reverse reset',
             scrub: 1,
@@ -351,7 +351,7 @@ function init() {
             // pinSpacing: false,
             
             snap: {
-                snapTo: 1 / (sectionWraps02.length - 1),
+                snapTo: 1 / (sectionWraps02.length),
                 duration: 2,// {min: 0.5, max: 1},
                 delay: 0.5,
                 ease: "none"                    
@@ -360,7 +360,7 @@ function init() {
                 startColor: "green",
                 endColor: "red",
                 fontSize: "14px",
-                indent: 20,
+                indent: 100,
                 fontWeight: "bold"
             },
             onEnter: () => {
