@@ -177,7 +177,7 @@ function init() {
             trigger: '#section-wrap-01',
             start: () => '10px top',
             end: () => 'bottom top',
-            toggleActions: 'play none reverse reset',
+            toggleActions: 'play complete reverse reset',
             // scrub: 3,
             // markers: true
         }
@@ -339,6 +339,14 @@ function init() {
         window.scrollBy(0, -50);
     });
 
+    // select the ".footer" element
+    const footer = document.querySelector('#footer');
+
+    // set tween for the footer element, rising from the bottom of the screen, the tween will be used in onLeave callback function
+    const footerTween = gsap.from(footer, {
+        y: () => footer.offsetHeight,
+        duration: 1
+    });
     const sections02TL = gsap.timeline({
         scrollTrigger: {
             id: 'sections-02',
@@ -368,6 +376,13 @@ function init() {
             },
             onLeave: () => {
                 console.log('onLeave sections');
+                // run tween for the footer element, rising from the bottom of the screen
+                footerTween.play();
+            },
+            onEnterBack: () => {
+                console.log('onEnterBack sections');
+                // run tween for the footer element, rising from the bottom of the screen
+                footerTween.reverse();
             },
             onSnapComplete: () => {
                 console.log('onSnapComplete sections');
@@ -376,6 +391,8 @@ function init() {
         }
     });
     
+
+
 }
 
 // init() on page load 
