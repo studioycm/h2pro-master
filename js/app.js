@@ -88,13 +88,13 @@ function init() {
                 delay: 0.5,
                 ease: "none"                    
             },
-            markers: {
-                startColor: "green",
-                endColor: "red",
-                fontSize: "14px",
-                indent: 20,
-                fontWeight: "bold"
-            },
+            // markers: {
+            //     startColor: "green",
+            //     endColor: "red",
+            //     fontSize: "14px",
+            //     indent: 20,
+            //     fontWeight: "bold"
+            // },
             onEnter: () => {
                 console.log('onEnter sections');
             },
@@ -127,13 +127,13 @@ function init() {
                 // scrub: 2,
                 // pin: section,
                 // pinSpacing: false,
-                markers: {
-                    startColor: "blue",
-                    endColor: "purple",
-                    fontSize: "12px",
-                    indent: 40,
-                    fontWeight: "normal"
-                },
+                // markers: {
+                //     startColor: "blue",
+                //     endColor: "purple",
+                //     fontSize: "12px",
+                //     indent: 40,
+                //     fontWeight: "normal"
+                // },
             }
         });
 
@@ -177,9 +177,9 @@ function init() {
             trigger: '#section-wrap-01',
             start: () => '10px top',
             end: () => 'bottom top',
-            toggleActions: 'play complete reverse reset',
+            toggleActions: 'play none reverse reset',
             // scrub: 3,
-            markers: true
+            // markers: true
         }
     });
     section1TL.fromTo('#section-wrap-01', {
@@ -211,7 +211,7 @@ function init() {
             end: () => 'bottom 50px',
             toggleActions: 'play complete reverse reset',
             // scrub: 2,
-            markers: true
+            // markers: true
         }
     });
 
@@ -356,13 +356,13 @@ function init() {
                 delay: 0.5,
                 ease: "none"                    
             },
-            markers: {
-                startColor: "green",
-                endColor: "red",
-                fontSize: "14px",
-                indent: 100,
-                fontWeight: "bold"
-            },
+            // markers: {
+            //     startColor: "green",
+            //     endColor: "red",
+            //     fontSize: "14px",
+            //     indent: 100,
+            //     fontWeight: "bold"
+            // },
             onEnter: () => {
                 console.log('onEnter sections');
             },
