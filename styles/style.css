@@ -5368,35 +5368,130 @@ section > h2 {
                 align-items: stretch;
             }
             
-            div#section-04-bg {
+            #section-04 #section-04-bg {
+                clip-path: path("m 910 460 v -50 h 50 c 25 0 50 25 50 50 c 0 25 -25 50 -50 50 c -25 0 -50 -25 -50 -50 z");
+                background-position: 0px 90px;
+                background-image: url('../images/blue_1920x1120.jpg');
+                background-image: url('../images/h2pro-manufacturing.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: absolute;
                 z-index: 0;
                 top: 0;
                 left: 0;
-                position: absolute;
                 height: 100%;
                 width: 100%;
-                object-fit: cover;
-                object-position: center;
                 overflow: hidden;
             }
             
-            img.btn-icon {
+            #section-04 .title {
+                text-align: center;
+                text-transform: uppercase;
+                background: linear-gradient( 180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 118.99% );
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font: 700 180px/100% Geologica, sans-serif;
+                position: absolute;
+                top: 70px;
+                z-index: 2;
+                opacity: 0;
+            }
+
+            #section-04 .content {
                 position: relative;
-                display: inline-block;
+                z-index: 3;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0px;
+                width: 100%;
+                max-width: 1740px;
+                margin: 0 auto;
+                padding: 0;
+                opacity: 0;
             }
             
-            button#paly-video {
+            #section-04 .sub-title {
                 position: relative;
+                top: 0;
+                z-index: 3;
+                color: #fff;
+                text-align: center;
+                align-self: center;
+                margin: 195px auto 20px;
+                max-width: 1100px;
+                font: 700 60px/120% Geologica, sans-serif;
+            }
+            
+            #section-04 .text {
+                position: relative;
+                z-index: 3;
+                color: #fff;
+                text-align: center;
+                align-self: center;
+                max-width: 1000px;
+                font: 200 20px/150% Geologica, sans-serif;
+            }
+            
+            #section-04 .action-button {
+                position: relative;
+                z-index: 2;
+                color: #1d380c;
+                text-align: center;
+                white-space: nowrap;
+                align-items: center;
+                border-radius: 60px;
+                background: linear-gradient( 93deg, #5fb847 -58.53%, #72be44 8.67%, #8bdf58 94.72% ), linear-gradient(79deg, #2fb219 -20.68%, #8bdf58 80.36%);
+                align-self: center;
+                margin-top: 20px;
+                margin-bottom: 40px;
+                min-width: 260px;
+                max-width: 100%;
+                padding: 14px 20px;
+                font: 400 18px/130% Geologica, sans-serif;
+            }
+            
+            #section-04 .video-container {
+                box-shadow: 0px 44px 64px -60px rgba(0, 0, 0, 0.55);
+                overflow: hidden;
+                align-self: center;
+                position: relative;
+                z-index: 9;
+                display: block;
+                margin: 0 auto;
+                width: 100%;
+                max-width: 900px;
+                padding: 0;
+                border-radius: 20px;
+                transition: transform 2s ease;
+            }
+            
+            #section-04 .video {
+                position: relative;
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                height: 400px;
+            }
+            
+            #section-04 button#paly-video {
+                position: absolute;
+                top: 50%;
+                bottom: auto;
+                left: 50%;
+                transform: translate(-50%, -50%);
                 border-radius: 90px;
                 backdrop-filter: blur(7px);
                 background-image: radial-gradient(#ffffff88 40%, #dddddd88 100%);
                 display: flex;
                 width: auto;
-                max-width: 100%;
+                max-width: 320px;
                 align-items: center;
                 justify-content: space-between;
                 gap: 20px;
-                padding: 15px 50px;
+                padding: 15px 20px;
                 color: var(--Black, #2a2e32);
                 text-align: center;
                 margin: auto 0;
@@ -5405,92 +5500,10 @@ section > h2 {
                 flex-wrap: nowrap;
             }
             
-            .div-95 {
-                text-align: center;
-                text-transform: uppercase;
-                background: linear-gradient( 180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 118.99% );
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                font: 700 183px/91% Geologica, sans-serif;
-                position: absolute;
-                top: 200px;
-                z-index: 2;
+            #section-04 button img.btn-icon {
+                max-width: 50px;
             }
             
-            .div-96 {
-                position: relative;
-                z-index: 2;
-                color: #fff;
-                text-align: center;
-                align-self: center;
-                max-width: 1000px;
-                font: 200 20px/150% Geologica, sans-serif;
-            }
-            
-            .section-04-title {
-                position: relative;
-                z-index: 2;
-                color: #fff;
-                text-align: center;
-                align-self: center;
-                margin: 400px auto 20px;
-                max-width: 1100px;
-                font: 700 60px/120% Geologica, sans-serif;
-            }
-            
-            .div-97 {
-                position: relative;
-                z-index: 2;
-                color: #1d380c;
-                text-align: center;
-                white-space: nowrap;
-                align-items: center;
-                border-radius: 66px;
-                background: linear-gradient( 93deg, #5fb847 -58.53%, #72be44 8.67%, #8bdf58 94.72% ), linear-gradient(79deg, #2fb219 -20.68%, #8bdf58 80.36%);
-                align-self: center;
-                margin-top: 40px;
-                margin-bottom: 40px;
-                min-width: 217px;
-                max-width: 100%;
-                padding: 14px 20px;
-                font: 400 18px/130% Geologica, sans-serif;
-            }
-            
-            .div-98 {
-                flex-direction: column;
-                box-shadow: 0px 44px 64px -60px rgba(0, 0, 0, 0.55);
-                overflow: hidden;
-                align-self: center;
-                position: relative;
-                z-index: 1;
-                display: flex;
-                min-height: 700px;
-                margin-top: 0;
-                width: 1260px;
-                max-width: 100%;
-                align-items: center;
-                padding: 540px 20px 50px;
-            }
-
-            @media (max-width: 991px) {
-                .div-95 {
-                    max-width: 100%;
-                    font-size: 40px;
-                }
-                .div-96 {
-                    max-width: 100%;
-                }
-                .div-97 {
-                    white-space: initial;
-                    margin-top: 40px;
-                }
-                
-                .div-98 {
-                    margin-top: 0px;
-                    padding-top: 100px;
-                }
-            }
             
             /* #5 section-05 "E-TAC Benefits" + icons grid */
 

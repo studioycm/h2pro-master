@@ -24,14 +24,25 @@ function init() {
     const slides = gsap.utils.toArray("#slides .slide-card-wrap");
     const sliderSection = document.querySelector('#section-07');
     const graphInputs = document.querySelectorAll('#graph-section input[type="range"]');
-    const section2Height = document.querySelector('#section-wrap-02').offsetHeight;
-    const section3GraphEnd = document.querySelector('#section-03').offsetHeight - 360;
     // section 3 ".definitions-graph-developer .definitions-graph-item" last element distance from left side of parent ".definitions-graph-developer"
     const section3GraphItemLast = document.querySelector('.definitions-graph-developer .definitions-graph-item:last-child').offsetLeft - document.querySelector('.definitions-graph-developer').offsetLeft;
-    const section7 = document.querySelector('#section-wrap-07');
+    const section3GraphItemFirst = document.querySelector('.definitions-graph-developer .definitions-graph-item:first-child').offsetLeft - document.querySelector('.definitions-graph-developer').offsetLeft;
     const dropEl = document.querySelector('#drop');
     const section1 = document.querySelector('#section-wrap-01');
+    const section2 = document.querySelector('#section-wrap-02')
+    const section4 = document.querySelector('#section-wrap-04');
+    const section7 = document.querySelector('#section-wrap-07');
+    const section2Height = section2.offsetHeight;
+    const section3GraphEnd = document.querySelector('#section-03').offsetHeight - 360;
     const unionSvg = document.querySelector('#section-02 .column-1');
+    const section4Content = document.querySelector('#section-04 .content');
+    const section4Title = document.querySelector('#section-04 .title');
+    const section4BG = document.querySelector('#section-04 #section-04-bg');
+    const section4ActionButton = document.querySelector('#section-04 .action-button');
+    const section4VideoContainer = document.querySelector('#section-04 .video-container');
+    const section4Video = document.querySelector('#section-04 .video-container .video');
+    const section4VideoButton = document.querySelector('#section-04 .video-container #paly-video');
+    
     // set logo charecter color-white class
     gsap.set("#logo_svg .color-white", {
         fill: "#fff"
@@ -84,9 +95,9 @@ function init() {
             
             snap: {
                 snapTo: 1 / (sectionWraps01.length - 1),
-                duration: 2,// {min: 0.5, max: 1},
-                delay: 0.5,
-                ease: "none"                    
+                duration: 2.2,// {min: 0.5, max: 1},
+                delay: 0.3,
+                ease: "power1.out"                    
             },
             // markers: {
             //     startColor: "green",
@@ -199,7 +210,8 @@ function init() {
     .to('#drop', {
         x: () => - (dropEl.offsetLeft - (unionSvg.offsetWidth / 2 ) + unionSvg.offsetLeft - 265),
         y: () => (section2Height / 2) + (section1.offsetHeight - 255 - dropEl.offsetHeight),
-        duration: 2.5
+        duration: 2.2,
+        ease: "power1.out"
     });
 
     
@@ -217,14 +229,16 @@ function init() {
 
     drop2TL
     .to('#drop', {
-        x: () => section3GraphItemLast - 30,
+        x: () => section3GraphItemFirst - dropEl.offsetWidth,
         y: () => (section2Height / 2) + (section1.offsetHeight - 320 - dropEl.offsetHeight) + (section2Height / 2) + section3GraphEnd,
-        duration: 3
+        backgroundColor: "#5fb847",
+        duration: 2.5,
+        ease: "power1.out"
     }, '1')
     .to('#drop', {
         opacity: 0,
         duration: 0.3
-    }, '-=0.3');
+    });
 
     const section3TL = gsap.timeline({
         scrollTrigger: {
@@ -267,6 +281,74 @@ function init() {
                 });
             },
         }
+    });
+
+    const drop3TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'drop-3',
+            trigger: '#section-wrap-04',
+            start: () => '100px bottom',
+            end: () => 'bottom bottom',
+            toggleActions: 'play none reverse reset',
+            // scrub: 2,
+            markers: true
+        }
+    });
+
+    drop3TL
+    .to('#drop', {
+        opacity: 1,
+        duration: 0.3
+    })
+    .to('#drop', {
+        x: () => - 300  - dropEl.offsetHeight,
+        y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 2) - (dropEl.offsetHeight * 3) + 10,
+        backgroundColor: "#5fb847",
+        duration: 2,
+        ease: "power1.out"
+    })
+    .to('#drop', {
+        borderRadius: "0 50px 50px 50px",
+        width: "100px",
+        height: "100px",
+        duration: 0.5
+    })
+    .fromTo(section4BG, {
+        opacity: 0
+    },{
+        opacity: 1,
+        duration: 0.3
+    })
+    .to('#drop', {
+        opacity: 0,
+        duration: 0.6
+    })
+    .fromTo(section4BG, {
+        backgroundPosition: "0px 90px",
+        clipPath: 'path("m 910 460 v -50 h 50 c 25 0 50 25 50 50 c 0 25 -25 50 -50 50 c -25 0 -50 -25 -50 -50 z")',
+    },{
+        backgroundPosition: "0px -150px",
+        clipPath: 'path("m -550 -560 v -1500 h 1500 c 750 0 1500 750 1500 1500 c 0 750 -750 1500 -1500 1500 c -750 0 -1500 -750 -1500 -1500 z")',
+        duration: 2.5
+    })
+    .set(section4BG, {
+        backgroundImage: "url('../images/blue_1920x1120.jpg')"
+    })
+    .fromTo(section4Title, {
+        opacity: 0,
+        yPercent: 100,
+    },{
+        opacity: 1,
+        yPercent: 0,
+        duration: 1
+    })
+    .fromTo(section4Content, {
+        opacity: 0,
+        yPercent: 100,
+    },{
+        opacity: 1,
+        yPercent: 0,
+        duration: 0.5
     });
 
     const section6TL = gsap.timeline({
