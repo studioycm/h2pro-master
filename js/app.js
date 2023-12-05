@@ -304,14 +304,11 @@ function init() {
         x: () => - 300  - dropEl.offsetHeight,
         y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 2) - (dropEl.offsetHeight * 3) + 10,
         backgroundColor: "#5fb847",
-        duration: 2,
-        ease: "power1.out"
-    })
-    .to('#drop', {
         borderRadius: "0 50px 50px 50px",
         width: "100px",
         height: "100px",
-        duration: 0.5
+        duration: 2,
+        ease: "power1.out"
     })
     .fromTo(section4BG, {
         opacity: 0
@@ -329,7 +326,7 @@ function init() {
     },{
         backgroundPosition: "0px -150px",
         clipPath: 'path("m -550 -560 v -1500 h 1500 c 750 0 1500 750 1500 1500 c 0 750 -750 1500 -1500 1500 c -750 0 -1500 -750 -1500 -1500 z")',
-        duration: 2.5
+        duration: 3
     })
     .set(section4BG, {
         backgroundImage: "url('../images/blue_1920x1120.jpg')"
@@ -340,7 +337,8 @@ function init() {
     },{
         opacity: 1,
         yPercent: 0,
-        duration: 1
+        duration: 1.5,
+        ease: "power1.out"
     })
     .fromTo(section4Content, {
         opacity: 0,
@@ -348,7 +346,8 @@ function init() {
     },{
         opacity: 1,
         yPercent: 0,
-        duration: 0.5
+        duration: 1,
+        ease: "power1.out"
     });
 
     const section6TL = gsap.timeline({
