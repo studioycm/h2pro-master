@@ -291,7 +291,7 @@ function init() {
             trigger: '#section-wrap-04',
             start: () => '100px bottom',
             end: () => 'bottom bottom',
-            toggleActions: 'play none reverse none',
+            toggleActions: 'play none reverse reset',
             // scrub: 2,
             // markers: true
         }
@@ -473,7 +473,7 @@ function init() {
         scrollTrigger: {
             id: 'footer',
             trigger: footer,
-            start: () => "1px bottom",
+            start: () => "top bottom",
             end: () => "bottom bottom",
             toggleActions: 'play complete reverse reset',
             snap: {
