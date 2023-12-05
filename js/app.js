@@ -331,7 +331,7 @@ function init() {
         duration: 3
     })
     .set(section4BG, {
-        backgroundImage: "url('/images/blue_1920x1120.jpg')"
+        backgroundImage: "url('./images/blue_1920x1120.jpg')"
     })
     .fromTo(section4Title, {
         opacity: 0,
