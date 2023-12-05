@@ -11,6 +11,26 @@ body, body * {
   box-sizing: border-box;
 }
 
+.styled-scrollbars {
+    /* Foreground, Background */
+    scrollbar-color: #89dd57 #006ff2;
+      scrollbar-width: 2px;
+  }
+  .styled-scrollbars::-webkit-scrollbar {
+    width: 2px; /* Mostly for vertical scrollbars */
+    height: 2px; /* Mostly for horizontal scrollbars */
+  }
+  .styled-scrollbars::-webkit-scrollbar-thumb { /* Foreground */
+    
+    border-radius: 10px;
+    background-color: #89dd57;
+  }
+  .styled-scrollbars::-webkit-scrollbar-track { /* Background */
+    
+    background-color: #006ff2;
+      border-radius: 0px;
+  }
+
 h1,
 h2,
 h3,
