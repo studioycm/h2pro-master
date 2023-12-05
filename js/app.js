@@ -420,14 +420,7 @@ function init() {
         window.scrollBy(0, -50);
     });
 
-    // select the ".footer" element
-    const footer = document.querySelector('#footer');
-
-    // set tween for the footer element, rising from the bottom of the screen, the tween will be used in onLeave callback function
-    const footerTween = gsap.from(footer, {
-        y: () => footer.offsetHeight,
-        duration: 1
-    });
+    
     const sections02TL = gsap.timeline({
         scrollTrigger: {
             id: 'sections-02',
@@ -458,12 +451,13 @@ function init() {
             onLeave: () => {
                 console.log('onLeave sections');
                 // run tween for the footer element, rising from the bottom of the screen
-                footerTween.play();
+                
+                
             },
             onEnterBack: () => {
                 console.log('onEnterBack sections');
                 // run tween for the footer element, rising from the bottom of the screen
-                footerTween.reverse();
+                
             },
             onSnapComplete: () => {
                 console.log('onSnapComplete sections');
@@ -471,7 +465,58 @@ function init() {
             }
         }
     });
+
+    // select the ".footer" element
+    const footer = document.querySelector('#footer');
+    const footerInner = document.querySelector('#footer .footer-inner');
+    // set tween for the footer element, rising from the bottom of the screen, the tween will be used in onLeave callback function
     
+
+    // set a timeline for the footer element, starting when top of footer reach bottom of scroller, the timeline will be using the footerTween animation
+    const footerTL = gsap.timeline({
+        scrollTrigger: {
+            id: 'footer',
+            trigger: footer,
+            start: () => "1px bottom",
+            end: () => "bottom bottom",
+            toggleActions: 'play complete reverse reset',
+            snap: {
+                snapTo: 1,
+                duration: 1,// {min: 0.5, max: 1},
+                ease: "none"                    
+            },
+            markers: {
+                startColor: "purple",
+                endColor: "blue",
+                fontSize: "14px",
+                indent: 100,
+                fontWeight: "bold"
+            },
+            onEnter: () => {
+                console.log('onEnter footer');
+            },
+            onLeave: () => {
+                console.log('onLeave footer');
+                // run tween for the footer element, rising from the bottom of the screen
+            },
+            onEnterBack: () => {
+                console.log('onEnterBack footer');
+                // run tween for the footer element, rising from the bottom of the screen
+            },
+            onLeaveBack: () => {
+                console.log('onLeaveBack footer');
+            }
+        }
+    });
+    footerTL.fromTo(footerInner, {
+        y: () => footerInner.offsetHeight,
+        opacity: () => 0
+    },{
+        y: () => 0,
+        opacity: () => 1,
+        duration: 2,
+        ease: "power1.out"
+    });
 
 
 }
