@@ -173,8 +173,8 @@ function init() {
         duration: 0.3
     }, '-=0.3')
     .to('#drop', {
-        x: () => - (dropEl.offsetLeft - (unionSvg.offsetWidth / 2 ) + unionSvg.offsetLeft - 284),
-        y: () => (section2Height / 2) + (section1.offsetHeight - 250 - dropEl.offsetHeight),
+        x: () => - (dropEl.offsetLeft - (unionSvg.offsetWidth / 2 ) + unionSvg.offsetLeft - 316),
+        y: () => (section2Height / 2) + (section1.offsetHeight - 280 - dropEl.offsetHeight),
         width: "35px",
         height: "35px",
         duration: 2.2,
