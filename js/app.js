@@ -196,8 +196,8 @@ function init() {
 
     drop2TL
     .to('#drop', {
-        x: () => section3GraphItemFirst - dropEl.offsetWidth + 280,
-        y: () => section1.offsetHeight + section2Height + section3GraphEnd - dropEl.offsetHeight - 250,
+        x: () => section3GraphItemFirst - dropEl.offsetWidth + 250,
+        y: () => section1.offsetHeight + section2Height + section3GraphEnd - 285,
         backgroundColor: "#5fb847",
         duration: 2.5,
         ease: "power1.out"
@@ -339,7 +339,15 @@ function init() {
     });
     const sliderNext = document.querySelector('#slider-next');
     const sliderPrev = document.querySelector('#slider-prev');
+    
+    // add a console.log for: slider.scrollWidth, slider.offsetWidth, slider.clientWidth. add text in the logs to know what is the value for each one
+    console.log('slider.scrollWidth: ' + slider.scrollWidth);
+    console.log('slider.offsetWidth: ' + slider.offsetWidth);
+    console.log('slider.clientWidth: ' + slider.clientWidth);
 
+
+    
+    
     const section7TL = gsap.timeline({
         scrollTrigger: {
             trigger: '#section-wrap-07',
@@ -351,7 +359,7 @@ function init() {
             toggleActions: 'play none none reverse',
             // base vertical scrolling on how wide the container is so it feels more natural.
             start: () => "top top",
-            end: () => "+=" + (slider.offsetWidth ),
+            end: () => "+=" + (slider.scrollWidth ),
             // on enter remove disable attribute from the slider prev button
             onEnter: () => {
                 sliderPrev.removeAttribute('disabled');
@@ -403,7 +411,7 @@ function init() {
             end: () => 'bottom top',
             toggleActions: 'play none reverse none',
             // scrub: 3,
-            markers: true
+            // markers: true
         }
     });
     section9TL.fromTo('#section-09 > img.img', {
@@ -516,13 +524,13 @@ function init() {
                 // scrub: 2,
                 // pin: section,
                 // pinSpacing: false,
-                // markers: {
-                //     startColor: "blue",
-                //     endColor: "purple",
-                //     fontSize: "12px",
-                //     indent: 40,
-                //     fontWeight: "normal"
-                // },
+                markers: {
+                    startColor: "blue",
+                    endColor: "purple",
+                    fontSize: "12px",
+                    indent: 40,
+                    fontWeight: "normal"
+                },
             }
         });
 

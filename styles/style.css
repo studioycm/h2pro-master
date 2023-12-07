@@ -90,7 +90,12 @@ section > h2 {
   margin-bottom: 54px;
 }
 
-
+div sub.h2sub {
+    display: inline-block;
+    vertical-align: sub;
+    line-height: 0.6;
+    font-size: 16px;
+}
 
 
 
@@ -1043,7 +1048,6 @@ section > h2 {
 
             .div-32 {
                 display: flex;
-                margin-top: 185px;
                 flex-direction: column;
                 padding: 0 20px;
             }
@@ -1915,7 +1919,6 @@ section > h2 {
             .div-102 {
                 color: var(--Black, #2a2e32);
                 text-align: center;
-                text-transform: uppercase;
                 align-self: center;
                 margin: 20px auto;
                 max-width: 720px;
@@ -2826,7 +2829,6 @@ section > h2 {
             .div-160 {
             color: var(--Black, #2a2e32);
             text-align: center;
-            text-transform: uppercase;
             align-self: center;
             margin-top: 39px;
             max-width: 571px;
@@ -4996,6 +4998,16 @@ section > h2 {
                 fill: #006ff2;
             }
 
+            #nav-menu .nav-menu-inner {
+                align-items: center;
+                display: flex;
+                width: 100%;
+                justify-content: flex-start;
+                gap: 30px;
+                flex-direction: row;
+                flex-wrap: nowrap;
+            }
+
             #nav-menu .nav-menu-inner div {
                 font: 300 22px Geologica, sans-serif;
                 color: #fff
@@ -5004,8 +5016,13 @@ section > h2 {
             #nav-menu .nav-menu-inner > div {
                 align-self: center;
                 display: flex;
-                gap: 3px;
+                gap: 1px;
                 margin: auto 0;
+                flex-wrap: nowrap;
+                flex-direction: row;
+                align-content: flex-end;
+                align-items: flex-end;
+                justify-content: flex-start;
             }
 
             #nav-menu .nav-menu-inner > div > img {
@@ -5343,9 +5360,8 @@ section > h2 {
             .column-1 {
                 display: flex;
                 line-height: normal;
-                width: max-content;
-                margin-left: 0px;
-                justify-content: flex-start;
+                width: 50%;
+                justify-content: center;
                 align-content: stretch;
                 align-items: stretch;
                 flex-direction: column;
@@ -5360,9 +5376,9 @@ section > h2 {
                 display: flex;
                 flex-direction: column;
                 line-height: normal;
-                width: 40%;
-                margin-left: 20px;
-                justify-content: flex-start;
+                width: 50%;
+                justify-content: center;
+                align-items: flex-start;
             }
             @media (max-width: 991px) {
                 .column-2 {
