@@ -283,8 +283,8 @@ function init() {
     })
     .to('#drop', {
         opacity: 0,
-        duration: 0.6
-    })
+        duration: 0.3
+    }, '<')
     .to(section4BgImage1, {
         objectPosition: "0 -150px",
         duration: 2
@@ -454,13 +454,13 @@ function init() {
                 // scrub: 2,
                 // pin: section,
                 // pinSpacing: false,
-                markers: {
-                    startColor: "blue",
-                    endColor: "purple",
-                    fontSize: "12px",
-                    indent: 40,
-                    fontWeight: "normal"
-                },
+                // markers: {
+                //     startColor: "blue",
+                //     endColor: "purple",
+                //     fontSize: "12px",
+                //     indent: 40,
+                //     fontWeight: "normal"
+                // },
             }
         });
 
