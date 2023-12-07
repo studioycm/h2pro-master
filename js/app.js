@@ -33,6 +33,8 @@ function init() {
     const section4Content = document.querySelector('#section-04 .content');
     const section4Title = document.querySelector('#section-04 .title');
     const section4BG = document.querySelector('#section-04 #section-04-bg');
+    const section4BgImage1 = document.querySelector('#section-04 #section-04-bg #bg-img-1');
+    const section4BgImage2 = document.querySelector('#section-04 #section-04-bg #bg-img-2');
     const section4ActionButton = document.querySelector('#section-04 .action-button');
     const section4VideoContainer = document.querySelector('#section-04 .video-container');
     const section4Video = document.querySelector('#section-04 .video-container .video');
@@ -41,6 +43,7 @@ function init() {
     const slider = document.querySelector('#slides');
     const slides = gsap.utils.toArray("#slides .slide-card-wrap");
     const sliderSection = document.querySelector('#section-07');
+    const section8spacer = document.querySelector('#section-08-spacer');
     // select the footer
     const footer = document.querySelector('#footer');
     const footerInner = document.querySelector('#footer .footer-inner');
@@ -90,7 +93,7 @@ function init() {
             trigger: sectionsPart01,
             start: () => "top top",
             end: () => (sectionsPart01.offsetHeight) + " bottom", // "+=" + (wrap.offsetHeight),
-            toggleActions: 'play complete reverse reset',
+            toggleActions: 'play none reverse reset',
             scrub: 1,
             // pin: true,
             // pinSpacing: false,
@@ -114,6 +117,12 @@ function init() {
             onLeave: () => {
                 console.log('onLeave sections');
             },
+            onEnterBack: () => {
+                console.log('onEnterBack sections');
+            },
+            onLeaveBack: () => {
+                console.log('onLeaveBack sections');
+            },
             onSnapComplete: () => {
                 console.log('onSnapComplete sections');
 
@@ -123,60 +132,14 @@ function init() {
     
     // set timeline for section-wrap with scrollTrigger so each section will be pinned to the top of the screen when it's in view, 
     // and unpinned when all animated elements finished animating + 1 second then scroll to the next section
-    sectionWraps.forEach((wrap, i) => {
-
-        // if (i === 0) return;
-        
-        const section = wrap.querySelector('.section');
-        const animatedElements = gsap.utils.toArray(section.querySelectorAll('.animated'));
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                id: wrap.id + '-items',
-                trigger: wrap,
-                start: () => "top 250px",
-                end: () => "bottom bottom", // + (wrap.offsetHeight),
-                toggleActions: 'play complete none reverse',
-                //preventOverlaps: true,
-                // scrub: 2,
-                // pin: section,
-                // pinSpacing: false,
-                // markers: {
-                //     startColor: "blue",
-                //     endColor: "purple",
-                //     fontSize: "12px",
-                //     indent: 40,
-                //     fontWeight: "normal"
-                // },
-            }
-        });
-
-        animatedElements.forEach(el => {
-            tl.from(el, {
-                y: () => el.offsetHeight,
-                opacity: () => 0,
-                autoAlpha: 0,
-                visibility: 'hidden',
-                duration: 0.3,
-                // stagger: 0.1,
-                // ease: "power3.in"
-            }).to(el, {
-                y: () => 0,
-                autoAlpha: 1,
-                opacity: () => 1,
-                visibility: 'visible',
-                ease: "power3.in"
-            }, '-=0.1');
-        });
-        
-    });
-
+    
     const webinarSticker = gsap.to('#webinar-sticker', {
         scrollTrigger: {
             id: 'webinar-sticker',
             trigger: '#section-01',
             start: () => 'top top',
             end: () => 'bottom bottom',
-            toggleActions: 'play complete reverse reset',
+            toggleActions: 'play none reverse reset',
             // scrub: 3,
             // markers: true
         },
@@ -322,16 +285,19 @@ function init() {
         opacity: 0,
         duration: 0.6
     })
+    .to(section4BgImage1, {
+        objectPosition: "0 -150px",
+        duration: 2
+    })
     .fromTo(section4BG, {
-        backgroundPosition: "0px 90px",
         clipPath: 'path("m 910 460 v -50 h 50 c 25 0 50 25 50 50 c 0 25 -25 50 -50 50 c -25 0 -50 -25 -50 -50 z")',
     },{
-        backgroundPosition: "0px -150px",
-        clipPath: 'path("m -550 -560 v -1500 h 1500 c 750 0 1500 750 1500 1500 c 0 750 -750 1500 -1500 1500 c -750 0 -1500 -750 -1500 -1500 z")',
-        duration: 3
-    })
-    .set(section4BG, {
-        backgroundImage: "url('./images/blue_1920x1120.jpg')"
+        clipPath: 'path("m -550 -590 v -1500 h 1500 c 750 0 1500 750 1500 1500 c 0 750 -750 1500 -1500 1500 c -750 0 -1500 -750 -1500 -1500 z")',
+        duration: 2
+    }, '<')
+    .to(section4BgImage2, {
+        opacity: 1,
+        duration: 1
     })
     .fromTo(section4Title, {
         opacity: 0,
@@ -374,7 +340,8 @@ function init() {
     const section7TL = gsap.timeline({
         scrollTrigger: {
             trigger: '#section-wrap-07',
-            pin: '#section-wrap-07',
+            pin: '#section-07',
+            
             scrub: 1,
             snap: 1 / (slides.length -2),
             // preventOverlaps: true,
@@ -429,7 +396,7 @@ function init() {
             trigger: sectionsPart02,
             start: () => "top bottom",
             end: () => "bottom bottom", // "+=" + (wrap.offsetHeight),
-            toggleActions: 'play complete reverse reset',
+            toggleActions: 'play none reverse reset',
             scrub: 1,
             // pin: true,
             // pinSpacing: false,
@@ -448,25 +415,75 @@ function init() {
             //     fontWeight: "bold"
             // },
             onEnter: () => {
-                console.log('onEnter sections');
+                console.log('onEnter sections 2');
             },
             onLeave: () => {
-                console.log('onLeave sections');
+                console.log('onLeave sections 2');
                 // run tween for the footer element, rising from the bottom of the screen
                 
                 
             },
             onEnterBack: () => {
-                console.log('onEnterBack sections');
+                console.log('onEnterBack sections 2');
                 // run tween for the footer element, rising from the bottom of the screen
                 
             },
             onSnapComplete: () => {
-                console.log('onSnapComplete sections');
+                console.log('onSnapComplete sections 2');
 
             }
         }
     });
+
+    sectionWraps.forEach((wrap, i) => {
+
+        // if (i === 0) return;
+        
+        const section = wrap.querySelector('.section');
+        if (!section) return;
+        const animatedElements = gsap.utils.toArray(section.querySelectorAll('.animated'));
+        
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                id: wrap.id + '-items',
+                trigger: wrap,
+                start: () => "top center",
+                end: () => "bottom bottom", // + (wrap.offsetHeight),
+                toggleActions: 'play none none reverse',
+                //preventOverlaps: true,
+                // scrub: 2,
+                // pin: section,
+                // pinSpacing: false,
+                markers: {
+                    startColor: "blue",
+                    endColor: "purple",
+                    fontSize: "12px",
+                    indent: 40,
+                    fontWeight: "normal"
+                },
+            }
+        });
+
+        animatedElements.forEach(el => {
+            tl.fromTo(el, {
+                y: () => el.offsetHeight,
+                opacity: () => 0,
+                autoAlpha: 0,
+                visibility: 'hidden',
+                // stagger: 0.1,
+                // ease: "power3.in"
+            },{
+                y: () => 0,
+                autoAlpha: 1,
+                opacity: () => 1,
+                visibility: 'visible',
+                duration: 0.3,
+                ease: "power1.out"
+            });
+        });
+        
+    });
+
 
     // set a timeline for the footer element, starting when top of footer reach bottom of scroller, the timeline will be using the footerTween animation
     const footerTL = gsap.timeline({
@@ -475,19 +492,19 @@ function init() {
             trigger: footer,
             start: () => "top bottom",
             end: () => "bottom bottom",
-            toggleActions: 'play complete reverse reset',
+            toggleActions: 'play none reverse reset',
             snap: {
                 snapTo: 1,
                 duration: 1,// {min: 0.5, max: 1},
                 ease: "none"                    
             },
-            markers: {
-                startColor: "purple",
-                endColor: "blue",
-                fontSize: "14px",
-                indent: 100,
-                fontWeight: "bold"
-            },
+            // markers: {
+            //     startColor: "purple",
+            //     endColor: "blue",
+            //     fontSize: "14px",
+            //     indent: 100,
+            //     fontWeight: "bold"
+            // },
             onEnter: () => {
                 console.log('onEnter footer');
             },
