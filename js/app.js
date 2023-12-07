@@ -173,8 +173,10 @@ function init() {
         duration: 0.3
     }, '-=0.3')
     .to('#drop', {
-        x: () => - (dropEl.offsetLeft - (unionSvg.offsetWidth / 2 ) + unionSvg.offsetLeft - 279),
-        y: () => (section2Height / 2) + (section1.offsetHeight - 255 - dropEl.offsetHeight),
+        x: () => - (dropEl.offsetLeft - (unionSvg.offsetWidth / 2 ) + unionSvg.offsetLeft - 284),
+        y: () => (section2Height / 2) + (section1.offsetHeight - 250 - dropEl.offsetHeight),
+        width: "35px",
+        height: "35px",
         duration: 2.2,
         ease: "power1.out"
     });
@@ -194,8 +196,8 @@ function init() {
 
     drop2TL
     .to('#drop', {
-        x: () => section3GraphItemFirst - dropEl.offsetWidth,
-        y: () => (section2Height / 2) + (section1.offsetHeight - 250 - dropEl.offsetHeight) + (section2Height / 2) + section3GraphEnd,
+        x: () => section3GraphItemFirst - dropEl.offsetWidth + 280,
+        y: () => section1.offsetHeight + section2Height + section3GraphEnd - dropEl.offsetHeight - 250,
         backgroundColor: "#5fb847",
         duration: 2.5,
         ease: "power1.out"
@@ -266,8 +268,8 @@ function init() {
         duration: 0.3
     })
     .to('#drop', {
-        x: () => - 310  - dropEl.offsetWidth,
-        y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 2) - (dropEl.offsetHeight * 3) + 10,
+        x: () => -(dropEl.offsetWidth / 2),
+        y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 2) - (dropEl.offsetHeight * 2) - 20,
         backgroundColor: "#5fb847",
         borderRadius: "0 50px 50px 50px",
         width: "100px",
@@ -283,14 +285,15 @@ function init() {
     })
     .to('#drop', {
         opacity: 0,
-        duration: 0.3
+        duration: 0.6
     }, '<')
     .to(section4BgImage1, {
+        scale: 1,
         objectPosition: "0 -150px",
         duration: 2
     })
     .fromTo(section4BG, {
-        clipPath: 'path("m 910 460 v -50 h 50 c 25 0 50 25 50 50 c 0 25 -25 50 -50 50 c -25 0 -50 -25 -50 -50 z")',
+        clipPath: 'path("m 940 490 v -50 h 50 c 25 0 50 25 50 50 c 0 25 -25 50 -50 50 c -25 0 -50 -25 -50 -50 z")',
     },{
         clipPath: 'path("m -550 -590 v -1500 h 1500 c 750 0 1500 750 1500 1500 c 0 750 -750 1500 -1500 1500 c -750 0 -1500 -750 -1500 -1500 z")',
         duration: 2
@@ -390,6 +393,65 @@ function init() {
     });
 
     
+    // set timeline with scrollTrigger for section wrap 09, trigger start when leaving section-wrap-09 and use it as timeline for fromTo animation for the section wrap 09 element,
+    // the anime will be from - clipPath  
+    const section9TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'section-09-out',
+            trigger: '#section-wrap-09',
+            start: () => '10px top',
+            end: () => 'bottom top',
+            toggleActions: 'play none reverse none',
+            // scrub: 3,
+            markers: true
+        }
+    });
+    section9TL.fromTo('#section-09 > img.img', {
+        clipPath: "path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')"
+    }, {
+        clipPath: "path('m 965 120 l 355 0 c 355 0 355 355 355 355 c 0 355 -355 355 -355 355 c -355 0 -355 -355 -355 -355 z')",
+        duration: 1.5,
+    })
+    .to('#section-wrap-09 .section-inner', {
+        y: () => -(document.querySelector('#section-wrap-09 .section-inner').offsetHeight),
+        opacity: 0,
+        duration: 0.3,
+        ease: "power1.out"
+    }, '<')
+    .fromTo('#section-09 > img.img', {
+        objectPosition: "0px 0px",
+        width: "100%",
+    }, {
+        objectPosition: "-400px 100px",
+        width: "125%",
+        duration: 1.7
+    }, '<+=1')
+    .to('#section-wrap-09', {
+        y: () => document.querySelector('#section-wrap-09').offsetHeight,
+        duration: 2
+    }, '<+=0.7')
+    .to('#section-wrap-09', {
+        opacity: 0,
+        duration: 2
+    })
+    .to('#section-10 img.img-51', {
+        opacity: 1,
+        duration: 2
+    }, '<')
+    .fromTo('#section-wrap-10 .content', {
+        opacity: 0,
+        y: () => 100
+    }, {
+        opacity: 1,
+        y: () => 0,
+        duration: 1.5,
+        ease: "power1.out"
+    }, '<+=1')
+    .set('#section-wrap-09', {
+        zIndex: 0
+    });
+
+
     const sections02TL = gsap.timeline({
         scrollTrigger: {
             id: 'sections-02',

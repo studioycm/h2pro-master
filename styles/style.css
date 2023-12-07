@@ -5303,7 +5303,7 @@ section > h2 {
                 position: absolute;
                 top: 300px;
                 bottom: auto;
-                left: 66%;
+                left: 50%;
                 z-index: 999;
                 width: 45px;
                 height: 45px;
@@ -5426,12 +5426,13 @@ section > h2 {
                 min-height: 100%;
                 min-width: 100%;
                 width: auto;
+                height: auto;
                 object-fit: cover;
                 object-position: 0 0;
-                overflow: hidden;
             }
             #section-04 #section-04-bg .bg-img.bg-img-1 {
-                object-position: 0 90px;
+                object-position: 0 150px;
+                object-fit: calc(150%);
                 opacity: 1;
                 z-index: 1;
             }
@@ -6113,7 +6114,10 @@ section > h2 {
                 margin: 0;
                 font: 700 60px/110% Geologica, sans-serif;
             }
-
+            #sections #section-wrap-09 {
+                z-index: 2;
+                background-color: transparent;
+            }
             #sections .section-wrap .section-09 {
                 display: flex;
                 flex-direction: column;
@@ -6123,8 +6127,13 @@ section > h2 {
                 width: 100%;
                 align-items: start;
                 padding: 50px 0px 200px;
+                
             }
             
+            #sections .section-wrap .section-09 > .img {
+                max-width: unset;
+            }
+
             #sections .section-wrap .section-10 {
                 align-self: center;
                 margin: 0px auto;
@@ -6134,7 +6143,12 @@ section > h2 {
                 min-height: unset;
             }
             
+            .section-10 img.img-51 {
+                opacity: 0;
+            }
+
             .section-10 img.img {
+                opacity: 0;
                 object-fit: contain;
                 object-position: top;
             }
