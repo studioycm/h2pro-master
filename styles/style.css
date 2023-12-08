@@ -5143,7 +5143,7 @@ div sub.h2sub {
 
            /* #1 section-01 "High Efficiency Production of Green Hydrogen" + bg video */
             #sections #section-wrap-01 {
-                clip-path: path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z');
+                /* clip-path: path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z'); */
             }          
             #sections .section-wrap .section-01 {
                 flex-direction: column;
