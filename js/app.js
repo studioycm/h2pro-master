@@ -28,7 +28,7 @@ function init() {
     const graphInputs = document.querySelectorAll('#graph-section input[type="range"]');
     const section3GraphEnd = document.querySelector('#section-03').offsetHeight - 360;
     const section3GraphItemLast = document.querySelector('.definitions-graph-developer .definitions-graph-item:last-child').offsetLeft - document.querySelector('.definitions-graph-developer').offsetLeft;
-    const section3GraphItemFirst = document.querySelector('.definitions-graph-developer .definitions-graph-item:first-child').offsetLeft - document.querySelector('.definitions-graph-developer').offsetLeft;
+    const section3GraphItemSecond = document.querySelector('.definitions-graph-developer .definitions-graph-item.etac-item').offsetLeft - document.querySelector('.definitions-graph-developer').offsetLeft;
     const section4 = document.querySelector('#section-wrap-04');
     const section4Content = document.querySelector('#section-04 .content');
     const section4Title = document.querySelector('#section-04 .title');
@@ -39,6 +39,8 @@ function init() {
     const section4VideoContainer = document.querySelector('#section-04 .video-container');
     const section4Video = document.querySelector('#section-04 .video-container .video');
     const section4VideoButton = document.querySelector('#section-04 .video-container #paly-video');
+    const section5 = document.querySelector('#section-wrap-05');
+    const section6 = document.querySelector('#section-wrap-06');
     const section7 = document.querySelector('#section-wrap-07');
     const slider = document.querySelector('#slides');
     const slides = gsap.utils.toArray("#slides .slide-card-wrap");
@@ -146,7 +148,7 @@ function init() {
         xPercent: -85,
         duration: 1
     });
-
+    window.scrollTo(0, 0);
     const section1TL = gsap.timeline({
         scrollTrigger: {
             id: 'section-01-out',
@@ -196,7 +198,7 @@ function init() {
 
     drop2TL
     .to('#drop', {
-        x: () => section3GraphItemFirst - dropEl.offsetWidth + 250,
+        x: () => section3GraphItemSecond - dropEl.offsetWidth + 250,
         y: () => section1.offsetHeight + section2Height + section3GraphEnd - 285,
         backgroundColor: "#5fb847",
         duration: 2.5,
@@ -255,7 +257,7 @@ function init() {
             id: 'drop-3',
             trigger: '#section-wrap-04',
             start: () => '100px bottom',
-            end: () => 'bottom bottom',
+            end: () => 'bottom 50px',
             toggleActions: 'play none reverse reset',
             // scrub: 2,
             // markers: true
@@ -278,6 +280,7 @@ function init() {
         ease: "power1.out"
     })
     .fromTo(section4BG, {
+        clipPath: 'path("m 940 490 v -50 h 50 c 25 0 50 25 50 50 c 0 25 -25 50 -50 50 c -25 0 -50 -25 -50 -50 z")',
         opacity: 0
     },{
         opacity: 1,
@@ -292,9 +295,7 @@ function init() {
         objectPosition: "0 -150px",
         duration: 2
     })
-    .fromTo(section4BG, {
-        clipPath: 'path("m 940 490 v -50 h 50 c 25 0 50 25 50 50 c 0 25 -25 50 -50 50 c -25 0 -50 -25 -50 -50 z")',
-    },{
+    .to(section4BG, {
         clipPath: 'path("m -550 -590 v -1500 h 1500 c 750 0 1500 750 1500 1500 c 0 750 -750 1500 -1500 1500 c -750 0 -1500 -750 -1500 -1500 z")',
         duration: 2
     }, '<')
@@ -321,12 +322,98 @@ function init() {
         ease: "power1.out"
     });
 
+    const drop4TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'drop-4',
+            trigger: '#section-wrap-05',
+            start: () => '50px bottom',
+            end: () => 'bottom 50px',
+            toggleActions: 'play none reverse reset',
+            // scrub: 2,
+            markers: true
+        }
+    });
+
+    drop4TL
+    .fromTo(section4BG, {
+        clipPath: 'path("m -550 -590 v -1500 h 1500 c 750 0 1500 750 1500 1500 c 0 750 -750 1500 -1500 1500 c -750 0 -1500 -750 -1500 -1500 z")'
+    }, {
+        clipPath: 'path("m 940 490 v -35 h 35 c 17.5 0 35 17.5 35 35 c 0 17.5 -17.5 35 -35 35 c -17.5 0 -35 -17.5 -35 -35 z")',
+        duration: 0.3,
+        ease: "power1.out"
+    })
+    .fromTo('#drop',{
+        opacity: 0
+    },{
+        backgroundColor: "#1d7bc8",
+        width: "70px",
+        height: "70px",
+        opacity: 1,
+        duration: 0.3
+    })
+    .to(section4BG, {
+        opacity: 0,
+        duration: 0.3
+    }, '<')
+    .to('#drop', {
+        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 130,
+        y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 220,
+        duration: 2,
+        ease: "power1.out"
+    })
+    .to('#drop', {
+        opacity: 0,
+        duration: 0.3
+    });
+
+    const drop5TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'drop-5',
+            trigger: '#section-wrap-06',
+            start: () => '50px bottom',
+            end: () => 'bottom 50px',
+            toggleActions: 'play none reverse reset',
+            // scrub: 2,
+            markers: true
+        }
+    });
+
+    drop5TL
+    .fromTo('#drop',{
+        backgroundColor: "#1d7bc8",
+        opacity: 0
+    },{
+        opacity: 1,
+        duration: 0.2
+    })
+    .to('#drop', {
+        backgroundColor: "#cccccc",
+        x: () => (section6.offsetWidth * 0.75) - dropEl.offsetLeft,
+        y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight + 50,
+        rotate: 45,
+        duration: 1.5,
+        ease: "power1.out"
+    })
+    .to('#drop', {
+        opacity: 0,
+        duration: 0.2
+    }, '>-=0.2')
+    .to(section6.querySelector('#section-06 > img.img'), {
+        opacity: 1,
+        duration: 0.2
+    }, '<')
+    .to(section6.querySelector('#section-06 > img.img'), {
+        clipPath: 'path("m 960 -2000 l 1600 1600 c 1600 1600 0 3000 0 3000 c -1600 1600 -3000 0 -3000 0 c -1600 -1600 0 -3000 0 -3000 l 1600 -1600 z")',
+        duration: 1,
+        ease: "power1.out"
+    });
+
     const section6TL = gsap.timeline({
         scrollTrigger: {
             trigger: '#section-06',
             start: '300px 100%',
             end: '80% bottom',
-            toggleActions: 'play none reverse reset',
+            toggleActions: 'play complete reverse reset',
             scrub: 3
         }
     });
@@ -524,13 +611,13 @@ function init() {
                 // scrub: 2,
                 // pin: section,
                 // pinSpacing: false,
-                markers: {
-                    startColor: "blue",
-                    endColor: "purple",
-                    fontSize: "12px",
-                    indent: 40,
-                    fontWeight: "normal"
-                },
+                // markers: {
+                //     startColor: "blue",
+                //     endColor: "purple",
+                //     fontSize: "12px",
+                //     indent: 40,
+                //     fontWeight: "normal"
+                // },
             }
         });
 
@@ -607,4 +694,6 @@ function init() {
 // init() on page load 
 window.addEventListener('load', () => {
     init();
+    // scroll to top of the page on page load
+    
 });
