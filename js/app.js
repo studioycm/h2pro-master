@@ -190,7 +190,7 @@ function init() {
             trigger: '#section-wrap-02',
             start: () => '50px top',
             end: () => 'bottom 50px',
-            toggleActions: 'play complete reverse reset',
+            toggleActions: 'play complete none reset',
             // scrub: 2,
             // markers: true
         }
@@ -257,7 +257,7 @@ function init() {
             id: 'drop-3',
             trigger: '#section-wrap-04',
             start: () => '100px bottom',
-            end: () => 'bottom 50px',
+            end: () => 'bottom bottom',
             toggleActions: 'play none reverse reset',
             // scrub: 2,
             // markers: true
@@ -327,7 +327,7 @@ function init() {
             id: 'drop-4',
             trigger: '#section-wrap-05',
             start: () => '50px bottom',
-            end: () => 'bottom 50px',
+            end: () => 'bottom bottom',
             toggleActions: 'play none reverse reset',
             // scrub: 2,
             markers: true
@@ -371,7 +371,7 @@ function init() {
             id: 'drop-5',
             trigger: '#section-wrap-06',
             start: () => '50px bottom',
-            end: () => 'bottom 50px',
+            end: () => 'bottom bottom',
             toggleActions: 'play none reverse reset',
             // scrub: 2,
             markers: true
