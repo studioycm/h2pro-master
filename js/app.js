@@ -384,29 +384,31 @@ function init() {
         opacity: 0
     },{
         opacity: 1,
-        duration: 0.2
+        duration: 0.3
     })
     .to('#drop', {
         backgroundColor: "#cccccc",
-        x: () => (section6.offsetWidth * 0.75) - dropEl.offsetLeft,
+        x: () => (section6.offsetWidth * 0.7) - dropEl.offsetLeft,
         y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight + 50,
         rotate: 45,
         duration: 1.5,
         ease: "power1.out"
-    })
+    }, '>-=0.1')
     .to('#drop', {
         opacity: 0,
         duration: 0.2
     }, '>-=0.2')
-    .to(section6.querySelector('#section-06 > img.img'), {
-        opacity: 1,
-        duration: 0.3
-    }, '<')
-    .to(section6.querySelector('#section-06 > img.img'), {
-        clipPath: 'path("m 960 -800 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 c 0 -1600 1600 -1600 1600 -1600 z")',
-        duration: 1.5,
+    // .to(section6.querySelector('#section-06 > img.img'), {
+    //     opacity: 1,
+    //     duration: 0.3
+    // }, '<')
+    .fromTo(section6.querySelector('#section-06 > img.img'), {
+        clipPath: "path('m 1440 -900 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z')",
+    },{
+        clipPath: 'path("m 1440 -900 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 c 0 -1600 1600 -1600 1600 -1600 z")',
+        duration: 1.7,
         ease: "power1.out"
-    });
+    }, '>-=0.5');
 
     const section6TL = gsap.timeline({
         scrollTrigger: {

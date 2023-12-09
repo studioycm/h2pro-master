@@ -5767,8 +5767,8 @@ div sub.h2sub {
                 padding: 300px 0px 300px;
             }
             #section-06 > img.img {
-                opacity: 0;
-                clip-path: path("m 1440 -35 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z");
+                opacity: 1;
+                clip-path: path("m 1440 -600 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z");
             }
 
             .section-06 .div-129 {
