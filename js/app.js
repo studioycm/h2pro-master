@@ -400,11 +400,11 @@ function init() {
     }, '>-=0.2')
     .to(section6.querySelector('#section-06 > img.img'), {
         opacity: 1,
-        duration: 0.2
+        duration: 0.3
     }, '<')
     .to(section6.querySelector('#section-06 > img.img'), {
-        clipPath: 'path("m 960 -2000 l 1600 1600 c 1600 1600 0 3000 0 3000 c -1600 1600 -3000 0 -3000 0 c -1600 -1600 0 -3000 0 -3000 l 1600 -1600 z")',
-        duration: 1,
+        clipPath: 'path("m 960 -800 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 c 0 -1600 1600 -1600 1600 -1600 z")',
+        duration: 1.5,
         ease: "power1.out"
     });
 
