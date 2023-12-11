@@ -75,7 +75,13 @@ function init() {
         height: "45px",
 
     });
-
+    gsap.set(section4BG, {
+        clipPath: 'path("m 940 490 v -50 h 50 c 25 0 50 25 50 50 c 0 25 -25 50 -50 50 c -25 0 -50 -25 -50 -50 z")',
+        opacity: 0
+    });
+    gsap.set(section4BgImage1, {
+        opacity: 0
+    });
     const headerTL = gsap.timeline({
         scrollTrigger: {
             trigger: '#section-wrap-01',
@@ -102,7 +108,6 @@ function init() {
             trigger: sectionsPart01,
             start: () => "top top",
             end: () => (sectionsPart01.offsetHeight) + " bottom", // "+=" + (wrap.offsetHeight),
-            toggleActions: 'play none reverse reset',
             scrub: 1,
             // pin: true,
             // pinSpacing: false,
@@ -201,7 +206,7 @@ function init() {
         scrollTrigger: {
             id: 'drop-2',
             trigger: '#section-wrap-02',
-            start: () => '50px top',
+            start: () => '100px top',
             end: () => 'bottom 50px',
             toggleActions: 'play none reverse reset',
             // scrub: 2,
@@ -214,8 +219,9 @@ function init() {
         x: () => section3GraphItemSecond - dropEl.offsetWidth + 250,
         y: () => section1.offsetHeight + section2Height + section3GraphEnd - 300,
         backgroundColor: "#5fb847",
+        // delay: 0.3,
         duration: 2.5,
-        ease: "power1.out"
+        ease: "power1.inOut"
     })
     .to('#drop', {
         opacity: 0,
@@ -299,6 +305,12 @@ function init() {
         opacity: 1,
         duration: 0.3
     })
+    .fromTo(section4BgImage1, {
+        opacity: 0
+    },{
+        opacity: 1,
+        duration: 0.3
+    }, '<')
     .to('#drop', {
         opacity: 0,
         duration: 0.6
@@ -419,6 +431,10 @@ function init() {
         ease: "power1.out"
     }, '>-=0.5');
 
+
+
+
+
     const section6TL = gsap.timeline({
         scrollTrigger: {
             trigger: '#section-06',
@@ -438,51 +454,7 @@ function init() {
     const sliderNext = document.querySelector('#slider-next');
     const sliderPrev = document.querySelector('#slider-prev');
     
-    const drop6TL = gsap.timeline({
-        scrollTrigger: {
-            id: 'drop-6',
-            trigger: '#section-wrap-07',
-            start: () => '50px bottom',
-            end: () => (section6.offsetHeight) + ' bottom',
-            toggleActions: 'play none reverse reset',
-            // scrub: 2,
-            markers: true,
-            onEnter: () => {
-                    console.log("#section-06 action offsetTop: " + section6Action.offsetTop);
-                    console.log("#section-06 distance from top: " + (section6.offsetTop - section2.offsetTop));
-                    console.log("#drop offsetTop: " + dropEl.offsetTop);
-                    console.log("#drop getBoundingClientRect().top: " + dropEl.getBoundingClientRect().top);
-                    
-            },
-        }
-    });
     
-    
-    
-
-    drop6TL
-    .fromTo('#drop',{
-        x: () => -(dropEl.offsetLeft - section6Action.offsetLeft),
-        y: () => section6.offsetTop - section2.offsetTop,
-        backgroundColor: "#1d7bc8",
-        opacity: 0,
-    }, {
-        x: () => -(dropEl.offsetLeft - section6Action.offsetLeft),
-        y: () => section6.offsetTop - section2.offsetTop,
-        opacity: 1,
-        duration: 0.3
-    });
-    // .to('#drop', {
-    //     x: () => -(dropEl.offsetLeft - section7Action.offsetLeft),
-    //     y: () => section7.offsetTop - section2.offsetTop + section7Action.getBoundingClientRect().top,
-    //     rotate: 90,
-    //     duration: 1.5,
-    //     ease: "power1.out"
-    // }, '>-=0.1');
-    // .to('#drop', {
-    //     opacity: 0,
-    //     duration: 0.2
-    // }, '>-=0.2');
     
     const section7TL = gsap.timeline({
         scrollTrigger: {
@@ -535,11 +507,6 @@ function init() {
         window.scrollBy(0, -50);
     });
 
-    // scrollBy 50px when #drop-arrow is clicked
-    document.querySelector('#drop-arrow').addEventListener('click', () => {
-        // scroll down one step with lenis
-        
-    });
     
     // set timeline with scrollTrigger for section wrap 09, trigger start when leaving section-wrap-09 and use it as timeline for fromTo animation for the section wrap 09 element,
     // the anime will be from - clipPath  
@@ -564,7 +531,7 @@ function init() {
         y: () => -(document.querySelector('#section-wrap-09 .section-inner').offsetHeight),
         opacity: 0,
         duration: 0.3,
-        ease: "power1.out"
+        ease: "power1.inOut"
     }, '<')
     .fromTo('#section-09 > img.img', {
         objectPosition: "0px 0px",
@@ -606,7 +573,6 @@ function init() {
             trigger: sectionsPart02,
             start: () => "top bottom",
             end: () => "bottom bottom", // "+=" + (wrap.offsetHeight),
-            toggleActions: 'play none reverse reset',
             scrub: 1,
             // pin: true,
             // pinSpacing: false,
@@ -743,10 +709,9 @@ function init() {
 
 
 }
+
 // init() on page load 
 window.addEventListener('load', () => {
     init();
     // scroll to top of the page on page load
-    window.scrollTo(0, 0);
-    
 });
