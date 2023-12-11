@@ -355,7 +355,7 @@ function init() {
             end: () => 'bottom bottom',
             toggleActions: 'play none reverse reset',
             // scrub: 2,
-            markers: true,
+            // markers: true,
         }
     });
 
@@ -399,7 +399,7 @@ function init() {
             end: () => 'bottom bottom',
             toggleActions: 'play none reverse reset',
             // scrub: 2,
-            markers: true
+            // markers: true
         }
     });
 
