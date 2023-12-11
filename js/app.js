@@ -1,4 +1,6 @@
 function init() {
+    gsap.registerPlugin(ScrollTrigger);
+    
     const lenis = new Lenis();
 
         // lenis.on('scroll', (e) => {
@@ -11,8 +13,7 @@ function init() {
         }
 
     requestAnimationFrame(raf);
-
-    gsap.registerPlugin(ScrollTrigger);
+    
     const navMenu = document.querySelector('#nav-menu');
     const sectionsPart01 = document.querySelector('#wraps-part-01');
     const sectionsPart02 = document.querySelector('#wraps-part-02');
@@ -25,6 +26,7 @@ function init() {
     const section2 = document.querySelector('#section-wrap-02')
     const section2Height = section2.offsetHeight;
     const unionSvg = document.querySelector('#section-02 .column-1');
+    const section2svg = document.querySelector('#section-02 svg#h2pro-mission_svg #mask1_4539_46481-vector');
     const graphInputs = document.querySelectorAll('#graph-section input[type="range"]');
     const section3GraphEnd = document.querySelector('#section-03').offsetHeight - 360;
     const section3GraphItemLast = document.querySelector('.definitions-graph-developer .definitions-graph-item:last-child').offsetLeft - document.querySelector('.definitions-graph-developer').offsetLeft;
@@ -41,7 +43,9 @@ function init() {
     const section4VideoButton = document.querySelector('#section-04 .video-container #paly-video');
     const section5 = document.querySelector('#section-wrap-05');
     const section6 = document.querySelector('#section-wrap-06');
+    const section6Action = section6.querySelector('#section-06 .section-action');
     const section7 = document.querySelector('#section-wrap-07');
+    const section7Action = section7.querySelector('#section-07 .section-action');
     const slider = document.querySelector('#slides');
     const slides = gsap.utils.toArray("#slides .slide-card-wrap");
     const sliderSection = document.querySelector('#section-07');
@@ -49,6 +53,8 @@ function init() {
     // select the footer
     const footer = document.querySelector('#footer');
     const footerInner = document.querySelector('#footer .footer-inner');
+    
+    
     
     // set logo charecter color-white class
     gsap.set("#logo_svg .color-white", {
@@ -62,11 +68,12 @@ function init() {
         backgroundImage: "linear-gradient(270deg, rgba(239, 239, 239, 0.34) 0%, rgba(228, 228, 228, 0.34) 100%)"
     });
     gsap.set("#drop", {
-        // opacity: 0
-        backgroundColor: "#006ff2"
-    });
-    gsap.set("#section-wrap-07", {
-        // marginBottom: slider.offsetWidth - section7.offsetHeight
+        opacity: 0,
+        backgroundColor: "#006ff2",
+        borderRadius: "0px 50px 50px 50px",
+        width: "45px",
+        height: "45px",
+
     });
 
     const headerTL = gsap.timeline({
@@ -148,7 +155,7 @@ function init() {
         xPercent: -85,
         duration: 1
     });
-    window.scrollTo(0, 0);
+    
     const section1TL = gsap.timeline({
         scrollTrigger: {
             id: 'section-01-out',
@@ -163,7 +170,7 @@ function init() {
     section1TL.fromTo('#section-wrap-01', {
         clipPath: "path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')"
     }, {
-        clipPath: "path('m " + dropEl.offsetLeft + " 300 l 22.5 0 c 22.5 0 22.5 22.5 22.5 22.5 c 0 22.5 -22.5 22.5 -22.5 22.5 c -22.5 0 -22.5 -22.5 -22.5 -22.5 z')",
+        clipPath: "path('m " + dropEl.offsetLeft + " " + dropEl.offsetTop + " l 22.5 0 c 22.5 0 22.5 22.5 22.5 22.5 c 0 22.5 -22.5 22.5 -22.5 22.5 c -22.5 0 -22.5 -22.5 -22.5 -22.5 z')",
         duration: 1,
     })
     .to('#section-wrap-01', {
@@ -171,11 +178,17 @@ function init() {
         duration: 0.3
     })
     .to('#drop', {
+        backgroundColor: "#006ff2",
         opacity: 1,
         duration: 0.3
     }, '-=0.3')
-    .to('#drop', {
-        x: () => - (dropEl.offsetLeft - (unionSvg.offsetWidth / 2 ) + unionSvg.offsetLeft - 316),
+    .fromTo('#drop', {
+        x: () => 0,
+        y: () => 0,
+        width: "45px",
+        height: "45px",
+    },{
+        x: () => -(dropEl.offsetLeft - section2svg.getBoundingClientRect().left - (section2svg.getBoundingClientRect().width / 2) + 17.5 ),
         y: () => (section2Height / 2) + (section1.offsetHeight - 280 - dropEl.offsetHeight),
         width: "35px",
         height: "35px",
@@ -190,7 +203,7 @@ function init() {
             trigger: '#section-wrap-02',
             start: () => '50px top',
             end: () => 'bottom 50px',
-            toggleActions: 'play complete none reset',
+            toggleActions: 'play none reverse reset',
             // scrub: 2,
             // markers: true
         }
@@ -199,11 +212,11 @@ function init() {
     drop2TL
     .to('#drop', {
         x: () => section3GraphItemSecond - dropEl.offsetWidth + 250,
-        y: () => section1.offsetHeight + section2Height + section3GraphEnd - 285,
+        y: () => section1.offsetHeight + section2Height + section3GraphEnd - 300,
         backgroundColor: "#5fb847",
         duration: 2.5,
         ease: "power1.out"
-    }, '1')
+    })
     .to('#drop', {
         opacity: 0,
         duration: 0.3
@@ -330,7 +343,7 @@ function init() {
             end: () => 'bottom bottom',
             toggleActions: 'play none reverse reset',
             // scrub: 2,
-            markers: true
+            markers: true,
         }
     });
 
@@ -342,16 +355,16 @@ function init() {
         duration: 0.3,
         ease: "power1.out"
     })
-    .fromTo('#drop',{
-        opacity: 0
-    },{
+    .to('#drop',{
         backgroundColor: "#1d7bc8",
         width: "70px",
         height: "70px",
         opacity: 1,
         duration: 0.3
     })
-    .to(section4BG, {
+    .fromTo(section4BG, {
+        opacity: 1
+    },{
         opacity: 0,
         duration: 0.3
     }, '<')
@@ -383,11 +396,11 @@ function init() {
         backgroundColor: "#1d7bc8",
         opacity: 0
     },{
+        backgroundColor: "#cccccc",
         opacity: 1,
         duration: 0.3
     })
     .to('#drop', {
-        backgroundColor: "#cccccc",
         x: () => (section6.offsetWidth * 0.7) - dropEl.offsetLeft,
         y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight + 50,
         rotate: 45,
@@ -398,10 +411,6 @@ function init() {
         opacity: 0,
         duration: 0.2
     }, '>-=0.2')
-    // .to(section6.querySelector('#section-06 > img.img'), {
-    //     opacity: 1,
-    //     duration: 0.3
-    // }, '<')
     .fromTo(section6.querySelector('#section-06 > img.img'), {
         clipPath: "path('m 1440 -900 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z')",
     },{
@@ -429,26 +438,63 @@ function init() {
     const sliderNext = document.querySelector('#slider-next');
     const sliderPrev = document.querySelector('#slider-prev');
     
-    // add a console.log for: slider.scrollWidth, slider.offsetWidth, slider.clientWidth. add text in the logs to know what is the value for each one
-    console.log('slider.scrollWidth: ' + slider.scrollWidth);
-    console.log('slider.offsetWidth: ' + slider.offsetWidth);
-    console.log('slider.clientWidth: ' + slider.clientWidth);
-
-
+    const drop6TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'drop-6',
+            trigger: '#section-wrap-07',
+            start: () => '50px bottom',
+            end: () => (section6.offsetHeight) + ' bottom',
+            toggleActions: 'play none reverse reset',
+            // scrub: 2,
+            markers: true,
+            onEnter: () => {
+                    console.log("#section-06 action offsetTop: " + section6Action.offsetTop);
+                    console.log("#section-06 distance from top: " + (section6.offsetTop - section2.offsetTop));
+                    console.log("#drop offsetTop: " + dropEl.offsetTop);
+                    console.log("#drop getBoundingClientRect().top: " + dropEl.getBoundingClientRect().top);
+                    
+            },
+        }
+    });
     
+    
+    
+
+    drop6TL
+    .fromTo('#drop',{
+        x: () => -(dropEl.offsetLeft - section6Action.offsetLeft),
+        y: () => section6.offsetTop - section2.offsetTop,
+        backgroundColor: "#1d7bc8",
+        opacity: 0,
+    }, {
+        x: () => -(dropEl.offsetLeft - section6Action.offsetLeft),
+        y: () => section6.offsetTop - section2.offsetTop,
+        opacity: 1,
+        duration: 0.3
+    });
+    // .to('#drop', {
+    //     x: () => -(dropEl.offsetLeft - section7Action.offsetLeft),
+    //     y: () => section7.offsetTop - section2.offsetTop + section7Action.getBoundingClientRect().top,
+    //     rotate: 90,
+    //     duration: 1.5,
+    //     ease: "power1.out"
+    // }, '>-=0.1');
+    // .to('#drop', {
+    //     opacity: 0,
+    //     duration: 0.2
+    // }, '>-=0.2');
     
     const section7TL = gsap.timeline({
         scrollTrigger: {
             trigger: '#section-wrap-07',
-            pin: '#section-07',
-            
+            start: () => "top top",
+            end: () => "+=" + (slider.scrollWidth ),
+            pin: '#section-07',        
             scrub: 1,
             snap: 1 / (slides.length -2),
             // preventOverlaps: true,
             toggleActions: 'play none none reverse',
             // base vertical scrolling on how wide the container is so it feels more natural.
-            start: () => "top top",
-            end: () => "+=" + (slider.scrollWidth ),
             // on enter remove disable attribute from the slider prev button
             onEnter: () => {
                 sliderPrev.removeAttribute('disabled');
@@ -489,6 +535,11 @@ function init() {
         window.scrollBy(0, -50);
     });
 
+    // scrollBy 50px when #drop-arrow is clicked
+    document.querySelector('#drop-arrow').addEventListener('click', () => {
+        // scroll down one step with lenis
+        
+    });
     
     // set timeline with scrollTrigger for section wrap 09, trigger start when leaving section-wrap-09 and use it as timeline for fromTo animation for the section wrap 09 element,
     // the anime will be from - clipPath  
@@ -692,10 +743,10 @@ function init() {
 
 
 }
-
 // init() on page load 
 window.addEventListener('load', () => {
     init();
     // scroll to top of the page on page load
+    window.scrollTo(0, 0);
     
 });
