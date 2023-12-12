@@ -330,13 +330,11 @@ function init() {
     }, {
         x: () => -(dropEl.offsetWidth / 2),
         y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 2) - (dropEl.offsetHeight * 2) - 20,
-        width: "100px",
-        height: "100px",
         duration: 2,
         ease: "power1.out"
     })
     .fromTo(section4BG, {
-        clipPath: 'path("m 940 490 v -50 h 50 c 25 0 50 25 50 50 c 0 25 -25 50 -50 50 c -25 0 -50 -25 -50 -50 z")',
+        clipPath: 'path("m 940 490 v -17.5 h 17.5 c 8.75 0 17.5 8.75 17.5 17.5 c 0 8.75 -8.75 17.5 -17.5 17.5 c -8.75 0 -17.5 -8.75 -17.5 -17.5 z")',
         opacity: 0
     },{
         opacity: 1,
