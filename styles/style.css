@@ -5896,7 +5896,8 @@ div sub.h2sub {
                 cursor: not-allowed;
             }
             .slider-button:not(.button-disabled):hover .arrow-color {
-                fill: #1c55b7;
+                /* fill: #1c55b7; */
+                stroke: #006ff2;
             }
             .drop-shape {
                 border-radius: 0px 30px 30px 30px;
