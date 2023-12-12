@@ -336,7 +336,7 @@ function init() {
         ease: "power1.out"
     })
     .fromTo(section4BG, {
-        clipPath: 'path("m 940 490 v -17.5 h 17.5 c 8.75 0 17.5 8.75 17.5 17.5 c 0 8.75 -8.75 17.5 -17.5 17.5 c -8.75 0 -17.5 -8.75 -17.5 -17.5 z")',
+        clipPath: 'path("m 940 460 v -17.5 h 17.5 c 8.75 0 17.5 8.75 17.5 17.5 c 0 8.75 -8.75 17.5 -17.5 17.5 c -8.75 0 -17.5 -8.75 -17.5 -17.5 z")',
         opacity: 0
     },{
         opacity: 1,
@@ -456,10 +456,9 @@ function init() {
 
     drop5TL
     .fromTo('#drop',{
-        backgroundColor: "#1d7bc8", // "#1d7bc8"
         opacity: 0
     },{
-        backgroundColor: "#cccccc",
+        backgroundColor: "#1d7bc8", // "#1d7bc8"
         opacity: 1,
         duration: 0.3
     })
@@ -468,6 +467,7 @@ function init() {
         y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 220,
         rotate: 0,
     }, {
+        backgroundColor: "#cccccc",
         x: () => (section6.offsetWidth * 0.7) - dropEl.offsetLeft,
         y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight + 50,
         rotate: 45,
@@ -491,7 +491,7 @@ function init() {
             id: 'drop-6',
             trigger: '#section-wrap-07',
             start: () => '50px bottom',
-            end: () => (section6.offsetHeight + 1) + ' bottom',
+            end: () => (section6.offsetHeight) + ' bottom',
             toggleActions: 'play none reverse reset',
             // scrub: 2,
             markers: true,
@@ -515,11 +515,10 @@ function init() {
     
     
     
-
     drop6TL
     .set('#drop', {
         x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54)),
-        y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section6Action.getBoundingClientRect().top + 54 - dropElTop,
+        y: () =>  section6.offsetTop + section6Action.getBoundingClientRect().top - dropElTop + section6Action.offsetHeight,
         // x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54)),
         // y: () => section7.offsetTop - section6Action.getBoundingClientRect().bottom - 54 - dropElTop,
         rotate: 0,
@@ -534,13 +533,23 @@ function init() {
     .to('#drop', {
         width: "45px",
         height: "45px",
-        backgroundColor: "#5fb847",
-        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54) - section7Action.offsetLeft),
-        y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section6.offsetHeight - dropElTop + section7Action.getBoundingClientRect().top,
+        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54) ) - section7Action.offsetLeft - 85,
+        y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight - dropElTop + section7Action.getBoundingClientRect().top + 110,
         rotate: 135,
-        duration: 2.5,
-        ease: "power1.inOut"
-    }, '>+=0.5');
+        duration: 2,
+        ease: "power1.in"
+    }, '>+=0.5')
+    .to('#drop', {
+        opacity: 0,
+        duration: 0.3
+    }, '>')
+    .fromTo('#section-07 .slider-controls-buttons', {
+        opacity: 0,
+    }, {
+        opacity: 1,
+        duration: 0.3
+    }, '<');
+
     // .to('#drop', {
     //     x: () => -(dropEl.offsetLeft - section7Action.offsetLeft),
     //     y: () => section7.offsetTop - section2.offsetTop + section7Action.getBoundingClientRect().top,
