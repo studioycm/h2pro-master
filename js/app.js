@@ -608,14 +608,14 @@ function init() {
     
     document.querySelector('#slider-next').addEventListener('click', () => {
         // scroll down one step with lenis
-        window.scrollBy(0, 50);
+        window.scrollBy(0, 300);
         
         
     });
     // reverse the slidAnim when the slider control button #slider-prev is clicked
     document.querySelector('#slider-prev').addEventListener('click', () => {
         // scroll up one step 
-        window.scrollBy(0, -50);
+        window.scrollBy(0, -300);
     });
 
     
