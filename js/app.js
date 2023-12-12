@@ -26,7 +26,8 @@ function init() {
     const section2 = document.querySelector('#section-wrap-02')
     const section2Height = section2.offsetHeight;
     const unionSvg = document.querySelector('#section-02 .column-1');
-    const section2svg = document.querySelector('#section-02 svg#h2pro-mission_svg #mask1_4539_46481-vector');
+    const section2svg = document.querySelector('#section-02 svg#h2pro-mission_svg');
+    const section2svgVector = document.querySelector('#h2pro-mission_svg #mask1_4539_46481-vector');
     const graphInputs = document.querySelectorAll('#graph-section input[type="range"]');
     const section3GraphEnd = document.querySelector('#section-03').offsetHeight - 360;
     const section3GraphItemLast = document.querySelector('.definitions-graph-developer .definitions-graph-item:last-child').offsetLeft - document.querySelector('.definitions-graph-developer').offsetLeft;
@@ -73,9 +74,9 @@ function init() {
         opacity: 0,
         backgroundColor: "#006ff2",
         borderRadius: "0px 50px 50px 50px",
-        width: "45px",
-        height: "45px",
-
+        width: "35px",
+        height: "35px",
+        rotate: 0,
     });
     gsap.set(section4BG, {
         clipPath: 'path("m 940 490 v -50 h 50 c 25 0 50 25 50 50 c 0 25 -25 50 -50 50 c -25 0 -50 -25 -50 -50 z")',
@@ -174,32 +175,53 @@ function init() {
             // markers: true
         }
     });
+    const dropElHalfWidth = dropEl.offsetWidth / 2;
+    const section1clipPath = "path('m " + dropEl.offsetLeft + " " + dropEl.offsetTop + " l " + dropElHalfWidth + " 0 c " + dropElHalfWidth + " 0 " + dropElHalfWidth + " " + dropElHalfWidth + " " + dropElHalfWidth + " " + dropElHalfWidth + " c 0 " + dropElHalfWidth + " -" + dropElHalfWidth + " " + dropElHalfWidth + " -" + dropElHalfWidth + " " + dropElHalfWidth + " c -" + dropElHalfWidth + " 0 -" + dropElHalfWidth + " -" + dropElHalfWidth + " -" + dropElHalfWidth + " -" + dropElHalfWidth + " z')";
     section1TL.fromTo('#section-wrap-01', {
         clipPath: "path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')"
     }, {
-        clipPath: "path('m " + dropEl.offsetLeft + " " + dropEl.offsetTop + " l 22.5 0 c 22.5 0 22.5 22.5 22.5 22.5 c 0 22.5 -22.5 22.5 -22.5 22.5 c -22.5 0 -22.5 -22.5 -22.5 -22.5 z')",
+        clipPath: section1clipPath,
         duration: 1,
     })
     .to('#section-wrap-01', {
         opacity: 0,
         duration: 0.3
     })
-    .to('#drop', {
+    .fromTo('#drop', {
+        opacity: 0,
+        rotate: 0,
+    }, {
+        rotate: 0,
         opacity: 1,
         duration: 0.3
-    }, '-=0.3')
+    }, '<')
     .fromTo('#drop', {
         x: () => 0,
         y: () => 0,
-        width: "45px",
-        height: "45px",
+        width: "35px",
+        height: "35px",
     },{
-        x: () => -(dropEl.getBoundingClientRect().left - section2svg.getBoundingClientRect().left - (section2svg.getBoundingClientRect().width / 2) + 17.5 ),
-        y: () => (section2Height / 2) + (section1.offsetHeight - 280 - dropEl.getBoundingClientRect().height),
+        x: () => -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ),
+        y: () => (section2Height / 2) + (section1.offsetHeight - 300 - (dropEl.offsetHeight / 2)) - 7,
         width: "35px",
         height: "35px",
         duration: 2.2,
-        ease: "power1.out"
+        ease: "power1.out",
+        onStart : () => {
+            console.log('drop1TL onStart');
+            console.log('drop1TL offsetWidth: ' + dropEl.offsetWidth);
+            console.log('drop1TL getBoundingClientRect().width: ' + dropEl.getBoundingClientRect().width);
+            console.log("dropEl to X: ", -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ));
+            console.log("dropEl to Y: ", (section2svg.getBoundingClientRect().height / 2) + (section1.offsetHeight - dropEl.offsetTop - (dropEl.offsetHeight / 2)));
+        },
+        onComplete : () => {
+            console.log('drop1TL onComplete');
+            console.log('drop1TL offsetWidth: ' + dropEl.offsetWidth);
+            console.log('drop1TL getBoundingClientRect().width: ' + dropEl.getBoundingClientRect().width);
+            console.log("dropEl to X: ", -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ));
+            console.log("dropEl to Y: ", (section2svg.getBoundingClientRect().height / 2) + (section1.offsetHeight - dropEl.offsetTop - (dropEl.offsetHeight / 2)));
+            console.log("mask1_4539_46481-vector: ", section2svgVector.getBoundingClientRect().width);
+        }
     });
 
     
@@ -217,15 +239,17 @@ function init() {
 
     drop2TL
     .fromTo('#drop', {
-        opacity: 1,
-        x: () => -(dropEl.getBoundingClientRect().left - section2svg.getBoundingClientRect().left - (section2svg.getBoundingClientRect().width / 2) + 17.5 ),
-        y: () => (section2Height / 2) + (section1.offsetHeight - 280 - dropEl.getBoundingClientRect().height),
+        x: () => -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ),
+        y: () => (section2Height / 2) + (section1.offsetHeight - 300 - (dropEl.offsetHeight / 2)) - 7,
+        backgroundColor: "#006ff2",
+        rotate: 0,
         width: "35px",
         height: "35px",
     },{
         x: () => section3GraphItemSecond - dropEl.offsetWidth + 250,
         y: () => section1.offsetHeight + section2Height + section3GraphEnd - 300,
         backgroundColor: "#5fb847",
+        rotate: 0,
         opacity: 1,
         // delay: 0.3,
         duration: 2.5,
@@ -383,8 +407,6 @@ function init() {
     .fromTo('#drop', {
         x: () => -(dropEl.offsetWidth / 2),
         y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 2) - (dropEl.offsetHeight * 2) - 20,
-        width: "100px",
-        height: "100px",
         opacity: 0,
     }, {
         backgroundColor: "#1d7bc8",// "#1d7bc8"
@@ -475,7 +497,8 @@ function init() {
             markers: true,
             onEnter: () => {
                     console.log("#section-06 action offsetTop: " + section6Action.offsetTop);
-                    console.log("#section-06 distance from top: " + (section6.offsetTop - section2.offsetTop));
+                    console.log("#section-06 action rect.top: " + section6Action.getBoundingClientRect().top);
+                    console.log("#section-06 distance from top: " + (section6.offsetTop));
                     console.log("#drop offsetTop: " + dropEl.offsetTop);
                     console.log("#drop getBoundingClientRect().top: " + dropEl.getBoundingClientRect().top);
                     console.log("#drop from X: ", (-(dropEl.offsetLeft - section6Action.getBoundingClientRect().left)));
@@ -492,17 +515,25 @@ function init() {
 
     drop6TL
     .fromTo('#drop',{
-        x: () => -(dropEl.offsetLeft - section6Action.getBoundingClientRect().left),
-        y: () => section6.offsetTop - dropEl.getBoundingClientRect().top + section6Action.getBoundingClientRect().top,
-        rotate: 45,
-        width: "45px",
-        height: "45px",
-        backgroundColor: "#5fb847", // green color
+        opacity: 0,
+        rotate: 0,
+    },{
+        top: section6.offsetTop + section6Action.getBoundingClientRect().top,
+        left: section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - dropEl.offsetWidth,
+        width: "54px",
+        height: "54px",
+        rotate: 0,
+        backgroundColor: "#5fb847",
         opacity: 1,
+        duration: 0.3
+    })
+    .fromTo('#drop',{
+        x: () => 0,
+        y: () => 0,
     }, {
-        x: () => -(dropEl.offsetLeft - section6Action.offsetLeft),
-        y: () => section7.offsetTop,
-        rotate: "+=90",
+        x: () => -(section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - dropEl.offsetWidth - section7Action.getBoundingClientRect().left),
+        y: () => section7Action.getBoundingClientRect().top + section6.offsetHeight + section6Action.getBoundingClientRect().top,
+        rotate: 135,
         duration: 2,
         ease: "power1.inOut"
     });
