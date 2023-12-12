@@ -68,6 +68,8 @@ function init() {
         backgroundImage: "linear-gradient(270deg, rgba(239, 239, 239, 0.34) 0%, rgba(228, 228, 228, 0.34) 100%)"
     });
     gsap.set("#drop", {
+        x: () => 0,
+        y: () => 0,
         opacity: 0,
         backgroundColor: "#006ff2",
         borderRadius: "0px 50px 50px 50px",
@@ -183,7 +185,6 @@ function init() {
         duration: 0.3
     })
     .to('#drop', {
-        backgroundColor: "#006ff2",
         opacity: 1,
         duration: 0.3
     }, '-=0.3')
@@ -193,8 +194,8 @@ function init() {
         width: "45px",
         height: "45px",
     },{
-        x: () => -(dropEl.offsetLeft - section2svg.getBoundingClientRect().left - (section2svg.getBoundingClientRect().width / 2) + 17.5 ),
-        y: () => (section2Height / 2) + (section1.offsetHeight - 280 - dropEl.offsetHeight),
+        x: () => -(dropEl.getBoundingClientRect().left - section2svg.getBoundingClientRect().left - (section2svg.getBoundingClientRect().width / 2) + 17.5 ),
+        y: () => (section2Height / 2) + (section1.offsetHeight - 280 - dropEl.getBoundingClientRect().height),
         width: "35px",
         height: "35px",
         duration: 2.2,
@@ -215,10 +216,17 @@ function init() {
     });
 
     drop2TL
-    .to('#drop', {
+    .fromTo('#drop', {
+        opacity: 1,
+        x: () => -(dropEl.getBoundingClientRect().left - section2svg.getBoundingClientRect().left - (section2svg.getBoundingClientRect().width / 2) + 17.5 ),
+        y: () => (section2Height / 2) + (section1.offsetHeight - 280 - dropEl.getBoundingClientRect().height),
+        width: "35px",
+        height: "35px",
+    },{
         x: () => section3GraphItemSecond - dropEl.offsetWidth + 250,
         y: () => section1.offsetHeight + section2Height + section3GraphEnd - 300,
         backgroundColor: "#5fb847",
+        opacity: 1,
         // delay: 0.3,
         duration: 2.5,
         ease: "power1.inOut"
@@ -284,15 +292,20 @@ function init() {
     });
 
     drop3TL
-    .to('#drop', {
+    .fromTo('#drop', {
+        opacity: 0,
+    },{
         opacity: 1,
         duration: 0.3
     })
-    .to('#drop', {
+    .fromTo('#drop', {
+        x: () => section3GraphItemSecond - dropEl.offsetWidth + 250,
+        y: () => section1.offsetHeight + section2Height + section3GraphEnd - 300,
+        width: "35px",
+        height: "35px",
+    }, {
         x: () => -(dropEl.offsetWidth / 2),
         y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 2) - (dropEl.offsetHeight * 2) - 20,
-        backgroundColor: "#5fb847",
-        borderRadius: "0 50px 50px 50px",
         width: "100px",
         height: "100px",
         duration: 2,
@@ -367,8 +380,14 @@ function init() {
         duration: 0.3,
         ease: "power1.out"
     })
-    .to('#drop',{
-        backgroundColor: "#1d7bc8",
+    .fromTo('#drop', {
+        x: () => -(dropEl.offsetWidth / 2),
+        y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 2) - (dropEl.offsetHeight * 2) - 20,
+        width: "100px",
+        height: "100px",
+        opacity: 0,
+    }, {
+        backgroundColor: "#1d7bc8",// "#1d7bc8"
         width: "70px",
         height: "70px",
         opacity: 1,
@@ -380,11 +399,21 @@ function init() {
         opacity: 0,
         duration: 0.3
     }, '<')
-    .to('#drop', {
+    .fromTo('#drop', {
+        x: () => -(dropEl.offsetWidth / 2),
+        y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 2) - (dropEl.offsetHeight * 2) - 20,
+    }, {
         x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 130,
         y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 220,
         duration: 2,
-        ease: "power1.out"
+        ease: "power1.out",
+        // all gsap tween animation callback functions: onStart, onUpdate, onComplete, onRepeat, onReverseComplete
+        onStart : () => {
+            console.log('onStart');
+        },
+        onComplete : () => {
+            console.log('onComplete');
+        }
     })
     .to('#drop', {
         opacity: 0,
@@ -405,14 +434,18 @@ function init() {
 
     drop5TL
     .fromTo('#drop',{
-        backgroundColor: "#1d7bc8",
+        backgroundColor: "#1d7bc8", // "#1d7bc8"
         opacity: 0
     },{
         backgroundColor: "#cccccc",
         opacity: 1,
         duration: 0.3
     })
-    .to('#drop', {
+    .fromTo('#drop', {
+        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 130,
+        y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 220,
+        rotate: 0,
+    }, {
         x: () => (section6.offsetWidth * 0.7) - dropEl.offsetLeft,
         y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight + 50,
         rotate: 45,
@@ -431,10 +464,59 @@ function init() {
         ease: "power1.out"
     }, '>-=0.5');
 
+    const drop6TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'drop-6',
+            trigger: '#section-wrap-07',
+            start: () => '50px bottom',
+            end: () => (section6.offsetHeight) + ' bottom',
+            toggleActions: 'play none reverse reset',
+            // scrub: 2,
+            markers: true,
+            onEnter: () => {
+                    console.log("#section-06 action offsetTop: " + section6Action.offsetTop);
+                    console.log("#section-06 distance from top: " + (section6.offsetTop - section2.offsetTop));
+                    console.log("#drop offsetTop: " + dropEl.offsetTop);
+                    console.log("#drop getBoundingClientRect().top: " + dropEl.getBoundingClientRect().top);
+                    console.log("#drop from X: ", (-(dropEl.offsetLeft - section6Action.getBoundingClientRect().left)));
+                    console.log("#drop from Y: ", (section6.offsetTop - dropEl.getBoundingClientRect().top + section6Action.getBoundingClientRect().top));
+                    console.log("#drop to X: ", (-(dropEl.offsetLeft - section6Action.offsetLeft)));
+                    console.log("#drop to Y: ", (section7.offsetTop));
+                    
+            },
+        }
+    });
+    
+    
+    
 
-
-
-
+    drop6TL
+    .fromTo('#drop',{
+        x: () => -(dropEl.offsetLeft - section6Action.getBoundingClientRect().left),
+        y: () => section6.offsetTop - dropEl.getBoundingClientRect().top + section6Action.getBoundingClientRect().top,
+        rotate: 45,
+        width: "45px",
+        height: "45px",
+        backgroundColor: "#5fb847", // green color
+        opacity: 1,
+    }, {
+        x: () => -(dropEl.offsetLeft - section6Action.offsetLeft),
+        y: () => section7.offsetTop,
+        rotate: "+=90",
+        duration: 2,
+        ease: "power1.inOut"
+    });
+    // .to('#drop', {
+    //     x: () => -(dropEl.offsetLeft - section7Action.offsetLeft),
+    //     y: () => section7.offsetTop - section2.offsetTop + section7Action.getBoundingClientRect().top,
+    //     rotate: 90,
+    //     duration: 1.5,
+    //     ease: "power1.out"
+    // }, '>-=0.1');
+    // .to('#drop', {
+    //     opacity: 0,
+    //     duration: 0.2
+    // }, '>-=0.2');
     const section6TL = gsap.timeline({
         scrollTrigger: {
             trigger: '#section-06',
@@ -625,7 +707,7 @@ function init() {
                 trigger: wrap,
                 start: () => "top center",
                 end: () => "bottom bottom", // + (wrap.offsetHeight),
-                toggleActions: 'play none none reverse',
+                toggleActions: 'play none none reset',
                 //preventOverlaps: true,
                 // scrub: 2,
                 // pin: section,
