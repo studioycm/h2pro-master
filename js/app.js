@@ -22,6 +22,7 @@ function init() {
     const sectionWraps02 = gsap.utils.toArray("#sections #wraps-part-02 .section-wrap");
     const sections = gsap.utils.toArray("#sections .section-wrap .section");
     const dropEl = document.querySelector('#drop');
+    const dropElTop = 300;
     const section1 = document.querySelector('#section-wrap-01');
     const section2 = document.querySelector('#section-wrap-02')
     const section2Height = section2.offsetHeight;
@@ -29,6 +30,7 @@ function init() {
     const section2svg = document.querySelector('#section-02 svg#h2pro-mission_svg');
     const section2svgVector = document.querySelector('#h2pro-mission_svg #mask1_4539_46481-vector');
     const graphInputs = document.querySelectorAll('#graph-section input[type="range"]');
+    const section3 = document.querySelector('#section-wrap-03');
     const section3GraphEnd = document.querySelector('#section-03').offsetHeight - 360;
     const section3GraphItemLast = document.querySelector('.definitions-graph-developer .definitions-graph-item:last-child').offsetLeft - document.querySelector('.definitions-graph-developer').offsetLeft;
     const section3GraphItemSecond = document.querySelector('.definitions-graph-developer .definitions-graph-item.etac-item').offsetLeft - document.querySelector('.definitions-graph-developer').offsetLeft;
@@ -202,7 +204,7 @@ function init() {
         height: "35px",
     },{
         x: () => -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ),
-        y: () => (section2Height / 2) + (section1.offsetHeight - 300 - (dropEl.offsetHeight / 2)) - 7,
+        y: () => (section2Height / 2) + (section1.offsetHeight - dropElTop - (dropEl.offsetHeight / 2)) - 7,
         width: "35px",
         height: "35px",
         duration: 2.2,
@@ -240,14 +242,14 @@ function init() {
     drop2TL
     .fromTo('#drop', {
         x: () => -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ),
-        y: () => (section2Height / 2) + (section1.offsetHeight - 300 - (dropEl.offsetHeight / 2)) - 7,
+        y: () => (section2Height / 2) + (section1.offsetHeight - dropElTop - (dropEl.offsetHeight / 2)) - 7,
         backgroundColor: "#006ff2",
         rotate: 0,
         width: "35px",
         height: "35px",
     },{
         x: () => section3GraphItemSecond - dropEl.offsetWidth + 250,
-        y: () => section1.offsetHeight + section2Height + section3GraphEnd - 300,
+        y: () => section1.offsetHeight + section2Height + section3GraphEnd - dropElTop,
         backgroundColor: "#5fb847",
         rotate: 0,
         opacity: 1,
@@ -324,7 +326,7 @@ function init() {
     })
     .fromTo('#drop', {
         x: () => section3GraphItemSecond - dropEl.offsetWidth + 250,
-        y: () => section1.offsetHeight + section2Height + section3GraphEnd - 300,
+        y: () => section1.offsetHeight + section2Height + section3GraphEnd - dropElTop,
         width: "35px",
         height: "35px",
     }, {
@@ -489,20 +491,23 @@ function init() {
             id: 'drop-6',
             trigger: '#section-wrap-07',
             start: () => '50px bottom',
-            end: () => (section6.offsetHeight) + ' bottom',
+            end: () => (section6.offsetHeight + 1) + ' bottom',
             toggleActions: 'play none reverse reset',
             // scrub: 2,
             markers: true,
             onEnter: () => {
-                    console.log("#section-06 action offsetTop: " + section6Action.offsetTop);
-                    console.log("#section-06 action rect.top: " + section6Action.getBoundingClientRect().top);
-                    console.log("#section-06 distance from top: " + (section6.offsetTop));
+                    console.log("#section-06 action offsetTop: ", section6Action.offsetTop);
+                    console.log("#section-06 action rect.top: ", section6Action.getBoundingClientRect().top);
+                    console.log("section6.offsetTop: ", (section6.offsetTop));
                     console.log("#drop offsetTop: " + dropEl.offsetTop);
                     console.log("#drop getBoundingClientRect().top: " + dropEl.getBoundingClientRect().top);
-                    console.log("#drop from X: ", (-(dropEl.offsetLeft - section6Action.getBoundingClientRect().left)));
-                    console.log("#drop from Y: ", (section6.offsetTop - dropEl.getBoundingClientRect().top + section6Action.getBoundingClientRect().top));
-                    console.log("#drop to X: ", (-(dropEl.offsetLeft - section6Action.offsetLeft)));
-                    console.log("#drop to Y: ", (section7.offsetTop));
+                    console.log("#drop from X: ", (-(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54))));
+                    console.log("#drop from Y: ", (section7.offsetTop - section6Action.getBoundingClientRect().bottom - 54 - dropElTop));
+                    console.log("dropEl.offsetLeft - section6Action.offsetLeft: ", (-(dropEl.offsetLeft - section6Action.offsetLeft)));
+                    console.log("section7.offsetTop: ", (section7.offsetTop));
+                    console.log("section6Action.getBoundingClientRect().bottom: ", (section6Action.getBoundingClientRect().bottom));
+                    console.log("section6Action.getBoundingClientRect().top: ", (section6Action.getBoundingClientRect().top));
+                    console.log("section7Action.getBoundingClientRect().top: ", (section7Action.getBoundingClientRect().top));
                     
             },
         }
@@ -512,29 +517,30 @@ function init() {
     
 
     drop6TL
-    .fromTo('#drop',{
-        opacity: 0,
-        rotate: 0,
-    },{
-        top: section6.offsetTop + section6Action.getBoundingClientRect().top,
-        left: section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - dropEl.offsetWidth,
-        width: "54px",
-        height: "54px",
+    .set('#drop', {
+        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54)),
+        y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section6Action.getBoundingClientRect().top + 54 - dropElTop,
+        // x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54)),
+        // y: () => section7.offsetTop - section6Action.getBoundingClientRect().bottom - 54 - dropElTop,
         rotate: 0,
         backgroundColor: "#5fb847",
+        width: "54px",
+        height: "54px",
+    })
+    .to('#drop',{
         opacity: 1,
         duration: 0.3
     })
-    .fromTo('#drop',{
-        x: () => 0,
-        y: () => 0,
-    }, {
-        x: () => -(section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - dropEl.offsetWidth - section7Action.getBoundingClientRect().left),
-        y: () => section7Action.getBoundingClientRect().top + section6.offsetHeight + section6Action.getBoundingClientRect().top,
+    .to('#drop', {
+        width: "45px",
+        height: "45px",
+        backgroundColor: "#5fb847",
+        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54) - section7Action.offsetLeft),
+        y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section6.offsetHeight - dropElTop + section7Action.getBoundingClientRect().top,
         rotate: 135,
-        duration: 2,
+        duration: 2.5,
         ease: "power1.inOut"
-    });
+    }, '>+=0.5');
     // .to('#drop', {
     //     x: () => -(dropEl.offsetLeft - section7Action.offsetLeft),
     //     y: () => section7.offsetTop - section2.offsetTop + section7Action.getBoundingClientRect().top,
