@@ -52,7 +52,11 @@ function init() {
     const slider = document.querySelector('#slides');
     const slides = gsap.utils.toArray("#slides .slide-card-wrap");
     const sliderSection = document.querySelector('#section-07');
+    const section8 = document.querySelector('#section-wrap-08');
     const section8spacer = document.querySelector('#section-08-spacer');
+    const section8DropTarget = document.querySelector('#section-08 .drop-target');
+    const section9 = document.querySelector('#section-wrap-09');
+    const section10 = document.querySelector('#section-wrap-10');
     // select the footer
     const footer = document.querySelector('#footer');
     const footerInner = document.querySelector('#footer .footer-inner');
@@ -124,26 +128,26 @@ function init() {
                 ease: "power1.out"                    
             },
             // markers: {
-            //     startColor: "green",
+            //     startColor: "blue",
             //     endColor: "red",
             //     fontSize: "14px",
             //     indent: 20,
             //     fontWeight: "bold"
             // },
             onEnter: () => {
-                console.log('onEnter sections');
+                console.log('onEnter sections - ', sectionsPart01.offsetHeight);
             },
             onLeave: () => {
-                console.log('onLeave sections');
+                console.log('onLeave sections - ', sectionsPart01.offsetHeight);
             },
             onEnterBack: () => {
-                console.log('onEnterBack sections');
+                console.log('onEnterBack sections - ', sectionsPart01.offsetHeight);
             },
             onLeaveBack: () => {
-                console.log('onLeaveBack sections');
+                console.log('onLeaveBack sections - ', sectionsPart01.offsetHeight);
             },
             onSnapComplete: () => {
-                console.log('onSnapComplete sections');
+                console.log('onSnapComplete sections - ', sectionsPart01.offsetHeight);
 
             }
         }
@@ -233,7 +237,7 @@ function init() {
             trigger: '#section-wrap-02',
             start: () => '100px top',
             end: () => 'bottom top',
-            toggleActions: 'play complete reverse reset',
+            toggleActions: 'play complete none reset',
             // scrub: 2,
             // markers: true,
             
@@ -318,7 +322,7 @@ function init() {
             trigger: '#section-wrap-04',
             start: () => '100px bottom',
             end: () => 'bottom top',
-            toggleActions: 'play complete reverse reset',
+            toggleActions: 'play complete none reset',
             // scrub: 2,
             // markers: true,
             
@@ -404,7 +408,7 @@ function init() {
             trigger: '#section-wrap-05',
             start: () => '50px bottom',
             end: () => 'bottom top',
-            toggleActions: 'play complete reverse reset',
+            toggleActions: 'play complete none reset',
             // scrub: 2,
             // markers: true,
         }
@@ -462,7 +466,7 @@ function init() {
             trigger: '#section-wrap-06',
             start: () => '50px bottom',
             end: () => 'bottom top',
-            toggleActions: 'play complete reverse reset',
+            toggleActions: 'play complete none reset',
             // scrub: 2,
             // markers: true
         }
@@ -512,24 +516,24 @@ function init() {
             trigger: '#section-wrap-07',
             start: () => '50px bottom',
             end: () => (section6.offsetHeight) + ' top',
-            toggleActions: 'play complete reverse reset',
+            toggleActions: 'play complete none reset',
             // scrub: 2,
-            markers: true,
-            onEnter: () => {
-                    console.log("#section-06 action offsetTop: ", section6Action.offsetTop);
-                    console.log("#section-06 action rect.top: ", section6Action.getBoundingClientRect().top);
-                    console.log("section6.offsetTop: ", (section6.offsetTop));
-                    console.log("#drop offsetTop: " + dropEl.offsetTop);
-                    console.log("#drop getBoundingClientRect().top: " + dropEl.getBoundingClientRect().top);
-                    console.log("#drop from X: ", (-(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54))));
-                    console.log("#drop from Y: ", (section7.offsetTop - section6Action.getBoundingClientRect().bottom - 54 - dropElTop));
-                    console.log("dropEl.offsetLeft - section6Action.offsetLeft: ", (-(dropEl.offsetLeft - section6Action.offsetLeft)));
-                    console.log("section7.offsetTop: ", (section7.offsetTop));
-                    console.log("section6Action.getBoundingClientRect().bottom: ", (section6Action.getBoundingClientRect().bottom));
-                    console.log("section6Action.getBoundingClientRect().top: ", (section6Action.getBoundingClientRect().top));
-                    console.log("section7Action.getBoundingClientRect().top: ", (section7Action.getBoundingClientRect().top));
+            // markers: true,
+            // onEnter: () => {
+            //         console.log("#section-06 action offsetTop: ", section6Action.offsetTop);
+            //         console.log("#section-06 action rect.top: ", section6Action.getBoundingClientRect().top);
+            //         console.log("section6.offsetTop: ", (section6.offsetTop));
+            //         console.log("#drop offsetTop: " + dropEl.offsetTop);
+            //         console.log("#drop getBoundingClientRect().top: " + dropEl.getBoundingClientRect().top);
+            //         console.log("#drop from X: ", (-(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54))));
+            //         console.log("#drop from Y: ", (section7.offsetTop - section6Action.getBoundingClientRect().bottom - 54 - dropElTop));
+            //         console.log("dropEl.offsetLeft - section6Action.offsetLeft: ", (-(dropEl.offsetLeft - section6Action.offsetLeft)));
+            //         console.log("section7.offsetTop: ", (section7.offsetTop));
+            //         console.log("section6Action.getBoundingClientRect().bottom: ", (section6Action.getBoundingClientRect().bottom));
+            //         console.log("section6Action.getBoundingClientRect().top: ", (section6Action.getBoundingClientRect().top));
+            //         console.log("section7Action.getBoundingClientRect().top: ", (section7Action.getBoundingClientRect().top));
                     
-            },
+            // },
         }
     });
     
@@ -539,8 +543,6 @@ function init() {
     .set('#drop', {
         x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54)),
         y: () =>  section6.offsetTop + section6Action.getBoundingClientRect().top - dropElTop + section6Action.offsetHeight + 5,
-        // x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54)),
-        // y: () => section7.offsetTop - section6Action.getBoundingClientRect().bottom - 54 - dropElTop,
         rotate: 0,
         backgroundColor: "#5fb847",
         width: "54px",
@@ -575,18 +577,7 @@ function init() {
         opacity: 1,
         duration: 0.3
     }, '<');
-
-    // .to('#drop', {
-    //     x: () => -(dropEl.offsetLeft - section7Action.offsetLeft),
-    //     y: () => section7.offsetTop - section2.offsetTop + section7Action.getBoundingClientRect().top,
-    //     rotate: 90,
-    //     duration: 1.5,
-    //     ease: "power1.out"
-    // }, '>-=0.1');
-    // .to('#drop', {
-    //     opacity: 0,
-    //     duration: 0.2
-    // }, '>-=0.2');
+    
     const section6TL = gsap.timeline({
         scrollTrigger: {
             trigger: '#section-06',
@@ -660,6 +651,8 @@ function init() {
     });
 
     
+
+
     // set timeline with scrollTrigger for section wrap 09, trigger start when leaving section-wrap-09 and use it as timeline for fromTo animation for the section wrap 09 element,
     // the anime will be from - clipPath  
     const section9TL = gsap.timeline({
@@ -668,7 +661,7 @@ function init() {
             trigger: '#section-wrap-09',
             start: () => '10px top',
             end: () => 'bottom top',
-            toggleActions: 'play complete reverse none',
+            toggleActions: 'play complete reverse reset',
             // scrub: 3,
             // markers: true
         }
@@ -695,19 +688,20 @@ function init() {
     }, '<+=1')
     .to('#section-wrap-09', {
         y: () => document.querySelector('#section-wrap-09').offsetHeight,
-        duration: 2,
-        ease: "power1.inOut",
+        duration: 2.5,
+        delay: 0.5,
+        ease: "power1.out",
         onStart : () => {
             console.log('section9 onStart #section-wrap-09');
         },
         onComplete : () => {
             console.log('section9 onComplete #section-wrap-09');
         }
-    }, '<+=0.7')
+    }, '<')
     .to('#section-wrap-09', {
         opacity: 0,
         duration: 2
-    })
+    }, '>')
     .to('#section-10 img.img-51', {
         opacity: 1,
         duration: 2
