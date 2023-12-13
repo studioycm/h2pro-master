@@ -2789,7 +2789,7 @@ div sub.h2sub {
             }
             .div-158 {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             gap: 20px;
             }
             @media (max-width: 991px) {

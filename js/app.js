@@ -879,4 +879,5 @@ function init() {
 window.addEventListener('load', () => {
     init();
     // scroll to top of the page on page load
+    window.scrollTo(0, 0);
 });
