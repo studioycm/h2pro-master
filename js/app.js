@@ -119,7 +119,7 @@ function init() {
             
             snap: {
                 snapTo: 1 / (sectionWraps01.length - 1),
-                duration: 2.5,// {min: 0.5, max: 1},
+                duration: 2.2,// {min: 0.5, max: 1},
                 // delay: 0.3,
                 ease: "power1.out"                    
             },
@@ -210,19 +210,19 @@ function init() {
         duration: 2.2,
         ease: "power1.out",
         onStart : () => {
-            console.log('drop1TL onStart');
-            console.log('drop1TL offsetWidth: ' + dropEl.offsetWidth);
-            console.log('drop1TL getBoundingClientRect().width: ' + dropEl.getBoundingClientRect().width);
-            console.log("dropEl to X: ", -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ));
-            console.log("dropEl to Y: ", (section2svg.getBoundingClientRect().height / 2) + (section1.offsetHeight - dropEl.offsetTop - (dropEl.offsetHeight / 2)));
+            console.log('drop 1 Start #section-wrap-01');
+            // console.log('drop1TL offsetWidth: ' + dropEl.offsetWidth);
+            // console.log('drop1TL getBoundingClientRect().width: ' + dropEl.getBoundingClientRect().width);
+            // console.log("dropEl to X: ", -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ));
+            // console.log("dropEl to Y: ", (section2svg.getBoundingClientRect().height / 2) + (section1.offsetHeight - dropEl.offsetTop - (dropEl.offsetHeight / 2)));
         },
         onComplete : () => {
-            console.log('drop1TL onComplete');
-            console.log('drop1TL offsetWidth: ' + dropEl.offsetWidth);
-            console.log('drop1TL getBoundingClientRect().width: ' + dropEl.getBoundingClientRect().width);
-            console.log("dropEl to X: ", -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ));
-            console.log("dropEl to Y: ", (section2svg.getBoundingClientRect().height / 2) + (section1.offsetHeight - dropEl.offsetTop - (dropEl.offsetHeight / 2)));
-            console.log("mask1_4539_46481-vector: ", section2svgVector.getBoundingClientRect().width);
+            console.log('drop 1 Complete #section-wrap-01');
+            // console.log('drop1TL offsetWidth: ' + dropEl.offsetWidth);
+            // console.log('drop1TL getBoundingClientRect().width: ' + dropEl.getBoundingClientRect().width);
+            // console.log("dropEl to X: ", -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ));
+            // console.log("dropEl to Y: ", (section2svg.getBoundingClientRect().height / 2) + (section1.offsetHeight - dropEl.offsetTop - (dropEl.offsetHeight / 2)));
+            // console.log("mask1_4539_46481-vector: ", section2svgVector.getBoundingClientRect().width);
         }
     });
 
@@ -232,10 +232,11 @@ function init() {
             id: 'drop-2',
             trigger: '#section-wrap-02',
             start: () => '100px top',
-            end: () => 'bottom 50px',
-            toggleActions: 'play none reverse reset',
+            end: () => 'bottom top',
+            toggleActions: 'play complete reverse reset',
             // scrub: 2,
-            // markers: true
+            // markers: true,
+            
         }
     });
 
@@ -255,7 +256,13 @@ function init() {
         opacity: 1,
         // delay: 0.3,
         duration: 2.5,
-        ease: "power1.inOut"
+        ease: "power1.inOut",
+        onStart : () => {
+            console.log('drop 2 Start #section-wrap-02');
+        },
+        onComplete : () => {
+            console.log('drop 2 Complete #section-wrap-02');
+        }
     })
     .to('#drop', {
         opacity: 0,
@@ -310,10 +317,11 @@ function init() {
             id: 'drop-3',
             trigger: '#section-wrap-04',
             start: () => '100px bottom',
-            end: () => 'bottom bottom',
-            toggleActions: 'play none reverse reset',
+            end: () => 'bottom top',
+            toggleActions: 'play complete reverse reset',
             // scrub: 2,
-            // markers: true
+            // markers: true,
+            
         }
     });
 
@@ -350,7 +358,13 @@ function init() {
     }, '<')
     .to('#drop', {
         opacity: 0,
-        duration: 0.6
+        duration: 0.6,
+        onStart : () => {
+            console.log('drop 3 Start #section-wrap-04');
+        },
+        onComplete : () => {
+            console.log('drop 3 Complete #section-wrap-04');
+        }
     }, '<')
     .to(section4BgImage1, {
         scale: 1,
@@ -389,8 +403,8 @@ function init() {
             id: 'drop-4',
             trigger: '#section-wrap-05',
             start: () => '50px bottom',
-            end: () => 'bottom bottom',
-            toggleActions: 'play none reverse reset',
+            end: () => 'bottom top',
+            toggleActions: 'play complete reverse reset',
             // scrub: 2,
             // markers: true,
         }
@@ -431,10 +445,10 @@ function init() {
         ease: "power1.out",
         // all gsap tween animation callback functions: onStart, onUpdate, onComplete, onRepeat, onReverseComplete
         onStart : () => {
-            console.log('onStart');
+            console.log('drop 4 Start #section-wrap-05');
         },
         onComplete : () => {
-            console.log('onComplete');
+            console.log('drop 4 Complete #section-wrap-05');
         }
     })
     .to('#drop', {
@@ -447,8 +461,8 @@ function init() {
             id: 'drop-5',
             trigger: '#section-wrap-06',
             start: () => '50px bottom',
-            end: () => 'bottom bottom',
-            toggleActions: 'play none reverse reset',
+            end: () => 'bottom top',
+            toggleActions: 'play complete reverse reset',
             // scrub: 2,
             // markers: true
         }
@@ -483,7 +497,13 @@ function init() {
     },{
         clipPath: 'path("m 1440 -900 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 c 0 -1600 1600 -1600 1600 -1600 z")',
         duration: 1.7,
-        ease: "power1.out"
+        ease: "power1.out",
+        onStart : () => {
+            console.log('drop 5 Start #section-wrap-06');
+        },
+        onComplete : () => {
+            console.log('drop 5 Complete #section-wrap-06');
+        }
     }, '>-=0.5');
 
     const drop6TL = gsap.timeline({
@@ -491,8 +511,8 @@ function init() {
             id: 'drop-6',
             trigger: '#section-wrap-07',
             start: () => '50px bottom',
-            end: () => (section6.offsetHeight) + ' bottom',
-            toggleActions: 'play none reverse reset',
+            end: () => (section6.offsetHeight) + ' top',
+            toggleActions: 'play complete reverse reset',
             // scrub: 2,
             markers: true,
             onEnter: () => {
@@ -518,7 +538,7 @@ function init() {
     drop6TL
     .set('#drop', {
         x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54)),
-        y: () =>  section6.offsetTop + section6Action.getBoundingClientRect().top - dropElTop + section6Action.offsetHeight,
+        y: () =>  section6.offsetTop + section6Action.getBoundingClientRect().top - dropElTop + section6Action.offsetHeight + 5,
         // x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54)),
         // y: () => section7.offsetTop - section6Action.getBoundingClientRect().bottom - 54 - dropElTop,
         rotate: 0,
@@ -537,7 +557,13 @@ function init() {
         y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight - dropElTop + section7Action.getBoundingClientRect().top + 110,
         rotate: 135,
         duration: 2,
-        ease: "power1.in"
+        ease: "power1.in",
+        onStart : () => {
+            console.log('drop 6 Start #section-wrap-07');
+        },
+        onComplete : () => {
+            console.log('drop 6 Complete #section-wrap-07');
+        }
     }, '>+=0.5')
     .to('#drop', {
         opacity: 0,
@@ -642,7 +668,7 @@ function init() {
             trigger: '#section-wrap-09',
             start: () => '10px top',
             end: () => 'bottom top',
-            toggleActions: 'play none reverse none',
+            toggleActions: 'play complete reverse none',
             // scrub: 3,
             // markers: true
         }
@@ -669,7 +695,14 @@ function init() {
     }, '<+=1')
     .to('#section-wrap-09', {
         y: () => document.querySelector('#section-wrap-09').offsetHeight,
-        duration: 2
+        duration: 2,
+        ease: "power1.inOut",
+        onStart : () => {
+            console.log('section9 onStart #section-wrap-09');
+        },
+        onComplete : () => {
+            console.log('section9 onComplete #section-wrap-09');
+        }
     }, '<+=0.7')
     .to('#section-wrap-09', {
         opacity: 0,
@@ -766,7 +799,7 @@ function init() {
             }
         });
 
-        animatedElements.forEach(el => {
+        animatedElements.forEach((el, index) => {
             tl.fromTo(el, {
                 y: () => el.offsetHeight,
                 opacity: () => 0,
@@ -780,7 +813,13 @@ function init() {
                 opacity: () => 1,
                 visibility: 'visible',
                 duration: 0.3,
-                ease: "power1.out"
+                ease: "power1.out",
+                onStart : () => {
+                    console.log(index + ' - ' + wrap.id + ' onStart animated');
+                },
+                onComplete : () => {
+                    console.log(index + ' - ' + wrap.id + ' onComplete animated');
+                }
             });
         });
         
