@@ -774,9 +774,9 @@ function init() {
 
         // if (i === 0) return;
         
-        const section = wrap.querySelector('.section');
-        if (!section) return;
-        const animatedElements = gsap.utils.toArray(section.querySelectorAll('.animated'));
+        const animated = wrap.querySelectorAll('.animated');
+        if (animated.length < 1) return;
+        const animatedElements = gsap.utils.toArray(animated);
         
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -872,12 +872,18 @@ function init() {
         ease: "power1.out"
     });
 
-
 }
-
 // init() on page load 
 window.addEventListener('load', () => {
     init();
+    console.log('---- init end');
+});
+window.addEventListener("beforeunload", (event) => {
     // scroll to top of the page on page load
-    window.scrollTo(0, 0);
+    window.scrollTo({
+        top: 0,
+        left: 0,
+      });
+    console.log('#### scrollTop end');
+
 });
