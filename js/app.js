@@ -105,10 +105,10 @@ function init() {
     headerTL
     .to('#logo_svg .color-white', {
         fill: "#006ff2"
-    });
-    // .to('#nav-menu', {
-    //     backgroundImage: "linear-gradient(270deg, rgba(149, 149, 149, 0.34) 0%, rgba(128, 128, 128, 0.54) 40%)"
-    // }, '<');
+    })
+    .to('#nav-menu .nav-link', {
+        color: "#333333"
+    }, '<');
 
 
     const sections01TL = gsap.timeline({
