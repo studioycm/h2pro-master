@@ -105,10 +105,10 @@ function init() {
     headerTL
     .to('#logo_svg .color-white', {
         fill: "#006ff2"
-    })
-    .to('#nav-menu', {
-        backgroundImage: "linear-gradient(270deg, rgba(149, 149, 149, 0.34) 0%, rgba(128, 128, 128, 0.54) 40%)"
-    }, '<');
+    });
+    // .to('#nav-menu', {
+    //     backgroundImage: "linear-gradient(270deg, rgba(149, 149, 149, 0.34) 0%, rgba(128, 128, 128, 0.54) 40%)"
+    // }, '<');
 
 
     const sections01TL = gsap.timeline({
@@ -208,17 +208,23 @@ function init() {
         height: "35px",
     },{
         x: () => -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ),
-        y: () => (section2Height / 2) + (section1.offsetHeight - dropElTop - (dropEl.offsetHeight / 2)) - 7,
+        y: () => section2svgVector.getBoundingClientRect().top - dropEl.getBoundingClientRect().top + (section2svgVector.getBoundingClientRect().height / 2) - (dropEl.offsetHeight / 2),
         width: "35px",
         height: "35px",
         duration: 2.2,
         ease: "power1.out",
         onStart : () => {
             console.log('drop 1 Start #section-wrap-01');
-            // console.log('drop1TL offsetWidth: ' + dropEl.offsetWidth);
-            // console.log('drop1TL getBoundingClientRect().width: ' + dropEl.getBoundingClientRect().width);
-            // console.log("dropEl to X: ", -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ));
-            // console.log("dropEl to Y: ", (section2svg.getBoundingClientRect().height / 2) + (section1.offsetHeight - dropEl.offsetTop - (dropEl.offsetHeight / 2)));
+            console.log("section1.offsetHeight: ", section1.offsetHeight);
+            console.log("dropElTop: ", dropElTop);
+            console.log('drop1El offsetTop: ', dropEl.offsetTop);
+            console.log("+ svgVector Rect().top: ", section2svgVector.getBoundingClientRect().top);
+            console.log('- drop1El rect().top: ', dropEl.getBoundingClientRect().top);
+            console.log("+ svgVector rect().height / 2: ", section2svgVector.getBoundingClientRect().height / 2);
+            console.log('- drop1El offsetHeight / 2: ', dropEl.offsetHeight / 2);
+            console.log("dropEl to Y: ", section2svgVector.getBoundingClientRect().top - dropElTop + (section2svgVector.getBoundingClientRect().height / 2) - (dropEl.offsetHeight / 2));
+            console.log("dropEl to X: ", -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ));
+            console.log('drop1El rect().height / 2: ', dropEl.getBoundingClientRect().height / 2);
         },
         onComplete : () => {
             console.log('drop 1 Complete #section-wrap-01');
