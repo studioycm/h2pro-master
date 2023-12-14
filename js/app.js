@@ -491,11 +491,11 @@ function init() {
         rotate: 45,
         duration: 1.5,
         ease: "power1.out"
-    }, '>-=0.1')
+    }, '>+=0.3')
     .to('#drop', {
         opacity: 0,
         duration: 0.2
-    }, '>-=0.2')
+    }, '>')
     .fromTo(section6.querySelector('#section-06 > img.img'), {
         clipPath: "path('m 1440 -900 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z')",
     },{
@@ -508,7 +508,7 @@ function init() {
         onComplete : () => {
             console.log('drop 5 Complete #section-wrap-06');
         }
-    }, '>-=0.5');
+    }, '>-=0.2');
 
     const drop6TL = gsap.timeline({
         scrollTrigger: {
@@ -543,6 +543,7 @@ function init() {
     .set('#drop', {
         x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54)),
         y: () =>  section6.offsetTop + section6Action.getBoundingClientRect().top - dropElTop + section6Action.offsetHeight + 5,
+        opacity: 0,
         rotate: 0,
         backgroundColor: "#5fb847",
         width: "54px",
@@ -651,7 +652,53 @@ function init() {
     });
 
     
-
+    const drop7TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'drop-7',
+            trigger: '#section-wrap-08',
+            start: () => '50px bottom',
+            end: () => 'bottom top',
+            toggleActions: 'play complete none reset',
+            // scrub: 2,
+            markers: true,
+            onEnter: () => {
+                console.log('dropTL 7 enter - dropEl.offsetLeft: ', dropEl.offsetLeft);
+                console.log('dropTL 7 enter - section7Action.Rect().left: ', section7Action.getBoundingClientRect().left);                   
+            },
+        }
+    });
+    
+    
+    
+    drop7TL
+    .set('#drop', {
+        x: () =>  -(dropEl.offsetLeft - section7Action.getBoundingClientRect().left),
+        y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight - dropElTop + section7Action.getBoundingClientRect().top,
+        opacity: 0,
+        rotate: 135,
+        width: "45px",
+        height: "45px",
+    })
+    .to('#drop',{
+        opacity: 1,
+        duration: 0.3,
+        onStart : () => {
+            console.log('drop 7 - dropEl.offsetLeft: ', dropEl.offsetLeft);
+            console.log('drop 7 - section7Action.getBoundingClientRect().left: ', section7Action.getBoundingClientRect().left);
+        }
+    })
+    .to('#drop', {
+        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54) ) - section7Action.offsetLeft - 85,
+        y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight - dropElTop + section7Action.getBoundingClientRect().top + 110,
+        duration: 2,
+        ease: "power1.in",
+        onStart : () => {
+            console.log('drop 7 Start #section-wrap-08');
+        },
+        onComplete : () => {
+            console.log('drop 7 Complete #section-wrap-08');
+        }
+    }, '>+=0.5');
 
     // set timeline with scrollTrigger for section wrap 09, trigger start when leaving section-wrap-09 and use it as timeline for fromTo animation for the section wrap 09 element,
     // the anime will be from - clipPath  
@@ -794,19 +841,20 @@ function init() {
         });
 
         animatedElements.forEach((el, index) => {
+            const elAnimeType = el.dataset.animeType;
+            const animeY = elAnimeType === 'fade' ? 0 : el.offsetHeight;
+
             tl.fromTo(el, {
-                y: () => el.offsetHeight,
+                y: () => animeY,
                 opacity: () => 0,
                 autoAlpha: 0,
                 visibility: 'hidden',
-                // stagger: 0.1,
-                // ease: "power3.in"
             },{
                 y: () => 0,
                 autoAlpha: 1,
                 opacity: () => 1,
                 visibility: 'visible',
-                duration: 0.3,
+                duration: 0.5,
                 ease: "power1.out",
                 onStart : () => {
                     console.log(index + ' - ' + wrap.id + ' onStart animated');

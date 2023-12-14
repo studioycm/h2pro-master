@@ -2553,7 +2553,6 @@ div sub.h2sub {
                 object-fit: contain;
                 object-position: center;
                 width: 18px;
-                overflow: visible;
                 margin-left: 0;
                 max-width: 100%;
                 z-index: 2;
@@ -5614,7 +5613,7 @@ div sub.h2sub {
                 height: auto;
                 overflow: hidden;
                 background-color: transparent;
-                transition: all 0.3s ease-in-out;
+                transition: all 0.6s ease-in-out;
                 box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
             }
             
@@ -5630,6 +5629,7 @@ div sub.h2sub {
                 align-self: normal;
                 margin: 0;
                 font: 600 26px/140% Geologica, sans-serif;
+                transition: inherit;
             }
             
                       
@@ -5645,7 +5645,8 @@ div sub.h2sub {
                 text-align: center;
                 text-overflow: ellipsis;
                 font: 300 16px/135% Geologica, sans-serif;
-                transition: max-height 0.3s ease-in-out;
+                transition: max-height 0.6s ease-in-out;
+                transition: inherit;
             }
             
             #section-05 .card:hover .card_content {
@@ -5706,9 +5707,9 @@ div sub.h2sub {
                 translate: -50% 0;
                 opacity: 0;
                 transition: left 0.3s ease, 
-                            translate 0.8s ease-in-out, 
-                            filter 0.2s ease-in-out,
-                            opacity 0.3s ease-in-out;
+translate 0.6s cubic-bezier(0.38, -0.26, 0.53, 1.23), 
+filter 0.2s ease-in-out,
+opacity 0.3s ease-in-out;
             }
 
             #section-05 .grid.animated-icons .card:hover .card_image img.img-svg {
@@ -5808,7 +5809,7 @@ div sub.h2sub {
                 object-position: center;
                 max-width: 400px;
                 height: 100%;
-                overflow: visible;
+                /* width: auto; */
             }
 
             .section-06 img.img-22[data-opacity="100"] {
@@ -5941,7 +5942,7 @@ div sub.h2sub {
                 width: 100%;
                 height: 100%;
                 align-items: flex-start;
-                padding: 250px 10px 50px 40px;
+                padding: 220px 10px 50px 40px;
                 border-radius: 30px;
                 overflow: hidden;
                 flex-wrap: nowrap;
@@ -5986,7 +5987,7 @@ div sub.h2sub {
                 position: relative;
                 color: #fff;
                 align-self: stretch;
-                margin-top: 0;
+                margin-top: 0px;
                 font: 700 40px/46px Geologica, sans-serif;
             }
               @media (max-width: 991px) {
@@ -5998,10 +5999,11 @@ div sub.h2sub {
               .slide-card__description {
                 position: relative;
                 color: #fff;
-                letter-spacing: -0.27px;
+                letter-spacing: 0;
                 align-self: stretch;
-                margin-top: 8px;
-                font: 400 18px/22px Geologica, sans-serif;
+                margin-top: 10px;
+                font: 200 22px/25px Geologica, sans-serif;
+                min-height: 150px;
               }
               @media (max-width: 991px) {
                 .slide-card__description {
@@ -6011,14 +6013,14 @@ div sub.h2sub {
               .slide-card__bottom {
                 position: relative;
                 display: flex;
-                margin-top: 18px;
+                margin-top: 20px;
                 width: 100%;
                 max-width: 100%;
                 gap: 20px;
               }
               .slide-card__link {
                 color: #fff;
-                font: 400 18px/16px Geologica, sans-serif;
+                font: 100 18px/16px Geologica, sans-serif;
               }
               .slide-card__link::after {
                 display: inline-block;
@@ -6087,7 +6089,6 @@ div sub.h2sub {
                 display: block;
                 margin: 0;
                 padding: 0;
-                overflow: visible;
                 align-self: center;
             }
             
