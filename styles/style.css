@@ -96,6 +96,12 @@ div sub.h2sub {
     line-height: 0.6;
     font-size: 16px;
 }
+#nav-menu sub.h2sub {
+    display: inline-block;
+    translate: 0px 5px;
+    line-height: 1;
+    font-size: 14px;
+}
 
 
 
@@ -4995,31 +5001,35 @@ div sub.h2sub {
                 flex-wrap: nowrap;
             }
 
-            #nav-menu .nav-menu-inner div {
+            #nav-menu .nav-menu-inner .nav-link {
                 font: 300 22px Geologica, sans-serif;
                 color: #fff
             }
 
-            #nav-menu .nav-menu-inner > div {
+            #nav-menu .nav-menu-inner .nav-link {
                 align-self: center;
                 display: flex;
                 gap: 1px;
                 margin: auto 0;
                 flex-wrap: nowrap;
                 flex-direction: row;
-                align-content: flex-end;
-                align-items: flex-end;
+                align-content: center;
+                align-items: baseline;
                 justify-content: flex-start;
             }
 
-            #nav-menu .nav-menu-inner > div > img {
-                aspect-ratio: 1;
-                object-fit: contain;
-                object-position: center;
-                width: 24px;
-                overflow: hidden;
-                max-width: 100%;
+            #nav-menu .nav-menu-inner .nav-link.parent-nav-item {
+                position: relative;
             }
+
+            #nav-menu .nav-menu-inner .nav-link .down-icon {
+                position: relative;
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin-left: 3px;
+            }
+            
 
 
             

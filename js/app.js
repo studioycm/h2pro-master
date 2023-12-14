@@ -108,6 +108,9 @@ function init() {
     })
     .to('#nav-menu .nav-link', {
         color: "#333333"
+    }, '<')
+    .to('#nav-menu .nav-link svg.down-icon .arrow-down', {
+        stroke: "#333333"
     }, '<');
 
 
