@@ -805,7 +805,6 @@ div sub.h2sub {
                 rgba(239, 239, 239, 0.34) 0%,
                 rgba(228, 228, 228, 0.34) 100%
             );
-            backdrop-filter: blur(44px);
             align-self: stretch;
             display: flex;
             flex-grow: 0;
@@ -1870,7 +1869,7 @@ div sub.h2sub {
             .div-99 {
             position: relative;
             border-radius: 91px;
-            backdrop-filter: blur(7px);
+            backdrop-filter: blur(3px);
             background-color: rgba(0, 0, 0, 0.03);
             display: flex;
             width: 353px;
@@ -5175,7 +5174,6 @@ div sub.h2sub {
                 .div-22 {
                     border-radius: 0px 20px 20px 0px;
                     border: 1px solid #fff;
-                    backdrop-filter: blur(5.5px);
                     background-color: rgba(255, 255, 255, 0.3);
                     display: flex;
                     align-items: center;
@@ -5222,6 +5220,7 @@ div sub.h2sub {
                 }
                 }
                 .div-26 {
+                    width: 180px;
                 color: #1d380c;
                 white-space: nowrap;
                 justify-content: center;
@@ -5538,7 +5537,7 @@ div sub.h2sub {
                 height: 350px;
             }
             
-            #section-04 button#paly-video {
+            #section-04 button#play-video {
                 position: absolute;
                 top: auto;
                 bottom: 20px;

@@ -43,7 +43,7 @@ function init() {
     const section4ActionButton = document.querySelector('#section-04 .action-button');
     const section4VideoContainer = document.querySelector('#section-04 .video-container');
     const section4Video = document.querySelector('#section-04 .video-container .video');
-    const section4VideoButton = document.querySelector('#section-04 .video-container #paly-video');
+    const section4VideoButton = document.querySelector('#section-04 .video-container #play-video');
     const section5 = document.querySelector('#section-wrap-05');
     const section6 = document.querySelector('#section-wrap-06');
     const section6Action = section6.querySelector('#section-06 .section-action');
