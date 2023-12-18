@@ -5014,7 +5014,7 @@ div sub.h2sub {
                 flex-wrap: nowrap;
                 flex-direction: row;
                 align-content: center;
-                align-items: baseline;
+                align-items: center;
                 justify-content: flex-start;
             }
 
