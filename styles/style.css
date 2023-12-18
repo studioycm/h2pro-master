@@ -5896,7 +5896,7 @@ opacity 0.3s ease-in-out;
             }
             .slider-button:not(.button-disabled):hover .arrow-color {
                 /* fill: #1c55b7; */
-                stroke: #006ff2;
+                stroke: #ffffff;
             }
             .drop-shape {
                 border-radius: 0px 30px 30px 30px;

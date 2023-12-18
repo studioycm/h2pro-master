@@ -65,15 +65,15 @@ function init() {
     
     // set logo charecter color-white class
     gsap.set("#logo_svg .color-white", {
-        fill: "#fff"
+        fill: "#ffffff"
     });
     // set logo charecter color-green class
     gsap.set("#logo_svg .color-green", {
         fill: "#5fb847"
     });
-    gsap.set("#nav-menu", {
-        backgroundImage: "linear-gradient(270deg, rgba(239, 239, 239, 0.34) 0%, rgba(228, 228, 228, 0.34) 100%)"
-    });
+    
+    // gsap.set("#nav-menu", {});
+
     gsap.set("#drop", {
         x: () => 0,
         y: () => 0,
@@ -91,27 +91,113 @@ function init() {
     gsap.set(section4BgImage1, {
         opacity: 0
     });
-    const headerTL = gsap.timeline({
-        scrollTrigger: {
-            trigger: '#section-wrap-01',
-            // markers: true,
-            start: '10px top',
-            end: '+=300',
-            toggleActions: 'play none none reverse',
-            //scrub: 1
-        }
-    });
 
-    headerTL
-    .to('#logo_svg .color-white', {
-        fill: "#006ff2"
-    })
-    .to('#nav-menu .nav-link', {
-        color: "#333333"
-    }, '<')
-    .to('#nav-menu .nav-link svg.down-icon .arrow-down', {
-        stroke: "#333333"
-    }, '<');
+    // const headerTL = gsap.timeline({
+    //     scrollTrigger: {
+    //         trigger: '#section-wrap-01',
+    //         // markers: true,
+    //         start: '10px top',
+    //         end: '+=300',
+    //         toggleActions: 'play none none reverse',
+    //         //scrub: 1
+    //     }
+    // });
+
+    // headerTL
+    // .to('#logo_svg .color-white', {
+    //     fill: "#006ff2"
+    // })
+    // .to('#nav-menu .nav-link', {
+    //     color: "#333333"
+    // }, '<')
+    // .to('#nav-menu .nav-link svg.down-icon .arrow-down', {
+    //     stroke: "#333333"
+    // }, '<');
+
+    const darkEls = gsap.utils.toArray(document.querySelectorAll('.dark-bg'));
+    darkEls.forEach(darkEl => {
+        const darkBGheaderTL = gsap.timeline({
+            scrollTrigger: {
+                id: 'darkBG',
+                trigger: darkEl,
+                markers: {
+                    startColor: "green",
+                    endColor: "black",
+                    fontSize: "14px",
+                    indent: 200,
+                    fontWeight: "normal"
+                },
+                start: 'top 100px',
+                end: '+=100px',
+                toggleActions: 'play none reverse none',
+                //scrub: 1,
+                onEnter: () => {
+                    console.log('onEnter darkBGheaderTL - play');
+                },
+                onLeave: () => {
+                    console.log('onLeave darkBGheaderTL - none');
+                },
+                onEnterBack: () => {
+                    console.log('onEnterBack darkBGheaderTL - reverse');
+                },
+                onLeaveBack: () => {
+                    console.log('onLeaveBack darkBGheaderTL - none');
+                }
+            }
+        });
+
+        darkBGheaderTL
+        .to('#logo_svg .color-white', {
+            fill: "#ffffff"
+        })
+        .to('#nav-menu .nav-link', {
+            color: "#ffffff"
+        }, '<')
+        .to('#nav-menu .nav-link svg.down-icon .arrow-down', {
+            stroke: "#ffffff"
+        }, '<');
+
+        const lightBGheaderTL = gsap.timeline({
+            scrollTrigger: {
+                id: 'leaveDarkBG',
+                trigger: darkEl,
+                markers: {
+                    startColor: "blue",
+                    endColor: "red",
+                    fontSize: "14px",
+                    indent: 10,
+                    fontWeight: "bold"
+                },
+                start: '100px 100px',
+                end: '200px 100px',
+                toggleActions: 'play none reverse none',
+                //scrub: 1,
+                onEnter: () => {
+                    console.log('onEnter lightBGheaderTL - play');
+                },
+                onLeave: () => {
+                    console.log('onLeave lightBGheaderTL - none');
+                },
+                onEnterBack: () => {
+                    console.log('onEnterBack lightBGheaderTL - reverse');
+                },
+                onLeaveBack: () => {
+                    console.log('onLeaveBack lightBGheaderTL - none');
+                }
+            }
+        });
+
+        lightBGheaderTL
+        .to('#logo_svg .color-white', {
+            fill: "#006ff2"
+        })
+        .to('#nav-menu .nav-link', {
+            color: "#333333"
+        }, '<')
+        .to('#nav-menu .nav-link svg.down-icon .arrow-down', {
+            stroke: "#333333"
+        }, '<');
+    });
 
 
     const sections01TL = gsap.timeline({
@@ -547,7 +633,7 @@ function init() {
     });
     
     
-    
+    // drop-anim 06 on section switch from 6 to 7
     drop6TL
     .set('#drop', {
         x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54)),
@@ -559,7 +645,9 @@ function init() {
         height: "54px",
     })
     .to('#drop',{
-        opacity: 1,
+        opacity: () => 1,
+        autoAlpha: 1,
+        visibility: 'visible',
         duration: 0.3
     })
     .to('#drop', {
@@ -578,8 +666,16 @@ function init() {
         }
     }, '>+=0.5')
     .to('#drop', {
-        opacity: 0,
-        duration: 0.3
+        opacity: () => 0,
+        autoAlpha: 0,
+        visibility: 'hidden',
+        duration: 0.3,
+        onStart : () => {
+            console.log('onStart drop6 visibility hidden');
+        },
+        onComplete : () => {
+            console.log('onComplete drop6 visibility hidden');
+        }
     }, '>')
     .fromTo('#section-07 .slider-controls-buttons', {
         opacity: 0,
@@ -591,8 +687,8 @@ function init() {
     const section6TL = gsap.timeline({
         scrollTrigger: {
             trigger: '#section-06',
-            start: '300px 100%',
-            end: '80% bottom',
+            start: '80% bottom',
+            end: 'bottom bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 3
         }
@@ -604,18 +700,17 @@ function init() {
         stagger: 0.3,
         duration: 1
     });
+    
     const sliderNext = document.querySelector('#slider-next');
     const sliderPrev = document.querySelector('#slider-prev');
-    
-    
     
     const section7TL = gsap.timeline({
         scrollTrigger: {
             trigger: '#section-wrap-07',
             start: () => "top top",
-            end: () => "+=" + (slider.scrollWidth ),
+            end: () => "+=" + (slider.scrollWidth),
             pin: '#section-07',        
-            scrub: 1,
+            scrub: true,
             snap: 1 / (slides.length -2),
             // preventOverlaps: true,
             toggleActions: 'play none none reverse',
@@ -650,64 +745,64 @@ function init() {
     
     document.querySelector('#slider-next').addEventListener('click', () => {
         // scroll down one step with lenis
-        window.scrollBy(0, 300);
+        window.scrollBy(0, 250);
         
         
     });
     // reverse the slidAnim when the slider control button #slider-prev is clicked
     document.querySelector('#slider-prev').addEventListener('click', () => {
         // scroll up one step 
-        window.scrollBy(0, -300);
+        window.scrollBy(0, -250);
     });
 
     
-    const drop7TL = gsap.timeline({
-        scrollTrigger: {
-            id: 'drop-7',
-            trigger: '#section-wrap-08',
-            start: () => '50px bottom',
-            end: () => 'bottom top',
-            toggleActions: 'play complete none reset',
-            // scrub: 2,
-            markers: true,
-            onEnter: () => {
-                console.log('dropTL 7 enter - dropEl.offsetLeft: ', dropEl.offsetLeft);
-                console.log('dropTL 7 enter - section7Action.Rect().left: ', section7Action.getBoundingClientRect().left);                   
-            },
-        }
-    });
+    // const drop7TL = gsap.timeline({
+    //     scrollTrigger: {
+    //         id: 'drop-7',
+    //         trigger: '#section-wrap-08',
+    //         start: () => '50px bottom',
+    //         end: () => 'bottom top',
+    //         toggleActions: 'play complete none reset',
+    //         // scrub: 2,
+    //         // markers: true,
+    //         onEnter: () => {
+    //             console.log('dropTL 7 enter - dropEl.offsetLeft: ', dropEl.offsetLeft);
+    //             console.log('dropTL 7 enter - section7Action.Rect().left: ', section7Action.getBoundingClientRect().left);                   
+    //         },
+    //     }
+    // });
     
     
     
-    drop7TL
-    .set('#drop', {
-        x: () =>  -(dropEl.offsetLeft - section7Action.getBoundingClientRect().left),
-        y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight - dropElTop + section7Action.getBoundingClientRect().top,
-        opacity: 0,
-        rotate: 135,
-        width: "45px",
-        height: "45px",
-    })
-    .to('#drop',{
-        opacity: 1,
-        duration: 0.3,
-        onStart : () => {
-            console.log('drop 7 - dropEl.offsetLeft: ', dropEl.offsetLeft);
-            console.log('drop 7 - section7Action.getBoundingClientRect().left: ', section7Action.getBoundingClientRect().left);
-        }
-    })
-    .to('#drop', {
-        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54) ) - section7Action.offsetLeft - 85,
-        y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight - dropElTop + section7Action.getBoundingClientRect().top + 110,
-        duration: 2,
-        ease: "power1.in",
-        onStart : () => {
-            console.log('drop 7 Start #section-wrap-08');
-        },
-        onComplete : () => {
-            console.log('drop 7 Complete #section-wrap-08');
-        }
-    }, '>+=0.5');
+    // drop7TL
+    // .set('#drop', {
+    //     x: () =>  -(dropEl.offsetLeft - section7Action.getBoundingClientRect().left),
+    //     y: () =>  section7.offsetTop - dropElTop + section7Action.getBoundingClientRect().top,
+    //     opacity: 0,
+    //     rotate: 135,
+    //     width: "45px",
+    //     height: "45px",
+    // })
+    // .to('#drop',{
+    //     opacity: 1,
+    //     duration: 0.3,
+    //     onStart : () => {
+    //         console.log('drop 7 - dropEl.offsetLeft: ', dropEl.offsetLeft);
+    //         console.log('drop 7 - section7Action.getBoundingClientRect().left: ', section7Action.getBoundingClientRect().left);
+    //     }
+    // })
+    // .to('#drop', {
+    //     x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54) ) - section7Action.offsetLeft - 85,
+    //     y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight - dropElTop + section7Action.getBoundingClientRect().top + 110,
+    //     duration: 2,
+    //     ease: "power1.in",
+    //     onStart : () => {
+    //         console.log('drop 7 Start #section-wrap-08');
+    //     },
+    //     onComplete : () => {
+    //         console.log('drop 7 Complete #section-wrap-08');
+    //     }
+    // }, '>+=0.5');
 
     // set timeline with scrollTrigger for section wrap 09, trigger start when leaving section-wrap-09 and use it as timeline for fromTo animation for the section wrap 09 element,
     // the anime will be from - clipPath  
@@ -924,17 +1019,22 @@ function init() {
     });
 
 }
-// init() on page load 
-window.addEventListener('load', () => {
-    init();
-    console.log('---- init end');
-});
-window.addEventListener("beforeunload", (event) => {
+// beforeunload | pagehide event
+window.addEventListener("pagehide", (event) => {
     // scroll to top of the page on page load
     window.scrollTo({
         top: 0,
         left: 0,
+        behavior: "auto"
       });
-    console.log('#### scrollTop end');
+    console.log('page hide #### scrollTop end');
 
+});
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+// init() on page load 
+window.addEventListener('load', () => {
+    init();
+    console.log('on load ---- init end');
 });
