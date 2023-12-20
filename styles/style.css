@@ -1068,7 +1068,7 @@ div sub.h2sub {
             .div-33 {
             color: var(--Black, #2a2e32);
             margin-right: 0px;
-            font: 700 60px/140% Geologica, sans-serif;
+            font: 700 60px/120% Geologica, sans-serif;
             }
             @media (max-width: 991px) {
             .div-33 {
@@ -5763,7 +5763,7 @@ opacity 0.3s ease-in-out;
                 min-height: 100vh;
                 width: 100%;
                 align-items: center;
-                padding: 200px 0px 0px;
+                padding: 150px 0px 0px;
             }
             #section-06 > img.img {
                 opacity: 1;
@@ -5795,6 +5795,7 @@ opacity 0.3s ease-in-out;
             }
             
             .section-06 .column-12 {
+                top: 50px;
                 position: relative;
                 display: flex;
                 overflow: hidden;
@@ -5893,6 +5894,10 @@ opacity 0.3s ease-in-out;
             .button-disabled {
                 opacity: 0.4;
                 cursor: not-allowed;
+            }
+            .slider-button .arrow-color {
+                /* fill: #1c55b7; */
+                stroke: #333333;
             }
             .slider-button:not(.button-disabled):hover .arrow-color {
                 /* fill: #1c55b7; */

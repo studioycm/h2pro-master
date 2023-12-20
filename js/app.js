@@ -439,7 +439,7 @@ function init() {
     }, {
         x: () => -(dropEl.offsetWidth / 2),
         y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 2) - (dropEl.offsetHeight * 2) - 20,
-        duration: 2,
+        duration: 1,
         ease: "power1.out"
     })
     .fromTo(section4BG, {
