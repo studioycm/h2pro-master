@@ -125,16 +125,16 @@ function init() {
             trigger: sectionsPart01,
             start: () => "top top",
             end: () => (sectionsPart01.offsetHeight) + " bottom", // "+=" + (wrap.offsetHeight),
-            scrub: 1,
+            scrub: true,
             // pin: true,
             // pinSpacing: false,
             
-            snap: {
-                snapTo: 1 / (sectionWraps01.length),
-                duration: 2.2,// {min: 0.5, max: 1},
-                // delay: 0.3,
-                ease: "power1.out"                    
-            },
+            // snap: {
+            //     snapTo: 1 / (sectionWraps01.length),
+            //     duration: 2,// {min: 0.5, max: 1},
+            //     // delay: 0.3,
+            //     ease: "none"                    
+            // },
             // markers: {
             //     startColor: "blue",
             //     endColor: "red",
@@ -185,7 +185,7 @@ function init() {
             start: () => '10px top',
             end: () => 'bottom top',
             toggleActions: 'play complete reverse reset',
-            // scrub: 3,
+            scrub: 1,
             // markers: true
         }
     });
@@ -252,7 +252,7 @@ function init() {
             start: () => '100px top',
             end: () => 'bottom top',
             toggleActions: 'play complete none reset',
-            // scrub: 2,
+            scrub: 1,
             // markers: true,
             
         }
@@ -294,7 +294,7 @@ function init() {
             start: 'top 1px',
             end: '+=600',
             toggleActions: 'play none none none',
-            // scrub: 1,
+            scrub: 1,
             // markers: true,
             onEnter: () => {     
                 graphInputs.forEach(input => {
@@ -337,7 +337,7 @@ function init() {
             start: () => '100px bottom',
             end: () => 'bottom top',
             toggleActions: 'play complete none reset',
-            // scrub: 2,
+            scrub: 1,
             // markers: true,
             
         }
@@ -421,9 +421,9 @@ function init() {
             id: 'section-4-video',
             trigger: '#section-wrap-04',
             start: () => '10px top',
-            end: () => section4InnerSection.offsetHeight + ' top',
+            end: () => window.offsetHeight + ' top',
             toggleActions: 'play complete none reverse',
-            // scrub: 2,
+            scrub: true,
             // markers: true,
             
         }
@@ -443,7 +443,7 @@ function init() {
             start: () => '50px bottom',
             end: () => 'bottom top',
             toggleActions: 'play complete none reset',
-            // scrub: 2,
+            scrub: 1,
             // markers: true,
         }
     });
@@ -501,7 +501,7 @@ function init() {
             start: () => '50px bottom',
             end: () => 'bottom top',
             toggleActions: 'play complete none reset',
-            // scrub: 2,
+            scrub: 1,
             // markers: true
         }
     });
@@ -551,7 +551,7 @@ function init() {
             start: () => '50px bottom',
             end: () => (section6.offsetHeight) + ' top',
             toggleActions: 'play complete none reset',
-            // scrub: 2,
+            scrub: 1,
             // markers: true,
             // onEnter: () => {
             //         console.log("#section-06 action offsetTop: ", section6Action.offsetTop);
@@ -629,7 +629,7 @@ function init() {
             start: '80% bottom',
             end: 'bottom+=1px bottom',
             toggleActions: 'play reverse play reverse',
-            // scrub: 3
+            scrub: 1
         }
     });
 
@@ -762,7 +762,7 @@ function init() {
                 start: 'top 100px',
                 end: '+=100px',
                 toggleActions: 'play none reverse none',
-                //scrub: 1,
+                scrub: 1,
                 onEnter: () => {
                     console.log(index + ' onEnter darkBGheaderTL - play');
                 },
@@ -803,7 +803,7 @@ function init() {
                 start: '100px 100px',
                 end: '200px 100px',
                 toggleActions: 'play none reverse none',
-                //scrub: 1,
+                scrub: 1,
                 onEnter: () => {
                     console.log('onEnter lightBGheaderTL - play');
                 },
@@ -840,7 +840,7 @@ function init() {
             start: () => '10px top',
             end: () => 'bottom top',
             toggleActions: 'play none reverse reset',
-            // scrub: 3,
+            scrub: 1,
             // markers: true
         }
     });
@@ -904,16 +904,16 @@ function init() {
             trigger: sectionsPart02,
             start: () => "top bottom",
             end: () => "bottom bottom", // "+=" + (wrap.offsetHeight),
-            scrub: 1,
+            // scrub: 1,
             // pin: true,
             // pinSpacing: false,
             
-            snap: {
-                snapTo: 1 / (sectionWraps02.length),
-                duration: 2,// {min: 0.5, max: 1},
-                delay: 0.5,
-                ease: "none"                    
-            },
+            // snap: {
+            //     snapTo: 1 / (sectionWraps02.length),
+            //     duration: 2,// {min: 0.5, max: 1},
+            //     // delay: 0.5,
+            //     ease: "none"                    
+            // },
             // markers: {
             //     startColor: "green",
             //     endColor: "red",
@@ -958,7 +958,7 @@ function init() {
                 end: () => "bottom bottom", // + (wrap.offsetHeight),
                 toggleActions: 'play none none reset',
                 //preventOverlaps: true,
-                // scrub: 2,
+                scrub: 1,
                 // pin: section,
                 // pinSpacing: false,
                 // markers: {
