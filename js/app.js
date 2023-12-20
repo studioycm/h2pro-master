@@ -22,7 +22,7 @@ function init() {
     const sectionWraps02 = gsap.utils.toArray("#sections #wraps-part-02 .section-wrap");
     const sections = gsap.utils.toArray("#sections .section-wrap .section");
     const dropEl = document.querySelector('#drop');
-    const dropElTop = 300;
+    const dropElTop = dropEl.offsetTop;
     const section1 = document.querySelector('#section-wrap-01');
     const section2 = document.querySelector('#section-wrap-02')
     const section2Height = section2.offsetHeight;
@@ -273,7 +273,7 @@ function init() {
         rotate: 0,
         opacity: 1,
         // delay: 0.3,
-        duration: 2.5,
+        duration: 2,
         ease: "power1.inOut",
         onStart : () => {
             console.log('drop 2 Start #section-wrap-02');
@@ -291,10 +291,10 @@ function init() {
         scrollTrigger: {
             id: 'graph',
             trigger: '#section-wrap-03',
-            start: 'top 1px',
+            start: 'top 10px',
             end: '+=600',
             toggleActions: 'play none none none',
-            scrub: 1,
+            scrub: true,
             // markers: true,
             onEnter: () => {     
                 graphInputs.forEach(input => {
@@ -336,8 +336,8 @@ function init() {
             trigger: '#section-wrap-04',
             start: () => '100px bottom',
             end: () => 'bottom top',
-            toggleActions: 'play complete none reset',
-            scrub: 1,
+            toggleActions: 'play complete reverse reset',
+            scrub: true,
             // markers: true,
             
         }
@@ -395,7 +395,7 @@ function init() {
     }, '<')
     .to(section4BgImage2, {
         opacity: 1,
-        duration: 1
+        duration: 0.5
     })
     .fromTo(section4Title, {
         opacity: 0,
@@ -752,16 +752,16 @@ function init() {
             scrollTrigger: {
                 id: 'darkBG-' + index,
                 trigger: darkEl,
-                // markers: {
-                //     startColor: "green",
-                //     endColor: "black",
-                //     fontSize: "14px",
-                //     indent: 200,
-                //     fontWeight: "normal"
-                // },
+                markers: {
+                    startColor: "green",
+                    endColor: "black",
+                    fontSize: "14px",
+                    indent: 200,
+                    fontWeight: "normal"
+                },
                 start: 'top 100px',
-                end: '+=200px',
-                toggleActions: 'play none reverse none',
+                end: '+=300px',
+                toggleActions: 'play reverse play reverse',
                 // scrub: 1,
                 onEnter: () => {
                     console.log(index + ' onEnter darkBGheaderTL - play');
@@ -779,56 +779,62 @@ function init() {
         });
 
         darkBGheaderTL
-        .to('#logo_svg .color-white', {
+        .fromTo('#logo_svg .color-white', {
+            fill: "#006ff2"
+        },{
             fill: "#ffffff"
         })
-        .to('#nav-menu .nav-link', {
+        .fromTo('#nav-menu .nav-link', {
+            color: "#333333"
+        },{
             color: "#ffffff"
         }, '<')
-        .to('#nav-menu .nav-link svg.down-icon .arrow-down', {
+        .fromTo('#nav-menu .nav-link svg.down-icon .arrow-down', {
+            stroke: "#333333"
+        },{
             stroke: "#ffffff"
         }, '<');
 
-        const lightBGheaderTL = gsap.timeline({
-            scrollTrigger: {
-                id: 'leaveDarkBG',
-                trigger: darkEl,
-                // markers: {
-                //     startColor: "blue",
-                //     endColor: "red",
-                //     fontSize: "14px",
-                //     indent: 10,
-                //     fontWeight: "bold"
-                // },
-                start: '201px 100px',
-                end: '300px 100px',
-                toggleActions: 'play none reverse none',
-                // scrub: 1,
-                onEnter: () => {
-                    console.log('onEnter lightBGheaderTL - play');
-                },
-                onLeave: () => {
-                    console.log('onLeave lightBGheaderTL - none');
-                },
-                onEnterBack: () => {
-                    console.log('onEnterBack lightBGheaderTL - reverse');
-                },
-                onLeaveBack: () => {
-                    console.log('onLeaveBack lightBGheaderTL - none');
-                }
-            }
-        });
+        // const lightBGheaderTL = gsap.timeline({
+        //     scrollTrigger: {
+        //         id: 'leaveDarkBG',
+        //         trigger: darkEl,
+        //         // markers: {
+        //         //     startColor: "blue",
+        //         //     endColor: "red",
+        //         //     fontSize: "14px",
+        //         //     indent: 10,
+        //         //     fontWeight: "bold"
+        //         // },
+        //         start: '201px 100px',
+        //         end: '300px 100px',
+        //         toggleActions: 'play none reverse none',
+        //         // scrub: 1,
+        //         onEnter: () => {
+        //             console.log('onEnter lightBGheaderTL - play');
+        //         },
+        //         onLeave: () => {
+        //             console.log('onLeave lightBGheaderTL - none');
+        //         },
+        //         onEnterBack: () => {
+        //             console.log('onEnterBack lightBGheaderTL - reverse');
+        //         },
+        //         onLeaveBack: () => {
+        //             console.log('onLeaveBack lightBGheaderTL - none');
+        //         }
+        //     }
+        // });
 
-        lightBGheaderTL
-        .to('#logo_svg .color-white', {
-            fill: "#006ff2"
-        })
-        .to('#nav-menu .nav-link', {
-            color: "#333333"
-        }, '<')
-        .to('#nav-menu .nav-link svg.down-icon .arrow-down', {
-            stroke: "#333333"
-        }, '<');
+        // lightBGheaderTL
+        // .to('#logo_svg .color-white', {
+        //     fill: "#006ff2"
+        // })
+        // .to('#nav-menu .nav-link', {
+        //     color: "#333333"
+        // }, '<')
+        // .to('#nav-menu .nav-link svg.down-icon .arrow-down', {
+        //     stroke: "#333333"
+        // }, '<');
     });
 
     // set timeline with scrollTrigger for section wrap 09, trigger start when leaving section-wrap-09 and use it as timeline for fromTo animation for the section wrap 09 element,
@@ -956,9 +962,9 @@ function init() {
                 trigger: wrap,
                 start: () => "top center",
                 end: () => "bottom bottom", // + (wrap.offsetHeight),
-                toggleActions: 'play none none reset',
+                toggleActions: 'play none none reverse',
                 //preventOverlaps: true,
-                // scrub: 1,
+                scrub: 1,
                 // pin: section,
                 // pinSpacing: false,
                 // markers: {
