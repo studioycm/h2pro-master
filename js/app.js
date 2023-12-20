@@ -35,6 +35,7 @@ function init() {
     const section3GraphItemLast = document.querySelector('.definitions-graph-developer .definitions-graph-item:last-child').offsetLeft - document.querySelector('.definitions-graph-developer').offsetLeft;
     const section3GraphItemSecond = document.querySelector('.definitions-graph-developer .definitions-graph-item.etac-item').offsetLeft - document.querySelector('.definitions-graph-developer').offsetLeft;
     const section4 = document.querySelector('#section-wrap-04');
+    const section4InnerSection = document.querySelector('#section-wrap-04 #section-04');
     const section4Content = document.querySelector('#section-04 .content');
     const section4Title = document.querySelector('#section-04 .title');
     const section4BG = document.querySelector('#section-04 #section-04-bg');
@@ -129,7 +130,7 @@ function init() {
             // pinSpacing: false,
             
             snap: {
-                snapTo: 1 / (sectionWraps01.length - 1),
+                snapTo: 1 / (sectionWraps01.length),
                 duration: 2.2,// {min: 0.5, max: 1},
                 // delay: 0.3,
                 ease: "power1.out"                    
@@ -356,7 +357,7 @@ function init() {
         height: "35px",
     }, {
         x: () => -(dropEl.offsetWidth / 2),
-        y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 2) - (dropEl.offsetHeight * 2) - 20,
+        y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 4) - (dropEl.offsetHeight * 2) - 20,
         duration: 1,
         ease: "power1.out"
     })
@@ -413,6 +414,26 @@ function init() {
         yPercent: 0,
         duration: 1,
         ease: "power1.out"
+    });
+
+    const section4TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'section-4-video',
+            trigger: '#section-wrap-04',
+            start: () => '10px top',
+            end: () => section4InnerSection.offsetHeight + ' top',
+            toggleActions: 'play complete none reverse',
+            // scrub: 2,
+            // markers: true,
+            
+        }
+    });
+
+    section4TL
+    .to(section4VideoContainer, {
+        y: () => 300,
+        duration: 0.5,
+        ease: "none"
     });
 
     const drop4TL = gsap.timeline({
