@@ -199,7 +199,7 @@ function init() {
     })
     .to('#section-wrap-01', {
         opacity: 0,
-        duration: 0.3
+        duration: 0.2
     })
     .fromTo('#drop', {
         opacity: 0,
@@ -207,7 +207,7 @@ function init() {
     }, {
         rotate: 0,
         opacity: 1,
-        duration: 0.3
+        duration: 0.2
     }, '<')
     .fromTo('#drop', {
         x: () => 0,
@@ -219,7 +219,7 @@ function init() {
         y: () => section2svgVector.getBoundingClientRect().top - dropEl.getBoundingClientRect().top + (section2svgVector.getBoundingClientRect().height / 2) - (dropEl.offsetHeight / 2),
         width: "35px",
         height: "35px",
-        duration: 2.2,
+        duration: 2,
         ease: "power1.out",
         onStart : () => {
             console.log('drop 1 Start #section-wrap-01');
@@ -416,25 +416,25 @@ function init() {
         ease: "power1.out"
     });
 
-    const section4TL = gsap.timeline({
-        scrollTrigger: {
-            id: 'section-4-video',
-            trigger: '#section-wrap-04',
-            start: () => '10px top',
-            end: () => window.offsetHeight + ' top',
-            toggleActions: 'play complete none reverse',
-            scrub: true,
-            // markers: true,
+    // const section4TL = gsap.timeline({
+    //     scrollTrigger: {
+    //         id: 'section-4-video',
+    //         trigger: '#section-wrap-04',
+    //         start: () => '10px top',
+    //         end: () => window.offsetHeight + ' top',
+    //         toggleActions: 'play complete none reverse',
+    //         scrub: true,
+    //         // markers: true,
             
-        }
-    });
+    //     }
+    // });
 
-    section4TL
-    .to(section4VideoContainer, {
-        y: () => 400,
-        duration: 0.5,
-        ease: "none"
-    });
+    // section4TL
+    // .to(section4VideoContainer, {
+    //     y: () => 400,
+    //     duration: 0.5,
+    //     ease: "none"
+    // });
 
     const drop4TL = gsap.timeline({
         scrollTrigger: {
@@ -760,9 +760,9 @@ function init() {
                 //     fontWeight: "normal"
                 // },
                 start: 'top 100px',
-                end: '+=100px',
+                end: '+=200px',
                 toggleActions: 'play none reverse none',
-                scrub: 1,
+                // scrub: 1,
                 onEnter: () => {
                     console.log(index + ' onEnter darkBGheaderTL - play');
                 },
@@ -800,10 +800,10 @@ function init() {
                 //     indent: 10,
                 //     fontWeight: "bold"
                 // },
-                start: '100px 100px',
-                end: '200px 100px',
+                start: '201px 100px',
+                end: '300px 100px',
                 toggleActions: 'play none reverse none',
-                scrub: 1,
+                // scrub: 1,
                 onEnter: () => {
                     console.log('onEnter lightBGheaderTL - play');
                 },
@@ -866,7 +866,7 @@ function init() {
     }, '<+=1')
     .to('#section-wrap-09', {
         y: () => document.querySelector('#section-wrap-09').offsetHeight,
-        duration: 2.5,
+        duration: 2,
         delay: 0.5,
         ease: "power1.out",
         onStart : () => {
@@ -958,7 +958,7 @@ function init() {
                 end: () => "bottom bottom", // + (wrap.offsetHeight),
                 toggleActions: 'play none none reset',
                 //preventOverlaps: true,
-                scrub: 1,
+                // scrub: 1,
                 // pin: section,
                 // pinSpacing: false,
                 // markers: {
