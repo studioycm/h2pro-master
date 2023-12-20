@@ -6096,13 +6096,14 @@ opacity 0.3s ease-in-out;
                 aspect-ratio: auto;
                 object-fit: contain;
                 object-position: center;
-                width: 150px;
-                max-width: 150px;
+                width: 200px;
+                max-width: 200px;
                 height: auto;
-                flex: 0 1 150px;
+                max-height: 150px;
+                flex: 0 0 200px;
                 display: block;
                 margin: 0;
-                padding: 0;
+                padding: 20px;
                 align-self: center;
             }
             
@@ -6115,7 +6116,7 @@ opacity 0.3s ease-in-out;
                 align-content: center;
                 justify-content: space-between;
                 align-items: center;
-                gap: 20px 100px;
+                gap: 20px 20px;
                 width: 100%;
                 max-width: 1200px;
             }
