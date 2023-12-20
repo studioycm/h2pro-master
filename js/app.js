@@ -606,15 +606,15 @@ function init() {
         scrollTrigger: {
             trigger: '#section-06',
             start: '80% bottom',
-            end: 'bottom bottom',
-            toggleActions: 'play complete reverse reset',
-            scrub: 3
+            end: 'bottom+=1px bottom',
+            toggleActions: 'play reverse play reverse',
+            // scrub: 3
         }
     });
 
     section6TL
     .from("#section-06 .img-22", {
-        x: "200%",
+        x: "300%",
         stagger: 0.3,
         duration: 1
     });
