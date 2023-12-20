@@ -731,13 +731,13 @@ function init() {
             scrollTrigger: {
                 id: 'darkBG-' + index,
                 trigger: darkEl,
-                markers: {
-                    startColor: "green",
-                    endColor: "black",
-                    fontSize: "14px",
-                    indent: 200,
-                    fontWeight: "normal"
-                },
+                // markers: {
+                //     startColor: "green",
+                //     endColor: "black",
+                //     fontSize: "14px",
+                //     indent: 200,
+                //     fontWeight: "normal"
+                // },
                 start: 'top 100px',
                 end: '+=100px',
                 toggleActions: 'play none reverse none',
@@ -772,13 +772,13 @@ function init() {
             scrollTrigger: {
                 id: 'leaveDarkBG',
                 trigger: darkEl,
-                markers: {
-                    startColor: "blue",
-                    endColor: "red",
-                    fontSize: "14px",
-                    indent: 10,
-                    fontWeight: "bold"
-                },
+                // markers: {
+                //     startColor: "blue",
+                //     endColor: "red",
+                //     fontSize: "14px",
+                //     indent: 10,
+                //     fontWeight: "bold"
+                // },
                 start: '100px 100px',
                 end: '200px 100px',
                 toggleActions: 'play none reverse none',
