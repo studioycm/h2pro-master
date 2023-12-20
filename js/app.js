@@ -431,7 +431,7 @@ function init() {
 
     section4TL
     .to(section4VideoContainer, {
-        y: () => 300,
+        y: () => 400,
         duration: 0.5,
         ease: "none"
     });
