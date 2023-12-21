@@ -195,7 +195,7 @@ function init() {
         clipPath: "path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')"
     }, {
         clipPath: section1clipPath,
-        duration: 1,
+        duration: 1.3,
     })
     .to('#section-wrap-01', {
         opacity: 0,
@@ -334,39 +334,48 @@ function init() {
         scrollTrigger: {
             id: 'drop-3',
             trigger: '#section-wrap-04',
-            start: () => '100px bottom',
-            end: () => 'bottom bottom',
-            toggleActions: 'play none reverse reset',
+            start: () => 'top bottom',
+            end: () => 'bottom-=100px bottom',
+            toggleActions: 'play complete reverse reset',
             scrub: 1,
-            // markers: true,
-            
+            markers: {
+                startColor: "red",
+                endColor: "blue",
+                fontSize: "14px",
+                indent: 100,
+                fontWeight: "normal"
+            }
         }
     });
 
     drop3TL
-    .to('#drop', {
+    .fromTo('#drop', {
+        x: () => section3GraphItemSecond - dropEl.offsetWidth + 250,
+        y: () => section1.offsetHeight + section2Height + section3GraphEnd - dropElTop,
+        opacity: 0,
+    }, {
         opacity: 1,
         duration: 0.3
     })
     .to('#drop',  {
         x: () => -(dropEl.offsetWidth / 2),
-        y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 4) - (dropEl.offsetHeight * 2) - 20,
+        y: () => section1.offsetHeight + section2Height + section3.offsetHeight - dropElTop + (section4.offsetHeight / 3),
         duration: 1.5,
         opacity: 1,
-        ease: "none"
+        ease: "slow"
     })
     .fromTo(section4BG, {
-        clipPath: () => 'path("m 940 ' + (150 + section4.offsetHeight / 4) + ' v -17.5 h 17.5 c 8.75 0 17.5 8.75 17.5 17.5 c 0 8.75 -8.75 17.5 -17.5 17.5 c -8.75 0 -17.5 -8.75 -17.5 -17.5 z")',
+        clipPath: () => 'path("m 940 ' + (section4.offsetHeight / 3) + ' v -17.5 h 17.5 c 8.75 0 17.5 8.75 17.5 17.5 c 0 8.75 -8.75 17.5 -17.5 17.5 c -8.75 0 -17.5 -8.75 -17.5 -17.5 z")',
         opacity: 0
     },{
         opacity: 1,
-        duration: 0.3
+        duration: 0.2
     })
     .fromTo(section4BgImage1, {
         opacity: 0
     },{
         opacity: 1,
-        duration: 0.3
+        duration: 0.2
     }, '<')
     .to('#drop', {
         opacity: 0,
@@ -378,38 +387,39 @@ function init() {
             console.log('drop 3 Complete #section-wrap-04');
         }
     }, '<')
-    .to(section4BgImage1, {
-        objectPosition: "0px 0px",
-        duration: 1
-    })
     .to(section4BG, {
-        clipPath: 'path("m -550 -300 v -1500 h 1500 c 750 0 1500 750 1500 1500 c 0 750 -750 1500 -1500 1500 c -750 0 -1500 -750 -1500 -1500 z")',
-        y: () => section4.offsetHeight / 3,
-        duration: 4,
+        clipPath: 'path("m -550 -100 v -1600 h 1600 c 800 0 1600 800 1600 1600 c 0 800 -800 1600 -1600 1600 c -800 0 -1600 -800 -1600 -1600 z")',
+        y: () => (section4.offsetHeight / 2) - 300,
+        duration: 2.5,
+        ease: "none"
+    }, '<')
+    .to(section4BgImage1, {
+        objectPosition: "0px 300px",
+        duration: 1.5,
         ease: "power1.out"
     }, '<')
     .to(section4BgImage2, {
         opacity: 1,
         duration: 0.5
-    }, '>-=3')
+    }, '>-=0.5')
     .fromTo(section4Title, {
         opacity: 0,
-        yPercent: 50,
+        yPercent: 100,
     },{
         opacity: 1,
         yPercent: 0,
-        duration: 1,
-        ease: "power1.out"
-    }, '>-=1')
+        duration: 1.5,
+        ease: "none"
+    }, '>-=1.5')
     .fromTo(section4Content, {
         opacity: 0,
-        yPercent: 50,
+        yPercent: 100,
     },{
         opacity: 1,
         yPercent: 0,
         duration: 1,
-        ease: "power1.out"
-    }, '>');
+        ease: "none"
+    }, '>-=1');
 
     // const section4TL = gsap.timeline({
     //     scrollTrigger: {
@@ -435,25 +445,31 @@ function init() {
         scrollTrigger: {
             id: 'drop-4',
             trigger: '#section-wrap-05',
-            start: () => 'center bottom',
-            end: () => 'bottom-=200px bottom',
-            toggleActions: 'play none reverse reset',
+            start: () => 'top bottom',
+            end: () => 'bottom-=100px bottom',
+            toggleActions: 'play complete reverse reset',
             scrub: 1,
-            // markers: true,
+            markers: {
+                startColor: "green",
+                endColor: "black",
+                fontSize: "14px",
+                indent: 200,
+                fontWeight: "normal"
+            }
         }
     });
 
     drop4TL
     .fromTo(section4BG, {
-        clipPath: 'path("m -550 -300 v -1500 h 1500 c 750 0 1500 750 1500 1500 c 0 750 -750 1500 -1500 1500 c -750 0 -1500 -750 -1500 -1500 z")'
+        clipPath: 'path("m -550 -100 v -1600 h 1600 c 800 0 1600 800 1600 1600 c 0 800 -800 1600 -1600 1600 c -800 0 -1600 -800 -1600 -1600 z")'
     }, {
-        clipPath: 'path("m 940 ' + (150 + section4.offsetHeight / 4) + ' v -35 h 35 c 17.5 0 35 17.5 35 35 c 0 17.5 -17.5 35 -35 35 c -17.5 0 -35 -17.5 -35 -35 z")',
+        clipPath: 'path("m 940 ' + (section4.offsetHeight / 3) + ' v -35 h 35 c 17.5 0 35 17.5 35 35 c 0 17.5 -17.5 35 -35 35 c -17.5 0 -35 -17.5 -35 -35 z")',
         duration: 0.3,
-        ease: "power1.out"
+        ease: "none"
     })
     .fromTo('#drop', {
         x: () => -(dropEl.offsetWidth / 2),
-        y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 4) - (dropEl.offsetHeight * 2) - 20,
+        y: () => section2Height + section1.offsetHeight + section3.offsetHeight + (section4.offsetHeight / 3),
         opacity: 0,
     }, {
         backgroundColor: "#1d7bc8",// "#1d7bc8"
@@ -462,20 +478,15 @@ function init() {
         opacity: 1,
         duration: 0.3
     })
-    .fromTo(section4BG, {
-        opacity: 1
-    },{
+    .to(section4BG, {
         opacity: 0,
         duration: 0.3
     }, '<')
-    .fromTo('#drop', {
-        x: () => -(dropEl.offsetWidth / 2),
-        y: () => section2Height + section1.offsetHeight + section3GraphEnd + (section4.offsetHeight / 4) - (dropEl.offsetHeight * 2) - 20,
-    }, {
+    .to('#drop', {
         x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 130,
         y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 360,
         duration: 2,
-        ease: "power1.out",
+        ease: "power1.in",
         // all gsap tween animation callback functions: onStart, onUpdate, onComplete, onRepeat, onReverseComplete
         onStart : () => {
             console.log('drop 4 Start #section-wrap-05');
@@ -497,23 +508,22 @@ function init() {
             end: () => '80% bottom',
             toggleActions: 'play none reverse reset',
             scrub: 1,
-            markers: true
+            // markers: true
         }
     });
 
     drop5TL
     .fromTo('#drop',{
-        opacity: 0
+        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 130,
+        y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 360,
+        // opacity: 0,
+        // backgroundColor: "#1d7bc8", // "#1d7bc8"
     },{
-        backgroundColor: "#1d7bc8", // "#1d7bc8"
+        rotate: 0,
         opacity: 1,
         duration: 0.3
     })
-    .fromTo('#drop', {
-        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 130,
-        y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 360,
-        rotate: 0,
-    }, {
+    .to('#drop', {
         backgroundColor: "#cccccc",
         x: () => (section6.offsetWidth * 0.7) - dropEl.offsetLeft,
         y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight - dropElTop + 250,
@@ -543,42 +553,43 @@ function init() {
         scrollTrigger: {
             id: 'drop-6',
             trigger: '#section-wrap-07',
-            start: () => '50px bottom',
+            start: () => 'top bottom',
             end: () => (section6.offsetHeight - 100) + ' bottom',
             toggleActions: 'play none reverse reset',
             scrub: 1,
-            markers: true,
-            // onEnter: () => {
-            //         console.log("#section-06 action offsetTop: ", section6Action.offsetTop);
-            //         console.log("#section-06 action rect.top: ", section6Action.getBoundingClientRect().top);
-            //         console.log("section6.offsetTop: ", (section6.offsetTop));
-            //         console.log("#drop offsetTop: " + dropEl.offsetTop);
-            //         console.log("#drop getBoundingClientRect().top: " + dropEl.getBoundingClientRect().top);
-            //         console.log("#drop from X: ", (-(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54))));
-            //         console.log("#drop from Y: ", (section7.offsetTop - section6Action.getBoundingClientRect().bottom - 54 - dropElTop));
-            //         console.log("dropEl.offsetLeft - section6Action.offsetLeft: ", (-(dropEl.offsetLeft - section6Action.offsetLeft)));
-            //         console.log("section7.offsetTop: ", (section7.offsetTop));
-            //         console.log("section6Action.getBoundingClientRect().bottom: ", (section6Action.getBoundingClientRect().bottom));
-            //         console.log("section6Action.getBoundingClientRect().top: ", (section6Action.getBoundingClientRect().top));
-            //         console.log("section7Action.getBoundingClientRect().top: ", (section7Action.getBoundingClientRect().top));
+            // markers: true,
+            onEnter: () => {
+                console.log("section6.offsetTop: ", (section6.offsetTop));
+                console.log("#drop offsetTop: " + dropEl.offsetTop);
+                console.log("#drop getBoundingClientRect().top: " + dropEl.getBoundingClientRect().top);
+                console.log("#drop from X: ", (-(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53))));
+                console.log("#drop from Y: ", (section7.offsetTop - section6Action.getBoundingClientRect().bottom - 53 - dropElTop));
+                console.log("dropEl.offsetLeft - section6Action.offsetLeft: ", (-(dropEl.offsetLeft - section6Action.offsetLeft)));
+                console.log("section7.offsetTop: ", (section7.offsetTop));
+                console.log("section6Action.getBoundingClientRect().bottom: ", (section6Action.getBoundingClientRect().bottom));
+                console.log("section6Action.getBoundingClientRect().top: ", (section6Action.getBoundingClientRect().top));
+                console.log("#section-06 action offsetTop: ", section6Action.offsetTop);
+                console.log("section6Action.getBoundingClientRect().height: ", (section6Action.getBoundingClientRect().height));
+                console.log("#section-06 action offsetHeight: ", section6Action.offsetHeight);
+
+                    console.log("section7Action.getBoundingClientRect().top: ", (section7Action.getBoundingClientRect().top));
                     
-            // },
+            },
         }
     });
     
     
     // drop-anim 06 on section switch from 6 to 7
     drop6TL
-    .set('#drop', {
-        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54)),
-        y: () =>  section6.offsetTop + section6Action.getBoundingClientRect().top - dropElTop + section6Action.offsetHeight + 10,
+    .fromTo('#drop', {
+        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53)),
+        y: () =>  section6.offsetTop + section6Action.getBoundingClientRect().top - dropElTop + 10,
         opacity: 0,
         rotate: 0,
+        width: "53px",
+        height: "53px",
+    },{
         backgroundColor: "#5fb847",
-        width: "54px",
-        height: "54px",
-    })
-    .to('#drop',{
         opacity: () => 1,
         autoAlpha: 1,
         visibility: 'visible',
@@ -587,13 +598,17 @@ function init() {
     .to('#drop', {
         width: "45px",
         height: "45px",
-        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54) ) - section7Action.offsetLeft - 85,
-        y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section7Action.getBoundingClientRect().top - 150,
+        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53) ) - section7Action.offsetLeft - 85,
+        y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section7Action.getBoundingClientRect().top - 155,
         rotate: 135,
         duration: 2,
         ease: "power1.in",
         onStart : () => {
             console.log('drop 6 Start #section-wrap-07');
+            console.log("section6Action.getBoundingClientRect().top: ", (section6Action.getBoundingClientRect().top));
+            console.log("#section-06 action offsetTop: ", section6Action.offsetTop);
+            console.log("section6Action.getBoundingClientRect().height: ", (section6Action.getBoundingClientRect().height));
+            console.log("#section-06 action offsetHeight: ", section6Action.offsetHeight);
         },
         onComplete : () => {
             console.log('drop 6 Complete #section-wrap-07');
@@ -734,7 +749,7 @@ function init() {
     //     }
     // })
     // .to('#drop', {
-    //     x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 54) ) - section7Action.offsetLeft - 85,
+    //     x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53) ) - section7Action.offsetLeft - 85,
     //     y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight - dropElTop + section7Action.getBoundingClientRect().top + 110,
     //     duration: 2,
     //     ease: "power1.in",
