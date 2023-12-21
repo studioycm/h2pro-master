@@ -14,6 +14,9 @@ function init() {
 
     requestAnimationFrame(raf);
     
+    
+    const viewHeight = window.innerHeight;
+    console.log('viewHeight: ', viewHeight);
     const navMenu = document.querySelector('#nav-menu');
     const sectionsPart01 = document.querySelector('#wraps-part-01');
     const sectionsPart02 = document.querySelector('#wraps-part-02');
@@ -24,7 +27,10 @@ function init() {
     const dropEl = document.querySelector('#drop');
     const dropElTop = dropEl.offsetTop;
     const section1 = document.querySelector('#section-wrap-01');
-    const section2 = document.querySelector('#section-wrap-02')
+    const section01Panel = document.querySelector('#webinar-sticker');
+    const section01PanelToggle = document.querySelector('#webinar-sticker-toggle');
+    const section01ContinueButton = document.querySelector('#drop-arrow');
+    const section2 = document.querySelector('#section-wrap-02');
     const section2Height = section2.offsetHeight;
     const unionSvg = document.querySelector('#section-02 .column-1');
     const section2svg = document.querySelector('#section-02 svg#h2pro-mission_svg');
@@ -94,90 +100,55 @@ function init() {
         opacity: 0
     });
 
-    // const headerTL = gsap.timeline({
-    //     scrollTrigger: {
-    //         trigger: '#section-wrap-01',
-    //         // markers: true,
-    //         start: '10px top',
-    //         end: '+=300',
-    //         toggleActions: 'play none none reverse',
-    //         //scrub: 1
-    //     }
-    // });
-
-    // headerTL
-    // .to('#logo_svg .color-white', {
-    //     fill: "#006ff2"
-    // })
-    // .to('#nav-menu .nav-link', {
-    //     color: "#333333"
-    // }, '<')
-    // .to('#nav-menu .nav-link svg.down-icon .arrow-down', {
-    //     stroke: "#333333"
-    // }, '<');
-
-    
-
-
-    const sections01TL = gsap.timeline({
-        scrollTrigger: {
-            id: 'sections-01',
-            trigger: sectionsPart01,
-            start: () => "top top",
-            end: () => (sectionsPart01.offsetHeight) + " bottom", // "+=" + (wrap.offsetHeight),
-            scrub: true,
-            // pin: true,
-            // pinSpacing: false,
-            
-            // snap: {
-            //     snapTo: 1 / (sectionWraps01.length),
-            //     duration: 2,// {min: 0.5, max: 1},
-            //     // delay: 0.3,
-            //     ease: "none"                    
-            // },
-            // markers: {
-            //     startColor: "blue",
-            //     endColor: "red",
-            //     fontSize: "14px",
-            //     indent: 20,
-            //     fontWeight: "bold"
-            // },
-            onEnter: () => {
-                console.log('onEnter sections - ', sectionsPart01.offsetHeight);
-            },
-            onLeave: () => {
-                console.log('onLeave sections - ', sectionsPart01.offsetHeight);
-            },
-            onEnterBack: () => {
-                console.log('onEnterBack sections - ', sectionsPart01.offsetHeight);
-            },
-            onLeaveBack: () => {
-                console.log('onLeaveBack sections - ', sectionsPart01.offsetHeight);
-            },
-            onSnapComplete: () => {
-                console.log('onSnapComplete sections - ', sectionsPart01.offsetHeight);
-
-            }
-        }
-    });
-    
-    // set timeline for section-wrap with scrollTrigger so each section will be pinned to the top of the screen when it's in view, 
-    // and unpinned when all animated elements finished animating + 1 second then scroll to the next section
-    
-    const webinarSticker = gsap.to('#webinar-sticker', {
+      
+    // how to create an animation tween with multiple to() methods that will use a timeline and can be used in a click event:
+    const webinarStickerTL = gsap.timeline({
         scrollTrigger: {
             id: 'webinar-sticker',
             trigger: '#section-01',
-            start: () => 'top top',
-            end: () => 'bottom bottom',
-            toggleActions: 'play none reverse reset',
+            start: () => '50px top',
+            end: () => '300px top',
+            toggleActions: 'play complete reverse reset',
             // scrub: 3,
-            // markers: true
+            markers: true
         },
-        xPercent: -85,
-        duration: 1
+        onEnter: () => {
+            console.log('webinarStickerTL onEnter');
+        },
+
     });
-    
+    // add a to() method to the webinarStickerTL timeline
+    webinarStickerTL
+    .fromTo('#webinar-sticker', {
+        x: () => 0,
+    },{
+        x: () => -(section01Panel.offsetWidth - 40),
+        duration: 1
+    })
+    .fromTo('#webinar-sticker-toggle .button-icon', {
+        rotate: 0,
+    },{
+        rotate: 180,
+        duration: 0.3
+    }, '<');
+
+
+    // add event listener to the section01PanelToggle to toggle the panel when clicked
+
+    section01PanelToggle.addEventListener('click', () => {
+        // play tween of the webinarSticker or reverse it if its already played
+        webinarStickerTL.reversed() ? webinarStickerTL.play() : webinarStickerTL.reverse();
+        
+        
+    });
+
+    // add event listener to the section01ContinueButton to scroll to the next section when clicked
+    section01ContinueButton.addEventListener('click', () => {
+        // scroll down smoothly to next section with Lenis 
+        
+        window.scrollBy(0, viewHeight);
+        
+    });
     const section1TL = gsap.timeline({
         scrollTrigger: {
             id: 'section-01-out',
@@ -191,12 +162,20 @@ function init() {
     });
     const dropElHalfWidth = dropEl.offsetWidth / 2;
     const section1clipPath = "path('m " + dropEl.offsetLeft + " " + dropEl.offsetTop + " l " + dropElHalfWidth + " 0 c " + dropElHalfWidth + " 0 " + dropElHalfWidth + " " + dropElHalfWidth + " " + dropElHalfWidth + " " + dropElHalfWidth + " c 0 " + dropElHalfWidth + " -" + dropElHalfWidth + " " + dropElHalfWidth + " -" + dropElHalfWidth + " " + dropElHalfWidth + " c -" + dropElHalfWidth + " 0 -" + dropElHalfWidth + " -" + dropElHalfWidth + " -" + dropElHalfWidth + " -" + dropElHalfWidth + " z')";
-    section1TL.fromTo('#section-wrap-01', {
+    
+    section1TL
+    .to('#section-01 .animated', {
+        opacity: 0,
+        y: () => -300,
+        duration: 0.3,
+        stagger: 0.1
+    })
+    .fromTo('#section-wrap-01', {
         clipPath: "path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')"
     }, {
         clipPath: section1clipPath,
         duration: 1.3,
-    })
+    }, '<')
     .to('#section-wrap-01', {
         opacity: 0,
         duration: 0.2
@@ -338,13 +317,13 @@ function init() {
             end: () => 'bottom-=100px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
-            markers: {
-                startColor: "red",
-                endColor: "blue",
-                fontSize: "14px",
-                indent: 100,
-                fontWeight: "normal"
-            }
+            // markers: {
+            //     startColor: "red",
+            //     endColor: "blue",
+            //     fontSize: "14px",
+            //     indent: 100,
+            //     fontWeight: "normal"
+            // }
         }
     });
 
@@ -421,26 +400,6 @@ function init() {
         ease: "none"
     }, '>-=1');
 
-    // const section4TL = gsap.timeline({
-    //     scrollTrigger: {
-    //         id: 'section-4-video',
-    //         trigger: '#section-wrap-04',
-    //         start: () => '10px top',
-    //         end: () => window.offsetHeight + ' top',
-    //         toggleActions: 'play complete none reverse',
-    //         scrub: true,
-    //         // markers: true,
-            
-    //     }
-    // });
-
-    // section4TL
-    // .to(section4VideoContainer, {
-    //     y: () => 400,
-    //     duration: 0.5,
-    //     ease: "none"
-    // });
-
     const drop4TL = gsap.timeline({
         scrollTrigger: {
             id: 'drop-4',
@@ -508,7 +467,7 @@ function init() {
             end: () => '80% bottom',
             toggleActions: 'play none reverse reset',
             scrub: 1,
-            // markers: true
+            markers: true
         }
     });
 
@@ -557,7 +516,7 @@ function init() {
             end: () => (section6.offsetHeight - 100) + ' bottom',
             toggleActions: 'play none reverse reset',
             scrub: 1,
-            // markers: true,
+            markers: true,
             onEnter: () => {
                 console.log("section6.offsetTop: ", (section6.offsetTop));
                 console.log("#drop offsetTop: " + dropEl.offsetTop);
@@ -922,49 +881,7 @@ function init() {
     });
 
 
-    const sections02TL = gsap.timeline({
-        scrollTrigger: {
-            id: 'sections-02',
-            trigger: sectionsPart02,
-            start: () => "top bottom",
-            end: () => "bottom bottom", // "+=" + (wrap.offsetHeight),
-            // scrub: 1,
-            // pin: true,
-            // pinSpacing: false,
-            
-            // snap: {
-            //     snapTo: 1 / (sectionWraps02.length),
-            //     duration: 2,// {min: 0.5, max: 1},
-            //     // delay: 0.5,
-            //     ease: "none"                    
-            // },
-            // markers: {
-            //     startColor: "green",
-            //     endColor: "red",
-            //     fontSize: "14px",
-            //     indent: 100,
-            //     fontWeight: "bold"
-            // },
-            onEnter: () => {
-                console.log('onEnter sections 2');
-            },
-            onLeave: () => {
-                console.log('onLeave sections 2');
-                // run tween for the footer element, rising from the bottom of the screen
-                
-                
-            },
-            onEnterBack: () => {
-                console.log('onEnterBack sections 2');
-                // run tween for the footer element, rising from the bottom of the screen
-                
-            },
-            onSnapComplete: () => {
-                console.log('onSnapComplete sections 2');
-
-            }
-        }
-    });
+    
 
     sectionWraps.forEach((wrap, i) => {
 

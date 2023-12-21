@@ -5196,7 +5196,7 @@ div sub.h2sub {
                     align-items: center;
                     justify-content: space-between;
                     padding: 0;
-                    translate: 0% 0px;
+                    translate: 0px 0px;
                 }
                 
                 #webinar-sticker::before {
@@ -5230,7 +5230,8 @@ div sub.h2sub {
                 }
                 .div-23 {
                     flex-grow: 1;
-                    flex-basis: 85%;
+                    flex-basis: calc(100% - 40px);
+                    width: calc(100% - 40px);
                     flex-direction: column;
                     margin: auto 0;
                     align-items: flex-start;
@@ -5295,15 +5296,18 @@ div sub.h2sub {
                 
                 #webinar-sticker-toggle {
                     position: relative;
-                    width: 20%;
+                    width: 40px;
                     flex: 0;
-                    flex-basis: 20%;
+                    flex-basis: 40px;
                     background-color: #ffffff20;
                     align-self: stretch;
                     display: flex;
-                    justify-content: space-between;
+                    justify-content: flex-start;
                     gap: 0px;
                     border-radius: 0px 20px 20px 0px;
+                    flex-wrap: nowrap;
+                    align-items: center;
+                    flex-direction: row;
                 }
 
                 #webinar-sticker-toggle::before {
@@ -5321,12 +5325,14 @@ div sub.h2sub {
                     aspect-ratio: 1;
                     object-fit: contain;
                     object-position: center;
-                    width: 35px;
+                    width: 30px;
+                    height: 30px;
                     overflow: hidden;
                     align-self: center;
                     max-width: 100%;
                     margin: 0;
-                    rotate: 90deg;
+                    rotate: 0deg;
+                    pointer-events: none;
                 }
                 
 
