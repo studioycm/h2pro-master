@@ -755,6 +755,7 @@ div sub.h2sub {
 }
             #section-05 .card,
             .action-button,
+            .slide-card__link,
             .div-26,
             .div-97,
             .div-99,
@@ -5976,6 +5977,12 @@ div sub.h2sub {
                 height: 100%;
                 background-image: linear-gradient(90deg, #ffffff 0%, transparent 100%);
             }
+
+            #slider-progress {
+                position: relative;
+                z-index: 2;
+            }
+
             .slides {
                 display: flex;
                 justify-content: flex-start;
@@ -6144,22 +6151,7 @@ div sub.h2sub {
                 flex-direction: column;
             }
             
-            .div-170 > img {
-                aspect-ratio: auto;
-                object-fit: contain;
-                object-position: center;
-                width: 260px;
-                max-width: 260px;
-                height: auto;
-                max-height: 110px;
-                flex: 0 0 260px;
-                display: block;
-                margin: 0;
-                padding: 20px 20px;
-                align-self: center;
-            }
-            
-            .div-170 {
+            .partners-grid {
                 align-self: center;
                 display: flex;
                 margin-top: 20px;
@@ -6168,9 +6160,28 @@ div sub.h2sub {
                 align-content: center;
                 justify-content: space-between;
                 align-items: center;
-                gap: 20px 20px;
+                gap: 20px 0px;
                 width: 100%;
-                max-width: 1400px;
+                max-width: 1350px;
+            }
+            
+            .partners-grid img.partner-img {
+
+            }
+            
+            .partners-grid img.flexed-image {
+                aspect-ratio: auto;
+                object-fit: cover;
+                object-position: center;
+                width: 20%;
+                max-width: 20%;
+                height: 130px;
+                max-height: 130px;
+                flex: 0 0 20%;
+                display: block;
+                margin: 0;
+                padding: 0px 10px;
+                align-self: center;
             }
 
             #sections .section-wrap .section-08 .inner-section {

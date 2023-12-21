@@ -493,7 +493,7 @@ function init() {
         scrollTrigger: {
             id: 'drop-5',
             trigger: '#section-wrap-06',
-            start: () => '50px bottom',
+            start: () => '100px bottom',
             end: () => '80% bottom',
             toggleActions: 'play none reverse reset',
             scrub: 1,
@@ -671,10 +671,16 @@ function init() {
             }
         }
     });
-    section7TL.to(slides, {
+    const sliderProgressSvg = document.querySelector('#slider-progress-bar');
+    const sliderProgressLine = sliderProgressSvg.querySelector('line#slider-progress-line');
+    section7TL
+    .to(slides, {
         xPercent: -100 * (slides.length - 2),
         ease: "none"
-    });
+    })
+    .to(sliderProgressLine, {
+        attr: {x2: 950},
+    }, '<');
     
     
     document.querySelector('#slider-next').addEventListener('click', () => {

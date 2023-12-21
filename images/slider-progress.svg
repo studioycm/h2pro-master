@@ -1,0 +1,4 @@
+<svg id="slider-progress-bar" class="progress-bar-svg" viewBox="0 0 950 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line id="slider-bar-line" x1="38" y1="4" x2="950" y2="4" stroke="#888888" stroke-width="2"/>
+<line id="slider-progress-line" y1="2.5" x2="320" y2="2.5" stroke="#1679C6" stroke-width="5"/>
+</svg>
