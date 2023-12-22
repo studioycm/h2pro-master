@@ -5172,7 +5172,6 @@ div sub.h2sub {
             }
             #webinar-sticker-container {
                 position: relative;
-                align-self: start;
                 display: flex;
                 margin-top: 60px;
                 width: 100%;
@@ -5188,6 +5187,7 @@ div sub.h2sub {
                     margin-top: 40px;
                 }
                 }
+
                 #webinar-sticker {
                     position: relative;
                     border-radius: 0px 20px 20px 0px;

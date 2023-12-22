@@ -1,0 +1,18 @@
+<svg viewBox="0 0 32 32" fill="none">
+<style>
+    #outer-rect { fill: #52b713; }
+    #inner-rect { fill: #1679C6; }
+    @media (prefers-color-scheme: dark) {
+      #outer-rect { fill: #83e149; }
+        #inner-rect { fill: #ffffff; }
+    }
+  </style>
+<clipPath id="outerClip">
+<path id="outer-path" fill-rule="evenodd" clip-rule="evenodd" d="M 1 1 h 15 c 8 0 15 7 15 15 c 0 8 -7 15 -15 15 c -8 0 -15 -7 -15 -15 v -15 Z M 6 6 h 10 c 5 0 10 5 10 10 c 0 5 -5 10 -10 10 c -5 0 -10 -5 -10 -10 v -10 Z" fill="#72BE44"/>
+</clipPath>
+<clipPath id="innerClip">
+<path id="inner-path" fill-rule="evenodd" clip-rule="evenodd" d="M 12 12 h 4 c 2 0 4 2 4 4 c 0 2 -2 4 -4 4 c -2 0 -4 -2 -4 -4 v -4 Z" fill="#1679C6"/>
+</clipPath>
+<rect id="outer-rect" width="32" height="32" fill="#ffffff" clip-path="url(#outerClip)"/>
+<rect id="inner-rect" width="32" height="32" fill="#000000" clip-path="url(#innerClip)"/>
+</svg>
