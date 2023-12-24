@@ -5148,6 +5148,7 @@ div sub.h2sub {
            /* #1 section-01 "High Efficiency Production of Green Hydrogen" + bg video */
             #sections #section-wrap-01 {
                 max-height: unset;
+                min-height: 125vh;
             }          
             #sections .section-wrap .section-01 {
                 flex-direction: column;
@@ -5440,7 +5441,11 @@ div sub.h2sub {
                 translate: 0px 0px;
             }
             /* #3 section-03 "energy efficiency graph" + interactive graph */
-                       
+            #sections .section-wrap-03 {
+                min-height: 100vh;
+                max-height: unset;
+            }
+            
             #sections .section-wrap .section-03 {
                 flex-direction: column;
                 align-self: stretch;
@@ -5448,7 +5453,7 @@ div sub.h2sub {
                 display: flex;
                 width: 100%;
                 align-items: center;
-                padding: 110px 20px 110px;
+                padding: 150px 20px 0px;
             }
             
             .graph-section {
@@ -5854,7 +5859,7 @@ div sub.h2sub {
             }
             
             .section-06 .column-12 {
-                top: 50px;
+                top: 80px;
                 position: relative;
                 display: flex;
                 overflow: hidden;
@@ -5873,12 +5878,12 @@ div sub.h2sub {
                 position: absolute;
                 top: 0;
                 left: 0;
-                aspect-ratio: 1.68;
+                aspect-ratio: unset;
                 object-fit: contain;
                 object-position: center;
-                max-width: 400px;
-                height: 100%;
-                /* width: auto; */
+                max-width: unset;
+                height: 80%;
+                width: auto;
             }
 
             .section-06 img.img-22[data-opacity="100"] {

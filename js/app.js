@@ -107,8 +107,8 @@ function init() {
             id: 'webinar-sticker',
             trigger: '#section-01',
             start: () => '10px top',
-            end: () => 'bottom top',
-            toggleActions: 'play complete reverse reset',
+            end: () => 'center top',
+            toggleActions: 'play complete reverse none',
             // scrub: 3,
             // markers: true
         },
@@ -129,7 +129,8 @@ function init() {
             console.log('reversed: ', webinarStickerTL.reversed());
         },
 
-    });
+    }).reversed(true);
+
     // add a to() method to the webinarStickerTL timeline
     webinarStickerTL
     .fromTo(section01Panel, {
@@ -150,18 +151,18 @@ function init() {
 
     section01PanelToggle.addEventListener('click', () => {
         // play tween of the webinarSticker or reverse it if its already played
-        console.log('Pre PanelToggle clicked - reversed: ', webinarStickerTL.reversed());
-        console.log('panel toggle state: ', section01Panel.getAttribute('data-state'));
-        if (section01Panel.getAttribute('data-state') === 'open') {
-            webinarStickerTL.play(); 
-            section01Panel.setAttribute('data-state', 'closed');
-        } else {
-            webinarStickerTL.reverse();
-            section01Panel.setAttribute('data-state', 'open');
-        }
-        // webinarStickerTL.reversed() ? webinarStickerTL.play() : webinarStickerTL.reverse();
-        console.log('Post PanelToggle clicked - reversed: ', webinarStickerTL.reversed());
-        
+        // console.log('Pre PanelToggle clicked - reversed: ', webinarStickerTL.reversed());
+        // console.log('panel toggle state: ', section01Panel.getAttribute('data-state'));
+        // if (section01Panel.getAttribute('data-state') === 'open') {
+        //     webinarStickerTL.play(); 
+        //     section01Panel.setAttribute('data-state', 'closed');
+        // } else {
+        //     webinarStickerTL.reverse();
+        //     section01Panel.setAttribute('data-state', 'open');
+        // }
+        console.log('Pre PanelToggle - reversed: ', webinarStickerTL.reversed());
+        webinarStickerTL.reversed() ? webinarStickerTL.play() : webinarStickerTL.reverse();
+        console.log('Post PanelToggle - reversed: ', webinarStickerTL.reversed());        
     });
     
 
@@ -179,16 +180,16 @@ function init() {
         
     });
     // set section1videoContainer height + 20px
-    gsap.set('#section-01', {
-        height: () => section1video.offsetHeight + 20
-    });
+    // gsap.set('#section-01', {
+    //     height: () => section1video.offsetHeight + 20
+    // });
     
     const section1TL = gsap.timeline({
         scrollTrigger: {
             id: 'section-01-out',
             trigger: '#section-wrap-01',
             start: () => 'top top',
-            end: () => 'top+=' + (viewHeight * 1.5) + 'px bottom',
+            end: () => 'top+=' + (viewHeight * 2) + 'px bottom',
             toggleActions: 'play none reverse reset',
             scrub: 1,
             pin: '#section-01',
@@ -207,7 +208,7 @@ function init() {
     }, {
         opacity: 0,
         y: () => -100,
-        duration: 0.3,
+        duration: 0.2,
         stagger: 0.1
     })
     .fromTo('#section-01', {
@@ -223,7 +224,7 @@ function init() {
         duration: 0.2
     }, '>-=0.2')
     .fromTo('#drop', {
-        top: () => viewHeight / 2,
+        top: () => viewHeight * 0.5 + 150,
         x: () => 0,
         y: () => 0,
         width: "35px",
@@ -272,7 +273,7 @@ function init() {
             id: 'drop-2',
             trigger: '#section-wrap-02',
             start: () => '100px top',
-            end: () => 'bottom 100px',
+            end: () => 'bottom 200px',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
             // markers: true,
@@ -295,7 +296,7 @@ function init() {
         opacity: 1,
         // delay: 0.3,
         duration: 3,
-        ease: "slow",
+        ease: "power1.out",
         onStart : () => {
             console.log('drop 2 Start #section-wrap-02');
         },
@@ -305,14 +306,14 @@ function init() {
     })
     .to('#drop', {
         opacity: 0,
-        duration: 0.3
+        duration: 0.25
     });
 
     const section3TL = gsap.timeline({
         scrollTrigger: {
             id: 'graph',
             trigger: '#section-wrap-03',
-            start: 'top 10px',
+            start: 'top 100px',
             end: '+=600',
             toggleActions: 'play none none none',
             scrub: true,
@@ -355,7 +356,7 @@ function init() {
         scrollTrigger: {
             id: 'drop-3',
             trigger: '#section-wrap-04',
-            start: () => '100px bottom',
+            start: () => '150px bottom',
             end: () => 'bottom-=100px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
@@ -378,7 +379,7 @@ function init() {
         duration: 0.2
     })
     .to('#drop',  {
-        x: () => -(dropEl.offsetWidth / 2),
+        x: () => -(dropEl.offsetWidth),
         y: () => section1.offsetHeight + section2.offsetHeight + section3.offsetHeight - dropEl.offsetTop + (section4.offsetHeight / 4),
         opacity: 1,
         duration: 2,
@@ -414,56 +415,33 @@ function init() {
     }, '<')
     .to(section4BgImage1, {
         objectPosition: "0px 750px",
-        duration: 2,
+        duration: 2.5,
         ease: "slow"
     }, '<')
     .to(section4BgImage2, {
         opacity: 1,
-        duration: 0.4
-    }, '<+=1.25')
+        duration: 0.3
+    }, '<+=1.5')
     .fromTo(section4Title, {
         opacity: 1,
         y: 300,
     },{
         opacity: 1,
-        y: 0,
-        duration: 1,
+        y: 100,
+        duration: 2,
         ease: "none"
-    }, '>')
+    }, '>-=1')
     .fromTo(section4Content, {
         opacity: 1,
-        y: 300,
+        y: 500,
     },{
         opacity: 1,
-        y: 0,
-        duration: 1,
+        y: 150,
+        duration: 2,
         ease: "none"
     }, '>');
 
-    // const pinSection4BGTL = gsap.timeline({
-    //     scrollTrigger: {
-    //         id: 'pin-section-04-bg',
-    //         trigger: section4BG,
-    //         start: 'top top',
-    //         end: 'bottom bottom',
-    //         toggleActions: 'play none none reverse',
-    //         scrub: 1,
-    //         pin: section4BG,
-    //         markers: true,
-    //         onEnter: () => {
-    //             console.log('pinSection4BGTL onEnter');
-    //         },
-    //         onLeave: () => {
-    //             console.log('pinSection4BGTL onLeave');
-    //         },
-    //         onEnterBack: () => {
-    //             console.log('pinSection4BGTL onEnterBack');
-    //         },
-    //         onLeaveBack: () => {
-    //             console.log('pinSection4BGTL onLeaveBack');
-    //         },
-    //     }
-    // });
+    
 
     const drop4TL = gsap.timeline({
         scrollTrigger: {
@@ -492,7 +470,7 @@ function init() {
         ease: "none"
     })
     .fromTo('#drop', {
-        x: () => -(dropEl.offsetWidth / 2),
+        x: () => 0,
         y: () => section2.offsetHeight + section1.offsetHeight + section3.offsetHeight + (section4.offsetHeight / 3),
         opacity: 0,
     }, {
@@ -502,10 +480,6 @@ function init() {
         opacity: 1,
         duration: 0.3
     })
-    // .to(section4BG, {
-    //     opacity: 0,
-    //     duration: 0.3
-    // }, '<')
     .to('#drop', {
         // x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 0,
         // y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - dropEl.offsetTop,
@@ -575,6 +549,23 @@ function init() {
         }
     }, '<');
 
+    const section6TL = gsap.timeline({
+        scrollTrigger: {
+            trigger: '#section-06',
+            start: '80% bottom',
+            end: 'bottom+=1px bottom',
+            toggleActions: 'play reverse play reverse',
+            scrub: 1
+        }
+    });
+
+    section6TL
+    .from("#section-06 .img-22", {
+        x: "300%",
+        stagger: 0.3,
+        duration: 1
+    });
+
     const drop6TL = gsap.timeline({
         scrollTrigger: {
             id: 'drop-6',
@@ -598,9 +589,7 @@ function init() {
                 console.log("#section-06 action offsetTop: ", section6Action.offsetTop);
                 console.log("section6Action.getBoundingClientRect().height: ", (section6Action.getBoundingClientRect().height));
                 console.log("#section-06 action offsetHeight: ", section6Action.offsetHeight);
-
-                    console.log("section7Action.getBoundingClientRect().top: ", (section7Action.getBoundingClientRect().top));
-                    
+                console.log("section7Action.getBoundingClientRect().top: ", (section7Action.getBoundingClientRect().top));   
             },
         }
     });
@@ -628,10 +617,10 @@ function init() {
         width: "45px",
         height: "45px",
         x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53) ) - section7Action.offsetLeft - 85,
-        y: () =>  section1.offsetHeight + section2.offsetHeight + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section7Action.getBoundingClientRect().top - 155,
+        y: () =>  section1.offsetHeight + section2.offsetHeight + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section7Action.getBoundingClientRect().top - 400,
         rotate: 135,
         duration: 2,
-        ease: "none",
+        ease: "slow",
         onStart : () => {
             console.log('drop 6 Start #section-wrap-07');
             console.log("section6Action.getBoundingClientRect().top: ", (section6Action.getBoundingClientRect().top));
@@ -662,22 +651,7 @@ function init() {
         duration: 0.3
     }, '<');
     
-    const section6TL = gsap.timeline({
-        scrollTrigger: {
-            trigger: '#section-06',
-            start: '80% bottom',
-            end: 'bottom+=1px bottom',
-            toggleActions: 'play reverse play reverse',
-            scrub: 1
-        }
-    });
-
-    section6TL
-    .from("#section-06 .img-22", {
-        x: "300%",
-        stagger: 0.3,
-        duration: 1
-    });
+    
     
     const sliderNext = document.querySelector('#slider-next');
     const sliderPrev = document.querySelector('#slider-prev');
@@ -792,60 +766,6 @@ function init() {
     // }, '>+=0.5');
 
 
-    const darkEls = gsap.utils.toArray(document.querySelectorAll('.dark-bg'));
-    darkEls.forEach((darkEl, index) => {
-        const darkbgPosition = darkEl.getAttribute('data-darkbg-position');
-        const darkbgHeight = darkEl.getAttribute('data-darkbg-height');
-        const darkBGheaderTL = gsap.timeline({
-            scrollTrigger: {
-                id: 'darkBG-' + index,
-                trigger: darkEl,
-                // markers: {
-                //     startColor: "green",
-                //     endColor: "black",
-                //     fontSize: "14px",
-                //     indent: 200,
-                //     fontWeight: "normal"
-                // },
-                start: () => darkbgPosition + 'px 50px',
-                end: '+=' + darkbgHeight + 'px',
-                toggleActions: 'play reverse play reverse',
-                // scrub: 1,
-                onEnter: () => {
-                    console.log(index + ' onEnter darkBGheaderTL - play');
-                },
-                onLeave: () => {
-                    console.log(index + ' onLeave darkBGheaderTL - none');
-                },
-                onEnterBack: () => {
-                    console.log(index + ' onEnterBack darkBGheaderTL - reverse');
-                },
-                onLeaveBack: () => {
-                    console.log(index + ' onLeaveBack darkBGheaderTL - none');
-                }
-            }
-        });
-
-        darkBGheaderTL
-        .fromTo('#logo_svg .color-white', {
-            fill: "#006ff2"
-        },{
-            fill: "#ffffff"
-        })
-        .fromTo('#nav-menu .nav-link', {
-            color: "#333333"
-        },{
-            color: "#ffffff"
-        }, '<')
-        .fromTo('#nav-menu .nav-link svg.down-icon .arrow-down', {
-            stroke: "#333333"
-        },{
-            stroke: "#ffffff"
-        }, '<');
-
-        
-    });
-
     // set timeline with scrollTrigger for section wrap 09, trigger start when leaving section-wrap-09 and use it as timeline for fromTo animation for the section wrap 09 element,
     // the anime will be from - clipPath  
     const section9TL = gsap.timeline({
@@ -912,6 +832,65 @@ function init() {
         zIndex: 0
     });
 
+    const darkEls = gsap.utils.toArray(document.querySelectorAll('.dark-bg'));
+    darkEls.forEach((darkEl, index) => {
+        const darkbgPosition = darkEl.getAttribute('data-darkbg-position');
+        const darkbgHeight = darkEl.getAttribute('data-darkbg-height');
+        const darkBGheaderTL = gsap.timeline({
+            scrollTrigger: {
+                id: 'darkBG-' + index,
+                trigger: darkEl,
+                // markers: {
+                //     startColor: "green",
+                //     endColor: "black",
+                //     fontSize: "14px",
+                //     indent: 200,
+                //     fontWeight: "normal"
+                // },
+                start: () => darkbgPosition + 'px 50px',
+                end: '+=' + darkbgHeight + 'px',
+                toggleActions: 'play reverse play reverse',
+                // scrub: 1,
+                onEnter: () => {
+                    console.log(index + ' onEnter darkBGheaderTL - play');
+                },
+                onLeave: () => {
+                    console.log(index + ' onLeave darkBGheaderTL - none');
+                },
+                onEnterBack: () => {
+                    console.log(index + ' onEnterBack darkBGheaderTL - reverse');
+                },
+                onLeaveBack: () => {
+                    console.log(index + ' onLeaveBack darkBGheaderTL - none');
+                }
+            }
+        });
+
+        darkBGheaderTL
+        .fromTo('#logo_svg .color-white', {
+            fill: "#006ff2"
+        },{
+            fill: "#ffffff",
+            duration: 0.25
+        })
+        .fromTo('#nav-menu .nav-link', {
+            color: "#333333"
+        },{
+            color: "#ffffff",
+            duration: 0.25
+        }, '<')
+        .fromTo('#nav-menu .nav-link svg.down-icon .arrow-down', {
+            stroke: "#333333"
+        },{
+            stroke: "#ffffff",
+            duration: 0.25
+        }, '<');
+
+        
+    });
+
+    
+
 
     
 
@@ -927,9 +906,9 @@ function init() {
             scrollTrigger: {
                 id: wrap.id + '-items',
                 trigger: wrap,
-                start: () => "top 150px",
+                start: () => "top 200px",
                 end: () => viewHeight + "px bottom", // + (wrap.offsetHeight),
-                toggleActions: 'play none reverse reset',
+                toggleActions: 'play none none reverse',
                 //preventOverlaps: true,
                 // scrub: 0.5,
                 // markers: {
