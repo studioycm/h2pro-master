@@ -25,8 +25,8 @@ function init() {
     const sectionWraps02 = gsap.utils.toArray("#sections #wraps-part-02 .section-wrap");
     const sections = gsap.utils.toArray("#sections .section-wrap .section");
     const dropEl = document.querySelector('#drop');
-    const dropElTop = dropEl.offsetTop;
     const section1 = document.querySelector('#section-wrap-01');
+    const section1video = document.querySelector('#section-01_video');
     const section01Panel = document.querySelector('#webinar-sticker');
     const section01PanelToggle = document.querySelector('#webinar-sticker-toggle');
     const section01ContinueButton = document.querySelector('#drop-arrow');
@@ -91,45 +91,58 @@ function init() {
         width: "35px",
         height: "35px",
         rotate: 0,
-    });
-    gsap.set(section4BG, {
-        clipPath: 'path("m 940 490 v -50 h 50 c 25 0 50 25 50 50 c 0 25 -25 50 -50 50 c -25 0 -50 -25 -50 -50 z")',
-        opacity: 0
+        top: () => 200,
+        left: () => window.innerWidth / 2 + 50,
     });
     gsap.set(section4BgImage1, {
         opacity: 0
     });
 
-      
+    
+
+    const dropElTop = dropEl.offsetTop;  
     // how to create an animation tween with multiple to() methods that will use a timeline and can be used in a click event:
     const webinarStickerTL = gsap.timeline({
         scrollTrigger: {
             id: 'webinar-sticker',
             trigger: '#section-01',
-            start: () => '50px top',
-            end: () => '300px top',
+            start: () => '10px top',
+            end: () => 'bottom top',
             toggleActions: 'play complete reverse reset',
             // scrub: 3,
             markers: true
         },
         onEnter: () => {
             console.log('webinarStickerTL onEnter');
+            console.log('reversed: ', webinarStickerTL.reversed());
+        },
+        onLeave: () => {
+            console.log('webinarStickerTL onLeave');
+            console.log('reversed: ', webinarStickerTL.reversed());
+        },
+        onEnterBack: () => {
+            console.log('webinarStickerTL onEnterBack');
+            console.log('reversed: ', webinarStickerTL.reversed());
+        },
+        onLeaveBack: () => {
+            console.log('webinarStickerTL onLeaveBack');
+            console.log('reversed: ', webinarStickerTL.reversed());
         },
 
     });
     // add a to() method to the webinarStickerTL timeline
     webinarStickerTL
-    .fromTo('#webinar-sticker', {
+    .fromTo(section01Panel, {
         x: () => 0,
     },{
         x: () => -(section01Panel.offsetWidth - 40),
-        duration: 1
+        duration: 0.5
     })
     .fromTo('#webinar-sticker-toggle .button-icon', {
         rotate: 0,
     },{
         rotate: 180,
-        duration: 0.3
+        duration: 0.25
     }, '<');
 
 
@@ -137,81 +150,111 @@ function init() {
 
     section01PanelToggle.addEventListener('click', () => {
         // play tween of the webinarSticker or reverse it if its already played
-        webinarStickerTL.reversed() ? webinarStickerTL.play() : webinarStickerTL.reverse();
-        
+        console.log('Pre PanelToggle clicked - reversed: ', webinarStickerTL.reversed());
+        console.log('panel toggle state: ', section01Panel.getAttribute('data-state'));
+        if (section01Panel.getAttribute('data-state') === 'open') {
+            webinarStickerTL.play(); 
+            section01Panel.setAttribute('data-state', 'closed');
+        } else {
+            webinarStickerTL.reverse();
+            section01Panel.setAttribute('data-state', 'open');
+        }
+        // webinarStickerTL.reversed() ? webinarStickerTL.play() : webinarStickerTL.reverse();
+        console.log('Post PanelToggle clicked - reversed: ', webinarStickerTL.reversed());
         
     });
+    
 
     // add event listener to the section01ContinueButton to scroll to the next section when clicked
     section01ContinueButton.addEventListener('click', () => {
         // scroll down smoothly to next section with Lenis 
         
-        window.scrollBy(0, viewHeight);
+        
+        window.scrollBy({
+            top: section2.offsetTop,
+            left: 0,
+            behavior: "smooth",
+          });
+           
         
     });
+    // set section1videoContainer height + 20px
+    gsap.set('#section-01', {
+        height: () => section1video.offsetHeight + 20
+    });
+    
     const section1TL = gsap.timeline({
         scrollTrigger: {
             id: 'section-01-out',
             trigger: '#section-wrap-01',
-            start: () => '10px top',
-            end: () => 'bottom top',
+            start: () => 'top top',
+            end: () => 'top+=' + (viewHeight * 1.5) + 'px bottom',
             toggleActions: 'play none reverse reset',
             scrub: 1,
-            // markers: true
-        }
+            pin: '#section-01',
+            pinSpacing: false,
+            markers: true
+        },
+        ease: "slow",
     });
     const dropElHalfWidth = dropEl.offsetWidth / 2;
-    const section1clipPath = "path('m " + dropEl.offsetLeft + " " + dropEl.offsetTop + " l " + dropElHalfWidth + " 0 c " + dropElHalfWidth + " 0 " + dropElHalfWidth + " " + dropElHalfWidth + " " + dropElHalfWidth + " " + dropElHalfWidth + " c 0 " + dropElHalfWidth + " -" + dropElHalfWidth + " " + dropElHalfWidth + " -" + dropElHalfWidth + " " + dropElHalfWidth + " c -" + dropElHalfWidth + " 0 -" + dropElHalfWidth + " -" + dropElHalfWidth + " -" + dropElHalfWidth + " -" + dropElHalfWidth + " z')";
+    const section1clipPath = "path('m " + dropEl.offsetLeft + " " + dropElTop + " l " + dropElHalfWidth + " 0 c " + dropElHalfWidth + " 0 " + dropElHalfWidth + " " + dropElHalfWidth + " " + dropElHalfWidth + " " + dropElHalfWidth + " c 0 " + dropElHalfWidth + " -" + dropElHalfWidth + " " + dropElHalfWidth + " -" + dropElHalfWidth + " " + dropElHalfWidth + " c -" + dropElHalfWidth + " 0 -" + dropElHalfWidth + " -" + dropElHalfWidth + " -" + dropElHalfWidth + " -" + dropElHalfWidth + " z')";
     
     section1TL
-    .to('#section-01 .animated', {
+    .fromTo(['#section-01 .animated',section01ContinueButton], {
+        opacity: 1,
+        y: () => 0,
+    }, {
         opacity: 0,
-        y: () => -300,
+        y: () => -100,
         duration: 0.3,
         stagger: 0.1
     })
-    .fromTo('#section-wrap-01', {
-        clipPath: "path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')"
+    .fromTo('#section-01', {
+        clipPath: "path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')",
     }, {
+        // clipPath: "path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')",
         clipPath: section1clipPath,
-        duration: 1.3,
-    }, '<')
-    .to('#section-wrap-01', {
+        duration: 2,
+        // ease: "power1.out"
+    })
+    .to('#section-01', {
         opacity: 0,
         duration: 0.2
-    })
+    }, '>-=0.2')
     .fromTo('#drop', {
+        top: () => viewHeight / 2,
+        x: () => 0,
+        y: () => 0,
+        width: "35px",
+        height: "35px",
         opacity: 0,
         rotate: 0,
     }, {
         rotate: 0,
         opacity: 1,
         duration: 0.2
-    }, '<')
-    .fromTo('#drop', {
-        x: () => 0,
-        y: () => 0,
-        width: "35px",
-        height: "35px",
-    },{
+    }, '>')
+    .to('#drop', {
         x: () => -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ),
         y: () => section2svgVector.getBoundingClientRect().top - dropEl.getBoundingClientRect().top + (section2svgVector.getBoundingClientRect().height / 2) - (dropEl.offsetHeight / 2),
         width: "35px",
         height: "35px",
         duration: 2,
-        ease: "power1.out",
+        delay: 0.5,
+        ease: "slow",
         onStart : () => {
             console.log('drop 1 Start #section-wrap-01');
-            console.log("section1.offsetHeight: ", section1.offsetHeight);
-            console.log("dropElTop: ", dropElTop);
-            console.log('drop1El offsetTop: ', dropEl.offsetTop);
-            console.log("+ svgVector Rect().top: ", section2svgVector.getBoundingClientRect().top);
-            console.log('- drop1El rect().top: ', dropEl.getBoundingClientRect().top);
-            console.log("+ svgVector rect().height / 2: ", section2svgVector.getBoundingClientRect().height / 2);
-            console.log('- drop1El offsetHeight / 2: ', dropEl.offsetHeight / 2);
-            console.log("dropEl to Y: ", section2svgVector.getBoundingClientRect().top - dropElTop + (section2svgVector.getBoundingClientRect().height / 2) - (dropEl.offsetHeight / 2));
-            console.log("dropEl to X: ", -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ));
-            console.log('drop1El rect().height / 2: ', dropEl.getBoundingClientRect().height / 2);
+            // console.log("section1.offsetHeight: ", section1.offsetHeight);
+            // console.log("dropElTop: ", dropElTop);
+            // console.log("dropEl.offsetTop: ", dropEl.offsetTop);
+            // console.log("+ svgVector Rect().top: ", section2svgVector.getBoundingClientRect().top);
+            // console.log('- drop1El rect().top: ', dropEl.getBoundingClientRect().top);
+            // console.log("+ svgVector rect().height / 2: ", section2svgVector.getBoundingClientRect().height / 2);
+            // console.log('- drop1El offsetHeight / 2: ', dropEl.offsetHeight / 2);
+            // console.log("dropEl to Y: ", section2svgVector.getBoundingClientRect().top - dropEl.offsetTop + (section2svgVector.getBoundingClientRect().height / 2) - (dropEl.offsetHeight / 2));
+            // console.log("dropEl to X: ", -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ));
+            // console.log('drop1El rect().height / 2: ', dropEl.getBoundingClientRect().height / 2);
         },
         onComplete : () => {
             console.log('drop 1 Complete #section-wrap-01');
@@ -229,8 +272,8 @@ function init() {
             id: 'drop-2',
             trigger: '#section-wrap-02',
             start: () => '100px top',
-            end: () => 'bottom top',
-            toggleActions: 'play none reverse reset',
+            end: () => 'bottom 100px',
+            toggleActions: 'play complete reverse reset',
             scrub: 1,
             // markers: true,
             
@@ -239,15 +282,14 @@ function init() {
 
     drop2TL
     .fromTo('#drop', {
-        x: () => -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ),
-        y: () => (section2Height / 2) + (section1.offsetHeight - dropElTop - (dropEl.offsetHeight / 2)) - 7,
-        backgroundColor: "#006ff2",
+        // x: () => -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ),
+        // y: () => section2svgVector.getBoundingClientRect().top - dropEl.getBoundingClientRect().top + (section2svgVector.getBoundingClientRect().height / 2) - (dropEl.offsetHeight / 2),        backgroundColor: "#006ff2",
         rotate: 0,
         width: "35px",
         height: "35px",
     },{
         x: () => section3GraphItemSecond - dropEl.offsetWidth + 250,
-        y: () => section1.offsetHeight + section2Height + section3GraphEnd - dropElTop,
+        y: () => section1.offsetHeight + section2.offsetHeight + section3GraphEnd - dropEl.offsetTop,
         backgroundColor: "#5fb847",
         rotate: 0,
         opacity: 1,
@@ -313,10 +355,11 @@ function init() {
         scrollTrigger: {
             id: 'drop-3',
             trigger: '#section-wrap-04',
-            start: () => 'top bottom',
+            start: () => '100px bottom',
             end: () => 'bottom-=100px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
+            // pin: section4Title,
             // markers: {
             //     startColor: "red",
             //     endColor: "blue",
@@ -329,22 +372,21 @@ function init() {
 
     drop3TL
     .fromTo('#drop', {
-        x: () => section3GraphItemSecond - dropEl.offsetWidth + 250,
-        y: () => section1.offsetHeight + section2Height + section3GraphEnd - dropElTop,
         opacity: 0,
     }, {
+        // x: () => section3GraphItemSecond - dropEl.offsetWidth + 250,
+        // y: () => section1.offsetHeight + section2.offsetHeight + section3GraphEnd - dropEl.offsetTop,
         opacity: 1,
-        duration: 0.3
+        duration: 0.2
     })
     .to('#drop',  {
         x: () => -(dropEl.offsetWidth / 2),
-        y: () => section1.offsetHeight + section2Height + section3.offsetHeight - dropElTop + (section4.offsetHeight / 3),
-        duration: 1.5,
-        opacity: 1,
+        y: () => section1.offsetHeight + section2.offsetHeight + section3.offsetHeight - dropEl.offsetTop + (section4.offsetHeight / 4),
+        duration: 1,
         ease: "slow"
     })
     .fromTo(section4BG, {
-        clipPath: () => 'path("m 940 ' + (section4.offsetHeight / 3) + ' v -17.5 h 17.5 c 8.75 0 17.5 8.75 17.5 17.5 c 0 8.75 -8.75 17.5 -17.5 17.5 c -8.75 0 -17.5 -8.75 -17.5 -17.5 z")',
+        clipPath: () => 'path("m 940 ' + (section4.offsetHeight / 4) + ' h 17.5 c 8.75 0 17.5 8.75 17.5 17.5 c 0 8.75 -8.75 17.5 -17.5 17.5 c -8.75 0 -17.5 -8.75 -17.5 -17.5 v -17.5 z")',
         opacity: 0
     },{
         opacity: 1,
@@ -358,47 +400,71 @@ function init() {
     }, '<')
     .to('#drop', {
         opacity: 0,
-        duration: 0.3,
+        duration: 0.2,
         onStart : () => {
-            console.log('drop 3 Start #section-wrap-04');
+            console.log('drop 3 Start drop fade #section-wrap-04');
         },
         onComplete : () => {
-            console.log('drop 3 Complete #section-wrap-04');
+            console.log('drop 3 Complete drop fade #section-wrap-04');
         }
     }, '<')
     .to(section4BG, {
-        clipPath: 'path("m -550 -100 v -1600 h 1600 c 800 0 1600 800 1600 1600 c 0 800 -800 1600 -1600 1600 c -800 0 -1600 -800 -1600 -1600 z")',
-        y: () => (section4.offsetHeight / 2) - 300,
-        duration: 2.5,
+        clipPath: 'path("m -700 -800 h 1600 c 800 0 1600 800 1600 1600 c 0 800 -800 1600 -1600 1600 c -800 0 -1600 -800 -1600 -1600 v -1600 z")',
+        duration: 2,
         ease: "none"
     }, '<')
     .to(section4BgImage1, {
-        objectPosition: "0px 300px",
-        duration: 1.5,
-        ease: "power1.out"
+        objectPosition: "0px 750px",
+        duration: 2,
+        ease: "slow"
     }, '<')
     .to(section4BgImage2, {
         opacity: 1,
-        duration: 0.5
-    }, '>-=0.5')
+        duration: 0.25
+    }, '<+=1.25')
     .fromTo(section4Title, {
-        opacity: 0,
-        yPercent: 100,
+        opacity: 1,
+        y: 300,
     },{
         opacity: 1,
-        yPercent: 0,
-        duration: 1.5,
-        ease: "none"
-    }, '>-=1.5')
-    .fromTo(section4Content, {
-        opacity: 0,
-        yPercent: 100,
-    },{
-        opacity: 1,
-        yPercent: 0,
+        y: 0,
         duration: 1,
         ease: "none"
-    }, '>-=1');
+    }, '>')
+    .fromTo(section4Content, {
+        opacity: 1,
+        y: 300,
+    },{
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "none"
+    }, '>');
+
+    // const pinSection4BGTL = gsap.timeline({
+    //     scrollTrigger: {
+    //         id: 'pin-section-04-bg',
+    //         trigger: section4BG,
+    //         start: 'top top',
+    //         end: 'bottom bottom',
+    //         toggleActions: 'play none none reverse',
+    //         scrub: 1,
+    //         pin: section4BG,
+    //         markers: true,
+    //         onEnter: () => {
+    //             console.log('pinSection4BGTL onEnter');
+    //         },
+    //         onLeave: () => {
+    //             console.log('pinSection4BGTL onLeave');
+    //         },
+    //         onEnterBack: () => {
+    //             console.log('pinSection4BGTL onEnterBack');
+    //         },
+    //         onLeaveBack: () => {
+    //             console.log('pinSection4BGTL onLeaveBack');
+    //         },
+    //     }
+    // });
 
     const drop4TL = gsap.timeline({
         scrollTrigger: {
@@ -420,15 +486,15 @@ function init() {
 
     drop4TL
     .fromTo(section4BG, {
-        clipPath: 'path("m -550 -100 v -1600 h 1600 c 800 0 1600 800 1600 1600 c 0 800 -800 1600 -1600 1600 c -800 0 -1600 -800 -1600 -1600 z")'
+        // clipPath: 'path("m -550 -100 v -1600 h 1600 c 800 0 1600 800 1600 1600 c 0 800 -800 1600 -1600 1600 c -800 0 -1600 -800 -1600 -1600 z")'
     }, {
-        clipPath: 'path("m 940 ' + (section4.offsetHeight / 3) + ' v -35 h 35 c 17.5 0 35 17.5 35 35 c 0 17.5 -17.5 35 -35 35 c -17.5 0 -35 -17.5 -35 -35 z")',
-        duration: 0.3,
+        // clipPath: 'path("m 940 ' + (section4.offsetHeight / 3) + ' v -35 h 35 c 17.5 0 35 17.5 35 35 c 0 17.5 -17.5 35 -35 35 c -17.5 0 -35 -17.5 -35 -35 z")',
+        duration: 1,
         ease: "none"
     })
     .fromTo('#drop', {
         x: () => -(dropEl.offsetWidth / 2),
-        y: () => section2Height + section1.offsetHeight + section3.offsetHeight + (section4.offsetHeight / 3),
+        y: () => section2.offsetHeight + section1.offsetHeight + section3.offsetHeight + (section4.offsetHeight / 3),
         opacity: 0,
     }, {
         backgroundColor: "#1d7bc8",// "#1d7bc8"
@@ -437,13 +503,13 @@ function init() {
         opacity: 1,
         duration: 0.3
     })
-    .to(section4BG, {
-        opacity: 0,
-        duration: 0.3
-    }, '<')
+    // .to(section4BG, {
+    //     opacity: 0,
+    //     duration: 0.3
+    // }, '<')
     .to('#drop', {
-        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 130,
-        y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 360,
+        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 0,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - dropEl.offsetTop,
         duration: 2,
         ease: "power1.in",
         // all gsap tween animation callback functions: onStart, onUpdate, onComplete, onRepeat, onReverseComplete
@@ -465,16 +531,16 @@ function init() {
             trigger: '#section-wrap-06',
             start: () => '100px bottom',
             end: () => '80% bottom',
-            toggleActions: 'play none reverse reset',
+            toggleActions: 'play complete reverse reset',
             scrub: 1,
-            markers: true
+            // markers: true
         }
     });
 
     drop5TL
     .fromTo('#drop',{
         x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 130,
-        y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 360,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 360,
         // opacity: 0,
         // backgroundColor: "#1d7bc8", // "#1d7bc8"
     },{
@@ -485,19 +551,19 @@ function init() {
     .to('#drop', {
         backgroundColor: "#cccccc",
         x: () => (section6.offsetWidth * 0.7) - dropEl.offsetLeft,
-        y: () => section2Height + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight - dropElTop + 250,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight - dropEl.offsetTop + 250,
         rotate: 45,
-        duration: 1.5,
+        duration: 1,
         ease: "power1.out"
-    }, '>+=0.3')
+    }, '>')
     .to('#drop', {
         opacity: 0,
         duration: 0.2
     }, '>')
     .fromTo(section6.querySelector('#section-06 > img.img'), {
-        clipPath: "path('m 1440 -900 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z')",
+        clipPath: "path('m 1440 -1200 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z')",
     },{
-        clipPath: 'path("m 1440 -900 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 c 0 -1600 1600 -1600 1600 -1600 z")',
+        clipPath: 'path("m 1440 -1200 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 c 0 -1600 1600 -1600 1600 -1600 z")',
         duration: 1.7,
         ease: "power1.out",
         onStart : () => {
@@ -506,7 +572,7 @@ function init() {
         onComplete : () => {
             console.log('drop 5 Complete #section-wrap-06');
         }
-    }, '>-=0.2');
+    }, '<');
 
     const drop6TL = gsap.timeline({
         scrollTrigger: {
@@ -519,10 +585,11 @@ function init() {
             markers: true,
             onEnter: () => {
                 console.log("section6.offsetTop: ", (section6.offsetTop));
-                console.log("#drop offsetTop: " + dropEl.offsetTop);
+                console.log("#drop offsetTop: " + dropEl.offsetTop + " - dropElTop: " + dropElTop);
                 console.log("#drop getBoundingClientRect().top: " + dropEl.getBoundingClientRect().top);
                 console.log("#drop from X: ", (-(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53))));
-                console.log("#drop from Y: ", (section7.offsetTop - section6Action.getBoundingClientRect().bottom - 53 - dropElTop));
+                console.log("#drop from Y: ", (section7.offsetTop - section6Action.getBoundingClientRect().bottom - 53 - dropEl.offsetTop));
+                console.log("#drop from Y with origin dropElTop: ", (section7.offsetTop - section6Action.getBoundingClientRect().bottom - 53 - dropElTop));
                 console.log("dropEl.offsetLeft - section6Action.offsetLeft: ", (-(dropEl.offsetLeft - section6Action.offsetLeft)));
                 console.log("section7.offsetTop: ", (section7.offsetTop));
                 console.log("section6Action.getBoundingClientRect().bottom: ", (section6Action.getBoundingClientRect().bottom));
@@ -542,7 +609,7 @@ function init() {
     drop6TL
     .fromTo('#drop', {
         x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53)),
-        y: () =>  section6.offsetTop + section6Action.getBoundingClientRect().top - dropElTop + 10,
+        y: () =>  section6.offsetTop + section6Action.getBoundingClientRect().top - dropEl.offsetTop + 10,
         opacity: 0,
         rotate: 0,
         width: "53px",
@@ -558,7 +625,7 @@ function init() {
         width: "45px",
         height: "45px",
         x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53) ) - section7Action.offsetLeft - 85,
-        y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section7Action.getBoundingClientRect().top - 155,
+        y: () =>  section1.offsetHeight + section2.offsetHeight + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section7Action.getBoundingClientRect().top - 155,
         rotate: 135,
         duration: 2,
         ease: "power1.in",
@@ -693,7 +760,7 @@ function init() {
     // drop7TL
     // .set('#drop', {
     //     x: () =>  -(dropEl.offsetLeft - section7Action.getBoundingClientRect().left),
-    //     y: () =>  section7.offsetTop - dropElTop + section7Action.getBoundingClientRect().top,
+    //     y: () =>  section7.offsetTop - dropEl.offsetTop + section7Action.getBoundingClientRect().top,
     //     opacity: 0,
     //     rotate: 135,
     //     width: "45px",
@@ -709,7 +776,7 @@ function init() {
     // })
     // .to('#drop', {
     //     x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53) ) - section7Action.offsetLeft - 85,
-    //     y: () =>  section1.offsetHeight + section2Height + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight - dropElTop + section7Action.getBoundingClientRect().top + 110,
+    //     y: () =>  section1.offsetHeight + section2.offsetHeight + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight - dropEl.offsetTop + section7Action.getBoundingClientRect().top + 110,
     //     duration: 2,
     //     ease: "power1.in",
     //     onStart : () => {
@@ -772,46 +839,7 @@ function init() {
             stroke: "#ffffff"
         }, '<');
 
-        // const lightBGheaderTL = gsap.timeline({
-        //     scrollTrigger: {
-        //         id: 'leaveDarkBG',
-        //         trigger: darkEl,
-        //         // markers: {
-        //         //     startColor: "blue",
-        //         //     endColor: "red",
-        //         //     fontSize: "14px",
-        //         //     indent: 10,
-        //         //     fontWeight: "bold"
-        //         // },
-        //         start: '201px 100px',
-        //         end: '300px 100px',
-        //         toggleActions: 'play none reverse none',
-        //         // scrub: 1,
-        //         onEnter: () => {
-        //             console.log('onEnter lightBGheaderTL - play');
-        //         },
-        //         onLeave: () => {
-        //             console.log('onLeave lightBGheaderTL - none');
-        //         },
-        //         onEnterBack: () => {
-        //             console.log('onEnterBack lightBGheaderTL - reverse');
-        //         },
-        //         onLeaveBack: () => {
-        //             console.log('onLeaveBack lightBGheaderTL - none');
-        //         }
-        //     }
-        // });
-
-        // lightBGheaderTL
-        // .to('#logo_svg .color-white', {
-        //     fill: "#006ff2"
-        // })
-        // .to('#nav-menu .nav-link', {
-        //     color: "#333333"
-        // }, '<')
-        // .to('#nav-menu .nav-link svg.down-icon .arrow-down', {
-        //     stroke: "#333333"
-        // }, '<');
+        
     });
 
     // set timeline with scrollTrigger for section wrap 09, trigger start when leaving section-wrap-09 and use it as timeline for fromTo animation for the section wrap 09 element,
@@ -831,13 +859,13 @@ function init() {
         clipPath: "path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')"
     }, {
         clipPath: "path('m 965 120 l 355 0 c 355 0 355 355 355 355 c 0 355 -355 355 -355 355 c -355 0 -355 -355 -355 -355 z')",
-        duration: 1.5,
+        duration: 1,
     })
     .to('#section-wrap-09 .section-inner', {
         y: () => -(document.querySelector('#section-wrap-09 .section-inner').offsetHeight),
         opacity: 0,
         duration: 0.3,
-        ease: "power1.inOut"
+        ease: "power1.out"
     }, '<')
     .fromTo('#section-09 > img.img', {
         objectPosition: "0px 0px",
@@ -850,15 +878,15 @@ function init() {
     .to('#section-wrap-09', {
         y: () => document.querySelector('#section-wrap-09').offsetHeight,
         duration: 2,
-        delay: 0.5,
-        ease: "power1.out",
+        // delay: 0.5,
+        ease: "none",
         onStart : () => {
             console.log('section9 onStart #section-wrap-09');
         },
         onComplete : () => {
             console.log('section9 onComplete #section-wrap-09');
         }
-    }, '<')
+    }, '<-=1')
     .to('#section-wrap-09', {
         opacity: 0,
         duration: 2
@@ -885,7 +913,7 @@ function init() {
 
     sectionWraps.forEach((wrap, i) => {
 
-        // if (i === 0) return;
+        if (i === 6) return;
         
         const animated = wrap.querySelectorAll('.animated');
         if (animated.length < 1) return;
@@ -895,13 +923,11 @@ function init() {
             scrollTrigger: {
                 id: wrap.id + '-items',
                 trigger: wrap,
-                start: () => "200px center",
-                end: () => window.offsetHeight + "px bottom", // + (wrap.offsetHeight),
-                toggleActions: 'play none none reverse',
+                start: () => "top 150px",
+                end: () => viewHeight + "px bottom", // + (wrap.offsetHeight),
+                toggleActions: 'play complete reverse reset',
                 //preventOverlaps: true,
-                scrub: 1,
-                // pin: section,
-                // pinSpacing: false,
+                scrub: 0.5,
                 // markers: {
                 //     startColor: "blue",
                 //     endColor: "purple",
@@ -926,8 +952,8 @@ function init() {
                 autoAlpha: 1,
                 opacity: () => 1,
                 visibility: 'visible',
-                duration: 0.5,
-                ease: "power1.out",
+                duration: 0.75,
+                ease: "expo",
                 onStart : () => {
                     console.log(index + ' - ' + wrap.id + ' onStart animated');
                 },

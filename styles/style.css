@@ -5147,7 +5147,7 @@ div sub.h2sub {
 
            /* #1 section-01 "High Efficiency Production of Green Hydrogen" + bg video */
             #sections #section-wrap-01 {
-                /* clip-path: path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z'); */
+                max-height: unset;
             }          
             #sections .section-wrap .section-01 {
                 flex-direction: column;
@@ -5157,7 +5157,7 @@ div sub.h2sub {
                 min-height: 100vh;
                 width: 100%;
                 align-items: center;
-                padding: 0px 0 30px;
+                padding: 0px;
             }
             
             .div-3.hero-inner {
@@ -5499,17 +5499,17 @@ div sub.h2sub {
                 width: auto;
                 height: auto;
                 object-fit: cover;
-                object-position: 0px 150px;
+                object-position: 0px 0px;
             }
             #section-04 #section-04-bg .bg-img.bg-img-1 {
-                object-position: 0px 700px;
+                object-position: 0px 550px;
                 object-fit: contain;
                 opacity: 1;
                 z-index: 1;
-                scale: 1.3;
+                scale: 1.5;
             }
             #section-04 #section-04-bg .bg-img.bg-img-2 {
-                
+                scale: 1.1;
                 opacity: 0;
                 z-index: 2;
             }
@@ -5523,7 +5523,7 @@ div sub.h2sub {
                 -webkit-text-fill-color: transparent;
                 font: 700 180px/100% Geologica, sans-serif;
                 position: absolute;
-                margin-top: 1250px;
+                margin-top: 1600px;
                 z-index: 2;
                 opacity: 0;
             }
@@ -5538,7 +5538,7 @@ div sub.h2sub {
                 gap: 0px;
                 width: 100%;
                 max-width: 1740px;
-                margin: 1150px auto 0px;
+                margin: 1450px auto 0px;
                 padding: 0;
                 opacity: 0;
             }
