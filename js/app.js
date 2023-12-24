@@ -419,7 +419,7 @@ function init() {
     }, '<')
     .to(section4BgImage2, {
         opacity: 1,
-        duration: 0.25
+        duration: 0.4
     }, '<+=1.25')
     .fromTo(section4Title, {
         opacity: 1,
@@ -929,9 +929,9 @@ function init() {
                 trigger: wrap,
                 start: () => "top 150px",
                 end: () => viewHeight + "px bottom", // + (wrap.offsetHeight),
-                toggleActions: 'play complete reverse reset',
+                toggleActions: 'play none reverse reset',
                 //preventOverlaps: true,
-                scrub: 0.5,
+                // scrub: 0.5,
                 // markers: {
                 //     startColor: "blue",
                 //     endColor: "purple",
@@ -956,8 +956,8 @@ function init() {
                 autoAlpha: 1,
                 opacity: () => 1,
                 visibility: 'visible',
-                duration: 0.75,
-                ease: "expo",
+                duration: 0.25,
+                ease: "power1.out",
                 onStart : () => {
                     console.log(index + ' - ' + wrap.id + ' onStart animated');
                 },
@@ -977,10 +977,11 @@ function init() {
             trigger: footer,
             start: () => "top bottom",
             end: () => "bottom bottom",
-            toggleActions: 'play none reverse reset',
+            toggleActions: 'play complete reverse reset',
+            scrub: 1,
             snap: {
                 snapTo: 1,
-                duration: 1,// {min: 0.5, max: 1},
+                duration: 0.3,// {min: 0.5, max: 1},
                 ease: "none"                    
             },
             // markers: {
@@ -1012,8 +1013,8 @@ function init() {
     },{
         y: () => 0,
         opacity: () => 1,
-        duration: 2,
-        ease: "power1.out"
+        duration: 1,
+        ease: "power1.in"
     });
 
 }
