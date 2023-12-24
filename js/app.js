@@ -110,7 +110,7 @@ function init() {
             end: () => 'bottom top',
             toggleActions: 'play complete reverse reset',
             // scrub: 3,
-            markers: true
+            // markers: true
         },
         onEnter: () => {
             console.log('webinarStickerTL onEnter');
@@ -193,7 +193,7 @@ function init() {
             scrub: 1,
             pin: '#section-01',
             pinSpacing: false,
-            markers: true
+            // markers: true
         },
         ease: "slow",
     });
@@ -240,7 +240,7 @@ function init() {
         y: () => section2svgVector.getBoundingClientRect().top - dropEl.getBoundingClientRect().top + (section2svgVector.getBoundingClientRect().height / 2) - (dropEl.offsetHeight / 2),
         width: "35px",
         height: "35px",
-        duration: 2,
+        duration: 3,
         delay: 0.5,
         ease: "slow",
         onStart : () => {
@@ -294,8 +294,8 @@ function init() {
         rotate: 0,
         opacity: 1,
         // delay: 0.3,
-        duration: 2,
-        ease: "power1.inOut",
+        duration: 3,
+        ease: "slow",
         onStart : () => {
             console.log('drop 2 Start #section-wrap-02');
         },
@@ -363,7 +363,7 @@ function init() {
             // markers: {
             //     startColor: "red",
             //     endColor: "blue",
-            //     fontSize: "14px",
+            //     fontSize: "18px",
             //     indent: 100,
             //     fontWeight: "normal"
             // }
@@ -371,9 +371,7 @@ function init() {
     });
 
     drop3TL
-    .fromTo('#drop', {
-        opacity: 0,
-    }, {
+    .to('#drop', {
         // x: () => section3GraphItemSecond - dropEl.offsetWidth + 250,
         // y: () => section1.offsetHeight + section2.offsetHeight + section3GraphEnd - dropEl.offsetTop,
         opacity: 1,
@@ -382,7 +380,8 @@ function init() {
     .to('#drop',  {
         x: () => -(dropEl.offsetWidth / 2),
         y: () => section1.offsetHeight + section2.offsetHeight + section3.offsetHeight - dropEl.offsetTop + (section4.offsetHeight / 4),
-        duration: 1,
+        opacity: 1,
+        duration: 2,
         ease: "slow"
     })
     .fromTo(section4BG, {
@@ -474,13 +473,13 @@ function init() {
             end: () => 'bottom-=100px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
-            markers: {
-                startColor: "green",
-                endColor: "black",
-                fontSize: "14px",
-                indent: 200,
-                fontWeight: "normal"
-            }
+            // markers: {
+            //     startColor: "green",
+            //     endColor: "black",
+            //     fontSize: "14px",
+            //     indent: 200,
+            //     fontWeight: "normal"
+            // }
         }
     });
 
@@ -508,10 +507,12 @@ function init() {
     //     duration: 0.3
     // }, '<')
     .to('#drop', {
-        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 0,
-        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - dropEl.offsetTop,
-        duration: 2,
-        ease: "power1.in",
+        // x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 0,
+        // y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - dropEl.offsetTop,
+        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 130,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 360,
+        duration: 2.3,
+        ease: "slow",
         // all gsap tween animation callback functions: onStart, onUpdate, onComplete, onRepeat, onReverseComplete
         onStart : () => {
             console.log('drop 4 Start #section-wrap-05');
@@ -522,7 +523,7 @@ function init() {
     })
     .to('#drop', {
         opacity: 0,
-        duration: 0.3
+        duration: 0.5
     });
 
     const drop5TL = gsap.timeline({
@@ -530,7 +531,7 @@ function init() {
             id: 'drop-5',
             trigger: '#section-wrap-06',
             start: () => '100px bottom',
-            end: () => '80% bottom',
+            end: () => 'bottom-=100px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
             // markers: true
@@ -541,8 +542,8 @@ function init() {
     .fromTo('#drop',{
         x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 130,
         y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 360,
-        // opacity: 0,
-        // backgroundColor: "#1d7bc8", // "#1d7bc8"
+        opacity: 0,
+        backgroundColor: "#1d7bc8", // "#1d7bc8"
     },{
         rotate: 0,
         opacity: 1,
@@ -578,11 +579,11 @@ function init() {
         scrollTrigger: {
             id: 'drop-6',
             trigger: '#section-wrap-07',
-            start: () => 'top bottom',
+            start: () => '100px bottom',
             end: () => (section6.offsetHeight - 100) + ' bottom',
             toggleActions: 'play none reverse reset',
             scrub: 1,
-            markers: true,
+            // markers: true,
             onEnter: () => {
                 console.log("section6.offsetTop: ", (section6.offsetTop));
                 console.log("#drop offsetTop: " + dropEl.offsetTop + " - dropElTop: " + dropElTop);
@@ -609,8 +610,10 @@ function init() {
     drop6TL
     .fromTo('#drop', {
         x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53)),
-        y: () =>  section6.offsetTop + section6Action.getBoundingClientRect().top - dropEl.offsetTop + 10,
+        y: () =>  section6.offsetTop + section6Action.getBoundingClientRect().top - dropEl.offsetTop + 120,
         opacity: 0,
+        autoAlpha: 1,
+        visibility: 'visible',
         rotate: 0,
         width: "53px",
         height: "53px",
@@ -619,7 +622,7 @@ function init() {
         opacity: () => 1,
         autoAlpha: 1,
         visibility: 'visible',
-        duration: 0.3
+        duration: 0.2
     })
     .to('#drop', {
         width: "45px",
@@ -628,7 +631,7 @@ function init() {
         y: () =>  section1.offsetHeight + section2.offsetHeight + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section7Action.getBoundingClientRect().top - 155,
         rotate: 135,
         duration: 2,
-        ease: "power1.in",
+        ease: "none",
         onStart : () => {
             console.log('drop 6 Start #section-wrap-07');
             console.log("section6Action.getBoundingClientRect().top: ", (section6Action.getBoundingClientRect().top));
@@ -639,12 +642,12 @@ function init() {
         onComplete : () => {
             console.log('drop 6 Complete #section-wrap-07');
         }
-    }, '>+=0.5')
+    }, '>')
     .to('#drop', {
         opacity: () => 0,
         autoAlpha: 0,
         visibility: 'hidden',
-        duration: 0.3,
+        duration: 0.2,
         onStart : () => {
             console.log('onStart drop6 visibility hidden');
         },
@@ -721,6 +724,7 @@ function init() {
     })
     .to(sliderProgressLine, {
         attr: {x2: 950},
+        ease: "none",
     }, '<');
     
     
@@ -796,13 +800,13 @@ function init() {
             scrollTrigger: {
                 id: 'darkBG-' + index,
                 trigger: darkEl,
-                markers: {
-                    startColor: "green",
-                    endColor: "black",
-                    fontSize: "14px",
-                    indent: 200,
-                    fontWeight: "normal"
-                },
+                // markers: {
+                //     startColor: "green",
+                //     endColor: "black",
+                //     fontSize: "14px",
+                //     indent: 200,
+                //     fontWeight: "normal"
+                // },
                 start: () => darkbgPosition + 'px 50px',
                 end: '+=' + darkbgHeight + 'px',
                 toggleActions: 'play reverse play reverse',
