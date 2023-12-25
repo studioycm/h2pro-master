@@ -1,5 +1,6 @@
 function init() {
     gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollToPlugin);
     
     const lenis = new Lenis();
 
@@ -150,16 +151,6 @@ function init() {
     // add event listener to the section01PanelToggle to toggle the panel when clicked
 
     section01PanelToggle.addEventListener('click', () => {
-        // play tween of the webinarSticker or reverse it if its already played
-        // console.log('Pre PanelToggle clicked - reversed: ', webinarStickerTL.reversed());
-        // console.log('panel toggle state: ', section01Panel.getAttribute('data-state'));
-        // if (section01Panel.getAttribute('data-state') === 'open') {
-        //     webinarStickerTL.play(); 
-        //     section01Panel.setAttribute('data-state', 'closed');
-        // } else {
-        //     webinarStickerTL.reverse();
-        //     section01Panel.setAttribute('data-state', 'open');
-        // }
         console.log('Pre PanelToggle - reversed: ', webinarStickerTL.reversed());
         webinarStickerTL.reversed() ? webinarStickerTL.play() : webinarStickerTL.reverse();
         console.log('Post PanelToggle - reversed: ', webinarStickerTL.reversed());        
@@ -168,22 +159,66 @@ function init() {
 
     // add event listener to the section01ContinueButton to scroll to the next section when clicked
     section01ContinueButton.addEventListener('click', () => {
-        // scroll down smoothly to next section with Lenis 
-        
-        
-        window.scrollBy({
-            top: section2.offsetTop,
-            left: 0,
-            behavior: "smooth",
+        gsap.to(window, {
+            duration: 2.5,
+            scrollTo: { y: section2.offsetTop },
           });
+          
+        //   function section1AutoKill() {
+        //     console.log("section1-2 auto drop autoKill");
+        //   } 
+        
+        // window.scrollBy({
+        //     top: section2.offsetTop,
+        //     left: 0,
+        //     behavior: "smooth",
+        //   });
            
         
     });
-    // set section1videoContainer height + 20px
-    // gsap.set('#section-01', {
-    //     height: () => section1video.offsetHeight + 20
-    // });
     
+    // add event listener to the dropEl to scroll to the next section when clicked
+    dropEl.addEventListener('click', () => {
+        // get dropEl position from top of page 
+        let nextSectionPosition = dropEl.getBoundingClientRect().top + document.documentElement.scrollTop + (viewHeight / 2);
+        // get the next section in viewport
+        const nextSection = document.querySelector('.section-wrap.active + .section-wrap');
+        gsap.to(window, {
+            duration: 2.5,
+            scrollTo: { y: nextSection.offsetTop, autoKill: true, onAutoKill: myAutoKillFunction },
+          });
+        console.log(nextSection.id + " nextSectionPosition: ", nextSection.offsetTop);
+
+          function myAutoKillFunction() {
+            console.log("autoKill");
+          } 
+                   
+        
+    });
+
+    // check all ".section-wrap" elements with observer and add "active" class if it is in the viewport, remove "active" class if it is not in the viewport 
+    const sectionWrapObserver = new IntersectionObserver((entries, sectionWrapObserver) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                console.log(entry.target.id + " section active");
+            } else {
+                entry.target.classList.remove('active');
+                console.log(entry.target.id + " section NON active");
+            }
+        });
+    }, {
+        rootMargin: "0px 0px 0px 0px",
+        threshold: 1
+    });
+
+    
+    sectionWraps.forEach((section) => {
+        if (section) {
+            sectionWrapObserver.observe(section);
+        }
+    });
+
     const section1TL = gsap.timeline({
         scrollTrigger: {
             id: 'section-01-out',
@@ -272,8 +307,8 @@ function init() {
         scrollTrigger: {
             id: 'drop-2',
             trigger: '#section-wrap-02',
-            start: () => '100px top',
-            end: () => 'bottom 200px',
+            start: () => 'center 200px',
+            end: () => 'bottom top',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
             // markers: true,
@@ -294,9 +329,8 @@ function init() {
         backgroundColor: "#5fb847",
         rotate: 0,
         opacity: 1,
-        // delay: 0.3,
         duration: 3,
-        ease: "power1.out",
+        ease: "slow",
         onStart : () => {
             console.log('drop 2 Start #section-wrap-02');
         },
@@ -448,7 +482,7 @@ function init() {
             id: 'drop-4',
             trigger: '#section-wrap-05',
             start: () => 'top bottom',
-            end: () => 'bottom-=100px bottom',
+            end: () => 'center+=200px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
             // markers: {
@@ -505,7 +539,7 @@ function init() {
             id: 'drop-5',
             trigger: '#section-wrap-06',
             start: () => '100px bottom',
-            end: () => 'bottom-=100px bottom',
+            end: () => 'bottom-=200px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
             // markers: true
@@ -536,9 +570,9 @@ function init() {
         duration: 0.2
     }, '>')
     .fromTo(section6.querySelector('#section-06 > img.img'), {
-        clipPath: "path('m 1440 -1200 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z')",
+        clipPath: "path('m 1440 -1150 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z')",
     },{
-        clipPath: 'path("m 1440 -1200 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 c 0 -1600 1600 -1600 1600 -1600 z")',
+        clipPath: 'path("m 1440 -1100 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 c 0 -1600 1600 -1600 1600 -1600 z")',
         duration: 1.7,
         ease: "power1.out",
         onStart : () => {
@@ -552,26 +586,29 @@ function init() {
     const section6TL = gsap.timeline({
         scrollTrigger: {
             trigger: '#section-06',
-            start: '80% bottom',
-            end: 'bottom+=1px bottom',
+            start: 'center+=200px bottom',
+            end: 'bottom bottom',
             toggleActions: 'play reverse play reverse',
-            scrub: 1
+            // scrub: 1
         }
     });
 
     section6TL
     .from("#section-06 .img-22", {
-        x: "300%",
+        x: "350%",
         stagger: 0.3,
         duration: 1
     });
+
+    const section6ActionTop = section6Action.getBoundingClientRect().top;
+    console.log("INIT sample section6ActionTop: ", (section6ActionTop));
 
     const drop6TL = gsap.timeline({
         scrollTrigger: {
             id: 'drop-6',
             trigger: '#section-wrap-07',
-            start: () => '100px bottom',
-            end: () => (section6.offsetHeight - 100) + ' bottom',
+            start: () => 'top bottom',
+            end: () => (viewHeight + 25) + 'px bottom',
             toggleActions: 'play none reverse reset',
             scrub: 1,
             // markers: true,
@@ -586,6 +623,7 @@ function init() {
                 console.log("section7.offsetTop: ", (section7.offsetTop));
                 console.log("section6Action.getBoundingClientRect().bottom: ", (section6Action.getBoundingClientRect().bottom));
                 console.log("section6Action.getBoundingClientRect().top: ", (section6Action.getBoundingClientRect().top));
+                console.log("section6ActionTop: ", (section6ActionTop));
                 console.log("#section-06 action offsetTop: ", section6Action.offsetTop);
                 console.log("section6Action.getBoundingClientRect().height: ", (section6Action.getBoundingClientRect().height));
                 console.log("#section-06 action offsetHeight: ", section6Action.offsetHeight);
@@ -599,7 +637,7 @@ function init() {
     drop6TL
     .fromTo('#drop', {
         x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53)),
-        y: () =>  section6.offsetTop + section6Action.getBoundingClientRect().top - dropEl.offsetTop + 120,
+        y: () =>  section6.offsetTop + 100,
         opacity: 0,
         autoAlpha: 1,
         visibility: 'visible',
@@ -617,14 +655,15 @@ function init() {
         width: "45px",
         height: "45px",
         x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53) ) - section7Action.offsetLeft - 85,
-        y: () =>  section1.offsetHeight + section2.offsetHeight + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section7Action.getBoundingClientRect().top - 400,
+        y: () =>  section1.offsetHeight + section2.offsetHeight + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section7Action.getBoundingClientRect().top - 270,
         rotate: 135,
         duration: 2,
         ease: "slow",
         onStart : () => {
             console.log('drop 6 Start #section-wrap-07');
-            console.log("section6Action.getBoundingClientRect().top: ", (section6Action.getBoundingClientRect().top));
-            console.log("#section-06 action offsetTop: ", section6Action.offsetTop);
+            console.log("dropStart section6Action.getBoundingClientRect().top: ", (section6Action.getBoundingClientRect().top));
+            console.log("dropStart #section-06 action offsetTop: ", section6Action.offsetTop);
+            console.log("dropStart section6ActionTop: ", (section6ActionTop));
             console.log("section6Action.getBoundingClientRect().height: ", (section6Action.getBoundingClientRect().height));
             console.log("#section-06 action offsetHeight: ", section6Action.offsetHeight);
         },
@@ -704,14 +743,14 @@ function init() {
     
     document.querySelector('#slider-next').addEventListener('click', () => {
         // scroll down one step with lenis
-        window.scrollBy(0, 250);
+        window.scrollBy(0, 400);
         
         
     });
     // reverse the slidAnim when the slider control button #slider-prev is clicked
     document.querySelector('#slider-prev').addEventListener('click', () => {
         // scroll up one step 
-        window.scrollBy(0, -250);
+        window.scrollBy(0, -400);
     });
 
     
@@ -892,7 +931,7 @@ function init() {
     
 
 
-    
+    const pinnedSections = gsap.utils.toArray(document.querySelectorAll('.pinned-section'));
 
     sectionWraps.forEach((wrap, i) => {
 

@@ -5381,7 +5381,25 @@ div sub.h2sub {
                 opacity: 0;
                 border-radius: 0 30px 30px 30px;
                 background-color: rgb(106, 182, 24);
+                /* cursor: pointer; */
+                /* filter: brightness(1) hue-rotate(0deg)  saturate(1); */
             }
+
+            /* #drop:hover {
+                animation: growNbright 4s ease infinite;
+            }
+            @keyframes growNbright {
+                0% {
+                    filter: brightness(1) hue-rotate(0deg)  saturate(1);
+                }
+                50% {
+                    filter: brightness(1.4) hue-rotate(-90deg) saturate(0.7);
+                }
+                100% {
+                    filter: brightness(1.2) hue-rotate(0deg)  saturate(1);
+                }
+                
+            } */
 
             /* #2 section-02 "H2Pro Mission" + drop anim */
 
@@ -6234,6 +6252,7 @@ div sub.h2sub {
             #sections #section-wrap-09 {
                 z-index: 2;
                 background-color: transparent;
+                
             }
             #sections .section-wrap .section-09 {
                 display: flex;
@@ -6250,6 +6269,8 @@ div sub.h2sub {
             #sections .section-wrap .section-09 > .img {
                 max-width: unset;
             }
+
+           
 
             #sections .section-wrap .section-10 {
                 align-self: center;
@@ -6287,6 +6308,41 @@ div sub.h2sub {
                 padding: 100px 20px 0px;
             }
 
+            body #sections .section-wrap.sh-125 {
+                min-height: 125vh;
+                position:relative;
+                height: 125vh;
+            }
+            body #sections .section-wrap.sh-125 > .section {
+                min-height: 125vh;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                justify-content: center;
+                padding: 0;
+                align-items: center;
+                flex-wrap: nowrap;
+            }
+            body #sections .section-wrap.sh-130 {
+                min-height: 130vh;
+                
+            }
+            body #sections .section-wrap.sh-135 {
+                min-height: 135vh;
+                
+            }
+            body #sections .section-wrap.sh-140 {
+                min-height: 140vh;
+                
+            }
+            body #sections .section-wrap.sh-145 {
+                min-height: 145vh;
+                
+            }
+            body #sections .section-wrap.sh-150 {
+                min-height: 150vh;               
+            }
             .events-grid .event-card {
                 border-radius: 20px;
                 overflow: hidden;
