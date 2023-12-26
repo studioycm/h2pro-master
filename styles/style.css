@@ -103,6 +103,12 @@ div sub.h2sub {
     font-size: 14px;
 }
 
+a {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    font: inherit;
+}
 
 
 
@@ -5684,7 +5690,7 @@ div sub.h2sub {
                 justify-content: start;
                 align-items: start;
                 justify-items: center;
-                gap: 0px 20px;
+                gap: 20px 20px;
             }
             #section-05 .grid.grid-3 {
                 max-width: 1600px;
@@ -5699,23 +5705,24 @@ div sub.h2sub {
                 flex-grow: 1;
                 flex-direction: column;
                 align-items: normal;
-                padding: 20px 20px 30px;
+                padding: 30px 30px 30px;
                 flex-wrap: nowrap;
                 align-content: stretch;
                 justify-content: flex-start;
-                gap: 5px;
+                gap: 15px;
                 border-radius: 20px;
                 height: auto;
                 overflow: hidden;
                 background-color: transparent;
-                transition: all 0.6s ease-in-out;
+                transition: all 0.5s ease-in-out;
                 box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
             }
             
             #section-05 .card.icon-card:hover {
                 z-index: 9;
-                background-color: #F8FAFA;
-                box-shadow: 0px 44px 64px -60px rgba(0, 0, 0, 0.55);
+                background-color: hsl(180 20% 95% / 1);
+                box-shadow: 0px 35px 60px -45px rgba(0, 0, 0, 0.55);
+                gap: 20px;
             }
             
             #section-05 .card .card_title {
@@ -5740,18 +5747,14 @@ div sub.h2sub {
                 text-align: center;
                 text-overflow: ellipsis;
                 font: 300 16px/135% Geologica, sans-serif;
-                transition: max-height 0.6s ease-in-out;
                 transition: inherit;
             }
             
             #section-05 .card:hover .card_content {
                 max-height: 500px;
-                display: block;
-                -webkit-box-orient: vertical;
                 -webkit-line-clamp: unset;
                 line-clamp: unset;
-                overflow: visible;
-            
+                overflow: visible;            
             }
             
             #section-05 .card:hover .card_title,
@@ -5784,8 +5787,6 @@ div sub.h2sub {
 
             
             #section-05 .grid:not(.animated-icons) .card:hover .card_image img {
-                /* left: 0;
-                translate: 0 0; */
                 filter:  hue-rotate(-120deg) brightness(1.35) saturate(0.8);
             }
 
@@ -5795,9 +5796,9 @@ div sub.h2sub {
 
             #section-05 .grid.animated-icons .card .card_image img.img-svg {
                 position: absolute;
-                width: 115px;
-                max-width: 115px;
-                top: 0px;
+                width: 100px;
+                max-width: 100px;
+                top: -10px;
                 left: 50%;
                 translate: -50% 0;
                 opacity: 0;
@@ -5833,6 +5834,8 @@ div sub.h2sub {
             }
             #section-05 .grid .card .card_image img.img-gif {
                 padding: 0px;
+                width: 80px;
+                max-width: 80px;
             }
         
 
@@ -6003,9 +6006,9 @@ div sub.h2sub {
             .slider-container {
                 position: relative;
                 align-self: stretch;
-                width: 54%;
+                width: 60%;
                 flex-grow: 0;
-                flex-basis: 54%;
+                flex-basis: 60%;
                 overflow: hidden;
                 /* border-radius: 30px 0 0 50px; */
             }
@@ -6026,6 +6029,7 @@ div sub.h2sub {
             #slider-progress {
                 position: relative;
                 z-index: 2;
+                padding-left: 50px;
             }
 
             .slides {
@@ -6041,11 +6045,11 @@ div sub.h2sub {
               .slide-card-wrap {
                 position: relative;
                 min-height: 60vh;
-                flex-grow: 1;
+                flex-grow: 0;
                 flex-shrink: 0;
-                flex-basis: 500px;
-                width: 500px;
-                padding-left: 50px;
+                flex-basis: 530px;
+                width: 530px;
+                padding: 0px 0px 0px 50px;
                 
             }
             .slide-card-wrap:last-child {

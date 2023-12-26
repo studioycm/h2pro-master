@@ -982,7 +982,7 @@ function init() {
                 onComplete : () => {
                     console.log(index + ' - ' + wrap.id + ' onComplete animated');
                 }
-            });
+            }, '<+=0.15');
         });
         
     });
