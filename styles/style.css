@@ -6027,6 +6027,8 @@ a {
             }
 
             #slider-progress {
+                width: 75%;
+                max-width: 800px;
                 position: relative;
                 z-index: 2;
                 padding-left: 50px;
