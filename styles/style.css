@@ -2797,6 +2797,8 @@ div sub.h2sub {
             display: flex;
             justify-content: center;
             gap: 20px;
+            max-width: 750px;
+            width: 100%;
             }
             @media (max-width: 991px) {
             .div-158 {
@@ -6170,7 +6172,7 @@ div sub.h2sub {
                 width: 100%;
                 max-width: 100%;
                 justify-content: space-between;
-                gap: 20px;
+                gap: 30px;
                 margin: 0;
                 flex-direction: column;
                 align-content: center;
@@ -6181,19 +6183,25 @@ div sub.h2sub {
                 color: var(--Black, #2a2e32);
                 text-align: center;
                 align-self: center;
-                margin-top: 20px;
-                width: 100%;
-                max-width: unset;
+                margin-top: 10px;
+                max-width: 750px;
+            width: 100%;
                 font: 400 20px/140% Geologica, sans-serif;
             }
             
             .div-157 {
                 display: flex;
-                width: 750px;
-                max-width: 100%;
+                max-width: 750px;
+            width: 100%;
                 flex-direction: column;
             }
-            
+            .div-158 {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                max-width: 750px;
+                width: 100%;
+                }
             .partners-grid {
                 align-self: center;
                 display: flex;
@@ -6232,7 +6240,7 @@ div sub.h2sub {
                 display: flex;
                 max-width: 1740px;
                 width: 100%;
-                margin: 0 auto 80px;
+                margin: 0 auto 100px;
                 flex-direction: column;
                 padding: 0;
                 justify-content: space-between;
