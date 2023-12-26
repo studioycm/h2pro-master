@@ -839,7 +839,7 @@ function init() {
         duration: 1.7
     }, '<+=1')
     .to('#section-wrap-09', {
-        y: () => document.querySelector('#section-wrap-09').offsetHeight,
+        y: () => document.querySelector('#section-wrap-09').offsetHeight + 100,
         duration: 2,
         // delay: 0.5,
         ease: "none",
@@ -975,14 +975,14 @@ function init() {
                 opacity: () => 1,
                 visibility: 'visible',
                 duration: 0.25,
-                ease: "power1.out",
+                ease: "power1.in",
                 onStart : () => {
                     console.log(index + ' - ' + wrap.id + ' onStart animated');
                 },
                 onComplete : () => {
                     console.log(index + ' - ' + wrap.id + ' onComplete animated');
                 }
-            }, '<+=0.15');
+            }, '<+=0.1');
         });
         
     });
