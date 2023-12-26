@@ -6214,12 +6214,12 @@ div sub.h2sub {
             
             .partners-grid img.flexed-image {
                 aspect-ratio: auto;
-                object-fit: cover;
+                object-fit: contain;
                 object-position: center;
                 width: 20%;
                 max-width: 20%;
-                height: 130px;
-                max-height: 130px;
+                height: auto;
+                max-height: 100px;
                 flex: 0 0 20%;
                 display: block;
                 margin: 0;
