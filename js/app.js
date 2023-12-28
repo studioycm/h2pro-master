@@ -493,6 +493,25 @@ function init() {
         section4VideoButton.classList.remove('hide');
     });
 
+    // add event listener to stop video when out of viewport
+    const section4VideoObserver = new IntersectionObserver((entries, section4VideoObserver) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                section4Video.play();
+                section4VideoButton.classList.add('hide');
+            } else {
+                section4Video.pause();
+                section4VideoButton.classList.remove('hide');
+            }
+        });
+    }, {
+        rootMargin: "0px 0px 0px 0px",
+        threshold: 1
+    });
+
+    section4VideoObserver.observe(section4VideoContainer);
+
+
     const drop4TL = gsap.timeline({
         scrollTrigger: {
             id: 'drop-4',
