@@ -11,6 +11,12 @@ body, body * {
   box-sizing: border-box;
 }
 
+.hide {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
 .styled-scrollbars {
     /* Foreground, Background */
     scrollbar-color: #89dd57 #006ff2;

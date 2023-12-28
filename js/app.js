@@ -1,21 +1,22 @@
-function init() {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.registerPlugin(ScrollToPlugin);
-    
-    const lenis = new Lenis();
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 
-        // lenis.on('scroll', (e) => {
-        // console.log(e);
-        // });
+const lenis = new Lenis();
 
-        function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-        }
+    // lenis.on('scroll', (e) => {
+    // console.log(e);
+    // });
 
+function raf(time) {
+    lenis.raf(time);
     requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
+function init() {
     
-    
+
     const viewHeight = window.innerHeight;
     console.log('viewHeight: ', viewHeight);
     const navMenu = document.querySelector('#nav-menu');
@@ -50,7 +51,7 @@ function init() {
     const section4BgImage2 = document.querySelector('#section-04 #section-04-bg #bg-img-2');
     const section4ActionButton = document.querySelector('#section-04 .action-button');
     const section4VideoContainer = document.querySelector('#section-04 .video-container');
-    const section4Video = document.querySelector('#section-04 .video-container .video');
+    const section4Video = document.querySelector('#section-04 #section-04_video');
     const section4VideoButton = document.querySelector('#section-04 .video-container #play-video');
     const section5 = document.querySelector('#section-wrap-05');
     const section6 = document.querySelector('#section-wrap-06');
@@ -475,14 +476,29 @@ function init() {
         ease: "none"
     }, '>');
 
-    
+    // add event listener to the play video button to play the video when clicked
+    section4VideoButton.addEventListener('click', () => {
+        section4Video.play();
+        section4VideoButton.classList.add('hide');
+    });
+
+    // add event listener to the video to pause the video when clicked
+    section4Video.addEventListener('click', () => {
+        section4Video.pause();
+        section4VideoButton.classList.remove('hide');
+    });
+
+    // add event listener to the video when finnished to show the play button
+    section4Video.addEventListener('ended', () => {
+        section4VideoButton.classList.remove('hide');
+    });
 
     const drop4TL = gsap.timeline({
         scrollTrigger: {
             id: 'drop-4',
             trigger: '#section-wrap-05',
-            start: () => 'top bottom',
-            end: () => 'center+=200px bottom',
+            start: () => 'top bottom-=200px',
+            end: () => viewHeight + 'px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
             // markers: {
@@ -517,9 +533,9 @@ function init() {
     .to('#drop', {
         // x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 0,
         // y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - dropEl.offsetTop,
-        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 130,
-        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 360,
-        duration: 2.3,
+        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 160,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 430,
+        duration: 2,
         ease: "slow",
         // all gsap tween animation callback functions: onStart, onUpdate, onComplete, onRepeat, onReverseComplete
         onStart : () => {
@@ -531,7 +547,7 @@ function init() {
     })
     .to('#drop', {
         opacity: 0,
-        duration: 0.5
+        duration: 0.25
     });
 
     const drop5TL = gsap.timeline({
@@ -548,8 +564,8 @@ function init() {
 
     drop5TL
     .fromTo('#drop',{
-        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 130,
-        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 360,
+        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 160,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 430,
         opacity: 0,
         backgroundColor: "#1d7bc8", // "#1d7bc8"
     },{
@@ -818,18 +834,20 @@ function init() {
             // markers: true
         }
     });
-    section9TL.fromTo('#section-09 > img.img', {
+
+    section9TL
+    .to('#section-wrap-09 .section-inner', {
+    y: () => -(document.querySelector('#section-wrap-09 .section-inner').offsetHeight),
+    opacity: 0,
+    duration: 0.3,
+    ease: "power1.out"
+    })
+    .fromTo('#section-09 > img.img', {
         clipPath: "path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')"
     }, {
         clipPath: "path('m 965 120 l 355 0 c 355 0 355 355 355 355 c 0 355 -355 355 -355 355 c -355 0 -355 -355 -355 -355 z')",
         duration: 1,
     })
-    .to('#section-wrap-09 .section-inner', {
-        y: () => -(document.querySelector('#section-wrap-09 .section-inner').offsetHeight),
-        opacity: 0,
-        duration: 0.3,
-        ease: "power1.out"
-    }, '<')
     .fromTo('#section-09 > img.img', {
         objectPosition: "0px 0px",
         width: "100%",
@@ -1038,18 +1056,19 @@ function init() {
 }
 // beforeunload | pagehide event
 window.addEventListener("pagehide", (event) => {
-    // scroll to top of the page on page load
-    window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "auto"
-      });
-    console.log('page hide #### scrollTop end');
-
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+        console.log('page hide #### scrollRestoration = manual');
+    } else {
+        // scroll to top of the page on page load
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "auto"
+        });
+        console.log('page hide #### scrollTop end');
+    }
 });
-if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-}
 // init() on page load 
 window.addEventListener('load', () => {
     init();
