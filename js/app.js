@@ -391,7 +391,7 @@ function init() {
         scrollTrigger: {
             id: 'drop-3',
             trigger: '#section-wrap-04',
-            start: () => '150px bottom',
+            start: () => 'top bottom',
             end: () => 'bottom-=100px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
