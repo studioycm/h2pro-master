@@ -846,7 +846,7 @@ function init() {
         scrollTrigger: {
             id: 'section-09-out',
             trigger: '#section-wrap-09',
-            start: () => '100px top',
+            start: () => 'bottom bottom',
             end: () => 'bottom top',
             toggleActions: 'play none reverse reset',
             scrub: 1,
@@ -854,59 +854,59 @@ function init() {
         }
     });
 
-    section9TL
-    .to('#section-wrap-09 .section-inner', {
-    y: () => -(document.querySelector('#section-wrap-09 .section-inner').offsetHeight),
-    opacity: 0,
-    duration: 0.3,
-    ease: "power1.out"
-    })
-    .fromTo('#section-09 > img.img', {
-        clipPath: "path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')"
-    }, {
-        clipPath: "path('m 965 120 l 355 0 c 355 0 355 355 355 355 c 0 355 -355 355 -355 355 c -355 0 -355 -355 -355 -355 z')",
-        duration: 1,
-    })
-    .fromTo('#section-09 > img.img', {
-        objectPosition: "0px 0px",
-        width: "100%",
-    }, {
-        objectPosition: "-400px 100px",
-        width: "125%",
-        duration: 1.7
-    }, '<+=1')
-    .to('#section-wrap-09', {
-        y: () => document.querySelector('#section-wrap-09').offsetHeight + 100,
-        duration: 2,
-        // delay: 0.5,
-        ease: "none",
-        onStart : () => {
-            console.log('section9 onStart #section-wrap-09');
-        },
-        onComplete : () => {
-            console.log('section9 onComplete #section-wrap-09');
-        }
-    }, '<-=1')
-    .to('#section-wrap-09', {
-        opacity: 0,
-        duration: 2
-    }, '>')
-    .to('#section-10 img.img-51', {
-        opacity: 1,
-        duration: 2
-    }, '<')
-    .fromTo('#section-wrap-10 .content', {
-        opacity: 0,
-        y: () => 100
-    }, {
-        opacity: 1,
-        y: () => 0,
-        duration: 1.5,
-        ease: "power1.out"
-    }, '<+=1')
-    .set('#section-wrap-09', {
-        zIndex: 0
-    });
+    // section9TL
+    // .to('#section-wrap-09 .section-inner', {
+    // y: () => -(document.querySelector('#section-wrap-09 .section-inner').offsetHeight),
+    // opacity: 0,
+    // duration: 0.3,
+    // ease: "power1.out"
+    // })
+    // .fromTo('#section-09 > img.img', {
+    //     clipPath: "path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')"
+    // }, {
+    //     clipPath: "path('m 965 120 l 355 0 c 355 0 355 355 355 355 c 0 355 -355 355 -355 355 c -355 0 -355 -355 -355 -355 z')",
+    //     duration: 1,
+    // })
+    // .fromTo('#section-09 > img.img', {
+    //     objectPosition: "0px 0px",
+    //     width: "100%",
+    // }, {
+    //     objectPosition: "-400px 100px",
+    //     width: "125%",
+    //     duration: 1.7
+    // }, '<+=1')
+    // .to('#section-wrap-09', {
+    //     y: () => document.querySelector('#section-wrap-09').offsetHeight + 100,
+    //     duration: 2,
+    //     // delay: 0.5,
+    //     ease: "none",
+    //     onStart : () => {
+    //         console.log('section9 onStart #section-wrap-09');
+    //     },
+    //     onComplete : () => {
+    //         console.log('section9 onComplete #section-wrap-09');
+    //     }
+    // }, '<-=1')
+    // .to('#section-wrap-09', {
+    //     opacity: 0,
+    //     duration: 2
+    // }, '>')
+    // .to('#section-10 img.img-51', {
+    //     opacity: 1,
+    //     duration: 2
+    // }, '<')
+    // .fromTo('#section-wrap-10 .content', {
+    //     opacity: 0,
+    //     y: () => 100
+    // }, {
+    //     opacity: 1,
+    //     y: () => 0,
+    //     duration: 1.5,
+    //     ease: "power1.out"
+    // }, '<+=1')
+    // .set('#section-wrap-09', {
+    //     zIndex: 0
+    // });
 
     const darkEls = gsap.utils.toArray(document.querySelectorAll('.dark-bg'));
     darkEls.forEach((darkEl, index) => {
