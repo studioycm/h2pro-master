@@ -6174,7 +6174,7 @@ a {
               }
 
               #sections .section-wrap .section-08 {
-                padding: 100px 20px 0px;
+                padding: 0px;
                 align-self: center;
                 display: flex;
                 width: 100%;
@@ -6182,7 +6182,7 @@ a {
                 flex-direction: column;
                 align-content: center;
                 align-items: center;
-                justify-content: flex-start;
+                justify-content: center;
             }
             
             .div-155 {
@@ -6258,7 +6258,7 @@ a {
                 display: flex;
                 max-width: 1740px;
                 width: 100%;
-                margin: 0 auto 100px;
+                margin: 0 auto;
                 flex-direction: column;
                 padding: 0;
                 justify-content: space-between;
@@ -6267,6 +6267,10 @@ a {
                 align-items: center;
             }
 
+            #sections .section-wrap .section-08 .inner-section + .inner-section {
+                margin-top: 100px;
+            }
+            
             .div-171,
             .div-189 {
                 color: var(--Black, #2a2e32);
@@ -6361,7 +6365,10 @@ a {
                 display: flex;
                 width: 100%;
                 flex-direction: column;
-                padding: 100px 20px 0px;
+                padding: 0px;
+                align-items: stretch;
+                align-content: stretch;
+                justify-content: center;
             }
 
             .img-54 {
@@ -6377,12 +6384,17 @@ a {
 
 
             #sections .section-wrap .section-12 {
+                position: relative;
+
                 align-self: center;
                 display: flex;
                 width: 100%;
                 max-width: 100%;
                 flex-direction: column;
-                padding: 100px 20px 0px;
+                padding: 0;
+                align-items: stretch;
+                align-content: stretch;
+                justify-content: center;
             }
 
             body #sections .section-wrap.sh-125 {
@@ -6400,6 +6412,11 @@ a {
                 padding: 0;
                 align-items: center;
                 flex-wrap: nowrap;
+                position: relative;
+            }
+            body #sections .section-wrap.sh-115 {
+                min-height: 115vh;
+                
             }
             body #sections .section-wrap.sh-130 {
                 min-height: 130vh;

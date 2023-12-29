@@ -966,22 +966,36 @@ function init() {
             scrollTrigger: {
                 id: 'darkBG-' + (index + 1),
                 trigger: darkEl,
-                markers: {
-                    startColor: "green",
-                    endColor: "red",
-                    fontSize: "18px",
-                    indent: 200,
-                    fontWeight: "bold"
-                },
+                // markers: {
+                //     startColor: "green",
+                //     endColor: "red",
+                //     fontSize: "18px",
+                //     indent: 200,
+                //     fontWeight: "bold"
+                // },
                 start: () => darkbgPosition + 'px 50px',
                 end: () => '+=' + darkbgHeight + 'px',
                 toggleActions: 'play reverse play reverse',
                 // scrub: 1,
                 onEnter: () => {
+                    // add class "dark-header" and remove class "light-header" from #nav-menu
+                    navMenu.classList.remove('light-header');
+                    navMenu.classList.add('dark-header');
                     console.log(index + ' onEnter darkBGheaderTL - play');
+                    // set '#nav-menu .nav-link' font weight to 100
+                    gsap.set('#nav-menu .nav-link', {
+                        fontWeight: 100
+                    });
                 },
                 onLeave: () => {
+                    // add class "light-header" and remove class "dark-header" from #nav-menu
+                    navMenu.classList.add('light-header');
+                    navMenu.classList.remove('dark-header');
                     console.log(index + ' onLeave darkBGheaderTL - none');
+                    // set '#nav-menu .nav-link' font weight to 100
+                    gsap.set('#nav-menu .nav-link', {
+                        fontWeight: 200
+                    });
                 },
                 onEnterBack: () => {
                     console.log(index + ' onEnterBack darkBGheaderTL - reverse');
@@ -1032,7 +1046,7 @@ function init() {
             scrollTrigger: {
                 id: wrap.id + '-items',
                 trigger: wrap,
-                start: () => "top 200px",
+                start: () => "top 100px",
                 end: () => viewHeight + "px bottom", // + (wrap.offsetHeight),
                 toggleActions: 'play none none reverse',
                 //preventOverlaps: true,
@@ -1061,7 +1075,7 @@ function init() {
                 autoAlpha: 1,
                 opacity: () => 1,
                 visibility: 'visible',
-                duration: 0.25,
+                duration: 0.3,
                 ease: "power1.in",
                 onStart : () => {
                     console.log(index + ' - ' + wrap.id + ' onStart animated');
@@ -1069,7 +1083,7 @@ function init() {
                 onComplete : () => {
                     console.log(index + ' - ' + wrap.id + ' onComplete animated');
                 }
-            }, '<+=0.1');
+            }, '<+=0.05');
         });
         
     });
