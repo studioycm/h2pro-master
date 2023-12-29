@@ -643,11 +643,12 @@ function init() {
             id: 'drop-6',
             trigger: '#section-wrap-07',
             start: () => 'top bottom',
-            end: () => (viewHeight + 25) + 'px bottom',
+            end: () => (viewHeight) + 'px bottom',
             toggleActions: 'play none reverse reset',
             scrub: 1,
             // markers: true,
             onEnter: () => {
+                console.log('---------------- drop6TL onEnter -------------');
                 console.log("section6.offsetTop: ", (section6.offsetTop));
                 console.log("#drop offsetTop: " + dropEl.offsetTop + " - dropElTop: " + dropElTop);
                 console.log("#drop getBoundingClientRect().top: " + dropEl.getBoundingClientRect().top);
@@ -662,7 +663,9 @@ function init() {
                 console.log("#section-06 action offsetTop: ", section6Action.offsetTop);
                 console.log("section6Action.getBoundingClientRect().height: ", (section6Action.getBoundingClientRect().height));
                 console.log("#section-06 action offsetHeight: ", section6Action.offsetHeight);
-                console.log("section7Action.getBoundingClientRect().top: ", (section7Action.getBoundingClientRect().top));   
+                console.log("- Action 777 getBoundingClientRect().top: ", (section7Action.getBoundingClientRect().top));
+                console.log("- Action 777 offsetTop: ", (section7Action.offsetTop));
+                console.log('---------------- drop6TL onEnter end data -------------');   
             },
         }
     });
@@ -684,17 +687,11 @@ function init() {
         opacity: () => 1,
         autoAlpha: 1,
         visibility: 'visible',
-        duration: 0.2
-    })
-    .to('#drop', {
-        width: "45px",
-        height: "45px",
-        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53) ) - section7Action.offsetLeft - 85,
-        y: () =>  section1.offsetHeight + section2.offsetHeight + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section7Action.getBoundingClientRect().top - 270,
-        rotate: 135,
-        duration: 2,
-        ease: "slow",
+        duration: 0.2,
         onStart : () => {
+            console.log('\n-- drop 6 show start ---------------------------');
+            console.log("- Action 777 getBoundingClientRect().top: ", (section7Action.getBoundingClientRect().top));
+                console.log("- Action 777 offsetTop: ", (section7Action.offsetTop));
             console.log('drop 6 Start #section-wrap-07');
             console.log("dropStart section6Action.getBoundingClientRect().top: ", (section6Action.getBoundingClientRect().top));
             console.log("dropStart #section-06 action offsetTop: ", section6Action.offsetTop);
@@ -703,7 +700,34 @@ function init() {
             console.log("#section-06 action offsetHeight: ", section6Action.offsetHeight);
         },
         onComplete : () => {
-            console.log('drop 6 Complete #section-wrap-07');
+            console.log('-- drop 6 show Complete ------');
+            console.log("- Action 777 getBoundingClientRect().top: ", (section7Action.getBoundingClientRect().top));
+                console.log("- Action 777 offsetTop: ", (section7Action.offsetTop));
+        }
+    })
+    .to('#drop', {
+        width: "45px",
+        height: "45px",
+        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53) ) - section7Action.offsetLeft - 85,
+        y: () =>  section1.offsetHeight + section2.offsetHeight + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section7Action.getBoundingClientRect().top - 240,
+        rotate: 135,
+        duration: 2,
+        ease: "slow",
+        onStart : () => {
+            console.log('\n----- drop 6 move start --------------------------------------------');
+            console.log("- Action 777 getBoundingClientRect().top: ", (section7Action.getBoundingClientRect().top));
+                console.log("- Action 777 offsetTop: ", (section7Action.offsetTop));
+            console.log('drop 6 Start #section-wrap-07');
+            console.log("dropStart section6Action.getBoundingClientRect().top: ", (section6Action.getBoundingClientRect().top));
+            console.log("dropStart #section-06 action offsetTop: ", section6Action.offsetTop);
+            console.log("dropStart section6ActionTop: ", (section6ActionTop));
+            console.log("section6Action.getBoundingClientRect().height: ", (section6Action.getBoundingClientRect().height));
+            console.log("#section-06 action offsetHeight: ", section6Action.offsetHeight);
+        },
+        onComplete : () => {
+            console.log('----- drop 6 move Complete ------');
+            console.log("- Action 777 getBoundingClientRect().top: ", (section7Action.getBoundingClientRect().top));
+                console.log("- Action 777.offsetTop: ", (section7Action.offsetTop));
         }
     }, '>')
     .to('#drop', {
@@ -763,29 +787,32 @@ function init() {
             }
         }
     });
-    const sliderProgressSvg = document.querySelector('#slider-progress-bar');
+    const sliderProgressSvg = document.getElementById("slider-progress-bar");
+    const sliderProgressSvgViewbox = sliderProgressSvg.viewBox.baseVal;
     const sliderProgressLine = sliderProgressSvg.querySelector('line#slider-progress-line');
     section7TL
     .to(slides, {
         xPercent: -100 * (slides.length - 2),
-        ease: "none"
+        ease: "none",
+        duration: 1,
     })
     .to(sliderProgressLine, {
-        attr: {x2: 950},
+        attr: {x2: sliderProgressSvgViewbox.width},
         ease: "none",
+        duration: 1,
     }, '<');
     
     
     document.querySelector('#slider-next').addEventListener('click', () => {
         // scroll down one step with lenis
-        window.scrollBy(0, 400);
+        window.scrollBy(0, (slideCard.offsetWidth));
         
         
     });
     // reverse the slidAnim when the slider control button #slider-prev is clicked
     document.querySelector('#slider-prev').addEventListener('click', () => {
         // scroll up one step 
-        window.scrollBy(0, -400);
+        window.scrollBy(0, -(slideCard.offsetWidth));
     });
 
     
@@ -888,7 +915,7 @@ function init() {
             id: 'section-10-in',
             trigger: '#section-wrap-10',
             start: () => 'top top',
-            end: () => '+=' + (viewHeight * 3) + 'px',
+            end: () => '+=' + (viewHeight * 2) + 'px',
             toggleActions: 'play none reverse reset',
             scrub: 1,
             pin: '#section-10',
@@ -931,17 +958,17 @@ function init() {
         const darkbgHeight = darkEl.getAttribute('data-darkbg-height');
         const darkBGheaderTL = gsap.timeline({
             scrollTrigger: {
-                id: 'darkBG-' + index,
+                id: 'darkBG-' + (index + 1),
                 trigger: darkEl,
-                // markers: {
-                //     startColor: "green",
-                //     endColor: "black",
-                //     fontSize: "14px",
-                //     indent: 200,
-                //     fontWeight: "normal"
-                // },
+                markers: {
+                    startColor: "green",
+                    endColor: "red",
+                    fontSize: "18px",
+                    indent: 200,
+                    fontWeight: "bold"
+                },
                 start: () => darkbgPosition + 'px 50px',
-                end: '+=' + darkbgHeight + 'px',
+                end: () => '+=' + darkbgHeight + 'px',
                 toggleActions: 'play reverse play reverse',
                 // scrub: 1,
                 onEnter: () => {

@@ -5014,6 +5014,8 @@ a {
             #nav-menu {
                 position: relative;
                 z-index: 999999;
+                background: linear-gradient( 270deg, rgba(250, 250, 250, 0.3) 0%, rgba(230, 230, 230, 0.4) 100% );
+                backdrop-filter: blur(5px) brightness(1.2);
             }
 
             #nav-menu .nav-menu-inner {
