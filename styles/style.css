@@ -5014,7 +5014,7 @@ a {
             #nav-menu {
                 position: relative;
                 z-index: 999999;
-                background: linear-gradient( 270deg, rgba(250, 250, 250, 0.3) 0%, rgba(230, 230, 230, 0.4) 100% );
+                background: linear-gradient( 270deg, rgba(230, 230, 230, 0.3) 0%, rgba(220, 220, 220, 0.4) 100% );
                 backdrop-filter: blur(5px) brightness(1.2);
             }
 
@@ -5029,7 +5029,7 @@ a {
             }
 
             #nav-menu .nav-menu-inner .nav-link {
-                font: 100 22px Geologica, sans-serif;
+                font: 200 22px Geologica, sans-serif;
                 color: #fff
             }
 
@@ -6270,7 +6270,7 @@ a {
             #sections .section-wrap .section-08 .inner-section + .inner-section {
                 margin-top: 100px;
             }
-            
+
             .div-171,
             .div-189 {
                 color: var(--Black, #2a2e32);
