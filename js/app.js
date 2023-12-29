@@ -950,7 +950,13 @@ function init() {
     }, {
         clipPath: "path('m -300 -400 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')",
         duration: 1
-    });
+    })
+    .fromTo('#section-10 .img', {
+        filter: "brightness(1)",
+    }, {
+        filter: "brightness(0.8)",
+        duration: 0.5
+    }, '<');
 
     const darkEls = gsap.utils.toArray(document.querySelectorAll('.dark-bg'));
     darkEls.forEach((darkEl, index) => {
