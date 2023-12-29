@@ -859,7 +859,7 @@ function init() {
     .to('#section-wrap-09 .section-inner', {
     y: () => -(document.querySelector('#section-wrap-09 .section-inner').offsetHeight),
     opacity: 0,
-    duration: 0.3,
+    duration: 0.5,
     ease: "power1.out",
     onStart : () => {
         console.log('section9 onStart #section-wrap-09');
@@ -880,8 +880,8 @@ function init() {
     }, {
         objectPosition: "-400px 100px",
         width: "125%",
-        duration: 1.7
-    }, '<+=1');
+        duration: 1
+    });
 
     const section10TL = gsap.timeline({
         scrollTrigger: {
@@ -892,7 +892,7 @@ function init() {
             toggleActions: 'play none reverse reset',
             scrub: 1,
             pin: '#section-10',
-            markers: true
+            // markers: true
         }
     });
 
@@ -901,12 +901,8 @@ function init() {
         opacity: 0,
     },{
         opacity: 1,
-        duration: 1
+        duration: 0.5
     })
-    .to('#section-wrap-09', {
-        opacity: 0,
-        duration: 1
-    }, '<')
     .fromTo('#section-wrap-10 .content', {
         opacity: 0,
         y: () => 100
@@ -921,7 +917,7 @@ function init() {
         y: () => -100,
         duration: 0.5,
         ease: "power1.out"
-    }, '>+=1')
+    }, '>+=0.6')
     .fromTo('#section-10 .img', {
         clipPath: "path('m 965 160 l 355 0 c 355 0 355 355 355 355 c 0 355 -355 355 -355 355 c -355 0 -355 -355 -355 -355 z')",
     }, {
