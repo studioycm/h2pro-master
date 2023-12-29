@@ -3298,11 +3298,15 @@ a {
             font: 400 16px/150% Geologica, sans-serif;
             }
             .div-180 {
-            display: flex;
-            margin-top: 7px;
-            padding-right: 10px;
-            justify-content: space-between;
-            gap: 7px;
+                display: flex;
+                margin-top: 7px;
+                padding-right: 10px;
+                justify-content: flex-start;
+                gap: 7px;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-content: center;
+                align-items: center;
             }
             .div-181 {
             color: var(--Blue, #1679c6);
@@ -6281,9 +6285,27 @@ a {
                 align-self: stretch;
                 position: relative;
                 width: 100%;
-                align-items: start;
-                padding: 50px 0px 50px;
-                
+                align-items: stretch;
+                padding: 0px;
+                height: 100vh;
+                min-height: unset;
+                max-height: unset;
+                justify-content: center;
+                background-color: #ffffff;
+
+            }
+            #sections .section-wrap .section-09 .section-inner {
+                position: relative;
+                display: flex;
+                max-width: 1740px;
+                width: 100%;
+                margin: 0 auto;
+                flex-direction: column;
+                padding: 0;
+                justify-content: center;
+                gap: 20px;
+                align-content: stretch;
+                align-items: stretch;
             }
             
             #sections .section-wrap .section-09 > .img {
@@ -6291,24 +6313,44 @@ a {
             }
 
            
-
+            #sections .section-wrap-10 {
+                min-height: 125vh;
+                max-height: unset;
+            }
             #sections .section-wrap .section-10 {
-                align-self: center;
-                margin: 0px auto;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                align-self: stretch;
+                position: relative;
                 width: 100%;
-                max-width: 1740px;
-                padding: 20px 0px 0px;
+                align-items: stretch;
+                padding: 0px;
+                height: 100vh;
                 min-height: unset;
+                max-height: unset;
+                align-content: stretch;
+                justify-content: center;
+            }
+            #sections .section-wrap .section-10 .section-inner {
+                position: relative;
+                display: flex;
+                max-width: 1740px;
+                width: 100%;
+                margin: 0 auto;
+                flex-direction: column;
+                padding: 0;
+                justify-content: center;
+                gap: 20px;
+                align-content: stretch;
+                align-items: stretch;
             }
             
-            .section-10 img.img-51 {
-                opacity: 0;
-            }
-
+            
             .section-10 img.img {
-                opacity: 0;
-                object-fit: contain;
-                object-position: top;
+                clip-path: path('m 965 160 l 355 0 c 355 0 355 355 355 355 c 0 355 -355 355 -355 355 c -355 0 -355 -355 -355 -355 z');
+                object-fit: cover;
+                object-position: center;
             }
             
             #sections .section-wrap .section-11 {
@@ -6319,6 +6361,19 @@ a {
                 flex-direction: column;
                 padding: 100px 20px 0px;
             }
+
+            .img-54 {
+                aspect-ratio: auto;
+                object-fit: contain;
+                object-position: top left;
+                width: auto;
+                height: 40px;
+                align-self: start;
+                max-width: 100%;
+            }
+
+
+
             #sections .section-wrap .section-12 {
                 align-self: center;
                 display: flex;
