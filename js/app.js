@@ -140,13 +140,15 @@ function init() {
         x: () => 0,
     },{
         x: () => -(section01Panel.offsetWidth - 40),
-        duration: 0.5
+        duration: 0.4,
+        ease: "sine.out"
     })
     .fromTo('#webinar-sticker-toggle .button-icon', {
         rotate: 0,
     },{
         rotate: 180,
-        duration: 0.25
+        duration: 0.4,
+        ease: "sine.out"
     }, '<');
 
 
@@ -224,7 +226,7 @@ function init() {
             pinSpacing: false,
             markers: true
         },
-        ease: "none",
+        ease: "sine.inOut",
     });
     const dropElHalfWidth = dropEl.offsetWidth / 2;
     const section1clipPath = "path('m " + dropEl.offsetLeft + " " + dropElTop + " l " + dropElHalfWidth + " 0 c " + dropElHalfWidth + " 0 " + dropElHalfWidth + " " + dropElHalfWidth + " " + dropElHalfWidth + " " + dropElHalfWidth + " c 0 " + dropElHalfWidth + " -" + dropElHalfWidth + " " + dropElHalfWidth + " -" + dropElHalfWidth + " " + dropElHalfWidth + " c -" + dropElHalfWidth + " 0 -" + dropElHalfWidth + " -" + dropElHalfWidth + " -" + dropElHalfWidth + " -" + dropElHalfWidth + " z')";
@@ -282,7 +284,7 @@ function init() {
         height: "35px",
         duration: 3,
         delay: 0.5,
-        ease: "none",
+        ease: "sine.out",
         onStart : () => {
             console.log('drop 1 Start #section-wrap-01');
             // console.log("section1.offsetHeight: ", section1.offsetHeight);
@@ -334,7 +336,7 @@ function init() {
         rotate: 0,
         opacity: 1,
         duration: 3,
-        ease: "none",
+        ease: "sine.out",
         onStart : () => {
             console.log('drop 2 Start #section-wrap-02');
         },
@@ -421,7 +423,7 @@ function init() {
         y: () => section1.offsetHeight + section2.offsetHeight + section3.offsetHeight - dropEl.offsetTop + (section4.offsetHeight / 4),
         opacity: 1,
         duration: 2,
-        ease: "none"
+        ease: "sine.out"
     })
     .fromTo(section4BG, {
         clipPath: () => 'path("m 940 ' + (section4.offsetHeight / 4) + ' h 17.5 c 8.75 0 17.5 8.75 17.5 17.5 c 0 8.75 -8.75 17.5 -17.5 17.5 c -8.75 0 -17.5 -8.75 -17.5 -17.5 v -17.5 z")',
@@ -449,12 +451,12 @@ function init() {
     .to(section4BG, {
         clipPath: 'path("m -700 -800 h 1600 c 800 0 1600 800 1600 1600 c 0 800 -800 1600 -1600 1600 c -800 0 -1600 -800 -1600 -1600 v -1600 z")',
         duration: 2,
-        ease: "none"
+        ease: "sine.out"
     }, '<')
     .to(section4BgImage1, {
         objectPosition: "0px 750px",
         duration: 2.5,
-        ease: "none"
+        ease: "sine.out"
     }, '<')
     .to(section4BgImage2, {
         opacity: 1,
@@ -467,7 +469,7 @@ function init() {
         opacity: 1,
         y: 100,
         duration: 2,
-        ease: "none"
+        ease: "sine.out"
     }, '>-=1')
     .fromTo(section4Content, {
         opacity: 1,
@@ -476,7 +478,7 @@ function init() {
         opacity: 1,
         y: 0,
         duration: 2,
-        ease: "none"
+        ease: "sine.out"
     }, '>');
 
     // add event listener to the play video button to play the video when clicked
@@ -551,7 +553,7 @@ function init() {
         x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 160,
         y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 430,
         duration: 2,
-        ease: "none",
+        ease: "sine.out",
         // all gsap tween animation callback functions: onStart, onUpdate, onComplete, onRepeat, onReverseComplete
         onStart : () => {
             console.log('drop 4 Start #section-wrap-05');
@@ -708,7 +710,7 @@ function init() {
         y: () =>  section1.offsetHeight + section2.offsetHeight + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section7Action.getBoundingClientRect().top - 240,
         rotate: 135,
         duration: 2,
-        ease: "none",
+        ease: "sine.out",
         onStart : () => {
             console.log('\n----- drop 6 move start --------------------------------------------');
             console.log("- Action 777 getBoundingClientRect().top: ", (section7Action.getBoundingClientRect().top));
@@ -1102,7 +1104,7 @@ function init() {
                 autoAlpha: 1,
                 opacity: () => 1,
                 duration: 0.4,
-                ease: "sine.inOut",
+                ease: "sine.out",
                 onStart : () => {
                     console.log(index + ' - ' + wrap.id + ' onStart animated');
                 },
