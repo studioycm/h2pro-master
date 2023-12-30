@@ -5018,6 +5018,11 @@ a {
                 backdrop-filter: blur(5px) brightness(1.2);
             }
 
+            #nav-menu.dark-header {
+                background: linear-gradient( 270deg, rgba(230, 230, 230, 0.3) 0%, rgba(220, 220, 220, 0.4) 100% );
+                backdrop-filter: blur(7px) brightness(0.9);
+            }
+
             #nav-menu .nav-menu-inner {
                 align-items: center;
                 display: flex;
@@ -5384,10 +5389,32 @@ a {
                 z-index: 9;
             }
             
+            
+            #next-section-button {
+                visibility: hidden;
+                opacity: 0;
+                background-image: url(../images/drop-arrow-hover.svg);
+                background-image: url(../images/drop-arrow.svg);
+                background-repeat: no-repeat;
+                position: fixed;
+                top: auto;
+                bottom: 0;
+                right: 0;
+                left: auto;
+                display: block;
+                width: 85px;
+                height: 95px;
+                transition: all 0.6s ease-in-out;
+                z-index: 999;
+                background-color: #65cc13;
+                clip-path: path("m 42 23 l 12.3744 12.3744 c 12.3744 12.3744 0 24.7487 0 24.7487 c -12.3744 12.3744 -24.7487 0 -24.7487 0 c -12.3744 -12.3744 -0 -24.7487 -0 -24.7487 Z");
+                overflow: hidden;
+            }
+            
+            button#next-section-button:hover,
             button#drop-arrow:hover {
                 background-image: url('../images/drop-arrow-hover.svg');
             }
-
             #drop {
                 position: absolute;
                 top: 450px;
