@@ -224,7 +224,7 @@ function init() {
             scrub: 1,
             pin: '#section-01',
             pinSpacing: false,
-            markers: true
+            // markers: true
         },
         ease: "sine.inOut",
     });
@@ -313,11 +313,11 @@ function init() {
         scrollTrigger: {
             id: 'drop-2',
             trigger: '#section-wrap-02',
-            start: () => 'center 200px',
+            start: () => '200px top',
             end: () => 'bottom top',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
-            // markers: true,
+            markers: true,
             
         }
     });
@@ -400,7 +400,6 @@ function init() {
             end: () => 'bottom-=100px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
-            // pin: section4Title,
             // markers: {
             //     startColor: "red",
             //     endColor: "blue",
