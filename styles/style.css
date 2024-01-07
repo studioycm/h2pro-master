@@ -116,19 +116,8 @@ a {
     font: inherit;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .definitions {
-  padding: 20px;
+  padding: 0px;
   display: flex;
   justify-content: space-between;
 }
@@ -5172,7 +5161,7 @@ a {
                 margin: 0 auto;
                 gap: 30px;
                 flex-direction: column;
-                padding: 150px 20px 0px;
+                padding: 150px 0px 0px;
             }
             #webinar-sticker-container {
                 position: relative;
