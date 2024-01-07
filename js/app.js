@@ -333,7 +333,7 @@ function init() {
         width: "35px",
         height: "35px",
     },{
-        x: () => section3GraphItemSecond - dropEl.offsetWidth + 210,
+        x: () => section3GraphItemSecond - dropEl.offsetWidth + 140,
         y: () => section1.offsetHeight + section2.offsetHeight + section3GraphEnd - dropEl.offsetTop - 100,
         backgroundColor: "#5fb847",
         rotate: 0,
@@ -402,7 +402,7 @@ function init() {
             start: () => '100px bottom',
             end: () => 'bottom-=100px bottom',
             toggleActions: 'play complete reverse reset',
-            scrub: true,
+            scrub: 1,
             markers: {
                 startColor: "red",
                 endColor: "blue",
@@ -415,8 +415,9 @@ function init() {
 
     drop3TL
     .fromTo('#drop', {
-        x: () => section3GraphItemSecond - dropEl.offsetWidth + 210,
+        x: () => section3GraphItemSecond - dropEl.offsetWidth + 140,
         y: () => section1.offsetHeight + section2.offsetHeight + section3GraphEnd - dropEl.offsetTop - 100,
+        opacity: 0,
     },{
         opacity: 1,
         // x: () => section3GraphItemSecond - dropEl.offsetWidth + 210,
@@ -424,6 +425,7 @@ function init() {
         duration: 0.3
     })
     .to('#drop',  {
+        opacity: 1,
         x: () => 0,
         y: () => section1.offsetHeight + section2.offsetHeight + section3.offsetHeight - dropEl.offsetTop + (viewHeight / 2),
         duration: 2,
@@ -455,12 +457,12 @@ function init() {
     .to(section4BG, {
         clipPath: 'path("m -640 -1200 h 1600 c 800 0 1600 800 1600 1600 c 0 800 -800 1600 -1600 1600 c -800 0 -1600 -800 -1600 -1600 v -1600 z")',
         duration: 3,
-        ease: "sine.out"
+        ease: "sine.inOut"
     }, '<')
     .to(section4BgImage1, {
         objectPosition: "30px 475px",
         duration: 2,
-        ease: "sine.out"
+        ease: "none"
     }, '<')
     .to(section4BgImage2, {
         opacity: 1,
@@ -473,7 +475,7 @@ function init() {
         opacity: 1,
         y: 0,
         duration: 0.8,
-        ease: "sine.out"
+        ease: "none"
     }, '>')
     .fromTo(section4Content, {
         opacity: 1,
@@ -482,14 +484,14 @@ function init() {
         opacity: 1,
         y: 0,
         duration: 2,
-        ease: "sine.out"
+        ease: "none"
     }, '>')
     .fromTo(section4Title, {
         y: 0,
     },{
         y: 400,
         duration: 2,
-        ease: "sine.out"
+        ease: "none"
     }, '<');
 
     // add event listener to the play video button to play the video when clicked
@@ -625,10 +627,10 @@ function init() {
         duration: 0.2
     }, '>')
     .fromTo(section6.querySelector('#section-06 > img.img'), {
-        clipPath: "path('m 1440 -1150 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z')",
+        clipPath: "path('m 1440 -100 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z')",
     },{
         clipPath: 'path("m 1440 -1100 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 c 0 -1600 1600 -1600 1600 -1600 z")',
-        duration: 1.7,
+        duration: 2,
         ease: "power1.out",
         onStart : () => {
             console.log('drop 5 Start #section-wrap-06');
@@ -636,7 +638,7 @@ function init() {
         onComplete : () => {
             console.log('drop 5 Complete #section-wrap-06');
         }
-    }, '<');
+    }, '>');
 
     const section6TL = gsap.timeline({
         scrollTrigger: {
@@ -933,7 +935,7 @@ function init() {
         objectPosition: "0px 0px",
         width: "100%",
     }, {
-        objectPosition: "-400px 0px",
+        objectPosition: "-365px 95px",
         width: "125%",
         duration: 1.6
     }, '<')
