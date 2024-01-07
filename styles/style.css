@@ -3691,7 +3691,7 @@ a {
             .div-206 {
             align-self: center;
             width: 100%;
-            max-width: 1740px;
+            max-width: 1550px;
             }
             @media (max-width: 991px) {
             .div-206 {
@@ -4199,7 +4199,7 @@ a {
                 align-self: center;
                 margin-top: 60px;
                 width: 100%;
-                max-width: 1740px;
+                max-width: 1550px;
                 padding: 0 0px;
             }
             @media (max-width: 991px) {
@@ -4941,7 +4941,7 @@ a {
                 align-items: center;
                 justify-content: space-between;
                 gap: 20px;
-                width: 1740px;
+                width: 1550px;
                 max-width: 100%;
                 margin: 0 auto;
                 padding: 20px 0px 20px;
@@ -5095,7 +5095,7 @@ a {
                 gap: 30px;
                 padding: 0 20px;
                 width: 100%;
-                max-width: 1740px;
+                max-width: 1550px;
                 margin: auto;
                 flex-direction: column;
                 flex-wrap: nowrap;
@@ -5156,7 +5156,7 @@ a {
             .div-3.hero-inner {
                 position: relative;
                 display: flex;
-                width: 1740px;
+                width: 1550px;
                 max-width: 100%;
                 margin: 0 auto;
                 gap: 30px;
@@ -5331,11 +5331,14 @@ a {
 
 
             .div-21-2 {
-                position: relative;
-                align-self: start;
+                position: absolute;
+                top: auto;
+                bottom: 0;
+                left: 50%;
+                translate: -50% 0;
                 display: flex;
                 margin-top: 0;
-                width: 100%;
+                width: auto;
                 max-width: 100%;
                 align-items: center;
                 justify-content: center;
@@ -5494,7 +5497,7 @@ a {
             
             .graph-section {
                 width: 100%;
-                max-width: 1740px;
+                max-width: 1550px;
             }
             
             /* #4 section-04 "MEET THE E-TAC ELECTROLYZER" + bg image anim + video */
@@ -5577,7 +5580,7 @@ a {
                 justify-content: center;
                 gap: 0px;
                 width: 100%;
-                max-width: 1740px;
+                max-width: 1550px;
                 margin: 1000px auto 0px;
                 padding: 0;
                 opacity: 0;
@@ -5876,7 +5879,7 @@ a {
                 position: relative;
                 margin: 0;
                 width: 100%;
-                max-width: 1740px;
+                max-width: 1550px;
             }
             
             .section-06 .div-130 {
@@ -5959,7 +5962,7 @@ a {
                 max-width: 100%;
                 flex-direction: column;
                 padding: 0;
-                padding-left: calc((100vw - 1740px) / 2);
+                padding-left: calc((100vw - 1550px) / 2);
                 margin: 0;
                 align-items: stretch;
                 align-content: stretch;
@@ -5968,9 +5971,9 @@ a {
 
             .slider-controls {
                 display: flex;
-                width: 40%;
+                width: 35%;
                 flex-grow: 0;
-                flex-basis: 40%;
+                flex-basis: 35%;
                 flex-direction: column;
                 margin: auto 0;
                 gap: 20px;
@@ -6023,9 +6026,9 @@ a {
             .slider-container {
                 position: relative;
                 align-self: stretch;
-                width: 60%;
+                width: 63%;
                 flex-grow: 0;
-                flex-basis: 60%;
+                flex-basis: 63%;
                 overflow: hidden;
                 /* border-radius: 30px 0 0 50px; */
             }
@@ -6261,7 +6264,7 @@ a {
             #sections .section-wrap .section-08 .inner-section {
                 position: relative;
                 display: flex;
-                max-width: 1740px;
+                max-width: 1550px;
                 width: 100%;
                 margin: 0 auto;
                 flex-direction: column;
@@ -6308,7 +6311,7 @@ a {
             #sections .section-wrap .section-09 .section-inner {
                 position: relative;
                 display: flex;
-                max-width: 1740px;
+                max-width: 1550px;
                 width: 100%;
                 margin: 0 auto;
                 flex-direction: column;
@@ -6347,7 +6350,7 @@ a {
             #sections .section-wrap .section-10 .section-inner {
                 position: relative;
                 display: flex;
-                max-width: 1740px;
+                max-width: 1550px;
                 width: 100%;
                 margin: 0 auto;
                 flex-direction: column;
