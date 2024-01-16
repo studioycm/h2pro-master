@@ -309,7 +309,23 @@ function init() {
             // console.log("dropEl to Y: ", (section2svg.getBoundingClientRect().height / 2) + (section1.offsetHeight - dropEl.offsetTop - (dropEl.offsetHeight / 2)));
             // console.log("mask1_4539_46481-vector: ", section2svgVector.getBoundingClientRect().width);
         }
-    });
+    })
+    .fromTo('#uniuns-group', {
+        opacity: 0,
+        scale: 0.1,
+        transformOrigin:"50% 50%"
+    }, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.3,
+        ease: "sine.out",
+        onStart : () => {
+            console.log('uniuns-group Start #section-wrap-01');
+        },
+        onComplete : () => {
+            console.log('uniuns-group Complete #section-wrap-01');
+        }
+    }, '>');
 
     
     const drop2TL = gsap.timeline({
@@ -404,20 +420,22 @@ function init() {
             toggleActions: 'play complete reverse reset',
             scrub: 1,
             // markers: {
-                startColor: "red",
-                endColor: "blue",
-                fontSize: "18px",
-                indent: 100,
-                fontWeight: "normal"
-            }
+            //     startColor: "red",
+            //     endColor: "blue",
+            //     fontSize: "18px",
+            //     indent: 100,
+            //     fontWeight: "normal"
+            // }
         }
     });
 
     drop3TL
     .fromTo('#drop', {
-        x: () => section3GraphItemSecond - dropEl.offsetWidth + 140,
-        y: () => section1.offsetHeight + section2.offsetHeight + section3GraphEnd - dropEl.offsetTop - 100,
+        x: () => section3GraphItemSecond - dropEl.offsetWidth + 175,
+        y: () => section1.offsetHeight + section2.offsetHeight + section3GraphEnd - dropEl.offsetTop + 5,
         opacity: 0,
+        width: 22,
+        height: 22,
     },{
         opacity: 1,
         // x: () => section3GraphItemSecond - dropEl.offsetWidth + 210,
@@ -425,6 +443,8 @@ function init() {
         duration: 0.3
     })
     .to('#drop',  {
+        width: 35,
+        height: 35,
         opacity: 1,
         x: () => 0,
         y: () => section1.offsetHeight + section2.offsetHeight + section3.offsetHeight - dropEl.offsetTop + (viewHeight / 2),
@@ -539,12 +559,12 @@ function init() {
             toggleActions: 'play complete reverse reset',
             scrub: 1,
             // markers: {
-                startColor: "green",
-                endColor: "black",
-                fontSize: "14px",
-                indent: 200,
-                fontWeight: "normal"
-            }
+            //     startColor: "green",
+            //     endColor: "black",
+            //     fontSize: "14px",
+            //     indent: 200,
+            //     fontWeight: "normal"
+            // }
         }
     });
 
