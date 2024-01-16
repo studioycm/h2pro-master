@@ -227,7 +227,7 @@ function init() {
             scrub: 1,
             pin: '#section-01',
             pinSpacing: false,
-            markers: true
+            // markers: true
         },
         ease: "sine.inOut",
     });
@@ -320,7 +320,7 @@ function init() {
             end: () => 'bottom-=100px top',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
-            markers: true,
+            // markers: true,
             
         }
     });
@@ -403,7 +403,7 @@ function init() {
             end: () => 'bottom-=100px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
-            markers: {
+            // markers: {
                 startColor: "red",
                 endColor: "blue",
                 fontSize: "18px",
@@ -538,7 +538,7 @@ function init() {
             end: () => 'center+=200px bottom',// viewHeight + 'px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
-            markers: {
+            // markers: {
                 startColor: "green",
                 endColor: "black",
                 fontSize: "14px",
@@ -599,7 +599,7 @@ function init() {
             end: () => 'bottom-=200px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
-            markers: true
+            // markers: true
         }
     });
 
