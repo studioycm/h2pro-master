@@ -56,6 +56,7 @@ function init() {
     const section4VideoButton = document.querySelector('#section-04 .video-container #play-video');
     const section5 = document.querySelector('#section-wrap-05');
     const section5DropTarget = document.querySelector('#section-05 .drop-target');
+    const section5LastCardImg = document.querySelector('#section-wrap-05 .grid .card:last-child .card_image .img-gif');
     const section6 = document.querySelector('#section-wrap-06');
     const section6Action = section6.querySelector('#section-06 .section-action');
     const section7 = document.querySelector('#section-wrap-07');
@@ -95,6 +96,7 @@ function init() {
         width: "35px",
         height: "35px",
         rotate: 0,
+        scale: 1,
         top: () => 200,
         left: () => window.innerWidth / 2 + 50,
     });
@@ -105,7 +107,7 @@ function init() {
     });
 
     
-
+    const dropElLeft = dropEl.offsetLeft;
     const dropElTop = dropEl.offsetTop;  
     // how to create an animation tween with multiple to() methods that will use a timeline and can be used in a click event:
     const webinarStickerTL = gsap.timeline({
@@ -268,13 +270,14 @@ function init() {
         },
     }, '>')
     .fromTo('#drop', {
-        top: () => (viewHeight * 0.5) + 200,
+        top: () => (viewHeight * 0.5) + 140,
         x: () => 0,
         y: () => 0,
         width: "35px",
         height: "35px",
         opacity: 0,
         rotate: 0,
+        scale: 1,
     }, {
         rotate: 0,
         opacity: 1,
@@ -312,12 +315,12 @@ function init() {
     })
     .fromTo('#uniuns-group', {
         opacity: 0,
-        scale: 0.1,
+        scale: 0.05,
         transformOrigin:"50% 50%"
     }, {
         opacity: 1,
         scale: 1,
-        duration: 0.3,
+        duration: 0.8,
         ease: "sine.out",
         onStart : () => {
             console.log('uniuns-group Start #section-wrap-01');
@@ -325,14 +328,14 @@ function init() {
         onComplete : () => {
             console.log('uniuns-group Complete #section-wrap-01');
         }
-    }, '>');
+    }, '>-=0.3');
 
     
     const drop2TL = gsap.timeline({
         scrollTrigger: {
             id: 'drop-2',
             trigger: '#section-wrap-02',
-            start: () => '300px top',
+            start: () => '100px top',
             end: () => 'bottom-=100px top',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
@@ -415,7 +418,7 @@ function init() {
         scrollTrigger: {
             id: 'drop-3',
             trigger: '#section-wrap-04',
-            start: () => '100px bottom',
+            start: () => 'top-=100px bottom',
             end: () => 'bottom-=100px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
@@ -476,12 +479,12 @@ function init() {
     }, '>')
     .to(section4BG, {
         clipPath: 'path("m -640 -1200 h 1600 c 800 0 1600 800 1600 1600 c 0 800 -800 1600 -1600 1600 c -800 0 -1600 -800 -1600 -1600 v -1600 z")',
-        duration: 3,
-        ease: "sine.inOut"
+        duration: 3.5,
+        ease: "none"
     }, '<')
     .to(section4BgImage1, {
-        objectPosition: "30px 475px",
-        duration: 2,
+        objectPosition: "30px 575px",
+        duration: 3,
         ease: "none"
     }, '<')
     .to(section4BgImage2, {
@@ -490,10 +493,10 @@ function init() {
     }, '>')
     .fromTo(section4Title, {
         opacity: 0,
-        y: -100,
+        y: -150,
     },{
         opacity: 1,
-        y: 0,
+        y: 50,
         duration: 0.8,
         ease: "none"
     }, '>')
@@ -507,10 +510,10 @@ function init() {
         ease: "none"
     }, '>')
     .fromTo(section4Title, {
-        y: 0,
+        y: 50,
     },{
-        y: 400,
-        duration: 2,
+        y: 450,
+        duration: 1.8,
         ease: "none"
     }, '<');
 
@@ -573,6 +576,7 @@ function init() {
         x: () => 0,
         y: () => section2.offsetHeight + section1.offsetHeight + section3.offsetHeight + (section4.offsetHeight / 3),
         opacity: 0,
+        scale: 1,
     }, {
         backgroundColor: "#1d7bc8",// "#1d7bc8"
         width: "70px",
@@ -583,8 +587,8 @@ function init() {
     .to('#drop', {
         // x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 0,
         // y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - dropEl.offsetTop,
-        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').getBoundingClientRect().left,
-        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 480,
+        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').getBoundingClientRect().left + 5,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 420,
         duration: 2.5,
         ease: "none",
         onStart : () => {
@@ -598,6 +602,7 @@ function init() {
         width: "0px",
         height: "0px",
         opacity: 0,
+        scale: 1,
         duration: 0.3,
         onStart : () => {
             console.log('drop 4 Start #section-wrap-05');
@@ -615,7 +620,7 @@ function init() {
         scrollTrigger: {
             id: 'drop-5',
             trigger: '#section-wrap-06',
-            start: () => 'top bottom',
+            start: () => 'top-=100px bottom',
             end: () => 'bottom-=200px bottom',
             toggleActions: 'play complete reverse reset',
             scrub: 1,
@@ -625,31 +630,37 @@ function init() {
 
     drop5TL
     .fromTo('#drop',{
-        x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 160,
-        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 430,
+        x: () => (section5LastCardImg.getBoundingClientRect().left + (section5LastCardImg.getBoundingClientRect().width / 2) - dropEl.offsetLeft) - 5,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 100,
         opacity: 0,
-        backgroundColor: "#1d7bc8", // "#1d7bc8"
+        width: "35px",
+        height: "35px",
+        scale: 0.5,
+        rotate: 45,
+        // transformOrigin: "50% 50%",
+        backgroundColor: "#518fd8", // "#1d7bc8"
     },{
-        rotate: 0,
+        scale: 1,
         opacity: 1,
-        duration: 0.3
+        duration: 1
     })
     .to('#drop', {
+        width: "50px",
+        height: "50px",
         backgroundColor: "#cccccc",
-        x: () => (section6.offsetWidth * 0.7) - dropEl.offsetLeft,
-        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight - dropEl.offsetTop + 250,
-        rotate: 45,
-        duration: 1,
+        x: () => (section5LastCardImg.getBoundingClientRect().left + (section5LastCardImg.getBoundingClientRect().width / 2) - dropEl.offsetLeft) - 15,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight - dropEl.offsetTop + 400,
+        duration: 1.5,
         ease: "power1.out"
-    }, '>')
+    }, '<+=0.5')
     .to('#drop', {
         opacity: 0,
         duration: 0.2
     }, '>')
     .fromTo(section6.querySelector('#section-06 > img.img'), {
-        clipPath: "path('m 1440 -100 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z')",
+        clipPath: "path('m 1440 -1600 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z')",
     },{
-        clipPath: 'path("m 1440 -1100 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 c 0 -1600 1600 -1600 1600 -1600 z")',
+        clipPath: 'path("m 1440 -1600 c 2000 0 2000 2000 2000 2000 c 0 2000 -2000 2000 -2000 2000 c -2000 0 -2000 -2000 -2000 -2000 c 0 -2000 2000 -2000 2000 -2000 z")',
         duration: 2,
         ease: "power1.out",
         onStart : () => {
@@ -658,7 +669,7 @@ function init() {
         onComplete : () => {
             console.log('drop 5 Complete #section-wrap-06');
         }
-    }, '>');
+    }, '<');
 
     const section6TL = gsap.timeline({
         scrollTrigger: {

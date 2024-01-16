@@ -1,0 +1,96 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "45.93.92.212",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "crane 45.93.92.212",
+            "database": "molhahar",
+            "username": "sqlycm",
+            "password": "y0n1@clu6vp5",
+            "connectionTimeout": 30
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "45.93.92.212",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "MolHaHar",
+            "database": "molhahar",
+            "username": "sqlycm",
+            "password": "y0n1@clu6vp5",
+            "connectionTimeout": 30
+        },
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "104.40.134.193",
+            "port": 1433,
+            "driver": "MSSQL",
+            "name": "ikc old",
+            "group": "ikc",
+            "database": "HailDB",
+            "username": "migycm",
+            "password": "y0n1@1kc"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled",
+                "ssl": {}
+            },
+            "previewLimit": 50,
+            "server": "109.207.79.121",
+            "port": 3307,
+            "name": "CPQ@local",
+            "driver": "MySQL",
+            "database": "cpqapp",
+            "username": "sqluser",
+            "connectionTimeout": 30,
+            "password": "Sqlu53r@61n3t"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "xprotocol",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "109.207.79.121",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "CPQ app",
+            "database": "cpqapp",
+            "username": "sqluser",
+            "password": "Sqlu53r@61n3t",
+            "connectionTimeout": 60
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled",
+                "ssl": {}
+            },
+            "previewLimit": 50,
+            "server": "phpstack-300039-2411268.cloudwaysapps.com/",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "ikc stage ",
+            "group": "ikc",
+            "database": "mpfpdnthws",
+            "username": "mpfpdnthws",
+            "password": "KHXuQUp64r",
+            "connectionTimeout": 60
+        }
+    ]
+}
