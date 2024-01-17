@@ -630,37 +630,37 @@ function init() {
 
     drop5TL
     .fromTo('#drop',{
-        x: () => (section5LastCardImg.getBoundingClientRect().left + (section5LastCardImg.getBoundingClientRect().width / 2) - dropEl.offsetLeft) - 5,
+        x: () => (section5LastCardImg.getBoundingClientRect().left + (section5LastCardImg.getBoundingClientRect().width / 2) - dropEl.offsetLeft) - 15,
         y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 100,
         opacity: 0,
         width: "35px",
         height: "35px",
-        scale: 0.5,
+        scale: 0.3,
         rotate: 45,
         // transformOrigin: "50% 50%",
         backgroundColor: "#518fd8", // "#1d7bc8"
     },{
         scale: 1,
         opacity: 1,
-        duration: 1
+        duration: 0.8
     })
     .to('#drop', {
         width: "50px",
         height: "50px",
         backgroundColor: "#cccccc",
-        x: () => (section5LastCardImg.getBoundingClientRect().left + (section5LastCardImg.getBoundingClientRect().width / 2) - dropEl.offsetLeft) - 15,
-        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight - dropEl.offsetTop + 400,
-        duration: 1.5,
+        x: () => (section5LastCardImg.getBoundingClientRect().left + (section5LastCardImg.getBoundingClientRect().width / 2) - dropEl.offsetLeft) - 65,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight - dropEl.offsetTop + 360,
+        duration: 2.2,
         ease: "power1.out"
-    }, '<+=0.5')
+    }, '>-=0.3')
     .to('#drop', {
         opacity: 0,
-        duration: 0.2
-    }, '>')
+        duration: 0.3
+    }, '>-=0.3')
     .fromTo(section6.querySelector('#section-06 > img.img'), {
-        clipPath: "path('m 1440 -1600 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z')",
+        clipPath: "path('m 1440 -70 c 35 0 35 35 35 35 c 0 35 -35 35 -35 35 c -35 0 -35 -35 -35 -35 c 0 -35 35 -35 35 -35 z')",
     },{
-        clipPath: 'path("m 1440 -1600 c 2000 0 2000 2000 2000 2000 c 0 2000 -2000 2000 -2000 2000 c -2000 0 -2000 -2000 -2000 -2000 c 0 -2000 2000 -2000 2000 -2000 z")',
+        clipPath: 'path("m 1440 -2000 c 2000 0 2000 2000 2000 2000 c 0 2000 -2000 2000 -2000 2000 c -2000 0 -2000 -2000 -2000 -2000 c 0 -2000 2000 -2000 2000 -2000 z")',
         duration: 2,
         ease: "power1.out",
         onStart : () => {
@@ -669,7 +669,7 @@ function init() {
         onComplete : () => {
             console.log('drop 5 Complete #section-wrap-06');
         }
-    }, '<');
+    }, '<-=0.3');
 
     const section6TL = gsap.timeline({
         scrollTrigger: {
@@ -728,7 +728,7 @@ function init() {
     drop6TL
     .fromTo('#drop', {
         x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53)),
-        y: () =>  section6.offsetTop + 100,
+        y: () =>  section6.offsetTop + 121,
         opacity: 0,
         autoAlpha: 1,
         visibility: 'visible',

@@ -4958,6 +4958,7 @@ a {
             .logo svg#logo_svg {
                 display: block;
                 z-index: 9;
+                filter: drop-shadow(1px 2px 2px rgb(3 3 3 / 0.2));
             }
 
             .logo #logo_svg .svg-char.color-green {
