@@ -647,12 +647,12 @@ function init() {
     .to('#drop', {
         width: "50px",
         height: "50px",
-        backgroundColor: "#cccccc",
+        backgroundColor: "#eef1f0",
         x: () => (section5LastCardImg.getBoundingClientRect().left + (section5LastCardImg.getBoundingClientRect().width / 2) - dropEl.offsetLeft) - 65,
         y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight - dropEl.offsetTop + 360,
-        duration: 2.2,
+        duration: 2,
         ease: "power1.out"
-    }, '>-=0.3')
+    }, '>-=0.1')
     .to('#drop', {
         opacity: 0,
         duration: 0.3
