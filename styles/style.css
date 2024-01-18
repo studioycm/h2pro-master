@@ -4042,8 +4042,9 @@ a {
                 display: flex;
                 flex-direction: column;
                 line-height: normal;
-                width: auto;
+                width: 100%;
                 margin-left: 0px;
+                flex: 1;
             }
             @media (max-width: 991px) {
             .column-29 {
