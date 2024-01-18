@@ -585,6 +585,7 @@ function init() {
         x: () => 0,
         y: () => section2.offsetHeight + section1.offsetHeight + section3.offsetHeight + (section4.offsetHeight / 3),
         opacity: 0,
+        rotate: 0,
     }, {
         backgroundColor: "#1d7bc8",// "#1d7bc8"
         width: "70px",
@@ -610,7 +611,7 @@ function init() {
         width: "0px",
         height: "0px",
         opacity: 0,
-        scale: 1,
+        rotate: 0,
         duration: 0.3,
         onStart : () => {
             console.log('drop 4 Start #section-wrap-05');
