@@ -6372,6 +6372,10 @@ a {
                 object-position: center;
             }
             
+            #o-lines_svg {
+                display: none;
+            }
+
             #sections .section-wrap .section-11 {
                 background-color: #f8fafa;
                 align-self: stretch;
