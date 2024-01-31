@@ -6618,6 +6618,7 @@ a {
             /* media queries */
 
             @media screen and (max-width: 1600px) {
+                /* header  */
                 #header {
                     padding: 0 20px;
                 }
@@ -6644,6 +6645,8 @@ a {
                     padding: 8px 20px;
                 }
                 
+                /* section-01 */
+
                 .div-3.hero-inner {
                     padding: 110px 20px 0;
                     gap: 20px;
