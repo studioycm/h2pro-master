@@ -106,7 +106,13 @@ function init() {
         objectPosition: "30px 375px",
     });
 
-    
+    gsap.set('#uniuns-group,#o-lines_svg', {
+        opacity: 1,
+        scale: 0,
+        transformOrigin:"50% 50%"
+    });
+
+
     const dropElLeft = dropEl.offsetLeft;
     const dropElTop = dropEl.offsetTop;  
     // how to create an animation tween with multiple to() methods that will use a timeline and can be used in a click event:
@@ -313,12 +319,7 @@ function init() {
             // console.log("mask1_4539_46481-vector: ", section2svgVector.getBoundingClientRect().width);
         }
     })
-    .fromTo('#uniuns-group', {
-        opacity: 0,
-        scale: 0.05,
-        transformOrigin:"50% 50%"
-    }, {
-        opacity: 1,
+    .to('#uniuns-group', {
         scale: 1,
         duration: 0.8,
         ease: "sine.out",
@@ -1013,6 +1014,19 @@ function init() {
         opacity: 1,
         duration: 0.2
     })
+    .fromTo('#o-lines_svg', {
+        scale: 0,
+    }, {
+        scale: 1,
+        duration: 0.8,
+        ease: "sine.out",
+        onStart : () => {
+            console.log('uniuns-group Start #section-wrap-01');
+        },
+        onComplete : () => {
+            console.log('uniuns-group Complete #section-wrap-01');
+        }
+    })
     .fromTo('#section-wrap-10 .content', {
         opacity: 0,
         y: () => 100
@@ -1021,7 +1035,7 @@ function init() {
         y: () => 0,
         duration: 0.3,
         ease: "power1.out"
-    })
+    }, '<')
     .to('#section-wrap-10 .content', {
         opacity: 0,
         y: () => -100,
@@ -1034,6 +1048,17 @@ function init() {
         clipPath: "path('m -400 -500 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')",
         duration: 1
     })
+    .to('#o-lines_svg', {
+        scale: 0,
+        duration: 0.3,
+        ease: "sine.out",
+        onStart : () => {
+            console.log('section 10 o-lines Start #section-wrap-10');
+        },
+        onComplete : () => {
+            console.log('section 10 o-lines Complete #section-wrap-10');
+        }
+    }, '<')
     .fromTo('#section-10 .img', {
         filter: "brightness(1)",
     }, {
