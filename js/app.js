@@ -1012,14 +1012,14 @@ function init() {
         opacity: 1,
     },{
         opacity: 1,
-        duration: 0.2
+        duration: 0.3
     })
     .fromTo('#o-lines_svg', {
         scale: 0,
     }, {
-        scale: 1,
-        duration: 0.8,
-        ease: "sine.out",
+        scale: 1.5,
+        duration: 1,
+        ease: "bounce.out",
         onStart : () => {
             console.log('uniuns-group Start #section-wrap-01');
         },
@@ -1033,24 +1033,18 @@ function init() {
     }, {
         opacity: 1,
         y: () => 0,
-        duration: 0.3,
+        duration: 0.25,
         ease: "power1.out"
-    }, '<')
+    }, '<+=0.5')
     .to('#section-wrap-10 .content', {
         opacity: 0,
         y: () => -100,
-        duration: 0.3,
+        duration: 0.25,
         ease: "power1.out"
-    }, '>+=0.6')
-    .fromTo('#section-10 .img', {
-        clipPath: "path('m 965 160 l 355 0 c 355 0 355 355 355 355 c 0 355 -355 355 -355 355 c -355 0 -355 -355 -355 -355 z')",
-    }, {
-        clipPath: "path('m -400 -500 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')",
-        duration: 1
-    })
+    }, '>+=0.8')
     .to('#o-lines_svg', {
         scale: 0,
-        duration: 0.3,
+        duration: 0.25,
         ease: "sine.out",
         onStart : () => {
             console.log('section 10 o-lines Start #section-wrap-10');
@@ -1059,6 +1053,12 @@ function init() {
             console.log('section 10 o-lines Complete #section-wrap-10');
         }
     }, '<')
+    .fromTo('#section-10 .img', {
+        clipPath: "path('m 965 160 l 355 0 c 355 0 355 355 355 355 c 0 355 -355 355 -355 355 c -355 0 -355 -355 -355 -355 z')",
+    }, {
+        clipPath: "path('m -400 -500 l 1600 0 c 1600 0 1600 1600 1600 1600 c 0 1600 -1600 1600 -1600 1600 c -1600 0 -1600 -1600 -1600 -1600 z')",
+        duration: 1
+    })
     .fromTo('#section-10 .img', {
         filter: "brightness(1)",
     }, {

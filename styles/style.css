@@ -6373,7 +6373,14 @@ a {
             }
             
             #o-lines_svg {
-                /* display: none; */
+                position: relative;
+                width: 100%;
+                max-width: 100vh;
+                height: auto;
+                display: block;
+            }
+            g#o-lines_path_group {
+                opacity: 0.4;
             }
 
             #sections .section-wrap .section-11 {
@@ -6493,8 +6500,8 @@ a {
                 display: flex;
                 width: 100%;
                 max-width: 100%;
-                justify-content: space-between;
-                gap: 20px;
+                justify-content: flex-start;
+                gap: 30px;
                 flex-wrap: nowrap;
                 align-items: center;
                 align-content: center;
@@ -6507,7 +6514,7 @@ a {
                 flex-direction: row;
                 flex-wrap: nowrap;
                 align-content: center;
-                align-items: center;
+                align-items: flex-start;
             }
             
             .events-grid .event-card .time-icon-img {}
@@ -6515,8 +6522,8 @@ a {
             .events-grid .event-card .event-icon {
                 position: relative;
                 display: block;
-                width: 30px;
-                height: 30px;
+                width: 20px;
+                height: 20px;
                 object-fit: contain;
                 object-position: center;
             }
@@ -6531,12 +6538,12 @@ a {
             .events-grid .event-card .event-location {
                 align-self: unset;
                 display: flex;
-                gap: 5px;
+                gap: 3px;
                 flex-direction: row;
                 flex-wrap: nowrap;
                 align-content: center;
                 justify-content: flex-start;
-                align-items: center;
+                align-items: flex-start;
             }
             
             .events-grid .event-card .event-location-name {
