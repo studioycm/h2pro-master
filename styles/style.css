@@ -6480,6 +6480,7 @@ a {
                 position: relative;
                 display: flex;
                 min-height: 400px;
+                height: 100%;
                 flex-grow: 1;
                 align-items: stretch;
                 padding: 240px 60px 40px 40px;
