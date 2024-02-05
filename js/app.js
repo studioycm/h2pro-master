@@ -17,8 +17,18 @@ requestAnimationFrame(raf);
 function init() {
     
 
-    const viewHeight = window.innerHeight;
+    let viewHeight = window.innerHeight;
+    let viewWidth = window.innerWidth;
     console.log('viewHeight: ', viewHeight);
+    console.log('viewWidth: ', viewWidth);
+    // change the viewHeight and viewWidth on window resize
+    window.addEventListener('resize', () => {
+        viewHeight = window.innerHeight;
+        viewWidth = window.innerWidth;
+        console.log('resized viewHeight: ', viewHeight);
+        console.log('resized viewWidth: ', viewWidth);
+    });
+
     const navMenu = document.querySelector('#nav-menu');
     const sectionsPart01 = document.querySelector('#wraps-part-01');
     const sectionsPart02 = document.querySelector('#wraps-part-02');
@@ -98,12 +108,12 @@ function init() {
         rotate: 0,
         scale: 1,
         top: () => 200,
-        left: () => window.innerWidth / 2 + 50,
+        left: () => (window.innerWidth / 2) - (dropEl.offsetWidth / 2),
     });
 
     gsap.set(section4BgImage1, {
         opacity: 0,
-        objectPosition: "30px 375px",
+        objectPosition: "0px 0px",
     });
 
     gsap.set('#uniuns-group,#o-lines_svg', {
@@ -114,6 +124,7 @@ function init() {
 
 
     const dropElLeft = dropEl.offsetLeft;
+    const dropElHalfWidth = dropEl.offsetWidth / 2;
     const dropElTop = dropEl.offsetTop;  
     // how to create an animation tween with multiple to() methods that will use a timeline and can be used in a click event:
     const webinarStickerTL = gsap.timeline({
@@ -239,8 +250,8 @@ function init() {
         },
         ease: "sine.inOut",
     });
-    const dropElHalfWidth = dropEl.offsetWidth / 2;
-    const section1clipPath = "path('m " + dropEl.offsetLeft + " " + dropElTop + " l " + dropElHalfWidth + " 0 c " + dropElHalfWidth + " 0 " + dropElHalfWidth + " " + dropElHalfWidth + " " + dropElHalfWidth + " " + dropElHalfWidth + " c 0 " + dropElHalfWidth + " -" + dropElHalfWidth + " " + dropElHalfWidth + " -" + dropElHalfWidth + " " + dropElHalfWidth + " c -" + dropElHalfWidth + " 0 -" + dropElHalfWidth + " -" + dropElHalfWidth + " -" + dropElHalfWidth + " -" + dropElHalfWidth + " z')";
+    
+    const section1clipPath = "path('m " + (dropEl.offsetLeft)  + " " + dropElTop + " l " + dropElHalfWidth + " 0 c " + dropElHalfWidth + " 0 " + dropElHalfWidth + " " + dropElHalfWidth + " " + dropElHalfWidth + " " + dropElHalfWidth + " c 0 " + dropElHalfWidth + " -" + dropElHalfWidth + " " + dropElHalfWidth + " -" + dropElHalfWidth + " " + dropElHalfWidth + " c -" + dropElHalfWidth + " 0 -" + dropElHalfWidth + " -" + dropElHalfWidth + " -" + dropElHalfWidth + " -" + dropElHalfWidth + " z')";
     
     section1TL
     .fromTo(['#section-01 .animated'], {
@@ -426,23 +437,23 @@ function init() {
         scrollTrigger: {
             id: 'drop-3',
             trigger: '#section-wrap-04',
-            start: () => 'top-=100px bottom',
-            end: () => 'bottom-=100px bottom',
+            start: () => 'top bottom',
+            end: () => 'top top',
             toggleActions: 'play complete reverse none',
-            scrub: 1,
-            // markers: {
-            //     startColor: "red",
-            //     endColor: "blue",
-            //     fontSize: "18px",
-            //     indent: 100,
-            //     fontWeight: "normal"
-            // }
+            scrub: true,
+            markers: {
+                startColor: "green",
+                endColor: "purple",
+                fontSize: "18px",
+                indent: 0,
+                fontWeight: "normal"
+            }
         }
     });
 
     drop3TL
     .fromTo('#drop', {
-        x: () => section3GraphItemSecond - dropEl.offsetWidth + 175,
+        x: () => section3GraphItemSecond - dropEl.offsetWidth + 249,
         y: () => section1.offsetHeight + section2.offsetHeight + section3GraphEnd - dropEl.offsetTop + 5,
         opacity: 0,
         width: 22,
@@ -463,17 +474,39 @@ function init() {
         y: () => section1.offsetHeight + section2.offsetHeight + section3.offsetHeight - dropEl.offsetTop + (viewHeight / 2),
         duration: 2,
         ease: "none"
-    })
+    });
+
+    const section4TL = gsap.timeline({ 
+        scrollTrigger: {
+            id: 'section4TL',
+            trigger: '#section-wrap-04',
+            start: () => 'top top',
+            end: () => 'bottom bottom',
+            toggleActions: 'play complete reverse none',
+            scrub: 1,
+            pin: '#section-04',
+            pinSpacing: false,
+            markers: {
+                startColor: "red",
+                endColor: "blue",
+                fontSize: "18px",
+                indent: 100,
+                fontWeight: "normal"
+            }
+        }
+    });
+
+    section4TL
     .to('#drop', {
         opacity: 0,
-        duration: 0.3,
+        duration: 0.5,
         onStart : () => {
             console.log('drop 3 Start drop fade #section-wrap-04');
         },
         onComplete : () => {
             console.log('drop 3 Complete drop fade #section-wrap-04');
         }
-    }, '>')
+    })
     .fromTo(section4BgImage1, {
         opacity: 0,
     },{
@@ -481,51 +514,44 @@ function init() {
         duration: 0.3
     }, '<')
     .fromTo(section4BG, {
-        clipPath: () => 'path("m ' + dropEl.offsetLeft + ' ' + (viewHeight / 2) + ' h 17.5 c 8.75 0 17.5 8.75 17.5 17.5 c 0 8.75 -8.75 17.5 -17.5 17.5 c -8.75 0 -17.5 -8.75 -17.5 -17.5 v -17.5 z")',
+        clipPath: () => 'path("m ' + (dropEl.offsetLeft ) + ' ' + ((viewHeight / 2) - 90) + ' h 17.5 c 8.75 0 17.5 8.75 17.5 17.5 c 0 8.75 -8.75 17.5 -17.5 17.5 c -8.75 0 -17.5 -8.75 -17.5 -17.5 v -17.5 z")',
         opacity: 0
     },{
         opacity: 1,
         duration: 0.3
     }, '>')
     .to(section4BG, {
-        clipPath: 'path("m -640 -1200 h 1600 c 800 0 1600 800 1600 1600 c 0 800 -800 1600 -1600 1600 c -800 0 -1600 -800 -1600 -1600 v -1600 z")',
+        clipPath: 'path("m 0 -' + (viewWidth - viewHeight) + ' h ' + (viewWidth / 2) + ' c ' + (viewWidth / 4) + ' 0 ' + (viewWidth / 2) + ' ' + (viewWidth / 4) + ' ' + (viewWidth / 2) + ' ' + (viewWidth / 2) + ' c 0 ' + (viewWidth / 4) + ' -' + (viewWidth / 4) + ' ' + (viewWidth / 2) + ' -' + (viewWidth / 2) + ' ' + (viewWidth / 2) + ' c -' + (viewWidth / 4) + ' 0 -' + (viewWidth / 2) + ' -' + (viewWidth / 4) + ' -' + (viewWidth / 2) + ' -' + (viewWidth / 2) + ' v -' + (viewWidth / 2) + ' z")',
         duration: 3.5,
-        ease: "none"
-    }, '<')
-    .to(section4BgImage1, {
-        objectPosition: "30px 575px",
-        duration: 3,
-        ease: "none"
+        ease: "sine.out"
     }, '<')
     .to(section4BgImage2, {
         opacity: 1,
-        duration: 0.3
-    }, '>')
+        duration: 1.2
+    }, '>+=0.5')
     .fromTo(section4Title, {
         opacity: 0,
-        y: -150,
+        y: -100,
     },{
         opacity: 1,
-        y: 50,
-        duration: 0.8,
-        ease: "none"
+        y: 0,
+        duration: 1,
+        ease: "sine.out"
     }, '>')
     .fromTo(section4Content, {
-        opacity: 1,
-        y: 500,
+        opacity: 0,
+        y: viewHeight,
     },{
         opacity: 1,
         y: 0,
         duration: 2,
-        ease: "none"
+        ease: "sine.out"
     }, '>')
-    .fromTo(section4Title, {
-        y: 50,
-    },{
-        y: 450,
-        duration: 1.8,
-        ease: "none"
-    }, '<');
+    .to(section4Content, {
+        y: -(viewHeight / 2),
+        duration: 2,
+        ease: "sine.in"
+    }, '>+=2');
 
     // add event listener to the play video button to play the video when clicked
     section4VideoButton.addEventListener('click', () => {
