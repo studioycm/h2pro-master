@@ -3701,7 +3701,7 @@ a {
             }
             }
             .div-207 {
-            gap: 40px;
+            gap: 100px;
             display: flex;
             }
             @media (max-width: 991px) {
@@ -6432,7 +6432,7 @@ a {
                 flex-direction: column;
                 align-content: center;
                 justify-content: center;
-                
+
             }
             body #sections .section-wrap.sh-125 > .section {
                 min-height: 125vh;
@@ -6608,7 +6608,7 @@ a {
                 max-width: 95%;
                 align-self: flex-start;
                 align-items: center;
-                padding: 13px 20px;
+                padding: 13px 50px;
                 font: 400 22px Geologica, sans-serif;
                 position: relative;
                 z-index: 99999;
