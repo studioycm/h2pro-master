@@ -3701,8 +3701,10 @@ a {
             }
             }
             .div-207 {
-            gap: 100px;
-            display: flex;
+                gap: 100px;
+                display: flex;
+                align-content: stretch;
+                align-items: stretch;
             }
             @media (max-width: 991px) {
             .div-207 {
@@ -6434,7 +6436,7 @@ a {
                 justify-content: center;
 
             }
-            body #sections .section-wrap.sh-125 > .section {
+            body #sections .section-wrap.sh-125 .section {
                 min-height: 125vh;
                 height: 100%;
                 display: flex;
@@ -6446,6 +6448,22 @@ a {
                 flex-wrap: nowrap;
                 position: relative;
             }
+
+            body #sections #section-wrap-08.sh-125,
+            body #sections #section-wrap-08-02.sh-125 {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            body #sections .section-wrap.sh-125 #section-05,
+            body #sections .section-wrap.sh-125 #section-08,
+            body #sections .section-wrap.sh-125 #section-08-02 {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
             body #sections .section-wrap.sh-115 {
                 min-height: 115vh;
                 
@@ -6468,6 +6486,46 @@ a {
             }
             body #sections .section-wrap.sh-150 {
                 min-height: 150vh;               
+            }
+
+            body #sections .section-wrap.sh-155 {
+                min-height: 155vh;               
+            }
+
+            body #sections .section-wrap.sh-160 {
+                min-height: 160vh;               
+            }
+
+            body #sections .section-wrap.sh-165 {
+                min-height: 165vh;               
+            }
+
+            body #sections .section-wrap.sh-170 {
+                min-height: 170vh;               
+            }
+
+            body #sections .section-wrap.sh-175 {
+                min-height: 175vh;               
+            }
+
+            body #sections .section-wrap.sh-180 {
+                min-height: 180vh;               
+            }
+
+            body #sections .section-wrap.sh-185 {
+                min-height: 185vh;               
+            }
+
+            body #sections .section-wrap.sh-190 {
+                min-height: 190vh;               
+            }
+
+            body #sections .section-wrap.sh-195 {
+                min-height: 195vh;               
+            }
+
+            body #sections .section-wrap.sh-200 {
+                min-height: 200vh;               
             }
             
             .events-grid {

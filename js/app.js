@@ -678,13 +678,13 @@ function init() {
             scrub: 1,
             pin: '#section-05',
             pinSpacing: false,
-            markers: {
-                startColor: "red",
-                endColor: "blue",
-                fontSize: "18px",
-                indent: 100,
-                fontWeight: "normal"
-            }
+            // markers: {
+            //     startColor: "red",
+            //     endColor: "blue",
+            //     fontSize: "18px",
+            //     indent: 100,
+            //     fontWeight: "normal"
+            // }
         }
     });
 
@@ -837,8 +837,8 @@ function init() {
     .to('#drop', {
         width: "45px",
         height: "45px",
-        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53) ) - section7Action.offsetLeft - 15,
-        y: () =>  section1.offsetHeight + section2.offsetHeight + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section7Action.getBoundingClientRect().top - 270,
+        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53) ) - section7Action.offsetLeft - 155,
+        y: () =>  section1.offsetHeight + section2.offsetHeight + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight + section7Action.getBoundingClientRect().top - 210,
         rotate: 135,
         duration: 2,
         ease: "none",
@@ -1006,6 +1006,50 @@ function init() {
 
     // set timeline with scrollTrigger for section wrap 09, trigger start when leaving section-wrap-09 and use it as timeline for fromTo animation for the section wrap 09 element,
     // the anime will be from - clipPath  
+
+
+
+
+    const section8TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'section8TL',
+            trigger: '#section-wrap-08',
+            start: () => 'top top',
+            end: () => 'bottom bottom',// viewHeight + 'px bottom',
+            toggleActions: 'play complete reverse none',
+            scrub: 1,
+            pin: '#section-08',
+            pinSpacing: false,
+            // markers: {
+            //     startColor: "red",
+            //     endColor: "blue",
+            //     fontSize: "18px",
+            //     indent: 100,
+            //     fontWeight: "normal"
+            // }
+        }
+    });
+
+    const section82TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'section8-2TL',
+            trigger: '#section-wrap-08-02',
+            start: () => 'top top',
+            end: () => 'bottom bottom',// viewHeight + 'px bottom',
+            toggleActions: 'play complete reverse none',
+            scrub: 1,
+            pin: '#section-08-02',
+            pinSpacing: false,
+            markers: {
+                startColor: "red",
+                endColor: "blue",
+                fontSize: "18px",
+                indent: 100,
+                fontWeight: "normal"
+            }
+        }
+    });
+
     const section9TL = gsap.timeline({
         scrollTrigger: {
             id: 'section-09-out',
