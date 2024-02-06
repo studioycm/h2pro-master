@@ -6201,6 +6201,21 @@ a {
                 justify-content: center;
             }
             
+            
+            #section-wrap-08::before {
+                box-shadow: inset 0px 1px 0px 0px rgba(220,220,220,1);
+                content: "";
+                position: absolute;
+                display: block;
+                width: 80%;
+                max-width: 1550px;
+                height: 1px;
+                top: auto;
+                bottom: 0;
+                left: 50%;
+                translate: -50% 0;
+            }
+
             .div-155 {
                 display: flex;
                 width: 100%;
