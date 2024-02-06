@@ -4048,6 +4048,7 @@ a {
                 width: 100%;
                 margin-left: 0px;
                 flex: 1;
+                gap: 25px;
             }
             @media (max-width: 991px) {
             .column-29 {
@@ -6413,9 +6414,15 @@ a {
                 color: var(--Black, #2a2e32);
                 letter-spacing: -0.4px;
                 align-self: stretch;
-                margin-top: 16px;
+                margin-top: 0px;
                 font: 700 20px/150% Geologica, sans-serif;
                 min-height: 100px;
+            }
+
+            .div-216, .div-222, .div-228 {
+                margin-top: 0px;
+                padding-top: 15px;
+                border-top: 1px solid #dddddd;
             }
 
 
