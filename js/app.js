@@ -1040,13 +1040,13 @@ function init() {
             scrub: 1,
             pin: '#section-08-02',
             pinSpacing: false,
-            markers: {
-                startColor: "red",
-                endColor: "blue",
-                fontSize: "18px",
-                indent: 100,
-                fontWeight: "normal"
-            }
+            // markers: {
+            //     startColor: "red",
+            //     endColor: "blue",
+            //     fontSize: "18px",
+            //     indent: 100,
+            //     fontWeight: "normal"
+            // }
         }
     });
 
@@ -1172,6 +1172,49 @@ function init() {
         filter: "brightness(0.8)",
         duration: 0.5
     }, '<');
+
+
+    const section11TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'section11TL',
+            trigger: '#section-wrap-11',
+            start: () => 'top top',
+            end: () => 'bottom bottom',// viewHeight + 'px bottom',
+            toggleActions: 'play complete reverse none',
+            scrub: 1,
+            pin: '#section-11',
+            pinSpacing: false,
+            // markers: {
+            //     startColor: "red",
+            //     endColor: "blue",
+            //     fontSize: "18px",
+            //     indent: 100,
+            //     fontWeight: "normal"
+            // }
+        }
+    });
+
+    const section12TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'section12TL',
+            trigger: '#section-wrap-12',
+            start: () => 'top top',
+            end: () => 'bottom bottom',// viewHeight + 'px bottom',
+            toggleActions: 'play complete reverse none',
+            scrub: 1,
+            pin: '#section-12',
+            pinSpacing: false,
+            markers: {
+                startColor: "red",
+                endColor: "blue",
+                fontSize: "18px",
+                indent: 100,
+                fontWeight: "normal"
+            }
+        }
+    });
+
+
 
     const darkEls = gsap.utils.toArray(document.querySelectorAll('.dark-bg'));
     darkEls.forEach((darkEl, index) => {
