@@ -6409,6 +6409,14 @@ a {
                 max-width: 100%;
             }
 
+            .div-215, .div-221, .div-227 {
+                color: var(--Black, #2a2e32);
+                letter-spacing: -0.4px;
+                align-self: stretch;
+                margin-top: 16px;
+                font: 700 20px/150% Geologica, sans-serif;
+                min-height: 100px;
+            }
 
 
             #sections .section-wrap .section-12 {
