@@ -441,13 +441,13 @@ function init() {
             end: () => 'top top',
             toggleActions: 'play complete reverse none',
             scrub: true,
-            markers: {
-                startColor: "green",
-                endColor: "purple",
-                fontSize: "18px",
-                indent: 0,
-                fontWeight: "normal"
-            }
+            // markers: {
+            //     startColor: "green",
+            //     endColor: "purple",
+            //     fontSize: "18px",
+            //     indent: 0,
+            //     fontWeight: "normal"
+            // }
         }
     });
 
@@ -486,13 +486,13 @@ function init() {
             scrub: 1,
             pin: '#section-04',
             pinSpacing: false,
-            markers: {
-                startColor: "red",
-                endColor: "blue",
-                fontSize: "18px",
-                indent: 100,
-                fontWeight: "normal"
-            }
+            // markers: {
+            //     startColor: "red",
+            //     endColor: "blue",
+            //     fontSize: "18px",
+            //     indent: 100,
+            //     fontWeight: "normal"
+            // }
         }
     });
 
@@ -522,7 +522,7 @@ function init() {
     }, '>')
     .to(section4BG, {
         clipPath: 'path("m 0 -' + (viewWidth - viewHeight) + ' h ' + (viewWidth / 2) + ' c ' + (viewWidth / 4) + ' 0 ' + (viewWidth / 2) + ' ' + (viewWidth / 4) + ' ' + (viewWidth / 2) + ' ' + (viewWidth / 2) + ' c 0 ' + (viewWidth / 4) + ' -' + (viewWidth / 4) + ' ' + (viewWidth / 2) + ' -' + (viewWidth / 2) + ' ' + (viewWidth / 2) + ' c -' + (viewWidth / 4) + ' 0 -' + (viewWidth / 2) + ' -' + (viewWidth / 4) + ' -' + (viewWidth / 2) + ' -' + (viewWidth / 2) + ' v -' + (viewWidth / 2) + ' z")',
-        duration: 3.5,
+        duration: 2.5,
         ease: "sine.out"
     }, '<')
     .to(section4BgImage2, {
@@ -531,7 +531,7 @@ function init() {
     }, '>+=0.5')
     .fromTo(section4Title, {
         opacity: 0,
-        y: -100,
+        y: -80,
     },{
         opacity: 1,
         y: 0,
@@ -551,7 +551,12 @@ function init() {
         y: -(viewHeight / 2),
         duration: 2,
         ease: "sine.in"
-    }, '>+=2');
+    }, '>+=1.5')
+    .to(section4BG, {
+        clipPath: 'path("m 0 -' + (viewWidth - viewHeight + 300) + ' h ' + (viewWidth / 2) + ' c ' + (viewWidth / 4) + ' 0 ' + (viewWidth / 2) + ' ' + (viewWidth / 4) + ' ' + (viewWidth / 2) + ' ' + (viewWidth / 2) + ' c 0 ' + (viewWidth / 4) + ' -' + (viewWidth / 4) + ' ' + (viewWidth / 2) + ' -' + (viewWidth / 2) + ' ' + (viewWidth / 2) + ' c -' + (viewWidth / 4) + ' 0 -' + (viewWidth / 2) + ' -' + (viewWidth / 4) + ' -' + (viewWidth / 2) + ' -' + (viewWidth / 2) + ' v -' + (viewWidth / 2) + ' z")',
+        duration: 0.5,
+        ease: "sine.out"
+    }, '>+=1.5');
 
     // add event listener to the play video button to play the video when clicked
     section4VideoButton.addEventListener('click', () => {
@@ -594,16 +599,16 @@ function init() {
             id: 'drop-4',
             trigger: '#section-wrap-05',
             start: () => 'top bottom',
-            end: () => 'center+=200px bottom',// viewHeight + 'px bottom',
+            end: () => 'center bottom',// viewHeight + 'px bottom',
             toggleActions: 'play complete reverse none',
             scrub: 1,
-            // markers: {
-            //     startColor: "green",
-            //     endColor: "black",
-            //     fontSize: "14px",
-            //     indent: 200,
-            //     fontWeight: "normal"
-            // }
+            markers: {
+                startColor: "green",
+                endColor: "black",
+                fontSize: "14px",
+                indent: 200,
+                fontWeight: "normal"
+            }
         }
     });
 
@@ -651,6 +656,27 @@ function init() {
             section5DropTarget.classList.remove('hover');
         }
     });
+
+    const section5TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'section5TL',
+            trigger: '#section-wrap-05',
+            start: () => 'top top',
+            end: () => 'center bottom',// viewHeight + 'px bottom',
+            toggleActions: 'play complete reverse none',
+            scrub: 1,
+            pin: '#section-05',
+            pinSpacing: true,
+            markers: {
+                startColor: "red",
+                endColor: "blue",
+                fontSize: "18px",
+                indent: 100,
+                fontWeight: "normal"
+            }
+        }
+    });
+
 
     const drop5TL = gsap.timeline({
         scrollTrigger: {
