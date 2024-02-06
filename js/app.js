@@ -65,6 +65,7 @@ function init() {
     const section4Video = document.querySelector('#section-04 #section-04_video');
     const section4VideoButton = document.querySelector('#section-04 .video-container #play-video');
     const section5 = document.querySelector('#section-wrap-05');
+    const section5InnerSection = document.querySelector('#section-wrap-05 #section-05');
     const section5DropTarget = document.querySelector('#section-05 .drop-target');
     const section5LastCardImg = document.querySelector('#section-wrap-05 .grid .card:last-child .card_image .img-gif');
     const section6 = document.querySelector('#section-wrap-06');
@@ -553,10 +554,17 @@ function init() {
         ease: "sine.in"
     }, '>+=1.5')
     .to(section4BG, {
-        clipPath: 'path("m 0 -' + (viewWidth - viewHeight + 300) + ' h ' + (viewWidth / 2) + ' c ' + (viewWidth / 4) + ' 0 ' + (viewWidth / 2) + ' ' + (viewWidth / 4) + ' ' + (viewWidth / 2) + ' ' + (viewWidth / 2) + ' c 0 ' + (viewWidth / 4) + ' -' + (viewWidth / 4) + ' ' + (viewWidth / 2) + ' -' + (viewWidth / 2) + ' ' + (viewWidth / 2) + ' c -' + (viewWidth / 4) + ' 0 -' + (viewWidth / 2) + ' -' + (viewWidth / 4) + ' -' + (viewWidth / 2) + ' -' + (viewWidth / 2) + ' v -' + (viewWidth / 2) + ' z")',
-        duration: 0.5,
+        // clipPath: 'path("m 0 -' + (viewWidth - viewHeight) + ' h ' + (viewWidth / 2) + ' c ' + (viewWidth / 4) + ' 0 ' + (viewWidth / 2) + ' ' + (viewWidth / 4) + ' ' + (viewWidth / 2) + ' ' + (viewWidth / 2) + ' c 0 ' + (viewWidth / 4) + ' -' + (viewWidth / 4) + ' ' + (viewWidth / 2) + ' -' + (viewWidth / 2) + ' ' + (viewWidth / 2) + ' c -' + (viewWidth / 4) + ' 0 -' + (viewWidth / 2) + ' -' + (viewWidth / 4) + ' -' + (viewWidth / 2) + ' -' + (viewWidth / 2) + ' v -' + (viewWidth / 2) + ' z")',
+        clipPath: 'path("m ' + dropEl.offsetLeft + ' ' + ((viewHeight / 2 ) + 140) + ' h 35 c 17.5 0 35 17.5 35 35 c 0 17.5 -17.5 35 -35 35 c -17.5 0 -35 -17.5 -35 -35 v -35 z")',
+        duration: 1,
         ease: "sine.out"
-    }, '>+=1.5');
+    }, '>+=1.5')
+    .to(section4Content, {
+        opacity: 0,
+        yPercent: -100,
+        duration: 1,
+        ease: "sine.out"
+    }, '<-=0.5');
 
     // add event listener to the play video button to play the video when clicked
     section4VideoButton.addEventListener('click', () => {
@@ -602,34 +610,37 @@ function init() {
             end: () => 'center bottom',// viewHeight + 'px bottom',
             toggleActions: 'play complete reverse none',
             scrub: 1,
-            markers: {
-                startColor: "green",
-                endColor: "black",
-                fontSize: "14px",
-                indent: 200,
-                fontWeight: "normal"
-            }
+            // markers: {
+            //     startColor: "green",
+            //     endColor: "black",
+            //     fontSize: "14px",
+            //     indent: 200,
+            //     fontWeight: "normal"
+            // }
         }
     });
 
     drop4TL
-    .fromTo('#drop', {
-        x: () => 0,
-        y: () => section2.offsetHeight + section1.offsetHeight + section3.offsetHeight + (section4.offsetHeight / 3),
-        opacity: 0,
-        rotate: 0,
-    }, {
+    .set('#drop', {
         backgroundColor: "#1d7bc8",// "#1d7bc8"
         width: "70px",
         height: "70px",
-        opacity: 1,
+        x: () => 0,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3.offsetHeight + section4.offsetHeight - (section4InnerSection.offsetHeight),
+    })
+    .to(section4BG, {
+        opacity: 0,
         duration: 0.3
     })
+    .to('#drop', {
+        opacity: 1,
+        duration: 0.3
+    }, '<-=0.3')
     .to('#drop', {
         // x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetLeft + 0,
         // y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - dropEl.offsetTop,
         x: () => -(dropEl.offsetLeft) + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').getBoundingClientRect().left + 5,
-        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 420,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + document.querySelector('#section-wrap-05 .grid .card:first-child .card_image img.img-gif').offsetTop + 100,
         duration: 2.5,
         ease: "none",
         onStart : () => {
@@ -662,11 +673,11 @@ function init() {
             id: 'section5TL',
             trigger: '#section-wrap-05',
             start: () => 'top top',
-            end: () => 'center bottom',// viewHeight + 'px bottom',
+            end: () => 'bottom-=100px bottom',// viewHeight + 'px bottom',
             toggleActions: 'play complete reverse none',
             scrub: 1,
             pin: '#section-05',
-            pinSpacing: true,
+            pinSpacing: false,
             markers: {
                 startColor: "red",
                 endColor: "blue",
@@ -692,8 +703,8 @@ function init() {
 
     drop5TL
     .fromTo('#drop',{
-        x: () => (section5LastCardImg.getBoundingClientRect().left + (section5LastCardImg.getBoundingClientRect().width / 2) - dropEl.offsetLeft) - 15,
-        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + (section5.offsetHeight / 2) - 100,
+        x: () => (section5LastCardImg.getBoundingClientRect().left + (section5LastCardImg.getBoundingClientRect().width / 2) - dropEl.offsetLeft) - 10,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight - section5InnerSection.offsetHeight + section5LastCardImg.getBoundingClientRect().top - 40,
         opacity: 0,
         width: 5,
         height: 5,
