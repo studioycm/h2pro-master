@@ -227,14 +227,26 @@ a {
     opacity: 0;
     pointer-events: none;
     transition: opacity 250ms linear;
-    box-shadow: 2px 2px 5px 0px;
+    filter: drop-shadow(0px 3px 2px #00000044);
 }
 
-.definitions-calculator-categories-info-icon:hover
-  + .definitions-calculator-categories-info-text {
+.definitions-calculator-categories-info:hover .definitions-calculator-categories-info-text,
+.definitions-calculator-categories-info-icon:hover + .definitions-calculator-categories-info-text {
   opacity: 1;
 }
 
+.definitions-calculator-categories-info-text::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    left: 20px;
+    bottom: -20px;
+    top: auto;
+    clip-path: polygon(0 0, 100% 0, 0 100%, 0 0);
+}
 
 .definitions-calculator-consumer,
 .definitions-calculator-developer {

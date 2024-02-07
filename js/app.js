@@ -702,7 +702,7 @@ function init() {
     drop5TL
     .fromTo('#drop',{
         x: () => (section5LastCardImg.getBoundingClientRect().left + (section5LastCardImg.getBoundingClientRect().width / 2) - dropEl.offsetLeft) - 10,
-        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight - section5InnerSection.offsetHeight + section5LastCardImg.getBoundingClientRect().bottom - 40,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight - section5InnerSection.offsetHeight + section5LastCardImg.getBoundingClientRect().bottom - 20,
         opacity: 0,
         width: 5,
         height: 5,
@@ -714,7 +714,7 @@ function init() {
         height: 25,
         rotate: 45,
         opacity: 1,
-        duration: 0.5,
+        duration: 0.2,
         ease: "power1.out"
     })
     .to('#drop', {
@@ -723,7 +723,7 @@ function init() {
         backgroundColor: "#eef1f0",
         x: () => (section5LastCardImg.getBoundingClientRect().left + (section5LastCardImg.getBoundingClientRect().width / 2) - dropEl.offsetLeft) - 65,
         y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight - dropEl.offsetTop + 360,
-        duration: 2.3,
+        duration: 2.5,
         ease: "power1.out"
     })
     .to('#drop', {
@@ -1351,7 +1351,7 @@ function init() {
                 onComplete : () => {
                     console.log(index + ' - ' + wrap.id + ' onComplete animated');
                 }
-            }, '<+=0.1');
+            }, '<+=0.05');
         });
         
     });
