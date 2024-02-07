@@ -4964,7 +4964,7 @@ a {
             .logo svg#logo_svg {
                 display: block;
                 z-index: 9;
-                filter: drop-shadow(1px 2px 2px rgb(3 3 3 / 0.2));
+                filter: drop-shadow(1px 2px 3px rgb(3 3 3 / 0.2));
             }
 
             .logo #logo_svg .svg-char.color-green {
@@ -5834,7 +5834,6 @@ a {
 
             #section-05 .grid.animated-icons .card.hover .card_image img.img-svg,
             #section-05 .grid.animated-icons .card:hover .card_image img.img-svg {
-                filter: hue-rotate(-120deg) brightness(1.35) saturate(0.8);
                 opacity: 1;
             }
             

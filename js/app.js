@@ -360,7 +360,7 @@ function init() {
     drop2TL
     .fromTo('#drop', {
         // x: () => -(dropEl.offsetLeft - section2svgVector.getBoundingClientRect().left - (section2svgVector.getBoundingClientRect().width / 2) + (dropEl.offsetWidth / 2) ),
-        // y: () => section2svgVector.getBoundingClientRect().top - dropEl.getBoundingClientRect().top + (section2svgVector.getBoundingClientRect().height / 2) - (dropEl.offsetHeight / 2),        
+        // y: () => section2svgVector.getBoundingClientRect().top - dropEl.getBoundingClientRect().top + (section2svgVector.getBoundingClientRect().height / 2) - (dropEl.offsetHeight / 2),
         rotate: 0,
         width: 35,
         height: 35,
@@ -607,7 +607,7 @@ function init() {
             id: 'drop-4',
             trigger: '#section-wrap-05',
             start: () => 'top bottom',
-            end: () => 'center bottom',// viewHeight + 'px bottom',
+            end: () => 'center+=100px bottom',// viewHeight + 'px bottom',
             toggleActions: 'play complete reverse none',
             scrub: 1,
             // markers: {
@@ -651,8 +651,6 @@ function init() {
         }
     })
     .to('#drop', {
-        width: "0px",
-        height: "0px",
         opacity: 0,
         rotate: 0,
         duration: 0.3,
@@ -693,8 +691,8 @@ function init() {
         scrollTrigger: {
             id: 'drop-5',
             trigger: '#section-wrap-06',
-            start: () => 'top-=100px bottom',
-            end: () => 'bottom-=200px bottom',
+            start: () => 'top bottom',
+            end: () => 'center bottom',
             toggleActions: 'play complete reverse none',
             scrub: 1,
             // markers: true
@@ -704,7 +702,7 @@ function init() {
     drop5TL
     .fromTo('#drop',{
         x: () => (section5LastCardImg.getBoundingClientRect().left + (section5LastCardImg.getBoundingClientRect().width / 2) - dropEl.offsetLeft) - 10,
-        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight - section5InnerSection.offsetHeight + section5LastCardImg.getBoundingClientRect().top - 40,
+        y: () => section2.offsetHeight + section1.offsetHeight + section3GraphEnd + section4.offsetHeight + section5.offsetHeight - section5InnerSection.offsetHeight + section5LastCardImg.getBoundingClientRect().bottom - 40,
         opacity: 0,
         width: 5,
         height: 5,
