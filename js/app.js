@@ -651,6 +651,8 @@ function init() {
         }
     })
     .to('#drop', {
+        width: "70px",
+        height: "70px",
         opacity: 0,
         rotate: 0,
         duration: 0.3,
@@ -1202,13 +1204,13 @@ function init() {
             scrub: 1,
             pin: '#section-12',
             pinSpacing: false,
-            markers: {
-                startColor: "red",
-                endColor: "blue",
-                fontSize: "18px",
-                indent: 100,
-                fontWeight: "normal"
-            }
+            // markers: {
+            //     startColor: "red",
+            //     endColor: "blue",
+            //     fontSize: "18px",
+            //     indent: 100,
+            //     fontWeight: "normal"
+            // }
         }
     });
 
