@@ -519,12 +519,12 @@ function init() {
         }, '>')
         .to(section4BG, {
             clipPath: 'path("m 0 -' + (viewWidth - viewHeight) + ' h ' + (viewWidth / 2) + ' c ' + (viewWidth / 4) + ' 0 ' + (viewWidth / 2) + ' ' + (viewWidth / 4) + ' ' + (viewWidth / 2) + ' ' + (viewWidth / 2) + ' c 0 ' + (viewWidth / 4) + ' -' + (viewWidth / 4) + ' ' + (viewWidth / 2) + ' -' + (viewWidth / 2) + ' ' + (viewWidth / 2) + ' c -' + (viewWidth / 4) + ' 0 -' + (viewWidth / 2) + ' -' + (viewWidth / 4) + ' -' + (viewWidth / 2) + ' -' + (viewWidth / 2) + ' v -' + (viewWidth / 2) + ' z")',
-            duration: 2.5,
+            duration: 3.5,
             ease: "sine.out"
         }, '<')
         .to(section4BgImage2, {
             opacity: 1,
-            duration: 1.2
+            duration: 1.5
         }, '>+=0.5')
         .fromTo(section4Title, {
             opacity: 0,
@@ -950,62 +950,59 @@ function init() {
 
 
 
-
-    // const drop7TL = gsap.timeline({
-    //     scrollTrigger: {
-    //         id: 'drop-7',
-    //         trigger: '#section-wrap-08',
-    //         start: () => '50px bottom',
-    //         end: () => 'bottom top',
-    //         toggleActions: 'play complete none reset',
-    //         // scrub: 2,
-    //         // markers: true,
-    //         onEnter: () => {
-    //             console.log('dropTL 7 enter - dropEl.offsetLeft: ', dropEl.offsetLeft);
-    //             console.log('dropTL 7 enter - section7Action.Rect().left: ', section7Action.getBoundingClientRect().left);                   
-    //         },
-    //     }
-    // });
-
-
-
-    // drop7TL
-    // .set('#drop', {
-    //     x: () =>  -(dropEl.offsetLeft - section7Action.getBoundingClientRect().left),
-    //     y: () =>  section7.offsetTop - dropEl.offsetTop + section7Action.getBoundingClientRect().top,
-    //     opacity: 0,
-    //     rotate: 135,
-    //     width: "45px",
-    //     height: "45px",
-    // })
-    // .to('#drop',{
-    //     opacity: 1,
-    //     duration: 0.3,
-    //     onStart : () => {
-    //         console.log('drop 7 - dropEl.offsetLeft: ', dropEl.offsetLeft);
-    //         console.log('drop 7 - section7Action.getBoundingClientRect().left: ', section7Action.getBoundingClientRect().left);
-    //     }
-    // })
-    // .to('#drop', {
-    //     x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53) ) - section7Action.offsetLeft - 85,
-    //     y: () =>  section1.offsetHeight + section2.offsetHeight + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight - dropEl.offsetTop + section7Action.getBoundingClientRect().top + 110,
-    //     duration: 2,
-    //     ease: "power1.in",
-    //     onStart : () => {
-    //         console.log('drop 7 Start #section-wrap-08');
-    //     },
-    //     onComplete : () => {
-    //         console.log('drop 7 Complete #section-wrap-08');
-    //     }
-    // }, '>+=0.5');
-
-
-    // set timeline with scrollTrigger for section wrap 09, trigger start when leaving section-wrap-09 and use it as timeline for fromTo animation for the section wrap 09 element,
-    // the anime will be from - clipPath  
+    // alt scrolling for section7 slider
+    /*
+    const drop7TL = gsap.timeline({
+        scrollTrigger: {
+            id: 'drop-7',
+            trigger: '#section-wrap-08',
+            start: () => '50px bottom',
+            end: () => 'bottom top',
+            toggleActions: 'play complete none reset',
+            // scrub: 2,
+            // markers: true,
+            onEnter: () => {
+                console.log('dropTL 7 enter - dropEl.offsetLeft: ', dropEl.offsetLeft);
+                console.log('dropTL 7 enter - section7Action.Rect().left: ', section7Action.getBoundingClientRect().left);                   
+            },
+        }
+    });
 
 
 
+    drop7TL
+    .set('#drop', {
+        x: () =>  -(dropEl.offsetLeft - section7Action.getBoundingClientRect().left),
+        y: () =>  section7.offsetTop - dropEl.offsetTop + section7Action.getBoundingClientRect().top,
+        opacity: 0,
+        rotate: 135,
+        width: "45px",
+        height: "45px",
+    })
+    .to('#drop',{
+        opacity: 1,
+        duration: 0.3,
+        onStart : () => {
+            console.log('drop 7 - dropEl.offsetLeft: ', dropEl.offsetLeft);
+            console.log('drop 7 - section7Action.getBoundingClientRect().left: ', section7Action.getBoundingClientRect().left);
+        }
+    })
+    .to('#drop', {
+        x: () => -(dropEl.offsetLeft - (section6Action.getBoundingClientRect().left + section6Action.getBoundingClientRect().width - 53) ) - section7Action.offsetLeft - 85,
+        y: () =>  section1.offsetHeight + section2.offsetHeight + section3.offsetHeight + section4.offsetHeight + section5.offsetHeight - dropEl.offsetTop + section7Action.getBoundingClientRect().top + 110,
+        duration: 2,
+        ease: "power1.in",
+        onStart : () => {
+            console.log('drop 7 Start #section-wrap-08');
+        },
+        onComplete : () => {
+            console.log('drop 7 Complete #section-wrap-08');
+        }
+    }, '>+=0.5');
+    */
 
+
+    // set section8 timeline
     const section8TL = gsap.timeline({
         scrollTrigger: {
             id: 'section8TL',
@@ -1025,7 +1022,7 @@ function init() {
             // }
         }
     });
-
+    // set section8-2 timeline
     const section82TL = gsap.timeline({
         scrollTrigger: {
             id: 'section8-2TL',
@@ -1046,6 +1043,7 @@ function init() {
         }
     });
 
+    // set section9 timeline
     const section9TL = gsap.timeline({
         scrollTrigger: {
             id: 'section-09-out',
@@ -1059,6 +1057,7 @@ function init() {
         }
     });
 
+    // sextion 9 outro animations
     section9TL
         .to('#section-wrap-09 .section-inner', {
             y: () => -100, // -(document.querySelector('#section-wrap-09 .section-inner').offsetHeight),
